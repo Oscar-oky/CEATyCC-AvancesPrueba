@@ -1,0 +1,341 @@
+
+/*Inicio del Slide*/
+.slider {
+    width: 75vw;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+
+}  
+
+.slider .slide-track{
+    display: flex;
+    animation: scroll 2s linear infinite;
+    -webkit-animation: scroll 10s linear infinite;
+    width: calc(200px * 14);
+}
+
+.slider .slide {
+    width: 200px;
+}
+
+.slider .slide img {
+    width: 100%;
+}
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0) ;
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(calc(-200px * 4));
+        transform: translateX(calc(-200px * 4));
+    }
+}
+/*Fin del Slide*/
+
+
+/*Inicio contenedor-boton*/
+/* Contenedor principal */
+.contenedor-boton {
+    
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-top: -60px;
+    flex-wrap: wrap; /* permite adaptarse en pantallas pequeñas */
+  }
+  
+  /* Estilos del botón */
+  .boton {
+    padding: 10px 20px;
+    background-color: #225b97;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  /* Ícono dentro del botón */
+  .boton a i {
+    color: rgb(252, 251, 251);
+    font-size: 24px; /* tamaño base del ícono */
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Efecto al pasar el mouse */
+  .boton a:hover i {
+    transform: scale(1.3); /* agrandar */
+    color: #333; /* opcional: color más oscuro al hacer hover */
+  }
+  
+  /* Responsive para pantallas pequeñas */
+  @media (max-width: 600px) {
+    .contenedor-boton {
+      justify-content: center; /* centra el botón en móviles */
+      margin-top: -30px;
+    }
+  
+    .boton {
+      padding: 8px 16px;
+    }
+  
+    .boton a i {
+      font-size: 20px; /* tamaño más pequeño del ícono en móviles */
+    }
+  }
+/*Fin contenedor-boton*/
+
+
+/* Inicio estilos de los separadores */
+.separadores {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    width: 60%; /* Ancho de los separadores */
+    margin: 10px auto; /* Centrar y espaciar */
+}
+/* Fin estilos de los separadores */
+
+/* Contenedor general que alinea a la izquierda y derecha */
+.contenedor-tarjetas {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap; /* Se acomoda en pantallas pequeñas */
+}
+
+/* Inicio de los contenedor principal de la cuadrícula de miembros */
+.tarjetas-equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /*Tamaño de las cartas*/
+    gap: 40px; /*espacio entre las tarjetas */
+    padding: 4px 2px;
+    justify-content: center;
+    max-width: 350px; /* Limita el ancho máximo de la cuadrícula */
+}
+/* Fin del contenedor principal de la cuadrícula de miembros */
+
+.Info-agregado {
+    max-width: 1100px;
+    width: 100%;
+}
+
+.Info-agregado .carta-miembro {
+    height: 50%;
+    padding: 40px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    color: #333;
+}
+
+
+/* inicio de estilos para cada tarjeta de equipo */
+.carta-miembro {
+    background-color: #ffffff; /* Fondo para las tarjetas */
+    padding: 30px; 
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para el efecto de elevación */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido de la tarjeta hacia arriba */
+    min-height: 300px; /* Altura mínima para asegurar consistencia */
+}
+/* Fin de estilos para cada tarjeta de equipo */
+
+/*Inicio estilo de texto(nombre)*/
+.nombre {
+    margin: 0 0 8px 0;
+    font-size: 1.8em; /* Tamaño de fuente más grande para el nombre */
+    color: #333; /* Color oscuro */
+    font-weight: 700; /* Negrita */
+}
+/*Fin estilo de texto(nombre)*/
+
+/* Inicio de efecto hover para las tarjetas */
+.carta-miembro:hover {
+    transform: translateY(-10px); /* Eleva la tarjeta al pasar el mouse */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+/* Fin de efecto hover para las tarjetas */
+
+
+/* Inicio Estilos del botón */
+.boton-personalizado {
+  background-color: #0066cc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.boton2-personalizado {
+  background-color: #0066cc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.boton-personalizado:hover {
+  background-color: #09ff00;
+  transform: scale(1.05);
+}
+
+.boton2-personalizado:hover {
+  background-color: #ff0000;
+  transform: scale(1.05);
+}
+
+.contenedor-botones {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* Alinea a la derecha */
+  gap: 10px; /* Espacio entre los botones */
+  margin-bottom: 20px; /* Separación con lo que sigue abajo */
+}
+
+/* Fin Estilos del botón */
+
+
+/* Inicio Formulario */
+
+    .formulario-agregar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.formulario-agregar input {
+  padding: 8px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.formulario-agregar button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.evento-clickable {
+  cursor: pointer;
+  color: #225b97;
+  transition: transform 0.2s ease;
+}
+
+.evento-clickable:hover {
+  transform: scale(1.05);
+  color: #b40000;
+}
+
+#eventos-destino h3 {
+  color: #0066cc;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#editor-evento {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#editor-evento input {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+#editor-evento button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Fin Formulario */
+
+.formulario-agregar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.formulario-agregar input,
+.formulario-agregar textarea,
+.formulario-agregar select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.formulario-agregar textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.formulario-agregar select {
+    background-color: white;
+}
+
+.evento-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.evento-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.evento-card h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.evento-detalles {
+    font-size: 14px;
+    color: #666;
+}
+
+.evento-fecha {
+    color: #0066cc;
+    font-weight: bold;
+}
+

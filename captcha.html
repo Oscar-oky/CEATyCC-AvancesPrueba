@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captcha en JavaScript</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+      margin-top: 10px;
+      background-color: #f4f4f4;
+      display:block;
+    }
+    #captcha-status {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <label for="captcha-input">Ingresa el CAPTCHA:</label>
+    <input type="text" id="captcha-input">
+    <button onclick="validateCaptcha()">Validar</button>
+  </div>
+  <canvas id="captchaCanvas" width="150" height="50"></canvas>
+  <p id="captcha-status"></p>
+
+  <script>
+    let captchaText;
+
+    function generateCaptcha() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      captchaText = Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+      console.log("CAPTCHA generado:", captchaText);
+
+      const canvas = document.getElementById("captchaCanvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#f4f4f4";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < 30; i++) {
+        ctx.beginPath();
+        ctx.arc(
+          Math.random() * canvas.width,
+          Math.random() * canvas.height,
+          3 + Math.random() * 3,
+          0,
+          2 * Math.PI
+        );
+        ctx.fillStyle = "#ccc";
+        ctx.fill();
+      }
+
+      ctx.fillStyle = "#000";
+      ctx.font = "24px sans-serif";
+      ctx.fillText(captchaText, 10, 35);
+      ctx.strokeStyle = "#000";
+      ctx.strokeText(captchaText, 10, 35);
+
+      console.log("Texto dibujado");
+    }
+
+
+      // Dibujar texto
+      ctx.fillStyle = "#000";
+      ctx.font = "24px sans-serif";
+      ctx.fillText(captchaText, 10, 35); // Usa 10 para asegurar que no se corte
+      ctx.strokeStyle = "#000";
+      ctx.strokeText(captchaText, 10, 35);
+
+    }
+
+    function validateCaptcha() {
+      const userInput = document.getElementById("captcha-input").value;
+      const status = document.getElementById("captcha-status");
+
+      if (userInput === captchaText) {
+        status.textContent = "¡Captcha correcto!";
+        status.style.color = "green";
+      } else {
+        status.textContent = "Captcha incorrecto. Intenta de nuevo.";
+        status.style.color = "red";
+        generateCaptcha(); // Generar un nuevo CAPTCHA en caso de error
+      }
+    }
+
+    // Generar el CAPTCHA al cargar la página
+    window.onload = generateCaptcha;
+    console.log("CAPTCHA generado:", captchaText);
+
+  </script>
+</body>
+</html>

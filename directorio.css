@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f7; 
+    color: #333333;
+}
+
+/*Inicio del Slide*/
+.slider {
+    width: 75vw;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+
+}  
+
+.slider .slide-track{
+    display: flex;
+    animation: scroll 2s linear infinite;
+    -webkit-animation: scroll 10s linear infinite;
+    width: calc(200px * 14);
+}
+
+.slider .slide {
+    width: 200px;
+}
+
+.slider .slide img {
+    width: 100%;
+}
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0) ;
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(calc(-200px * 4));
+        transform: translateX(calc(-200px * 4));
+    }
+}
+/*Fin del Slide*/
+
+/* inicio de titulo */
+.title {
+    text-align: center; /*Texto centrado*/
+    font-size: 3em; /* texto más grande */
+    color: #333; /* Color del texto */
+    margin-top: 50px; /* Margen superior */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+/* fin del titulo */
+
+/*Inicio contenedor-boton*/
+
+/* Contenedor principal */
+.contenedor-boton {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-top: -60px;
+    flex-wrap: wrap; /* permite adaptarse en pantallas pequeñas */
+  }
+  
+  /* Estilos del botón */
+  .boton {
+    padding: 10px 20px;
+    background-color: #225b97;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  /* Ícono dentro del botón */
+  .boton a i {
+    color: rgb(252, 251, 251);
+    font-size: 24px; /* tamaño base del ícono */
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Efecto al pasar el mouse */
+  .boton a:hover i {
+    transform: scale(1.3); /* agrandar */
+    color: #333; /* opcional: color más oscuro al hacer hover */
+  }
+  
+  /* Responsive para pantallas pequeñas */
+  @media (max-width: 600px) {
+    .contenedor-boton {
+      justify-content: center; /* centra el botón en móviles */
+      margin-top: -30px;
+    }
+  
+    .boton {
+      padding: 8px 16px;
+    }
+  
+    .boton a i {
+      font-size: 20px; /* tamaño más pequeño del ícono en móviles */
+    }
+  }
+  
+
+/*Fin contenedor-boton*/
+
+
+/* Inicio estilos de los separadores */
+.separadores {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    width: 60%; /* Ancho de los separadores */
+    margin: 10px auto; /* Centrar y espaciar */
+}
+/* Fin estilos de los separadores */
+
+
+
+/* Inicio de los contenedor principal de la cuadrícula de miembros */
+.tarjetas-equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));/*Tamaño de las cartas*/
+    gap: 40px; /*espacio entre las tarjetas */
+    padding: 40px 20px;
+    justify-content: center;
+    max-width: 1200px; /* Limita el ancho máximo de la cuadrícula */
+    margin: 0 auto; /* Centra la cuadrícula en la página */
+}
+/* Fin del contenedor principal de la cuadrícula de miembros */
+
+
+/* inicio de estilos para cada tarjeta de equipo */
+.carta-miembro {
+    background-color: #ffffff; /* Fondo para las tarjetas */
+    padding: 30px; 
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para el efecto de elevación */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido de la tarjeta hacia arriba */
+    min-height: 300px; /* Altura mínima para asegurar consistencia */
+}
+/* Fin de estilos para cada tarjeta de equipo */
+
+/* Inicio de efecto hover para las tarjetas */
+.carta-miembro:hover {
+    transform: translateY(-10px); /* Eleva la tarjeta al pasar el mouse */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+/* Fin de efecto hover para las tarjetas */
+
+
+/* Inicio de estilos para la imagen de perfil */
+.member-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la imagen cubra el círculo sin distorsionarse */
+    border: 4px solid #000000;
+    margin-bottom: 25px; /*25*/
+    box-shadow: 0 2px 8 px rgba(0, 0, 0, 0.1); /* Sombra sutil para la imagen*/
+}
+/* Fin de estilos para la imagen de perfil */
+
+/*Inicio estilo de texto(nombre)*/
+.nombre {
+    margin: 0 0 8px 0;
+    font-size: 1.8em; /* Tamaño de fuente más grande para el nombre */
+    color: #333; /* Color oscuro */
+    font-weight: 700; /* Negrita */
+}
+/*Fin estilo de texto(nombre)*/
+
+/* Inicio de estilos para el cargo/descripción del miembro */
+.roles-miembro { /* Cambiado de .descripcion a .member-role */
+    margin: 0;
+    font-size: 1.1em; /* Tamaño de fuente para el cargo */
+    color: #666; /* Un gris más suave para la descripción */
+    line-height: 1.4;
+}
+/* Inicio de estilos para el cargo/descripción del miembro */

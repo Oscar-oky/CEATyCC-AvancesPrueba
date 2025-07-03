@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Formulario-Carga-de-Eventos.css">
+    <link rel="icon" type="image/x-icon" href="./assets/ceatycc-hero-logo.svg">
+
+    <title>Carga de Eventos</title>
+</head>
+
+<body>
+    <!--Inicio de Slide-->
+    <div class="slider">
+        <div class="slide-track">
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/Secretaria-de-educacio%CC%81n-Queretaro.png"
+                    alt="">
+            </div>
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/Secretaria-de-Turismo-del-Estado-de-Queretaro.png"
+                    alt="">
+            </div>
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/Secretaria-de-Turismo-del-Estado-de-Queretaro-Contigo.png"
+                    alt="">
+            </div>
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/logo-ceatycc-02.png" alt="">
+            </div>
+
+            <!-- Duplicados para scroll infinito -->
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/Secretaria-de-educacio%CC%81n-Queretaro.png"
+                    alt="">
+            </div>
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/Secretaria-de-Turismo-del-Estado-de-Queretaro.png"
+                    alt="">
+            </div>
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/Secretaria-de-Turismo-del-Estado-de-Queretaro-Contigo.png"
+                    alt="">
+            </div>
+            <div class="slide">
+                <img src="https://ceatycc.fif-uaq.mx/assets/img/gallery/logo-ceatycc-02.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--Fin de Slide-->
+
+    <!--Inicio Boton home-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <div class="contenedor-boton">
+        <div class="boton">
+            <a href="./index.html"><i class="fas fa-home"></i></a>
+        </div>
+    </div>
+    <!--Final Boton home-->
+
+    <!--Inicio Cuadrado-->
+    <div class="contenedor-tarjetas">
+        <div class="tarjetas-equipo">
+            <div class="carta-miembro">
+                <h5 class="nombre">Eventos Actuales</h5>
+
+            </div>
+        </div>
+        <!--Fin Cuadrado-->
+
+        <!--Inicio Rectangulo-->
+
+        <div class="Info-agregado">
+            <div class="carta-miembro">
+                <!--Inicio de Botones-->
+                <div class="contenedor-botones">
+                    <button class="boton-personalizado">+</button>
+                    <button class="boton2-personalizado">+</button>
+                </div>
+                <!--Fin de botones-->
+
+                <!-- Inicio Formulario oculto al inicio -->
+                <div id="formulario-evento" style="display: none;" class="formulario-agregar">
+                    <input type="text" id="titulo-evento" placeholder="Título del evento" required>
+                    <input type="date" id="fecha-evento" required>
+                    <input type="time" id="hora-evento" required>
+                    <textarea id="descripcion-evento" placeholder="Descripción detallada del evento" rows="4"></textarea>
+                    <input type="text" id="ubicacion-evento" placeholder="Ubicación del evento">
+                    <select id="tipo-evento">
+                        <option value="presencial">Presencial</option>
+                        <option value="virtual">Virtual</option>
+                        <option value="hibrido">Híbrido</option>
+                    </select>
+                    <button onclick="agregarEvento()">Agregar Evento</button>
+
+                    <!-- Dentro del formulario -->
+                    <div id="eventos-destino"></div>
+                    
+                    <!-- Fuera del formulario -->
+                    <div id="eventos-destino"></div>
+                    <div id="editor-evento" style="display: none;">
+                        <input type="text" id="editar-titulo" placeholder="Editar título">
+                        <input type="date" id="editar-fecha">
+                        <input type="time" id="editar-hora">
+                        <textarea id="editar-descripcion" placeholder="Editar descripción" rows="4"></textarea>
+                        <input type="text" id="editar-ubicacion" placeholder="Editar ubicación">
+                        <select id="editar-tipo">
+                            <option value="presencial">Presencial</option>
+                            <option value="virtual">Virtual</option>
+                            <option value="hibrido">Híbrido</option>
+                        </select>
+                        <button onclick="guardarEdicion()">Guardar</button>
+                    </div>
+                </div>
+                <!-- Fin Formulario oculto al inicio -->
+                <!--Fin de botones-->
+                <!-- Eliminar este div que está dentro del formulario -->
+                <!-- <div id="eventos-destino"></div> -->
+                
+                <!-- Mantener este div que está fuera del formulario -->
+                <div id="eventos-destino"></div> <!-- Aquí irán los eventos transferidos -->
+
+            </div>
+        </div>
+        <!--Fin Rectangulo-->
+
+    </div>
+    <script src="Formulario-Carga-de-Eventos.js"></script>
+</body>
+
+</html>
