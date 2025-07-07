@@ -135,7 +135,7 @@ nav a {
 nav a:hover,
 nav .active {
     color: #ffffff;
-    background-color: #953535;
+    background-color: #24BFF8;
     border-radius: 5px;
     transform: scale(1.1);
 }
@@ -171,7 +171,7 @@ nav .dropdown-content a {
 }
 
 nav .dropdown-content a:hover {
-    background-color: #953535;
+    background-color: #24BFF8;
     color: #ffffff;
     border-radius: 3px;
     transform: scale(1.05);

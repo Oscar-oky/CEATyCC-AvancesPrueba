@@ -1,0 +1,280 @@
+/* === Ajuste global === */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    /* Hereda box-sizing para todos los elementos */
+}
+
+/* === Estilos generales === */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000;
+    line-height: 1.6;
+    width: 100%;
+}
+
+/* === Header === */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f7;
+    width: 100%;
+    /* Asegura que el header ocupe todo el ancho */
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 18px;
+    color: #0a0a0a;
+}
+
+/* === Barra de navegación mejorada === */
+nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #535353;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+nav .dropdown {
+    position: relative;
+    margin: 0 5px;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a4a4a;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    min-width: 270px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown-content a {
+    display: block;
+    color: #ffeeee;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin: 2px 0;
+    transition: all 0.2s ease;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #953535;
+    border-radius: 3px;
+}
+
+/* === Menú principal más compacto === */
+nav > a, nav > .dropdown > a {
+    padding: 8px 12px;
+    margin: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    nav {
+        gap: 10px;
+        padding: 8px 15px;
+    }
+    
+    nav > a, nav > .dropdown > a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease, border-radius 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover,
+nav .active {
+    color: #ffffff;
+    background-color: #953535;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+nav .dropdown {
+    position: relative;
+    margin: 0 10px;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a4a4a;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1;
+    gap: 10px;
+    flex-direction: column;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+nav .dropdown-content a {
+    display: block;
+    color: #ffeeee;
+    text-decoration: none;
+    margin: 1px 0;
+    padding: 1px 15px;
+    line-height: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #953535;
+    color: #ffffff;
+    border-radius: 3px;
+    transform: scale(1.05);
+}
+
+#search {
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+/*--------------------------------------------*/
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #8C3A4D; 
+}
+
+/* --- Barra de Navegación Superior (Breadcrumb) --- */
+.breadcrumb-container {
+    background-color: #f8f8f8;
+    padding: 12px 40px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.breadcrumb-container p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+/* --- Cuadrícula de Eventos --- */
+.events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+}
+
+/* --- Tarjeta de Evento --- */
+.event-card {
+    border: 1px solid #d3c1c3;
+    padding: 30px;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer; /* Mantenemos el cursor de mano */
+}
+
+.event-card h2 {
+    font-size: 1.9em;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    /* Añadimos la transición al texto, que es lo que se va a animar */
+    transition: transform 0.3s ease;
+}
+
+/* --- NUEVO: Efecto hover aplicado solo al texto --- */
+.event-card:hover h2 {
+    /* Al pasar el ratón sobre la tarjeta, escala solo el h2 */
+    transform: scale(1.1); /* Zoom del 110% */
+}
+
+/* --- Diseño Responsivo para Móviles --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .event-card {
+        min-height: 200px;
+    }
+
+    .event-card h2 {
+        font-size: 1.6em;
+    }
+    
+    /* Desactivamos el zoom del texto en móviles */
+    .event-card:hover h2 {
+        transform: none;
+    }
+}

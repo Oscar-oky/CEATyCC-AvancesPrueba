@@ -1,0 +1,284 @@
+/* === Ajuste global === */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    /* Hereda box-sizing para todos los elementos */
+}
+
+/* === Estilos generales === */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000;
+    line-height: 1.6;
+    width: 100%;
+}
+
+/* === Header === */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f7;
+    width: 100%;
+    /* Asegura que el header ocupe todo el ancho */
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 18px;
+    color: #0a0a0a;
+}
+
+/* === Barra de navegación mejorada === */
+nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #535353;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+nav .dropdown {
+    position: relative;
+    margin: 0 5px;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a4a4a;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    min-width: 270px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown-content a {
+    display: block;
+    color: #ffeeee;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin: 2px 0;
+    transition: all 0.2s ease;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #953535;
+    border-radius: 3px;
+}
+
+/* === Menú principal más compacto === */
+nav > a, nav > .dropdown > a {
+    padding: 8px 12px;
+    margin: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    nav {
+        gap: 10px;
+        padding: 8px 15px;
+    }
+    
+    nav > a, nav > .dropdown > a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease, border-radius 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover,
+nav .active {
+    color: #ffffff;
+    background-color: #953535;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+nav .dropdown {
+    position: relative;
+    margin: 0 10px;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a4a4a;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1;
+    gap: 10px;
+    flex-direction: column;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+nav .dropdown-content a {
+    display: block;
+    color: #ffeeee;
+    text-decoration: none;
+    margin: 1px 0;
+    padding: 1px 15px;
+    line-height: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #953535;
+    color: #ffffff;
+    border-radius: 3px;
+    transform: scale(1.05);
+}
+
+#search {
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+/*Fin de Barra Nav*/
+/* ==============================================
+   === ESTILOS PARA LA SECCIÓN DE EVENTOS PASADOS ===
+   ============================================== */
+
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 1200px;
+    margin: 50px auto; /* Centra el contenido horizontalmente */
+    padding: 0 20px;
+    color: #8C3A4D; /* Color rojizo/vino para el texto */
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+/* --- Cuadrícula de Eventos (Responsiva) --- */
+.events-grid {
+    display: grid;
+    /* Crea columnas flexibles. Cada una tendrá un mínimo de 300px.
+       Se ajustarán automáticamente para llenar el espacio. */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px; /* Espacio entre las tarjetas */
+}
+
+/* --- Tarjeta de Evento --- */
+.event-card {
+    border: 1px solid #d3c1c3; /* Borde con un color vino más claro */
+    padding: 30px;
+    min-height: 200px; /* Altura mínima para las tarjetas */
+    
+    /* Centra el contenido (fecha y título) */
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.event-card .event-date {
+    font-size: 0.9em;
+    color: #a06d78; /* Un tono más claro para la fecha */
+    margin: 0 0 10px 0;
+}
+
+.event-card h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    /* La transición se aplica al texto para el efecto de zoom */
+    transition: transform 0.3s ease;
+}
+
+/* --- Efecto hover aplicado solo al texto del título --- */
+.event-card:hover h2 {
+    transform: scale(1.1); /* Zoom del 110% */
+}
+
+/* --- Estilos para el Pie de Página (Footer) --- */
+footer {
+    background-color: #f5f5f7;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px; /* Espacio sobre el footer */
+    color: #535353;
+    font-size: 14px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* --- Ajustes para Móviles --- */
+@media (max-width: 768px) {
+    .container h1 {
+        font-size: 2em;
+    }
+    
+    .events-grid {
+        /* En pantallas pequeñas, forzamos una sola columna */
+        grid-template-columns: 1fr; 
+        gap: 25px;
+    }
+
+    .event-card h2 {
+        font-size: 1.3em;
+    }
+    
+    /* Opcional: Desactivar el zoom en móviles */
+    .event-card:hover h2 {
+        transform: none;
+    }
+}
