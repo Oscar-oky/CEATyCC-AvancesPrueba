@@ -198,7 +198,7 @@ nav .dropdown-content a:hover {
 
 h1 {
     text-align: center;
-    color: #f30707;
+    color: #24BFF8;
     grid-column: 1 / -1; /* Hace que el título ocupe todas las columnas */
     margin-bottom: 20px;
 }
