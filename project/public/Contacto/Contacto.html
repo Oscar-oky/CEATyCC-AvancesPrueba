@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto</title>
+  <link rel="stylesheet" href="Contacto.css" />
+</head>
+<body>
+  
+  <header>
+    <a href="../index.html" class="home-button">
+      <button type="button">← Regresar al Inicio</button>
+    </a>
+  </header>
+
+  <section id="contacto">
+    <h1>Contacto</h1>
+    <form action="/procesar_contacto" method="POST" enctype="multipart/form-data">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="telefono">Teléfono (opcional):</label>
+      <input type="tel" id="telefono" name="telefono" />
+
+      <label for="asunto">Asunto o motivo del contacto:</label>
+      <input type="text" id="asunto" name="asunto" required />
+
+      <label for="mensaje">Mensaje o comentario:</label>
+      <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+      <label>
+        <input type="checkbox" name="privacidad" required />
+        Acepto la política de privacidad.
+      </label>
+
+      <label for="captcha">CAPTCHA:</label>
+      <div class="captcha-container">
+        <canvas id="captchaCanvas" width="200" height="50"></canvas>
+        <button id="refreshCaptcha">↻ Actualizar</button>
+        <input type="text" id="captchaInput" name="captcha" placeholder="Ingrese el código" required>
+      </div>
+      <div id="captcha-status"></div>
+      <label for="preferencia">Preferencia de contacto:</label>
+      <select id="preferencia" name="preferencia" required>
+        <option value="email">Correo electrónico</option>
+        <option value="telefono">Teléfono</option>
+      </select>
+
+      <label for="archivo">Adjuntar archivo:</label>
+      <input type="file" id="archivo" name="archivo" />
+
+      <button type="submit">Enviar</button>
+    
+    </form>
+  </section>
+  <script src="procesar_contacto.js"></script>
+
+</body>
+<script>
+function generateRandomCaptcha() {
+    const canvas = document.getElementById('captchaCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Generar texto aleatorio (6 caracteres alfanuméricos)
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    let captchaText = '';
+    for(let i = 0; i < 6; i++) {
+        captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    // Dibujar CAPTCHA
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#f4f4f4';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Texto con estilo
+    ctx.fillStyle = '#000';
+    ctx.font = 'bold 24px Arial';
+    ctx.fillText(captchaText, 20, 35);
+    
+    // Líneas de distracción
+    for(let i = 0; i < 5; i++) {
+        ctx.strokeStyle = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
+        ctx.beginPath();
+        ctx.moveTo(Math.random()*canvas.width, Math.random()*canvas.height);
+        ctx.lineTo(Math.random()*canvas.width, Math.random()*canvas.height);
+        ctx.stroke();
+    }
+    
+    // Guardar texto en variable para validación
+    window.currentCaptcha = captchaText;
+    
+    return captchaText;
+}
+
+// Generar CAPTCHA al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Limpiar cualquier CAPTCHA previo
+    window.currentCaptcha = null;
+    generateRandomCaptcha();
+    
+    document.getElementById('refreshCaptcha').addEventListener('click', function(e) {
+        e.preventDefault();
+        generateRandomCaptcha();
+    });
+});
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const captchaInput = document.getElementById('captchaInput').value;
+    
+    // Enviar CAPTCHA al servidor para validación
+    fetch('set_captcha.php', {
+        method: 'POST',
+        body: JSON.stringify({captcha_text: window.currentCaptcha}),
+        headers: {'Content-Type': 'application/json'}
+    })
+    .then(() => {
+        // Continuar con el envío del formulario
+        form.submit();
+    });
+});
+</script>
+</html>
+
+<!--
+Conexión a la base de datos
+    $conexion = new mysqli('localhost', 'root', 'admin', 'bdceatycc');
+    if ($conexion->connect_error) {
+        die('Error en la conexión: ' . $conexion->connect_error);
+    }
+        

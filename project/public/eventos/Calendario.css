@@ -1,0 +1,365 @@
+/* === Ajuste global === */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    /* Hereda box-sizing para todos los elementos */
+}
+
+/* === Estilos generales === */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000;
+    line-height: 1.6;
+    width: 100%;
+}
+
+/* === Header === */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f7;
+    width: 100%;
+    /* Asegura que el header ocupe todo el ancho */
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 18px;
+    color: #0a0a0a;
+}
+
+/* === Barra de navegación mejorada === */
+nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #535353;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+nav .dropdown {
+    position: relative;
+    margin: 0 5px;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a4a4a;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    min-width: 270px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown-content a {
+    display: block;
+    color: #ffeeee;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin: 2px 0;
+    transition: all 0.2s ease;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #953535;
+    border-radius: 3px;
+}
+
+/* === Menú principal más compacto === */
+nav > a, nav > .dropdown > a {
+    padding: 8px 12px;
+    margin: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    nav {
+        gap: 10px;
+        padding: 8px 15px;
+    }
+    
+    nav > a, nav > .dropdown > a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease, border-radius 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover,
+nav .active {
+    color: #ffffff;
+    background-color: #953535;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+nav .dropdown {
+    position: relative;
+    margin: 0 10px;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a4a4a;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1;
+    gap: 10px;
+    flex-direction: column;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+nav .dropdown-content a {
+    display: block;
+    color: #ffeeee;
+    text-decoration: none;
+    margin: 1px 0;
+    padding: 1px 15px;
+    line-height: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #953535;
+    color: #ffffff;
+    border-radius: 3px;
+    transform: scale(1.05);
+}
+
+#search {
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+/*Final de Barra Nav*/
+
+
+/* ==============================================
+   === ESTILOS PARA LA PÁGINA DEL CALENDARIO  ===
+   ============================================== */
+
+   .calendar-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* --- Encabezado del Calendario --- */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+    gap: 15px;
+}
+
+.calendar-title {
+    font-size: 1.8em;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    flex-grow: 1; /* Permite que el título ocupe el espacio sobrante */
+}
+
+.calendar-views button,
+.calendar-nav button,
+.calendar-nav select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    margin: 0 2px;
+}
+
+.calendar-views button.active {
+    background-color: #e0e0e0;
+    border-color: #999;
+}
+
+.calendar-nav .nav-arrows {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.calendar-nav button.btn-go {
+    background-color: #e9e9e9;
+}
+
+/* --- Cuadrícula del Calendario --- */
+.calendar-grid {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Asegura que las columnas tengan el mismo ancho */
+}
+
+.calendar-grid th {
+    padding: 12px 5px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    font-size: 14px;
+}
+
+.calendar-grid td {
+    border: 1px solid #ddd;
+    height: 120px; /* Altura de las celdas */
+    vertical-align: top;
+    position: relative;
+}
+
+.calendar-grid .day-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 13px;
+    color: #555;
+}
+
+.calendar-grid .not-current-month {
+    background-color: #f9f9f9;
+}
+
+.calendar-grid .today {
+    border: 2px solid #555;
+}
+
+/* --- Leyenda de Categorías --- */
+.calendar-legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px 20px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    font-size: 13px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    flex-shrink: 0; /* Evita que el punto se encoja */
+}
+
+/* --- Enlace para Imprimir --- */
+.print-link {
+    margin-top: 30px;
+}
+
+.print-link a {
+    color: #337ab7;
+    text-decoration: none;
+    font-size: 14px;
+}
+.print-link a span {
+    margin-right: 5px;
+}
+.print-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Pie de Página --- */
+footer {
+    background-color: #f5f5f7;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    color: #535353;
+    font-size: 14px;
+    border-top: 1px solid #e0e0e0;
+}
+
+
+/* --- Ajustes para Móviles --- */
+@media (max-width: 992px) {
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .calendar-title {
+        order: -1; /* Mueve el título arriba en móviles */
+        width: 100%;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    .calendar-grid td {
+        height: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .calendar-grid th {
+        font-size: 11px; /* Letras más pequeñas para los días */
+    }
+    .calendar-grid .day-number {
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,149 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Fondo general */
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Sección de contacto */
+#contacto {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Título */
+#contacto h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Etiquetas */
+label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+textarea,
+select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fefefe;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+/* Checkbox y captcha */
+.captcha {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Botón */
+button[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #357ab8;
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+#captchaCanvas {
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    margin: 10px 0;
+}
+
+#captcha {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.refresh-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#captcha-status {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+header {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+.home-button {
+  text-decoration: none;
+}
+
+.home-button button {
+  background-color: #4a4063;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.home-button button:hover {
+  background-color: #5d7b8d;
+}
