@@ -13,6 +13,7 @@ type Category = {
 
 
 const categories: Category[] = [
+  /*
   {
     id: 'fisica-matematicas',
     label: 'Ciencias físicas y matemáticas',
@@ -343,13 +344,14 @@ const categories: Category[] = [
         'Doctorado en Letras',
         'Doctorado en Humanidades'
     ],
-  },
+  },*/
   {
-    id: 'nueva-categoria-ejemplo',
-    label: 'Nueva Categoría de Ejemplo',
+    id: 'ADMINISTRACIÓN Y NEGOCIOS',
+    label: 'ADMINISTRACIÓN Y NEGOCIOS',
     careers: [
-      'Carrera de Ejemplo 1',
+      //'Carrera de Ejemplo 1',
       'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
       
     ],
   },
@@ -1077,7 +1079,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
                     onClick={() => handleLegendClick('publica')}
                   >
                     <span className="h-4 w-4 rounded-full bg-violet-500 mr-2"></span>
-                    <span>Universidades Públicas</span>
+                    <span>Universidades Autónomas</span>
                   </div>
                 </div>
               </div>
