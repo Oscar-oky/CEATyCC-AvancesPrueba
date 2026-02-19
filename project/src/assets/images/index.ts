@@ -72,4 +72,5 @@ export const juanRamon = new URL('./Dr. Juan Ramón Terven Salinas.png', import.
 
 //Imagenes de Universidades_Simbologia
 export const ITSJR = new URL('../logos/ITSJR.jpg', import.meta.url).href;
+export const UT_JALPAN = new URL('../logos/UT_JALPAN.png', import.meta.url).href;
 

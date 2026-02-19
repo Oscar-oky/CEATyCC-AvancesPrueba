@@ -378,6 +378,9 @@ export const exampleUniversities: University[] = [
  // { name: 'Universidad de Ejemplo', shortName: 'U Ejemplo', logo: images.logoUNAQ, url: 'https://www.ejemplo.com', type: 'privada', coordinates: [20.5880, -100.3880] },
   { name: 'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO', shortName: 'TECNM QRO', logo: images.logoTECNM, url: 'https://queretaro.tecnm.mx', type: 'tecnologica', coordinates: [20.59329800000002, -100.40570047472707] },
   { name: 'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO', shortName: 'ITSJR', logo: images.ITSJR, url: 'https://itsanjuan.edu.mx', type: 'tecnologica', coordinates: [20.373656077475115, -99.98401882977134] },
+  { name: 'UNIVERSIDAD POLITECNICA DE QUERETARO', shortName: 'UPQ', logo: images.logoUPQ, url: 'https://www.upq.mx/#', type: 'politecnica', coordinates: [20.59329800000002, -100.40570047472707] },
+  { name: 'UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO', shortName: 'UTSJR', logo: images.logoUTC, url: 'https://www.utsjr.edu.mx/modalidadDiez.php', type: 'politecnica', coordinates: [20.36769939722534, -100.01009040307504] },
+  { name: 'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO', shortName: 'UTSJR JALPAN', logo: images.UT_JALPAN, url: 'https://utsjr.edu.mx/datos_institucionales.php', type: 'politecnica', coordinates: [21.2024366011847, -99.44700666073041] },
 
 ];
 
@@ -411,6 +414,7 @@ export const Universidades_Logo = [
 ];
 
 export const externalUniversities: University[] = [
+  /*
         {
           nombre: 'ESCUELA NORMAL SUPERIOR DE QUERÉTARO',
           urlPrincipal: 'https://ensq.edu.mx/licenciatura/#',
@@ -823,7 +827,7 @@ export const externalUniversities: University[] = [
           nombre: 'INSTITUTO TECNOLOGICO DE ESTUDIOS SUPERIORES DE MONTERREY "UNIDAD QUERETARO"',
           urlPrincipal: 'https://tec.mx/es/profesional/oferta-educativa',
         },
-
+*/
 ];
 
 export const calendarLegendItems = [
