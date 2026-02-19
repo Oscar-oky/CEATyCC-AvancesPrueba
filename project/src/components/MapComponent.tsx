@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { universities, University } from '@/utils/data'; 
+import { universities, exampleUniversities, University } from '@/utils/data'; 
 
 const createColoredIcon = (color: string) => {
   const markerHtml = `
@@ -67,15 +67,19 @@ const MapComponent: React.FC<MapComponentProps> = ({ focusedLocation, selectedTy
     }
   }, [universityToOpenPopup]);
 
+  const allUniversities = useMemo(() => {
+    return [...universities, ...exampleUniversities];
+  }, []);
+
   const filteredUniversities = useMemo(() => {
     if (!selectedType) {
-      return universities;
+      return allUniversities;
     }
     if (selectedType === 'politecnica-tecnologica') {
-      return universities.filter(uni => uni.type === 'politecnica' || uni.type === 'tecnologica');
+      return allUniversities.filter(uni => uni.type === 'politecnica' || uni.type === 'tecnologica');
     }
-    return universities.filter(uni => uni.type === selectedType);
-  }, [selectedType]);
+    return allUniversities.filter(uni => uni.type === selectedType);
+  }, [selectedType, allUniversities]);
 
   return (
     <div style={{ position: 'relative', zIndex: 1, borderRadius: '0.5rem', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)', overflow: 'hidden' }}>

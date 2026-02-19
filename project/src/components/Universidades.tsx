@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { universities, externalUniversities } from '@/utils/data';
+import { universities, externalUniversities, exampleUniversities } from '@/utils/data';
 import { University, CurrentView } from '@/types';
 import { UniversidadesProps } from '../types.d';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -344,6 +344,15 @@ const categories: Category[] = [
         'Doctorado en Humanidades'
     ],
   },
+  {
+    id: 'nueva-categoria-ejemplo',
+    label: 'Nueva Categoría de Ejemplo',
+    careers: [
+      'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      
+    ],
+  },
 
 
 ];
@@ -416,6 +425,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
   
   const handleCareerClick = (careerName: string) => {
     const cleanedCareerName = careerName.trim();
+    let university: University | undefined; // Declarar university aquí
 
     // Primero, verificar si es una universidad externa
     const externalUni = externalUniversities.find(uni => uni.nombre.trim().toLowerCase() === cleanedCareerName.toLowerCase());
@@ -424,23 +434,63 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
       return; // Salir de la función si es una universidad externa
     }
 
-    // 1. Intento de coincidencia exacta primero
-    let university = universities.find(uni =>
+    // Nuevo: Buscar coincidencia directa con el nombre de la universidad
+    university = exampleUniversities.find(uni =>
+      uni.name.trim().toLowerCase() === cleanedCareerName.toLowerCase() ||
+      uni.shortName?.trim().toLowerCase() === cleanedCareerName.toLowerCase()
+    );
+
+    if (!university) {
+      university = universities.find(uni =>
+        uni.name.trim().toLowerCase() === cleanedCareerName.toLowerCase() ||
+        uni.shortName?.trim().toLowerCase() === cleanedCareerName.toLowerCase()
+      );
+    }
+
+    // Si se encontró una universidad por nombre, y tiene coordenadas, procesarla y salir
+    if (university && university.coordinates) {
+      setFocusedLocation({ lat: university.coordinates[0], lng: university.coordinates[1] });
+      setUniversityToOpenPopup(university);
+      setTimeout(() => {
+        document.getElementById('mapa')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+      return; // Importante: salir si ya encontramos la universidad por su nombre
+    }
+
+    // 1. Intento de coincidencia exacta primero en exampleUniversities
+    university = exampleUniversities.find(uni =>
       uni.careers?.some(uniCareer => uniCareer.trim().toLowerCase() === cleanedCareerName.toLowerCase())
     );
+
+    // Si no se encuentra en exampleUniversities, buscar en universities
+    if (!university) {
+      university = universities.find(uni =>
+        uni.careers?.some(uniCareer => uniCareer.trim().toLowerCase() === cleanedCareerName.toLowerCase())
+      );
+    }
 
     // 2. Si no hay coincidencia exacta, usar la lógica de normalización como fallback
     if (!university) {
       const normalize = (str: string) => str.toLowerCase().replace(/lic\. en|ing\. en|tsu en|licenciatura en|ingeniería en/g, '').trim();
       const clickedCareerNorm = normalize(cleanedCareerName);
 
-      university = universities.find(uni =>
+      // Buscar en exampleUniversities con normalización
+      university = exampleUniversities.find(uni =>
         uni.careers?.some(uniCareer => {
           const uniCareerNorm = normalize(uniCareer);
-          // Comprobar si uno contiene al otro para más flexibilidad
           return uniCareerNorm.includes(clickedCareerNorm) || clickedCareerNorm.includes(uniCareerNorm);
         })
       );
+
+      // Si aún no se encuentra, buscar en universities con normalización
+      if (!university) {
+        university = universities.find(uni =>
+          uni.careers?.some(uniCareer => {
+            const uniCareerNorm = normalize(uniCareer);
+            return uniCareerNorm.includes(clickedCareerNorm) || clickedCareerNorm.includes(uniCareerNorm);
+          })
+        );
+      }
     }
 
     if (university && university.coordinates) {
