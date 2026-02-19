@@ -377,7 +377,7 @@ export const universities: University[] = [
 export const exampleUniversities: University[] = [
  // { name: 'Universidad de Ejemplo', shortName: 'U Ejemplo', logo: images.logoUNAQ, url: 'https://www.ejemplo.com', type: 'privada', coordinates: [20.5880, -100.3880] },
   { name: 'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO', shortName: 'TECNM QRO', logo: images.logoTECNM, url: 'https://queretaro.tecnm.mx', type: 'tecnologica', coordinates: [20.59329800000002, -100.40570047472707] },
-  { name: 'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO', shortName: 'ITSJR', logo: images.logoTECNM, url: 'https://itsanjuan.edu.mx', type: 'tecnologica', coordinates: [20.373656077475115, -99.98401882977134] },
+  { name: 'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO', shortName: 'ITSJR', logo: images.ITSJR, url: 'https://itsanjuan.edu.mx', type: 'tecnologica', coordinates: [20.373656077475115, -99.98401882977134] },
 
 ];
 

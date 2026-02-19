@@ -355,6 +355,97 @@ const categories: Category[] = [
       
     ],
   },
+  {
+    id: 'AGRONOMÍA Y VETERINARIA',
+    label: 'AGRONOMÍA Y VETERINARIA',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'ARTES Y HUMANIDADES',
+    label: 'ARTES Y HUMANIDADES',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'CIENCIAS DE LA SALUD',
+    label: 'CIENCIAS DE LA SALUD',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'CIENCIAS NATURALES, MATEMÁTICAS Y ESTADÍSTICA',
+    label: 'CIENCIAS NATURALES, MATEMÁTICAS Y ESTADÍSTICA',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'CIENCIAS SOCIALES Y DERECHO',
+    label: 'CIENCIAS SOCIALES Y DERECHO',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'EDUCACIÓN',
+    label: 'EDUCACIÓN',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'INGENIERIA, MANUFACTURA Y CONSTRUCCIÓN ',
+    label: 'INGENIERIA, MANUFACTURA Y CONSTRUCCIÓN ',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'SERVICIOS ',
+    label: 'SERVICIOS ',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+  {
+    id: 'TECNOLOGÍAS DE LA INFORMACION Y LA COMUNICACIÓN ',
+    label: 'TECNOLOGÍAS DE LA INFORMACION Y LA COMUNICACIÓN ',
+    careers: [
+      //'Carrera de Ejemplo 1',
+      'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
+      'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
+      
+    ],
+  },
+
 
 
 ];

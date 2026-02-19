@@ -69,3 +69,7 @@ export const estructuraEstanciasEstadias = new URL('./estructuraEstanciasEstadia
 export const chiengMoua = new URL('./Chieng Moua.png', import.meta.url).href;
 export const edgarVallejo = new URL('./Mtro. Edgar Vallejo Cruz.png', import.meta.url).href;
 export const juanRamon = new URL('./Dr. Juan Ramón Terven Salinas.png', import.meta.url).href;
+
+//Imagenes de Universidades_Simbologia
+export const ITSJR = new URL('../logos/ITSJR.jpg', import.meta.url).href;
+
