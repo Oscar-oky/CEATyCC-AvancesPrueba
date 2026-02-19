@@ -1,0 +1,31 @@
+# .htaccess para configurar el backend con Apache
+
+# Habilitar mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Redirigir todas las peticiones a server.js
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ server.js [L]
+</IfModule>
+
+# Configurar Node.js como manejador
+AddHandler application/x-httpd-php .php
+AddHandler application/x-httpd-nodejs .js
+SetHandler application/x-httpd-nodejs server.js
+
+# Ajustar límites de ejecución
+<IfModule mod_php7.c>
+    php_value max_execution_time 300
+    php_value memory_limit 256M
+</IfModule>
+
+# Evitar listado de directorios
+Options -Indexes
+
+# Headers de seguridad
+Header set X-Content-Type-Options nosniff
+Header set X-Frame-Options DENY
+Header set X-XSS-Protection "1; mode=block"

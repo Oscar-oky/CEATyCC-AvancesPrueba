@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# Proxy API a Node.js
+RewriteRule ^api/(.*)$ http://127.0.0.1:5003/api/$1 [P,L]
+
+# Proxy para archivos subidos (fotos, videos, documentos)
+RewriteRule ^public/uploads/(.*)$ http://127.0.0.1:5003/public/uploads/$1 [P,L]
+
+# Excluir archivos estáticos específicos: PDFs, imágenes, videos, etc.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} \.(pdf|jpg|jpeg|png|gif|webp|svg|ico|css|js|json|txt|mp3|mp4|ogg|woff|woff2|ttf|eot)$
+RewriteRule ^ - [L]
+
+# SPA fallback (React / Vue / frontend) - solo para rutas que no existen
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+Options -Indexes
