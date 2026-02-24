@@ -375,14 +375,118 @@ export const universities: University[] = [
 ]; 
 
 export const exampleUniversities: University[] = [
+  
+  //Administracion Y Negocios
  // { name: 'Universidad de Ejemplo', shortName: 'U Ejemplo', logo: images.logoUNAQ, url: 'https://www.ejemplo.com', type: 'privada', coordinates: [20.5880, -100.3880] },
   { name: 'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO', shortName: 'TECNM QRO', logo: images.logoTECNM, url: 'https://queretaro.tecnm.mx', type: 'tecnologica', coordinates: [20.59329800000002, -100.40570047472707] },
   { name: 'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO', shortName: 'ITSJR', logo: images.ITSJR, url: 'https://itsanjuan.edu.mx', type: 'tecnologica', coordinates: [20.373656077475115, -99.98401882977134] },
   { name: 'UNIVERSIDAD POLITECNICA DE QUERETARO', shortName: 'UPQ', logo: images.logoUPQ, url: 'https://www.upq.mx/#', type: 'politecnica', coordinates: [20.59329800000002, -100.40570047472707] },
   { name: 'UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO', shortName: 'UTSJR', logo: images.logoUTC, url: 'https://www.utsjr.edu.mx/modalidadDiez.php', type: 'politecnica', coordinates: [20.36769939722534, -100.01009040307504] },
   { name: 'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO', shortName: 'UTSJR JALPAN', logo: images.UT_JALPAN, url: 'https://utsjr.edu.mx/datos_institucionales.php', type: 'politecnica', coordinates: [21.2024366011847, -99.44700666073041] },
+  { name: 'UNIVERSIDAD TECNOLOGICA DE CORREGIDORA', shortName: 'UTC', logo: images.logoUTC, url: 'https://utcorregidora.edu.mx', type: 'tecnologica', coordinates: [20.44779620000001, -100.42713472883601] },
+  { name: 'UNIVERSIDAD TECNOLOGICA DE QUERETARO', shortName: 'UTEQ', logo: images.logoUTEQ, url: 'https://www.uteq.edu.mx/Aspirante/OfertaEducativa.aspx', type: 'tecnologica', coordinates: [20.653954539270273, -100.406104528836] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS SAN JUAN DEL RIO', shortName: 'UAQ SJR', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos#', type: 'publica', coordinates: [20.389102169969977, -99.972141728836] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO CAMPUS JALPAN', shortName: 'UAQ JALPAN', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [21.21699700479592, -99.46051130000002] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO CAMPUS AMEALCO', shortName: 'UAQ AMEALCO', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.17508444109657, -100.1370746288359] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CADEREYTA', shortName: 'UAQ CADEREYTA', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.712830235376316, -99.8413685] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS TEQUISQUIAPAN', shortName: 'UAQ TEQUISQUIAPAN', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.516738044915247, -99.90231297116414] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CENTRO UNIVERSITARIO', shortName: 'UAQ CENTRO UNIVERSITARIO', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.59104687368068, -100.4101567] },
+  { name: 'ESCUELA NACIONAL DE ESTUDIOS SUPERIORES, UNIDAD JURIQUILLA', shortName: 'ENES JURIQUILLA', logo: images.ENES_JURIQUILLA, url: 'https://www.enesjuriquilla.unam.mx/?page_id=10634', type: 'publica', coordinates: [20.7051105, -100.4483729] },
+  //privados
+  { name: 'UNIVERSIDAD MONDRAGÓN MÉXICO', shortName: 'UMm', logo: images.UMM, url: 'https://mondragonmexico.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.604330827634232, -100.27650229999999] },
+  { name: 'UNIVERSIDAD MESOAMERICANA PLANTEL SAN JUAN, S. C.', shortName: 'UMP SAN JUAN', logo: images.UMP_SAN_JUAN, url: 'https://lameso.edu.mx/sanjuan/oferta/licenciaturas/', type: 'privada', coordinates: [20.387961540392737, -99.99773599999999] },
+  { name: 'UNIVERSIDAD ALFRED NOBEL DE MEXICO', shortName: 'UNINOBEL', logo: images.U_nobel, url: 'https://www.uninobel.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.402492502063826, -100.01360855767174] },
+  { name: 'UNIVERSIDAD MARISTA DE QUERETARO, A. C.', shortName: 'UMQ', logo: images.U_marista, url: 'https://www.umq.edu.mx/p/qro/licenciatura', type: 'privada', coordinates: [20.601438185470027, -100.38537217116411] },
+  { name: 'UNIVERSIDAD CUAUHTÉMOC, PLANTEL QUERÉTARO', shortName: 'CUAUHTEMOC', logo: images.logoCuauhtemoc, url: 'https://uc.ucq.edu.mx/oferta-academica/licenciaturas-e-ingenierias', type: 'privada', coordinates: [20.589753485575645, -100.36225475899019] },
+  { name: 'CENTRO DE ESTUDIOS SUPERIORES DEL BAJIO CAMPUS QUERETARO', shortName: 'CESBA', logo: images.logoCesba, url: 'https://www.cesba-queretaro.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.648292717171955, -100.48295359972113] },  
+  { name: 'UNIVERSIDAD DEL GOLFO DE MEXICO, CAMPUS QUERETARO', shortName: 'UGM QRO', logo: images.U_UGM_QRO, url: 'https://web.ugm.mx/licenciaturas/', type: 'privada', coordinates: [20.549293584668856, -100.44677272883614] },  
+  { name: 'UNIVERSIDAD DE ESTUDIOS AVANZADOS, CAMPUS QUERETARO', shortName: 'UNEA QRO', logo: images.U_UNEA_QRO, url: 'https://www.unea.edu.mx/campus/queretaro', type: 'privada', coordinates: [20.58178747480642, -100.41243176717026] },  
+  { name: 'UNIVERSIDAD DE LONDRES', shortName: 'UL', logo: images.U_LONDRES, url: 'https://udlondres.com/licenciaturas/', type: 'privada', coordinates: [20.59646672903069, -100.39997315289916] },  
+  { name: 'UNIVERSIDAD ANAHUAC', shortName: 'UNAHUAC', logo: images.U_ANAHUAC, url: 'https://queretaro.anahuac.mx/licenciaturas', type: 'privada', coordinates: [20.68034203752635, -100.31298454232773] },  
+  { name: 'INSTITUTO DE ESTUDIOS SUPERIORES ISIMA PLANTEL QUERETARO', shortName: 'ISIMA QRO', logo: images.U_ISIMA, url: 'https://www.isima.com.mx/universidad-en-queretaro#', type: 'privada', coordinates: [20.572422933937442, -100.38570677116387] },  
+  { name: 'UNIVERSIDAD TEC MILENIO QUERETARO', shortName: 'TECNM QRO', logo: images.U_TECMILENIO, url: 'https://universidad.tecmilenio.mx/#tabs-section', type: 'privada', coordinates: [20.532795994500997, -100.40422238650842] },  
+  { name: 'UNIVERSIDAD DEL DESARROLLO PROFESIONAL PLANTEL QUERETARO', shortName: 'UNIDEP', logo: images.U_UNIDEP, url: 'https://unidep.mx/oferta-educativa/campus-queretaro/#', type: 'privada', coordinates: [20.549667130714955, -100.40506737116385] },  
+  { name: 'INSTITUTO SANJUANENSE DE ESTUDIOS SUPERIORES, A.C.', shortName: 'ISISA', logo: images.U_ISIS, url: 'https://www.universidadises.com/oferta-educativa', type: 'privada', coordinates: [20.379510305130943, -99.96911737963472] },  
+  { name: 'UNIVERSIDAD MARISTA DE QUERETARO, CAMPUS SAN JUAN DEL RIO', shortName: 'UMQ', logo: images.U_ISIS, url: 'https://www.umq.edu.mx/p/sjr', type: 'privada', coordinates: [20.386678099999994, -100.00031702883614] },  
+  { name: 'ESCUELA BANCARIA Y COMERCIAL CAMPUS QUERETARO', shortName: 'EBC QRO', logo: images.U_EBC, url: 'https://www.ebc.mx/campus/queretaro/', type: 'privada', coordinates: [20.555722028724745, -100.42263404232824] }, 
+  { name: 'INSTITUTO DE FORMACION EDUCATIVA SUPERIOR, PLANTEL SAN JUAN DEL RIO', shortName: 'IFES SJR', logo: images.U_IFES, url: 'https://pulsouniversitario.mx/universidad/394/instituto-de-formacion-educativa-superior-plantel-san-juan-del-rio', type: 'privada', coordinates: [20.38104897154601, -99.9983666] },  
+  { name: 'ATENAS, ESTUDIOS SUPERIORES', shortName: 'ATENAS', logo: images.logoAtenas, url: 'https://atenas.edu.mx/', type: 'privada', coordinates: [20.59077353031352, -100.4032531] },  
+  { name: 'CENTRO DE ESTUDIOS INTERNACIONAL DE QUERETARO', shortName: 'UNIQ', logo: images.U_UNIQ, url: 'https://www.uniq.education/licenciaturas/', type: 'privada', coordinates: [20.61930808311422, -100.4013983711641] },  
+  { name: 'COLEGIO UNIVERSITARIO DE HUMANIDADES', shortName: 'CUDH', logo: images.U_CUDH, url: 'https://cudh.edu.mx/#', type: 'privada', coordinates: [20.58421464386905, -100.38608508465647] },  
+  { name: 'UNIVERSIDAD CENTRAL DE QUERETARO', shortName: 'UNICEQ', logo: images.logoUniceq, url: 'https://uniceq.edu.mx/licenciaturas-uniceq/', type: 'privada', coordinates: [20.61353616775335, -100.41951675767174] },  
+  { name: 'INSTITUTO UNIVERSITARIO DEL CENTRO DE MEXICO CAMPUS QUERETARO', shortName: 'EDUCEM', logo: images.U_EDUCEM, url: 'https://www.educem.mx/licenciatura/', type: 'privada', coordinates: [20.584800156170147, -100.40399001349236] },  
+  { name: 'UNIVERSIDAD DEL VALLE DE ATEMAJAC PLANTEL QUERETARO', shortName: 'UNIVA', logo: images.U_UNIVA, url: 'https://www.univa.mx/queretaro/programas-educativos/', type: 'privada', coordinates: [20.59822005705396, -100.3710477711641] },  
+  { name: 'CENTRO DE ESTUDIOS UNIVERSITARIOS DE QUERETARO A.C.', shortName: 'CEUQ', logo: images.U_CEUQ, url: 'https://ceuq.com.mx/#', type: 'privada', coordinates: [20.579253476786498, -100.42278575767176] },  
+  { name: 'UNIVERSIDAD LA PROVIDENCIA', shortName: 'UP', logo: images.U_ULAP, url: 'https://pulsouniversitario.mx/universidad/406/universidad-la-providencia', type: 'privada', coordinates: [20.54141064005477, -100.43609649999999] },  
+  { name: 'INSTITUTO UNIVERSITARIO DEL CENTRO DE MEXICO CAMPUS SAN JUAN DEL RIO', shortName: 'EDUCEM SJR', logo: images.U_EDUCEM, url: 'https://www.educem.mx/licenciatura/', type: 'privada', coordinates: [20.384314041820275, -100.00575515767176] },  
+  { name: 'ARKANSAS STATE UNIVERSITY CQ', shortName: 'ASU CQ', logo: images.U_ARKANSAS, url: 'https://astate.edu.mx/oferta-academica/', type: 'privada', coordinates: [20.669748320998355, -100.11039511192962] },  
+  { name: 'EDUCATIVA METROPOLITANA', shortName: 'EM', logo: images.U_UMP, url: 'https://edumetropolitana.edu.mx/', type: 'privada', coordinates: [20.4006326677129, -99.975673] },  
+  { name: 'UNIVERSIDAD INTERGLOBAL', shortName: 'UIQ', logo: images.U_UIQ, url: 'https://universidadinterglobal.edu.mx/oferta-educativa/', type: 'privada', coordinates: [20.584897762954384, -100.39268645767177] },  
+  { name: 'UNIVERSIDAD TECNOLOGICA DE MEXICO', shortName: 'UNITEC', logo: images.U_UNITEQ, url: 'https://www.unitec.mx/campus-queretaro/#oferta-educativa', type: 'privada', coordinates: [20.61018296863753, -100.41822087116411] },  
+  { name: 'UNIPLEA', shortName: 'UNIPLEA', logo: images.U_UNIPLEA, url: 'https://www.uniplea.mx/oferta-educativa/', type: 'privada', coordinates: [20.59036221307346, -100.37566832883587] },  
+  { name: 'CENTRO DE ESTUDIOS SUPERIORES CONIN', shortName: 'CONIN', logo: images.U_CONIN, url: 'https://www.universidadconin.com/', type: 'privada', coordinates: [20.395211843930337, -99.99505021231023] },  
+  { name: 'NEW ELEMENT UNIVERSITY', shortName: 'NEW ELEMENT', logo: images.logoNewElement, url: 'https://www.neuniversity.mx/es/#licenciaturas', type: 'privada', coordinates: [20.572766289245763, -100.44334572883588] },  
+  { name: 'INSTITUTO UNIVERSITARIO UCAP DEL BAJÍO', shortName: 'UCAP', logo: images.U_UCAP, url: 'https://www.institutoucap.edu.mx/#oferta-academica', type: 'privada', coordinates: [20.38769677024524, -99.97844737116411] },  
+  { name: 'UNIVERSIDAD OMI CENTRO DE INVESTIGACION, SAN JUAN DEL RIO', shortName: 'OMI', logo: images.U_OMI, url: 'https://www.uomi.edu.mx/licenciaturas', type: 'privada', coordinates: [20.39233736933697, -99.990223] },  
+  { name: 'CENTRO CULTURAL UNIVERSITARIO DE INVESTIGACION FORENSE Y JURIDICA', shortName: 'CECUIFJ', logo: images.U_CECUIFJ, url: 'https://cecuifj.edu.mx/licenciaturas', type: 'privada', coordinates: [20.49579459807937, -100.13718237116413] },  
+  { name: 'UNIVERSIDAD PRIVADA DEL BAJIO', shortName: 'UPB', logo: images.U_UPB, url: 'https://upb.mx/licenciaturas/', type: 'privada', coordinates: [20.385601627533863, -99.99247848652497] },  
+  { name: 'COLEGIO INTERNACIONAL DE ESTUDIOS VIRTUALES', shortName: 'CIEV', logo: images.U_CIEV, url: 'https://pulsouniversitario.mx/universidad/372/colegio-internacional-de-estudios-virtuales', type: 'privada', coordinates: [20.586494031158924, -100.37658903068707] },  
+  { name: 'CENTRO UNIVERSITARIO DE EMPRENDEDORES', shortName: 'CEUNEM', logo: images.U_CEUNEM, url: 'https://ceunem.edu.mx/licenciaturas-linea', type: 'privada', coordinates: [20.390536622289442, -100.00879545200495] },  
+  { name: 'INSTITUTO ESGA', shortName: 'ESGA', logo: images.U_ESGA, url: 'https://institutoesga.edu.mx/#', type: 'privada', coordinates: [20.379616414550192, -99.99346031349235] },  
+  { name: 'INSTITUTO UNIVERSITARIO DE DESARROLLO HUMANO E INNOVACION PROFESIONAL (IDHEIP)', shortName: 'IDHEIP', logo: images.U_IDHEIP, url: 'https://pulsouniversitario.mx/universidad/29/instituto-universitario-de-desarrollo-humano-e-innovacion-profesional', type: 'privada', coordinates: [20.572095089334105, -100.40501955767176] },  
+  { name: 'INSTITUTO INTERAMERICANO DE CIENCIAS DE LA SALUD', shortName: 'INICISA', logo: images.U_INICISA, url: 'https://www.inicisa.edu.mx/Carreras/c-administracion.html', type: 'privada', coordinates: [20.5984639146598, -100.39270022883588] },  
+  { name: 'INSTITUTO DE DESARROLLO E INNOVACIÓN EMPRENDE', shortName: 'IDIE', logo: images.U_IDIE, url: 'https://institutoemprende.edu.mx/oferta-educativa-educacion-virtual', type: 'privada', coordinates: [20.59029841074767, -100.36336883472994] },  
+  { name: 'UNIVERSIDAD TECNOLOGICA AMERICANA, CAMPUS QUERETARO', shortName: 'UTC QRO', logo: images.U_UTECA, url: 'https://www.uteca.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.59693989999999, -100.39584672883588] },  
+  { name: 'UNIVERSIDAD DE LAS MUJERES', shortName: 'UM', logo: images.U_UTECA, url: 'https://municipiodequeretaro.gob.mx/secretarias/secretaria-de-la-mujer/universidad-de-las-mujeres/', type: 'privada', coordinates: [20.641204920338335, -100.43145897116412] },
+  { name: 'TECNOLÓGICO UNIVERSITARIO QUERÉTARO', shortName: 'TUQ', logo: images.U_TUQ, url: 'https://tuq.mx/licenciaturas.html', type: 'privada', coordinates: [20.627786222994793, -100.45308371349235] },
+  { name: 'INSTITUTO UNIVERSITARIO UNIEM', shortName: 'UNIEM', logo: images.U_UNIEM, url: 'https://uniem.com.mx/sede-queretaro/', type: 'privada', coordinates: [20.594170743213446, -100.39363910000002] },
+  { name: 'ESCUELA LIBRE DE NEGOCIOS', shortName: 'ELN', logo: images.U_ELN, url: 'https://escuelalibredenegocios.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.604025085129116, -100.3781828] },
+  { name: 'CORPORATIVO INTERNACIONAL UNIVERSITARIO CAMPUS SAN JUAN DEL RIO', shortName: 'CIUSJR', logo: images.U_CIUSJR, url: 'https://ciusjr.com.mx/#', type: 'privada', coordinates: [20.389552593952086, -99.96216593402316] },
+  { name: 'CENTRO UNIVERSITARIO REAL DE QUERETARO', shortName: 'URQ', logo: images.U_URQ, url: 'https://www.urq.edu.mx/#carreras', type: 'privada', coordinates: [20.623534441278064, -100.45984719999998] },
+  { name: 'INSTITUTO UNIVERSITARIO DEL CENTRO DE MEXICO CAMPUS CADEREYTA', shortName: 'EDUCEM', logo: images.U_EDUCEM, url: 'https://www.educem.mx/licenciatura/', type: 'privada', coordinates: [20.6938562465335, -99.81436972883587] },
+  { name: 'INSTITUTO TECNOLOGICO DE ESTUDIOS SUPERIORES DE MONTERREY "UNIDAD QUERETARO"', shortName: 'EDUCEM', logo: images.U_TM, url: 'https://tec.mx/es/profesional/oferta-educativa', type: 'privada', coordinates: [20.613109181261166, -100.40587825739445] },
 
-];
+
+//Agronomia y Vererinaria
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO CAMPUS CONCÁ', shortName: 'UAQ Campus CONCÁ', logo: images.U_CONCA, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [21.432713000000003, -99.627383] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS JURIQUILLA', shortName: 'UAQ Campus JURIQUILLA', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.701960216586183, -100.4429350711641] },
+  { name: 'CENTRO UNIVERSITARIO CEICKOR', shortName: 'UAQ Campus CEICKOR', logo: images.U_CEICKOR, url: 'https://centrouniversitarioceickor.edu.mx/', type: 'publica', coordinates: [20.705649869504512, -99.94209661159731] },
+
+  //Artes y Humanidades
+  { name: 'COLEGIO NACIONAL DE DANZA CONTEMPORANEA', shortName: 'CENADAC', logo: images.U_CENADAC, url: 'https://cenadac.org/licenciatura/', type: 'publica', coordinates: [20.583145304574696, -100.37722511349233] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS AEROPUERTO', shortName: 'UTQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.624500123645078, -100.36863564232824] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CENTRO HISTORICO', shortName: 'UTQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.595155864633274, -100.38871068280528] },
+  { name: 'FELVA MOSSO', shortName: 'FELVA', logo: images.U_FELVA, url: 'http://www.felvamosso.com/#admision', type: 'publica', coordinates: [20.580006899999997, -100.41586902883589] },
+  { name: 'MUSIC CITY COLLEGE', shortName: 'MC', logo: images.U_MC, url: 'https://musiccitycollege.edu.mx/licenciatura/', type: 'publica', coordinates: [20.580653455897174, -100.39182807116411] },
+  { name: 'CONSERVATORIO DE MUSICA "JOSE GUADALUPE VELAZQUEZ"', shortName: 'CM', logo: images.U_CM, url: 'https://www.economia.gob.mx/datamexico/es/profile/institution/conservatorio-de-musica-jose-guadalupe-velazquez', type: 'publica', coordinates: [20.590281956531115, -100.38886972883589] },
+  { name: 'COLEGIO UNIVERSITARIO DE LA SANTA CRUZ', shortName: 'CUSC', logo: images.U_CUSC, url: 'https://cusc.edu.mx/educacion-continua/', type: 'publica', coordinates: [20.59340148652887, -100.38375932883588] },
+  { name: 'SOR JUANA DISEÑO DE MODAS', shortName: 'SJM', logo: images.U_SJM, url: 'https://www.sorjuanafashioncollege.mx/programas-de-estudio', type: 'publica', coordinates: [20.590558786903298, -100.39758760000001] },
+  { name: 'UNIVERSIDAD DE LAS CIENCIAS JURIDICAS Y SOCIALES', shortName: 'UJSS', logo: images.U_UJSS, url: 'https://www.universidaddelasciencias.edu.mx/degrees', type: 'publica', coordinates: [20.596804723986608, -100.38186987434258] },
+  { name: 'CENTRO DE ESTUDIOS MUSICALES MAGMUSIC S.C.', shortName: 'MAG MUSIC', logo: images.U_MAGMUSIC, url: 'https://pulsouniversitario.mx/universidad/14/centro-universitario-de-estudios-musicales', type: 'publica', coordinates: [20.56244273590704, -100.36928627116411] },
+  { name: 'INSTITUTO DICORMO', shortName: 'DICORMO', logo: images.logoDicormo, url: 'https://universidaddicormo.com/all-programs/', type: 'publica', coordinates: [20.536396800000002, -100.42348843471979] },
+
+  //Ciencias de la Salud
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CORREGIDORA', shortName: 'UAQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.557662182468217, -100.42053217116413] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS LA CAPILLA', shortName: 'UAQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.5799191, -100.41074152883589] },
+  { name: 'INSTITUTO DE REHABILITACION DE QUERETARO', shortName: 'IRAQ', logo: images.U_IRQ, url: 'https://www.economia.gob.mx/datamexico/es/profile/institution/instituto-de-rehabilitacion-de-queretaro', type: 'publica', coordinates: [20.568023619032758, -100.41356123971087] },
+  { name: 'INSTITUTO INTERAMERICANO DE CIENCIAS DE LA SALUD', shortName: 'IICS', logo: images.U__INICISA, url: 'https://www.inicisa.edu.mx/', type: 'publica', coordinates: [20.598403657066058, -100.39270022883588] },
+  { name: 'SISTEMA EDUCATIVO CUIEP CAMPUS SAN JUAN DEL RIO', shortName: 'SECUIEP', logo: images.U_SECUIEP, url: 'https://secuiep.mx/campus/san-juan-del-rio/#', type: 'publica', coordinates: [20.38981817935565, -99.99212041561478] },
+  { name: 'ESCUELA DE PODOLOGÍA NUEVO SIGLO', shortName: 'PODOLOGIA', logo: images.U_EPNS, url: 'https://www.educaweb.mx/cursos/podologia/?cid=54629', type: 'publica', coordinates: [20.583296431790487, -100.3929125] },
+
+
+
+
+
+
+
+];  
+
+//Universidades Privadas ----> aeronautica
+//Universidades Privadas ----> Privada
+//Politécnicas y Tecnológicas ----> politecnica-tecnologica
+//Autonoma ----> Publica
+
+
 
 /**
  * Datos específicos para los logos de la página principal.
