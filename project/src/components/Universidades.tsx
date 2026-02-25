@@ -728,11 +728,6 @@ const categories: Category[] = [
 ];
 
 
-const externalCategory: Category = {
-  id: 'EXTERNAL',
-  label: 'Universidades Externas',
-  careers: externalUniversities.map(uni => uni.nombre),
-};
 
 
 const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
@@ -945,7 +940,6 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
 
   const handleViewAllUniversities = () => {
     handleClearFilters(); // Limpiar todos los filtros
-    setOpenCategoryId(externalCategory.id); // Abrir la categoría de universidades externas
   };
 
   // Efecto para abrir automáticamente la primera categoría si la búsqueda resulta en una sola.
@@ -1355,51 +1349,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
                   </div>
                 ))}
             </div>
-            {/* Botón de Universidades Externas independiente */}
-            <div key={externalCategory.id} className="relative justify-self-center mt-5 mx-auto">
-                <button
-                    className={`w-full flex items-center justify-between font-bold text-sm rounded-lg shadow-md transition-colors duration-300 bg-black hover:bg-gray-700 text-white py-4 px-4 sm:px-40`}
-                    onClick={() => toggleCategory(externalCategory.id)}
-                    aria-expanded={openCategoryId === externalCategory.id}
-                    aria-controls={`panel-${externalCategory.id}`}
-                >
-                    <span>{externalCategory.label}</span>
-                    <span className={`transform transition-transform duration-300 ${openCategoryId === externalCategory.id ? 'rotate-180' : ''}`}>
-                        ▼
-                    </span>
-                </button>
-                {openCategoryId === externalCategory.id && (
-                    <div
-                        id={`panel-${externalCategory.id}`}
-                        className="absolute z-20 mt-2 w-full bg-white rounded-lg shadow-xl overflow-hidden p-4 border border-gray-200"
-                        style={{ top: '100%', left: 0 }}
-                    >
-                        <input
-                            type="text"
-                            placeholder="Buscar en esta área..."
-                            className="w-full px-3 py-2 mb-4 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
-                            value={categorySearchTerms[externalCategory.id] || ''}
-                            onChange={(e) => setCategorySearchTerms(prev => ({ ...prev, [externalCategory.id]: e.target.value }))}
-                            onClick={(e) => e.stopPropagation()}
-                        />
-                        {getFilteredCareersForCategory(externalCategory.id, externalCategory.careers).length === 0 ? (
-                            <p className="text-gray-600 text-sm">No hay carreras que coincidan con la búsqueda.</p>
-                        ) : (
-                            <ul className="space-y-2 max-h-60 overflow-y-auto">
-                                {getFilteredCareersForCategory(externalCategory.id, externalCategory.careers).map((career, idx) => (
-                                    <li 
-                                        key={idx} 
-                                        className="text-gray-800 text-sm p-2 cursor-pointer hover:bg-gray-100 rounded"
-                                        onClick={() => handleCareerClick(career)}
-                                    >
-                                        {career}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                )}
-            </div>
+
           </div>
 
           {/* Columna Derecha: Mapa */}
