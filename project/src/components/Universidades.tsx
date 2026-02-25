@@ -719,7 +719,7 @@ const categories: Category[] = [
       'INSTITUTO DE DESARROLLO E INNOVACIÓN EMPRENDE',
       'UNIVERSIDAD DE LAS MUJERES',
       'TECNOLÓGICO UNIVERSITARIO QUERÉTARO',
-      'https://tec.mx/es/profesional/oferta-educativa',
+      'INSTITUTO TECNOLOGICO DE ESTUDIOS SUPERIORES DE MONTERREY "UNIDAD QUERETARO"',
     ],
   },
 
