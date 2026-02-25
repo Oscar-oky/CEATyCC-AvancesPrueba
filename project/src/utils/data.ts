@@ -473,6 +473,38 @@ export const exampleUniversities: University[] = [
   { name: 'SISTEMA EDUCATIVO CUIEP CAMPUS SAN JUAN DEL RIO', shortName: 'SECUIEP', logo: images.U_SECUIEP, url: 'https://secuiep.mx/campus/san-juan-del-rio/#', type: 'publica', coordinates: [20.38981817935565, -99.99212041561478] },
   { name: 'ESCUELA DE PODOLOGÍA NUEVO SIGLO', shortName: 'PODOLOGIA', logo: images.U_EPNS, url: 'https://www.educaweb.mx/cursos/podologia/?cid=54629', type: 'publica', coordinates: [20.583296431790487, -100.3929125] },
 
+  //CIENCIAS NATURALES, MATEMÁTICAS Y ESTADÍSTICA
+
+  //CIENCIAS SOCIALES Y DERECHO
+  { name: 'COLEGIO DE CIENCIAS Y HUMANIDADES DE QUERETARO', shortName: 'CCHQ', logo: images.U_CCHQ, url: 'https://cchq.com.mx/Licenciaturas/', type: 'publica', coordinates: [20.390907113077297, -99.97639997116443] },
+  { name: 'INSTITUTO UNIVERSITARIO DEL CENTRO DE MEXICO, CAMPUS AMEALCO DE BONFIL', shortName: 'EDUCEM', logo: images.U_EDUCEM, url: 'https://www.educem.mx/licenciatura/', type: 'publica', coordinates: [20.19286508945493, -100.14755826185258] },
+
+  //Educacíon
+  { name: 'ESCUELA NORMAL SUPERIOR DE QUERÉTARO', shortName: 'ENSQ', logo: images.U_ENSQ, url: 'https://ensq.edu.mx/licenciatura/#', type: 'publica', coordinates: [20.585698100006923, -100.38935931355134] },
+  { name: 'UNIVERSIDAD PEDAGOGICA NACIONAL', shortName: 'UPNQ', logo: images.U_UPNQ, url: 'https://upnqueretaro.edu.mx/que-estudiar-en-la-upn/licenciaturas/', type: 'publica', coordinates: [20.626194858898085, -100.40657848650675] },
+  { name: 'CENTENARIA Y BENEMERITA ESCUELA NORMAL DEL ESTADO DE QUERETARO ANDRES BALVANERA JALPAN DE SERRA', shortName: 'CBENEQ', logo: images.U_CBENEQ, url: 'https://www.cbeneq.edu.mx/licenciaturas.php', type: 'publica', coordinates: [20.568933579502875, -100.38413710084694] },
+  { name: 'CENTENARIA Y BENEMERITA ESCUELA NORMAL DEL ESTADO DE QUERETARO ANDRES BALVANERA SAN JUAN DEL RIO', shortName: 'CBENEQ', logo: images.U_CBENEQ, url: 'https://www.cbeneq.edu.mx/licenciaturas.php', type: 'publica', coordinates: [20.390109250161252, -99.99220357878811] },
+  { name: 'ESCUELA NORMAL QUERETANA', shortName: 'ENSQ', logo: images.U_ENSQ, url: 'https://ensq.edu.mx/licenciatura/', type: 'publica', coordinates: [20.60148101453826, -100.38361162883558] },
+  { name: 'INSTITUTO LA PAZ DE QUERETARO, A.C.', shortName: 'ILPQ', logo: images.U_ILPQ, url: 'https://ilapazdequeretaro.edu.mx', type: 'publica', coordinates: [20.599412185736995, -100.37762054232884] },
+
+  //Ingenieria, manufactura y construccion
+  { name: 'UNIVERSIDAD AERONAUTICA EN QUERETARO', shortName: 'UAQ', logo: images.logoUNAQ, url: 'https://www.unaq.edu.mx/#', type: 'publica', coordinates: [20.626039241112853, -100.18745265767114] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS AMAZCALA', shortName: 'UAQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.704264664057174, -100.25952875767115] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS PINAL DE AMOLES', shortName: 'UAQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [21.138765513781024, -99.6255415] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS PEDRO ESCOBEDO', shortName: 'UAQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.48924374989298, -100.13226652883557] },
+  { name: 'CENTRO UNIVERSITARIO INTERNACIONAL DE MEXICO, CAMPUS QUERETARO', shortName: 'UAQ', logo: images.U_CU, url: 'https://cuin.edu.mx/', type: 'publica', coordinates: [20.598788414183467, -100.4003362] },
+  { name: 'INSTITUTO GASTRONOMICO DE ESTUDIOS SUPERIORES, S. C.', shortName: 'IGES', logo: images.U_IGES, url: 'https://igesuniversidad.com/categoria-producto/licenciaturas/', type: 'publica', coordinates: [20.56965955517369, -100.4087223] },
+  { name: 'INSTITUTO CULINARIO DE QUERETARO', shortName: 'ICUQ', logo: images.U_ICUQ, url: 'https://igesuniversidad.com/categoria-producto/licenciaturas/', type: 'publica', coordinates: [20.611691800000006, -100.38348755767115] },
+  { name: 'INSTITUTO DE ESTUDIOS SUPERIORES LAUSANNE', shortName: 'ILA', logo: images.U_ILQ, url: 'https://www.iglausanne.com/landing/', type: 'publica', coordinates: [20.622827834707987, -100.411728] },
+  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS COLON', shortName: 'UAQ Campus Colon', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.702882100000004, -100.02778834232885] },
+
+
+
+
+
+
+
+
 
 
 

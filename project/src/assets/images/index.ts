@@ -139,3 +139,23 @@ export const U_IRQ = new URL('../logos/U_IRQ.png', import.meta.url).href;
 export const U__INICISA = new URL('../logos/U_INICISA.jpg', import.meta.url).href;
 export const U_SECUIEP = new URL('../logos/U_SECUIEP.png', import.meta.url).href;
 export const U_EPNS = new URL('../logos/EPNS.png', import.meta.url).href;
+
+//Ciencias de la Salud
+
+//Ciencias Naturales, Matemáticas y Estadística 
+
+//ciencias sociales y derecho
+export const U_CCHQ = new URL('../logos/U_CCHQ.png', import.meta.url).href;
+
+//Educación
+export const U_ENSQ = new URL('../logos/U_ENSQ.jpg', import.meta.url).href;
+export const U_UPNQ = new URL('../logos/U_UPNQ.png', import.meta.url).href;
+export const U_CBENEQ = new URL('../logos/U_CBENEQ.jpg', import.meta.url).href;
+export const U_ILPQ = new URL('../logos/U_ILPQ.png', import.meta.url).href;
+export const U_CU = new URL('../logos/U_CU.png', import.meta.url).href;
+export const U_IGES = new URL('../logos/U_IGES.jpg', import.meta.url).href;
+export const U_ICUQ = new URL('../logos/U_ICUQ.jpg', import.meta.url).href; 
+export const U_ANTA = new URL('../logos/U_ANTA.png', import.meta.url).href; 
+export const U_ILQ = new URL('../logos/U_ILQ.jpg', import.meta.url).href; 
+
+//Servicios
