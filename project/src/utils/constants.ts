@@ -6,6 +6,7 @@ export const SITE_CONFIG = {
   description: 'Comisión de Educación en Alta Tecnología y Cloud Computing',
 } as const;
 
+
 export const CONTACT_INFO = {
   address: 'Tenayuca 200, Col. Santa Cruz Atoyac, CDMX, México, CP 03310',
   phone: '+52 (55) 5420 4948',
