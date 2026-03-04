@@ -357,7 +357,7 @@ export const universities: University[] = [
   { name: 'Universidad Tecnológica de Corregidora', shortName: 'UTC', logo: images.logoUTC, url: 'https://utcorregidora.edu.mx/', type: 'tecnologica', careers: ['Ingeniería en Tecnologías de la Información', 'Ingeniería en Biotecnología', 'Ingeniería en Mecatrónica', 'Ingeniería en Mantenimiento', 'Licenciatura en Desarrollo Turístico', 'Licenciatura en Negocios y Mercadotecnia'], convocatoriaUrl: 'https://captacion.utcorregidora.edu.mx', googleMapsUrl: '', coordinates: [20.447977131659613, -100.42716691967067] },
   { name: 'Universidad Tecnológica de Querétaro', shortName: 'UTEQ', logo: images.logoUTEQ, url: 'https://www.uteq.edu.mx/Aspirante/OfertaEducativa.aspx', type: 'tecnologica', careers: ['Ingeniería Mecatrónica (Modalidad intensiva y mixta)', 'Ingeniería en Tecnologías de la Información e Innovación Digital', 'Ingeniería en Energía y Desarrollo Sostenible', 'Ingeniería Ambiental y Sustentabilidad', 'Agricultura Sustentable y Protegida', 'Licenciatura en Administración', 'Licenciatura en Negocios y Mercadotecnia', 'Ingeniería en Logística', 'Licenciatura en Contaduría (Modalidad vespertina y mixta)', 'Ingeniería en Mantenimiento Industrial', 'Ingeniería en Nanotecnología', 'Ingeniería Industrial', 'Ingeniería Mecánica', 'Ingeniería Mecánica Automotriz', 'Ingeniería en Microelectrónica y Semiconductores', 'Licenciatura en Educación en Enseñanza del Idioma Inglés', 'Maestría en Ingeniería para la Manufactura Inteligente en Competencias Profesionales', 'Maestría en Dirección Logística y Cadena de Suministro Sostenible en Competencias Profesionales', 'Maestría en Economía Circular'], convocatoriaUrl: 'https://admisiones.uteq.edu.mx', googleMapsUrl: '', coordinates: [20.654044873496403, -100.40616890617171] },
   { name: 'Universidad Tecnológica de San Juan del Río', shortName: 'UTSJR', logo: images.logoUTSJR, url: 'https://www.utsjr.edu.mx', type: 'tecnologica', careers: ['TSU en Mercadotecnia (Jalpan y SJR). Lic. en Negocios Y Mercadotecnia', 'TSU en Química Tecnológica Farmacéutica. Ing. Química Farmacéutica','TSU en Química Industrial. Ingeniería Química','TSU en Energía Turbo Solar. Ing. Energía Y Desarrollo Sustentable', 'TSU en Construcción. Ingeniería Civil', 'TSU en Automotriz. Ingeniería Industrial', 'TSU en Procesos Productivos. Ingeniería Industrial', 'TSU en Sistemas de Gestión de Calidad. Ingeniería Industrial', 'TSU en Desarrollo de Software Multiplataforma (Jalpan y SJR). Ing. en Tec. de la Información e Innovación Digital', 'TSU en Entornos Virtuales Y Negocios Digitales. Ing. en Tec.de la Información e Innovación Digital', 'TSU en IA – Ing. en Tec. de la Información e Innovación Digital', 'TSU en Automatización. Ingeniería Mecatrónica', 'TSU en Robótica. Ingeniería Mecatrónica', 'TSU en Automatización. Ingeniería Mecatrónica Mixto (Virtual)', 'TSU en Mantenimiento Industrial. Ing. en Mantenimiento Industrial', 'TSU en Turismo. Lic. Gestión Y Desarrollo Turístico',], convocatoriaUrl: 'https://www.utsjr.edu.mx', googleMapsUrl: '', coordinates: [20.368021951697905, -100.01007091848183] },
-  { name: 'TECNM Campus Querétaro', shortName: 'TECNM QRO', logo: images.logoTECNM, url: 'https://queretaro.tecnm.mx/', type: 'publica', careers: ['Licenciatura en Administración', 'Licenciatura en Contaduría Pública', 'Ingeniería en Ciencia de Datos', 'Ingeniería en Semiconductores', 'Ingeniería en Materiales', 'Ingeniería en Mecatrónica', 'Ingeniería en Sistemas Computacionales', 'Ingeniería Industrial', 'Ingeniería Mecánica', 'Ingeniería Eléctrica', 'Ingeniería Electrónica', 'Ingeniería en Gestión Empresarial', 'Ingeniería en Logística', 'Ingeniería Civil', 'Arquitectura', 'Maestría en Ciencia de Datos', 'Maestría en Ingeniería', 'Maestría en Semiconductores'], convocatoriaUrl: 'https://queretaro.tecnm.mx/wp-content/uploads/2024/06/CONVOCATORIA-NUEVO-INGRESO-AGO-DIC-2024-Extraordinaria-1.pdf', googleMapsUrl: '', coordinates: [20.593714096432976, -100.40587351006754] },
+  { name: 'TECNM Campus Querétaro', shortName: 'TECNM QRO', logo: images.logoTECNM, url: 'https://queretaro.tecnm.mx/', type: 'tecnologica', careers: ['Licenciatura en Administración', 'Licenciatura en Contaduría Pública', 'Ingeniería en Ciencia de Datos', 'Ingeniería en Semiconductores', 'Ingeniería en Materiales', 'Ingeniería en Mecatrónica', 'Ingeniería en Sistemas Computacionales', 'Ingeniería Industrial', 'Ingeniería Mecánica', 'Ingeniería Eléctrica', 'Ingeniería Electrónica', 'Ingeniería en Gestión Empresarial', 'Ingeniería en Logística', 'Ingeniería Civil', 'Arquitectura', 'Maestría en Ciencia de Datos', 'Maestría en Ingeniería', 'Maestría en Semiconductores'], convocatoriaUrl: 'https://queretaro.tecnm.mx/wp-content/uploads/2024/06/CONVOCATORIA-NUEVO-INGRESO-AGO-DIC-2024-Extraordinaria-1.pdf', googleMapsUrl: '', coordinates: [20.593714096432976, -100.40587351006754] },
   { name: 'TECNM Campus San Juan del Río', shortName: 'TECNM SJR', logo: images.logoTecnmSjr, url: 'https://itsanjuan.edu.mx/', type: 'publica', careers: ['Licenciatura en Administración', 'Licenciatura en Contaduría Pública', 'Ingeniería Industrial', 'Ingeniería Mecánica', 'Ingeniería Mecatrónica', 'Ingeniería en Sistemas Computacionales', 'Ingeniería Electrónica', 'Ingeniería Eléctrica', 'Ingeniería en Gestión Empresarial', 'Ingeniería en Logística', 'Ingeniería Química', 'Ingeniería Civil', 'Maestría en Ingeniería', 'Maestría en Gestión Empresarial', 'Doctorado en Ciencias de la Ingeniería'], convocatoriaUrl: 'https://cetech.sjuanrio.tecnm.mx/convocatoriaAdmision/6462448e1fcfda3330afe6fc5b50d53b', googleMapsUrl: '', coordinates: [20.374544972220257, -99.98396550773701] },
   { name: 'Universidad Cuauhtémoc Querétaro', shortName: 'CUAUHTEMOC', logo: images.logoCuauhtemoc, url: 'https://uc.ucq.edu.mx/oferta-academica/licenciaturas-e-ingenierias', type: 'privada', careers: ['Lic. en Gestión Empresarial', 'Lic. en Desarrollo e Innovación Turística', 'Lic. en Animación y Diseño de Arte Digital', 'Lic. en Arquitectura', 'Lic. en Comercio y Logística Internacional', 'Lic. en Comunicación', 'Lic. en Contaduría e Impuestos', 'Lic. en Cultura Física y Entretenimiento Deportivo', 'Lic. en Derecho', 'Lic. en Diseño Gráfico y Multimedia', 'Lic. en Diseño Industrial y de Producto', 'Ingeniería Civil', 'Ingeniería Desarrollo de Videojuegos', 'Ingeniería en Software y Sistemas', 'Ing. Industrial en Sistemas de Manufactura y Calidad', 'Ing. Logística del Transporte y Cadenas de Suministro', 'Lic. en Mercadotecnia y Publicidad', 'Lic. en Pedagogía', 'Lic. en Nutrición', 'Lic. en Psicología Clínica', 'Lic. en Fisioterapia', 'Lic. en Odontología','Lic. en Medicina',], convocatoriaUrl: 'https://www.ucq.edu.mx/uc/licenciatura', googleMapsUrl: '', coordinates: [20.5898539204241, -100.36234059083122] },
   { name: 'Universidad Internacional de Querétaro', shortName: 'UNIQ', logo: images.logoUniq, url: 'https://www.uniq.education/licenciaturas/', type: 'privada', careers: ['Lic. en Administración de Empresas Turísticas','Lic. en Administración de Empresas','Lic. en Derecho','Lic. en Mercadotecnia','Lic. en Negocios Internacionales','Lic. en Pedagogía','Lic. en Psicología','Ingeniería en Sistemas Computacionales',], convocatoriaUrl: 'https://www.uniq.education/oferta-educativa', googleMapsUrl: '', coordinates: [20.61954935403458, -100.40140181011672] },
@@ -381,24 +381,18 @@ export const exampleUniversities: University[] = [
   { name: 'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO', shortName: 'TECNM QRO', logo: images.logoTECNM, url: 'https://queretaro.tecnm.mx', type: 'tecnologica', coordinates: [20.59329800000002, -100.40570047472707] },
   { name: 'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO', shortName: 'ITSJR', logo: images.ITSJR, url: 'https://itsanjuan.edu.mx', type: 'tecnologica', coordinates: [20.373656077475115, -99.98401882977134] },
   { name: 'UNIVERSIDAD POLITECNICA DE QUERETARO', shortName: 'UPQ', logo: images.logoUPQ, url: 'https://www.upq.mx/#', type: 'politecnica', coordinates: [20.59329800000002, -100.40570047472707] },
-  { name: 'UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO', shortName: 'UTSJR', logo: images.logoUTC, url: 'https://www.utsjr.edu.mx/modalidadDiez.php', type: 'politecnica', coordinates: [20.36769939722534, -100.01009040307504] },
   { name: 'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO', shortName: 'UTSJR JALPAN', logo: images.UT_JALPAN, url: 'https://utsjr.edu.mx/datos_institucionales.php', type: 'politecnica', coordinates: [21.2024366011847, -99.44700666073041] },
-  { name: 'UNIVERSIDAD TECNOLOGICA DE CORREGIDORA', shortName: 'UTC', logo: images.logoUTC, url: 'https://utcorregidora.edu.mx', type: 'tecnologica', coordinates: [20.44779620000001, -100.42713472883601] },
-  { name: 'UNIVERSIDAD TECNOLOGICA DE QUERETARO', shortName: 'UTEQ', logo: images.logoUTEQ, url: 'https://www.uteq.edu.mx/Aspirante/OfertaEducativa.aspx', type: 'tecnologica', coordinates: [20.653954539270273, -100.406104528836] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS SAN JUAN DEL RIO', shortName: 'UAQ SJR', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos#', type: 'publica', coordinates: [20.389102169969977, -99.972141728836] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO CAMPUS JALPAN', shortName: 'UAQ JALPAN', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [21.21699700479592, -99.46051130000002] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO CAMPUS AMEALCO', shortName: 'UAQ AMEALCO', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.17508444109657, -100.1370746288359] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CADEREYTA', shortName: 'UAQ CADEREYTA', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.712830235376316, -99.8413685] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS TEQUISQUIAPAN', shortName: 'UAQ TEQUISQUIAPAN', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.516738044915247, -99.90231297116414] },
-  { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CENTRO UNIVERSITARIO', shortName: 'UAQ CENTRO UNIVERSITARIO', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.59104687368068, -100.4101567] },
   { name: 'ESCUELA NACIONAL DE ESTUDIOS SUPERIORES, UNIDAD JURIQUILLA', shortName: 'ENES JURIQUILLA', logo: images.ENES_JURIQUILLA, url: 'https://www.enesjuriquilla.unam.mx/?page_id=10634', type: 'publica', coordinates: [20.7051105, -100.4483729] },
   //privados
   { name: 'UNIVERSIDAD MONDRAGÓN MÉXICO', shortName: 'UMm', logo: images.UMM, url: 'https://mondragonmexico.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.604330827634232, -100.27650229999999] },
   { name: 'UNIVERSIDAD MESOAMERICANA PLANTEL SAN JUAN, S. C.', shortName: 'UMP SAN JUAN', logo: images.UMP_SAN_JUAN, url: 'https://lameso.edu.mx/sanjuan/oferta/licenciaturas/', type: 'privada', coordinates: [20.387961540392737, -99.99773599999999] },
   { name: 'UNIVERSIDAD ALFRED NOBEL DE MEXICO', shortName: 'UNINOBEL', logo: images.U_nobel, url: 'https://www.uninobel.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.402492502063826, -100.01360855767174] },
   { name: 'UNIVERSIDAD MARISTA DE QUERETARO, A. C.', shortName: 'UMQ', logo: images.U_marista, url: 'https://www.umq.edu.mx/p/qro/licenciatura', type: 'privada', coordinates: [20.601438185470027, -100.38537217116411] },
-  { name: 'UNIVERSIDAD CUAUHTÉMOC, PLANTEL QUERÉTARO', shortName: 'CUAUHTEMOC', logo: images.logoCuauhtemoc, url: 'https://uc.ucq.edu.mx/oferta-academica/licenciaturas-e-ingenierias', type: 'privada', coordinates: [20.589753485575645, -100.36225475899019] },
-  { name: 'CENTRO DE ESTUDIOS SUPERIORES DEL BAJIO CAMPUS QUERETARO', shortName: 'CESBA', logo: images.logoCesba, url: 'https://www.cesba-queretaro.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.648292717171955, -100.48295359972113] },  
   { name: 'UNIVERSIDAD DEL GOLFO DE MEXICO, CAMPUS QUERETARO', shortName: 'UGM QRO', logo: images.U_UGM_QRO, url: 'https://web.ugm.mx/licenciaturas/', type: 'privada', coordinates: [20.549293584668856, -100.44677272883614] },  
   { name: 'UNIVERSIDAD DE ESTUDIOS AVANZADOS, CAMPUS QUERETARO', shortName: 'UNEA QRO', logo: images.U_UNEA_QRO, url: 'https://www.unea.edu.mx/campus/queretaro', type: 'privada', coordinates: [20.58178747480642, -100.41243176717026] },  
   { name: 'UNIVERSIDAD DE LONDRES', shortName: 'UL', logo: images.U_LONDRES, url: 'https://udlondres.com/licenciaturas/', type: 'privada', coordinates: [20.59646672903069, -100.39997315289916] },  
@@ -411,9 +405,7 @@ export const exampleUniversities: University[] = [
   { name: 'ESCUELA BANCARIA Y COMERCIAL CAMPUS QUERETARO', shortName: 'EBC QRO', logo: images.U_EBC, url: 'https://www.ebc.mx/campus/queretaro/', type: 'privada', coordinates: [20.555722028724745, -100.42263404232824] }, 
   { name: 'INSTITUTO DE FORMACION EDUCATIVA SUPERIOR, PLANTEL SAN JUAN DEL RIO', shortName: 'IFES SJR', logo: images.U_IFES, url: 'https://pulsouniversitario.mx/universidad/394/instituto-de-formacion-educativa-superior-plantel-san-juan-del-rio', type: 'privada', coordinates: [20.38104897154601, -99.9983666] },  
   { name: 'ATENAS, ESTUDIOS SUPERIORES', shortName: 'ATENAS', logo: images.logoAtenas, url: 'https://atenas.edu.mx/', type: 'privada', coordinates: [20.59077353031352, -100.4032531] },  
-  { name: 'CENTRO DE ESTUDIOS INTERNACIONAL DE QUERETARO', shortName: 'UNIQ', logo: images.U_UNIQ, url: 'https://www.uniq.education/licenciaturas/', type: 'privada', coordinates: [20.61930808311422, -100.4013983711641] },  
   { name: 'COLEGIO UNIVERSITARIO DE HUMANIDADES', shortName: 'CUDH', logo: images.U_CUDH, url: 'https://cudh.edu.mx/#', type: 'privada', coordinates: [20.58421464386905, -100.38608508465647] },  
-  { name: 'UNIVERSIDAD CENTRAL DE QUERETARO', shortName: 'UNICEQ', logo: images.logoUniceq, url: 'https://uniceq.edu.mx/licenciaturas-uniceq/', type: 'privada', coordinates: [20.61353616775335, -100.41951675767174] },  
   { name: 'INSTITUTO UNIVERSITARIO DEL CENTRO DE MEXICO CAMPUS QUERETARO', shortName: 'EDUCEM', logo: images.U_EDUCEM, url: 'https://www.educem.mx/licenciatura/', type: 'privada', coordinates: [20.584800156170147, -100.40399001349236] },  
   { name: 'UNIVERSIDAD DEL VALLE DE ATEMAJAC PLANTEL QUERETARO', shortName: 'UNIVA', logo: images.U_UNIVA, url: 'https://www.univa.mx/queretaro/programas-educativos/', type: 'privada', coordinates: [20.59822005705396, -100.3710477711641] },  
   { name: 'CENTRO DE ESTUDIOS UNIVERSITARIOS DE QUERETARO A.C.', shortName: 'CEUQ', logo: images.U_CEUQ, url: 'https://ceuq.com.mx/#', type: 'privada', coordinates: [20.579253476786498, -100.42278575767176] },  
@@ -423,9 +415,7 @@ export const exampleUniversities: University[] = [
   { name: 'EDUCATIVA METROPOLITANA', shortName: 'EM', logo: images.U_UMP, url: 'https://edumetropolitana.edu.mx/', type: 'privada', coordinates: [20.4006326677129, -99.975673] },  
   { name: 'UNIVERSIDAD INTERGLOBAL', shortName: 'UIQ', logo: images.U_UIQ, url: 'https://universidadinterglobal.edu.mx/oferta-educativa/', type: 'privada', coordinates: [20.584897762954384, -100.39268645767177] },  
   { name: 'UNIVERSIDAD TECNOLOGICA DE MEXICO', shortName: 'UNITEC', logo: images.U_UNITEQ, url: 'https://www.unitec.mx/campus-queretaro/#oferta-educativa', type: 'privada', coordinates: [20.61018296863753, -100.41822087116411] },  
-  { name: 'UNIPLEA', shortName: 'UNIPLEA', logo: images.U_UNIPLEA, url: 'https://www.uniplea.mx/oferta-educativa/', type: 'privada', coordinates: [20.59036221307346, -100.37566832883587] },  
   { name: 'CENTRO DE ESTUDIOS SUPERIORES CONIN', shortName: 'CONIN', logo: images.U_CONIN, url: 'https://www.universidadconin.com/', type: 'privada', coordinates: [20.395211843930337, -99.99505021231023] },  
-  { name: 'NEW ELEMENT UNIVERSITY', shortName: 'NEW ELEMENT', logo: images.logoNewElement, url: 'https://www.neuniversity.mx/es/#licenciaturas', type: 'privada', coordinates: [20.572766289245763, -100.44334572883588] },  
   { name: 'INSTITUTO UNIVERSITARIO UCAP DEL BAJÍO', shortName: 'UCAP', logo: images.U_UCAP, url: 'https://www.institutoucap.edu.mx/#oferta-academica', type: 'privada', coordinates: [20.38769677024524, -99.97844737116411] },  
   { name: 'UNIVERSIDAD OMI CENTRO DE INVESTIGACION, SAN JUAN DEL RIO', shortName: 'OMI', logo: images.U_OMI, url: 'https://www.uomi.edu.mx/licenciaturas', type: 'privada', coordinates: [20.39233736933697, -99.990223] },  
   { name: 'CENTRO CULTURAL UNIVERSITARIO DE INVESTIGACION FORENSE Y JURIDICA', shortName: 'CECUIFJ', logo: images.U_CECUIFJ, url: 'https://cecuifj.edu.mx/licenciaturas', type: 'privada', coordinates: [20.49579459807937, -100.13718237116413] },  
@@ -434,7 +424,6 @@ export const exampleUniversities: University[] = [
   { name: 'CENTRO UNIVERSITARIO DE EMPRENDEDORES', shortName: 'CEUNEM', logo: images.U_CEUNEM, url: 'https://ceunem.edu.mx/licenciaturas-linea', type: 'privada', coordinates: [20.390536622289442, -100.00879545200495] },  
   { name: 'INSTITUTO ESGA', shortName: 'ESGA', logo: images.U_ESGA, url: 'https://institutoesga.edu.mx/#', type: 'privada', coordinates: [20.379616414550192, -99.99346031349235] },  
   { name: 'INSTITUTO UNIVERSITARIO DE DESARROLLO HUMANO E INNOVACION PROFESIONAL (IDHEIP)', shortName: 'IDHEIP', logo: images.U_IDHEIP, url: 'https://pulsouniversitario.mx/universidad/29/instituto-universitario-de-desarrollo-humano-e-innovacion-profesional', type: 'privada', coordinates: [20.572095089334105, -100.40501955767176] },  
-  { name: 'INSTITUTO INTERAMERICANO DE CIENCIAS DE LA SALUD', shortName: 'INICISA', logo: images.U_INICISA, url: 'https://www.inicisa.edu.mx/Carreras/c-administracion.html', type: 'privada', coordinates: [20.5984639146598, -100.39270022883588] },  
   { name: 'INSTITUTO DE DESARROLLO E INNOVACIÓN EMPRENDE', shortName: 'IDIE', logo: images.U_IDIE, url: 'https://institutoemprende.edu.mx/oferta-educativa-educacion-virtual', type: 'privada', coordinates: [20.59029841074767, -100.36336883472994] },  
   { name: 'UNIVERSIDAD TECNOLOGICA AMERICANA, CAMPUS QUERETARO', shortName: 'UTC QRO', logo: images.U_UTECA, url: 'https://www.uteca.edu.mx/licenciaturas/', type: 'privada', coordinates: [20.59693989999999, -100.39584672883588] },  
   { name: 'UNIVERSIDAD DE LAS MUJERES', shortName: 'UM', logo: images.U_UTECA, url: 'https://municipiodequeretaro.gob.mx/secretarias/secretaria-de-la-mujer/universidad-de-las-mujeres/', type: 'privada', coordinates: [20.641204920338335, -100.43145897116412] },
@@ -619,7 +608,7 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos',
         },
         {
-          nombre: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS CENTRO UNIVERSITARIO',
+          nombre: 'Universidad Autónoma de Querétaro',
           urlPrincipal: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos',
         },
         {
@@ -671,11 +660,11 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://www.umq.edu.mx/p/qro/licenciatura',
         },
         {
-          nombre: 'UNIVERSIDAD CUAUHTÉMOC, PLANTEL QUERÉTARO',
+          nombre: '',
           urlPrincipal: 'https://uc.ucq.edu.mx/oferta-academica/licenciaturas-e-ingenierias',
         },
         {
-          nombre: 'CENTRO DE ESTUDIOS SUPERIORES DEL BAJIO CAMPUS QUERETARO',
+          nombre: '',
           urlPrincipal: 'https://www.cesba-queretaro.edu.mx/licenciaturas/',
         },
         {
@@ -759,7 +748,7 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://cuin.edu.mx/',
         },
         {
-          nombre: 'CENTRO DE ESTUDIOS INTERNACIONAL DE QUERETARO',
+          nombre: '',
           urlPrincipal: 'https://www.uniq.education/licenciaturas/',
         },
         {
@@ -771,7 +760,7 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://www.inicisa.edu.mx/',
         },
         {
-          nombre: 'UNIVERSIDAD CENTRAL DE QUERETARO',
+          nombre: '',
           urlPrincipal: 'https://uniceq.edu.mx/licenciaturas-uniceq/',
         },
         {
@@ -807,7 +796,7 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://www.universidaddelasciencias.edu.mx/degrees',
         },
         {
-          nombre: 'UNIVERSIDAD CUAUHTÉMOC, PLANTEL QUERÉTARO',
+          nombre: '',
           urlPrincipal: 'https://uc.ucq.edu.mx/oferta-academica/licenciaturas-e-ingenierias',
         },
         {
@@ -831,7 +820,7 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://cchq.com.mx/Licenciaturas/',
         },
         {
-          nombre: 'UNIPLEA',
+          nombre: '',
           urlPrincipal: 'https://www.uniplea.mx/oferta-educativa/',
         },
         {
@@ -851,7 +840,7 @@ export const externalUniversities: University[] = [
           urlPrincipal: 'https://www.universidadconin.com/',
         },
         {
-          nombre: 'NEW ELEMENT UNIVERSITY',
+          nombre: '',
           urlPrincipal: 'https://www.neuniversity.mx/es/#licenciaturas',
         },
         {
