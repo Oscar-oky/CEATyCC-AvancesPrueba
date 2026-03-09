@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Plus, Calendar as CalendarIcon, Eye, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, Plus, Eye } from 'lucide-react';
 import { useEvents } from '@/hooks/useEvents';
 import { useAuth } from '@/hooks/AuthContext';
+import { useRegistrations } from '@/hooks/useRegistrations';
 import EventModal from './EventModal';
 import LoginModal from './LoginModal';
 import { CalendarEvent } from '@/types';
@@ -17,8 +18,9 @@ const Calendar: React.FC<CalendarProps> = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   
-  const { events, allEvents, addEvent, updateEvent, deleteEvent, getEventsForDate } = useEvents();
+  const { events, allEvents, addEvent, updateEvent, deleteEvent, deleteFile, getEventsForDate } = useEvents();
   const { user, login, logout, isAdmin, isLoggedIn, openRegisterModal } = useAuth();
+  const { addRegistration, removeRegistration } = useRegistrations();
   
   const monthNames = [
     'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
@@ -304,9 +306,13 @@ const Calendar: React.FC<CalendarProps> = () => {
           onSave={addEvent}
           onUpdate={updateEvent}
           onDelete={deleteEvent}
+          onDeleteFile={deleteFile}
           event={selectedEvent}
           selectedDate={selectedDateForEvent}
           isAdmin={isAdmin()}
+          user={user}
+          onRegister={(event: CalendarEvent) => addRegistration(event.id)}
+          onUnregister={(eventId: string) => removeRegistration(eventId)}
         />
       )}
 
