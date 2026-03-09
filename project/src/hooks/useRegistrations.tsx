@@ -45,7 +45,7 @@ export const useRegistrations = () => {
 };
 
 export const RegistrationsProvider = ({ children }: { children: ReactNode }) => {
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, token } = useAuth();
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [pendingRegistrations, setPendingRegistrations] = useState<PendingRegistration[]>([]);
   const [allRegistrations, setAllRegistrations] = useState<Registration[]>([]);
@@ -62,7 +62,9 @@ export const RegistrationsProvider = ({ children }: { children: ReactNode }) => 
     console.log('Fetching user registrations for:', user.email);
     setIsLoadingRegistrations(true); // Inicia la carga
     try {
-      const response = await fetch(`${API_URL}/inscripciones/usuario/${user.email}`);
+      const response = await fetch(`${API_URL}/inscripciones/usuario/${encodeURIComponent(user.email)}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined
+      });
       if (!response.ok) throw new Error('Failed to fetch user registrations');
       const data: Registration[] = await response.json();
       setRegistrations(data);
@@ -83,7 +85,9 @@ export const RegistrationsProvider = ({ children }: { children: ReactNode }) => 
     if (!isAdmin()) return;
     setIsLoadingAllRegistrations(true); // Inicia la carga
     try {
-      const response = await fetch(`${API_URL}/inscripciones`);
+      const response = await fetch(`${API_URL}/inscripciones`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined
+      });
       if (!response.ok) throw new Error('Failed to fetch all registrations');
       const data: Registration[] = await response.json();
       setAllRegistrations(data);
@@ -97,7 +101,9 @@ export const RegistrationsProvider = ({ children }: { children: ReactNode }) => 
   const fetchPendingRegistrations = useCallback(async () => {
     if (!isAdmin()) return;
     try {
-      const response = await fetch(`${API_URL}/inscripciones/pendientes`);
+      const response = await fetch(`${API_URL}/inscripciones/pendientes`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined
+      });
       if (!response.ok) throw new Error('Failed to fetch pending registrations');
       const data: PendingRegistration[] = await response.json();
       setPendingRegistrations(data);
@@ -110,13 +116,21 @@ export const RegistrationsProvider = ({ children }: { children: ReactNode }) => 
   const addRegistration = async (eventId: string): Promise<Registration | null> => {
     if (!user) return null;
     try {
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
       const response = await fetch(`${API_URL}/inscripciones`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ eventId, userEmail: user.email }),
       });
 
-      if (!response.ok) throw new Error('Failed to create registration');
+      if (!response.ok) {
+        let detail = '';
+        try {
+          detail = await response.text();
+        } catch {}
+        throw new Error(detail || 'Failed to create registration');
+      }
       const newRegistration: Registration = await response.json();
 
       setRegistrations(prev => [...prev, newRegistration]);
@@ -145,9 +159,11 @@ export const RegistrationsProvider = ({ children }: { children: ReactNode }) => 
   const updateRegistrationStatus = async (registrationId: number, estado: RegistrationStatus) => {
     if (!isAdmin()) return;
     try {
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
       const response = await fetch(`${API_URL}/inscripciones/${registrationId}/estado`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ estado }),
       });
 
@@ -209,8 +225,13 @@ export const RegistrationsProvider = ({ children }: { children: ReactNode }) => 
   const removeRegistration = async (eventId: string) => {
     if (!user) return;
     try {
-      const response = await fetch(`${API_URL}/inscripciones/${eventId}/${user.email}`, {
-        method: 'DELETE'
+      const headers: Record<string, string> = {};
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+      const encodedEventId = encodeURIComponent(eventId);
+      const encodedEmail = encodeURIComponent(user.email);
+      const response = await fetch(`${API_URL}/inscripciones/${encodedEventId}/${encodedEmail}`, {
+        method: 'DELETE',
+        headers: Object.keys(headers).length ? headers : undefined
       });
 
       if (!response.ok) throw new Error('Failed to delete registration');

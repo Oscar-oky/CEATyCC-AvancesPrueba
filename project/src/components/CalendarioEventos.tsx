@@ -228,13 +228,13 @@ const CalendarioEventos: React.FC<CalendarioEventosProps> = ({
     setSelectedDateForEvent(null);
   };
 
-  const handleRegister = async (eventId: string) => {
+  const handleRegister = async (event: CalendarEvent) => {
     if (!isLoggedIn()) {
       setLoginFeedback({ type: 'error', message: 'Necesitas iniciar sesión para inscribirte al evento.' });
       openLoginModal();
       return;
     }
-    await addRegistration(eventId);
+    await addRegistration(event.id);
   };
 
   const handleUnregister = (eventId: string) => {
