@@ -1,3 +1,11 @@
+/**
+ * Botón reutilizable con variantes y tamaños.
+ * Props:
+ * - variant: estilo visual ('primary' | 'secondary' | 'outline' | 'ghost').
+ * - size: dimensiones del botón ('sm' | 'md' | 'lg').
+ * - children: contenido del botón.
+ * - ...props: resto de atributos nativos de <button>.
+ */
 import React from 'react';
 import { cn } from '@/utils/cn';
 

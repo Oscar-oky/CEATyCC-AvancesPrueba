@@ -1,3 +1,13 @@
+/**
+ * Subida de archivos para eventos.
+ * - Maneja selección y subida de fotos (con carpeta), videos y documentos.
+ * - Devuelve URLs procesadas por el backend, manteniendo rutas relativas si aplica.
+ * - Expone resetFiles para limpiar el estado tras guardar.
+ *
+ * Backend:
+ * - Espera endpoint POST /api/upload con FormData: photos[], videos[], documents[], mainPhoto.
+ * - Respuesta: { photos, videos, documents, mainPhoto } como rutas.
+ */
 import { useState, useCallback } from 'react';
 
 /**

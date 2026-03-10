@@ -1,3 +1,9 @@
+/**
+ * Visualizador de Pase de Evento a partir de datos embebidos en el QR.
+ * - Recibe 'data' como string con líneas: studentId, studentName, eventId, eventName, status.
+ * - Interpreta el estado para mostrar íconos y colores (aprobado/pendiente/negado).
+ * - Si el formato es inválido, muestra una vista de error legible.
+ */
 import React from 'react';
 import { Ticket, Calendar, User, CheckCircle, XCircle, Hourglass } from 'lucide-react';
 

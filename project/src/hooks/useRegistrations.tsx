@@ -1,3 +1,13 @@
+/**
+ * Contexto de Inscripciones.
+ * - Gestiona inscripciones del usuario y, en modo admin, listados completos y pendientes.
+ * - Provee altas/bajas, actualización de estado y consultas de estado por evento.
+ *
+ * API:
+ * - URL base relativa '/api' o definida por VITE_APP_BASE_URL.
+ * - Autenticación opcional: añade Authorization: Bearer <token> si está disponible.
+ * - Emite CustomEvent en ventana para notificar cambios a otros componentes.
+ */
 import React, { useState, useEffect, useCallback, createContext, useContext, ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 

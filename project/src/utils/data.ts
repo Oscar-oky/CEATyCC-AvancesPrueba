@@ -1,8 +1,23 @@
+/**
+ * Datos estáticos y de demostración usados por la UI.
+ * Contiene:
+ * - committeeMembers: integrantes del comité (tarjetas y fotos).
+ * - eventosProximos / eventosPasados: fuente para secciones de calendario y foros.
+ * - infoCards / widgets: tarjetas informativas del home.
+ * - universities: modelo principal de universidades utilizado en componentes (ver types/index.ts).
+ * - exampleUniversities: catálogo auxiliar para cruce de nombres/ubicaciones en el mapa.
+ *
+ * Notas:
+ * - Las imágenes se importan desde '@/assets/images'.
+ * - Mantener consistencia de nombres (name/shortName) con componentes que realizan búsquedas.
+ * - Si en el futuro se conecta a un backend, usar esta estructura como referencia del contrato.
+ */
 import { CommitteeMember, Event, InfoCard, Widget, University, LegendItem } from '@/types';
 import { Globe, Shield, BarChart3, GraduationCap, Handshake, Video, FileText, Calendar } from 'lucide-react';
 import * as images from '@/assets/images';
 import { CALENDAR_LEGEND_COLORS } from './constants';
 
+// Integrantes del comité que se muestran en la sección correspondiente
 export const committeeMembers: CommitteeMember[] = [
   {
     name: "Orfelinda Torres Rivera",
@@ -90,6 +105,7 @@ export const committeeMembers: CommitteeMember[] = [
   }
 ];
 
+// Próximos eventos (se usa en widgets/páginas de eventos)
 export const eventosProximos: Event[] = [
   {
     date: "15 de Febrero, 2025",
@@ -149,10 +165,12 @@ export const eventosProximos: Event[] = [
   }
 ];
 
+// Historial de eventos (por poblar)
 export const eventosPasados: Event[] = [
 
 ];
 
+// Tarjetas informativas (sección de inicio). Algunas plantillas están comentadas para futura activación.
 export const infoCards: InfoCard[] = [
   /*
   {
@@ -295,6 +313,7 @@ export const infoCards: InfoCard[] = [
     */
 ];
 
+// Widgets (sección de inicio): accesos a módulos y llamados
 export const widgets: Widget[] = [
   {
     icon: Handshake,
@@ -350,6 +369,7 @@ export const widgets: Widget[] = [
 ];
 
 
+// Catálogo principal de universidades consumido por la UI (mapa, listados y detalle)
 export const universities: University[] = [
   { name: 'Universidad Aeronáutica de Querétaro', shortName: 'UNAQ', logo: images.logoUNAQ, url: 'https://www.unaq.edu.mx/#', type: 'aeronautica', careers: ['TSU en Mantenimiento Aeronáutico Área Aviónica (TSUA)', 'TSU en Mantenimiento Aeronáutico Área Ala Fija y Motores (TSUM)', 'Ingeniería Aeronáutica en Manufactura (IAM)', 'Ingeniería en Diseño Mecánico Aeronáutico (IDMA)', 'Ingeniería en Electrónica y Control de Sistemas de Aeronaves (IECSA)', 'Ingeniería en Mantenimiento Aeronáutico (IMA) - Programa de continuidad para TSUA / TSUM', 'Ingeniería Aeronáutica en Mantenimiento de Aeronaves (IAMA)', 'Ingeniería Aeronáutica en Mantenimiento de Sistemas Electrónicos de las Aeronaves (IAMAA)', 'Ingeniería Aeronáutica en Mantenimiento de Aeronaves de Ala Fija y Motores (IAMAM)', 'Maestría en Ingeniería Aeroespacial (MIA)', 'Especialidad en Valuación de Bienes Aeronáuticos', 'Doctorado en Ingeniería Aeroespacial'], convocatoriaUrl: 'https://www.unaq.edu.mx/admisiones/convocatoria-ingenieria', googleMapsUrl: 'https://maps.app.goo.gl/DEsefuKQaERKy93P9', coordinates: [20.6261597152602, -100.1874633908302] }, 
   { name: 'Universidad Politécnica de Santa Rosa', shortName: 'UPSRJ', logo: images.logoUTSANTAROSA, url: 'https://upsrj.edu.mx/terapia-fisica-2/', type: 'politecnica', careers: ['Ingeniería en Robótica Computacional', 'Ingeniería en Software', 'Ingeniería en Metrología Industrial', 'Ingeniería en Sistemas Automotrices', 'Ingeniería en Animación y Efectos Visuales', 'Licenciatura en Terapia Física', 'Maestría en Enseñanza de las Ciencias', 'Maestría en Calidad y Metrología Industrial'], convocatoriaUrl: 'https://upsrj.edu.mx/inscripciones-reinscripciones', googleMapsUrl: '', coordinates: [20.84300305495037, -100.43306260431744] },
@@ -374,6 +394,7 @@ export const universities: University[] = [
   { name: 'Universidad Autónoma de Querétaro', shortName: 'UAQ', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos#', type: 'publica', careers: ['TSU en Medicina Prehospitalaria Integral', 'TSU en Especialidades médicas', 'TSU Prótesis Dental', 'TSU Construcción Sostenible', 'TSU Manejo de Alimentos y Cultura del Vino', 'Licenciatura en Actuación', 'Licenciatura en Diseño y Comunicación Visual', 'Licenciatura en Arte Danzario', 'Licenciatura en Música', 'Licenciatura en Danza Folklórica', 'Licenciatura en Artes Visuales', 'Licenciatura en Restauración', 'Licenciatura en Realización Cinematográfica', 'Docencia de las Artes', 'Licenciatura en Biología', 'Licenciatura en Horticultura Ambiental', 'Licenciatura en Microbiología', 'Licenciatura en Producción Agropecuaria Sustentable', 'Licenciatura en Medicina General', 'Licenciatura en Medicina Estomatológica', 'Licenciatura en Odontología', 'Licenciatura en Derecho', 'Licenciatura en Criminología', 'Licenciatura en Ciencias de la Seguridad', 'Licenciatura en Contaduría', 'Licenciatura en Administración', 'Licenciatura en Negocios Internacionales', 'Licenciatura en Lenguas Modernas', 'Licenciatura en Traducción', 'Licenciatura en Literatura', 'Licenciatura en Lingüística', 'Licenciatura en Psicología', 'Licenciatura en Psicología del Trabajo', 'Licenciatura en Psicología Educativa', 'Licenciatura en Innovación y Gestión Educativa', 'Licenciatura en Ciencias Políticas y Administración Pública', 'Licenciatura en Desarrollo Local', 'Licenciatura en Arquitectura', 'Licenciatura en Diseño Industrial', 'Licenciatura en Matemáticas Aplicadas', 'Licenciatura en Ingeniería Civil', 'Licenciatura en Ingeniería Mecánica', 'Licenciatura en Computación', 'Licenciatura en Electrónica', 'Licenciatura en Informática', 'Licenciatura en Administración de TI', 'Licenciatura en Ingeniería en Computación', 'Licenciatura en Telecomunicaciones y Redes', 'Licenciatura en Software', 'Licenciatura en Enfermería', 'Licenciatura en Fisioterapia', 'Licenciatura en Educación Física y Ciencias del Deporte', 'Licenciatura en Ingeniero Químico', 'Licenciatura en Químico Farmacéutico Biólogo', 'Licenciatura en Biotecnología', 'Licenciatura en Química Ambiental', 'Licenciatura en Filosofía', 'Licenciatura en Historia', 'Licenciatura en Antropología', 'Licenciatura en Gastronomía', 'Licenciatura en Humanidades', 'Licenciatura en Producción de Imágenes', 'Especialidad en Odontopediatría', 'Especialidad en Ortodoncia', 'Especialidad en Prostodoncia', 'Especialidad en Endodoncia', 'Especialidad en Derecho Fiscal', 'Especialidad en Corporativo', 'Especialidad en Notarial', 'Especialidad en Gestión del Desarrollo Comunitario', 'Especialidad en Familias y Cuidados', 'Especialidad en Bioquímica Clínica', 'Maestría en Artes', 'Maestría en Dirección y Gestión de Proyectos Artísticos', 'Maestría en Ciencias Biológicas', 'Maestría en Gestión Integrada de Cuencas', 'Maestría en Ciencias Médicas', 'Maestría en Salud Pública', 'Maestría en Ciencias de la Nutrición Clínica', 'Maestría en Ciencias de la Rehabilitación', 'Maestría en Ciencias de la Enfermería', 'Maestrías en Ciencias Jurídicas', 'Maestría en Criminología', 'Maestrías en Administración', 'Maestrías en Finanzas', 'Maestría en Administración Pública', 'Maestría en Desarrollo Organizacional', 'Maestrías en Lingüística', 'Maestrías en Traducción', 'Maestría en Estudios Multidisciplinarios del Trabajo', 'Maestrías en Políticas Públicas', 'Maestría en Comunicación y Cultura Digital', 'Maestría en Ciencias en Inteligencia Artificial', 'Maestría en Ciencias en Energía', 'Maestría en Ciencias en Materiales', 'Maestría en Ciencias en Diseño', 'Maestría en Ciencias en Arquitectura', 'Maestría en Ciencias en Ingeniería', 'Maestría en Ciencias en Ingeniería de Software', 'Maestría en Ciencias en Ingeniería Mecánica', 'Maestría en Ciencias en Ingeniería Civil', 'Maestría en Ciencias de la Computación', 'Maestría en Innovación en Entornos Virtuales de Enseñanza-Aprendizaje', 'Maestría en Sistemas de Información', 'Maestría en Software Embebido', 'Maestría en Sistemas Computacionales', 'Maestría en Ciencia de Datos', 'Maestría en Ciencias de Enfermería', 'Maestría en Ciencias Químico-Biológicas', 'Maestrías en Filosofía', 'Maestrías en Historia', 'Doctorado en Artes', 'Doctorado en Ciencias Biológicas', 'Doctorado en Ciencias Médicas', 'Doctorado en Ciencias de la Salud', 'Doctorado en Ciencias del Movimiento Humano', 'Doctorado en Derecho', 'Doctorado en Administración', 'Doctorado en Letras', 'Doctorado en Psicología', 'Doctorado en Ciencias Sociales', 'Doctorado en Ciencias de la Ingeniería', 'Doctorado en Ciencias en Inteligencia Artificia', 'Doctorado en Ciencias en Energía', 'Doctorado en Ciencias en Materiales', 'Doctorado en Ciencias en Arquitectura', 'Doctorado en Ciencia de Datos', 'Doctorado en Ciencias de la Computación', 'Doctorado en Sistemas Computacionales', 'Doctorado en Ciencias de los Alimentos', 'Doctorado en Humanidades', 'Geografía Ambiental', 'Medicina Veterinaria', 'Contaduría y Administración', 'Arquitectura'], convocatoriaUrl: 'https://www.uaq.mx', googleMapsUrl: '', coordinates: [20.591945644948623, -100.41029188386239] },
 ]; 
 
+// Catálogo auxiliar: mapeos complementarios (coordenadas/nombres) para facilitar búsquedas
 export const exampleUniversities: University[] = [
   
   //Administracion Y Negocios
@@ -942,6 +963,10 @@ export const externalUniversities: University[] = [
 */
 ];
 
+// Sección: Calendario de Eventos – Leyenda de Categorías
+// Ubicación típica: componentes/Calendario/Leyenda.tsx o vistas/Calendario/index.tsx
+// Uso: se mapea para renderizar los cuadros de color y etiquetas que explican
+// de qué tipo es cada evento en la vista de calendario.
 export const calendarLegendItems = [
   { color: '#f0ad4e', label: 'Reuniones de ceatycc', category: 'reuniones' },
   { color: '#5bc0de', label: 'Foros programados', category: 'foros' },

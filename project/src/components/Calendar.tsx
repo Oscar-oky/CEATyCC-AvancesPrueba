@@ -1,3 +1,13 @@
+/**
+ * Widget de calendario mensual.
+ * - Permite navegar meses, seleccionar días y visualizar eventos por día.
+ * - Si el usuario es admin, puede crear/editar/eliminar eventos.
+ * - Si no hay sesión, ciertas acciones piden autenticación (LoginModal).
+ *
+ * Dependencias:
+ * - useEvents: fuente de eventos y operaciones CRUD.
+ * - useAuth/useRegistrations: autenticación y registro a eventos.
+ */
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Plus, Eye } from 'lucide-react';
 import { useEvents } from '@/hooks/useEvents';
@@ -107,6 +117,7 @@ const Calendar: React.FC<CalendarProps> = () => {
     }
   };
 
+  // Renderiza la cuadrícula de días del mes actual, con eventos (máximo 2 visibles por celda)
   const renderCalendarDays = () => {
     const daysInMonth = getDaysInMonth(currentDate);
     const firstDay = getFirstDayOfMonth(currentDate);

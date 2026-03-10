@@ -1,3 +1,9 @@
+/**
+ * Gestor de categorías para eventos.
+ * - Permite crear, seleccionar y eliminar categorías con color asociado.
+ * - Emplea onAdd/onDelete/onSelect para integrarse con el contexto de eventos.
+ * - UI simple con modal para alta/edición rápida.
+ */
 import React, { useState } from 'react';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 

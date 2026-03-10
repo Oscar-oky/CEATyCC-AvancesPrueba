@@ -1,3 +1,15 @@
+/**
+ * Catálogo de Universidades.
+ * - Lista horizontal filtrable por nombre con logos y acceso a un panel de detalle.
+ * - Panel modal con pestañas: General, Carreras y Contacto.
+ * - Inventario de carreras agrupadas por áreas con buscador y selección por leyenda.
+ * - Integración con el mapa (Leaflet) para centrar foco y abrir popups(pequeños recuadros del mapa) de universidades.
+ *
+ * Notas:
+ * - Los nombres de carreras/instituciones en 'categories' deben corresponder con las entradas
+ *   de 'universities', 'exampleUniversities' o 'externalUniversities' para que el flujo de
+ *   selección pueda localizar la universidad y enfocarla en el mapa.
+ */
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { universities, externalUniversities, exampleUniversities } from '@/utils/data';
 import { University, CurrentView } from '@/types';
@@ -11,7 +23,9 @@ type Category = {
   careers: string[];
 };
 
-
+// Catálogo de áreas y nombres de instituciones para el buscador categorizado.
+// Importante: mantener estos textos sincronizados con utils/data.ts para coincidencias.
+// Ejemplo: 'Universidad NEW ELEMENT' corresponde a una entrada en utils/data.ts.
 const categories: Category[] = [
   {
     id: 'ADMINISTRACIÓN Y NEGOCIOS',
@@ -407,12 +421,13 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
   const [universitySearch, setUniversitySearch] = useState('');
   const [selectedTab, setSelectedTab] = useState<'general' | 'careers' | 'contact'>('general');
   const [selectedLegendType, setSelectedLegendType] = useState<string | null>(null);
-  const [universityToOpenPopup, setUniversityToOpenPopup] = useState<University | null>(null); // Nuevo estado
+  // Universidad cuyo popup(Pequeño recuadro del mapa) debe abrirse en el mapa (señalado desde el listado/categorías)
+  const [universityToOpenPopup, setUniversityToOpenPopup] = useState<University | null>(null);
   
-  // Ref para el panel de información de la universidad
+  // Contenedor del panel de información para gestionar cierre por clic externo/ESC
   const universityPanelRef = useRef<HTMLDivElement>(null);
   
-  // Filtrar universidades por nombre
+  // Filtrado por nombre de universidad (buscador superior)
   const filteredUniversities = useMemo(() => {
     if (!universitySearch) {
       return universities;
@@ -424,7 +439,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     );
   }, [universitySearch]);
   
-  // Cerrar panel al hacer clic fuera
+  // Maneja cierre del panel por clic fuera y tecla ESC
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (universityPanelRef.current && !universityPanelRef.current.contains(event.target as Node)) {
@@ -457,6 +472,14 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
   };
 
   
+  /**
+   * Al hacer clic en una carrera o nombre dentro de categorías:
+   * 1) Verifica si coincide con una universidad externa y, de ser así, abre su urlPrincipal.
+   * 2) Intenta resolver una universidad por nombre exacto (exampleUniversities o universities).
+   * 3) Si no, busca coincidencias por carrera exacta; como fallback, normaliza textos
+   *    para aproximar coincidencias (elimina prefijos comunes: "lic. en", "ing. en", etc.).
+   * 4) Si encuentra universidad con coordenadas, centra el mapa y prepara abrir popup(Pqueño recuadro del mapa).
+   */
   const handleCareerClick = (careerName: string) => {
     const cleanedCareerName = careerName.trim();
     let university: University | undefined; // Declarar university aquí
@@ -468,7 +491,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
       return; // Salir de la función si es una universidad externa
     }
 
-    // Nuevo: Buscar coincidencia directa con el nombre de la universidad
+    //Buscar coincidencia directa con el nombre de la universidad
     university = exampleUniversities.find(uni =>
       uni.name.trim().toLowerCase() === cleanedCareerName.toLowerCase() ||
       uni.shortName?.trim().toLowerCase() === cleanedCareerName.toLowerCase()
@@ -529,7 +552,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
 
     if (university && university.coordinates) {
       setFocusedLocation({ lat: university.coordinates[0], lng: university.coordinates[1] });
-      setUniversityToOpenPopup(university); // Establecer la universidad para abrir el popup
+      setUniversityToOpenPopup(university); // Establecer la universidad para abrir el popup(Pqueño recuadro del mapa)
       
       setTimeout(() => {
         document.getElementById('mapa')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -543,6 +566,9 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     setOpenCategoryId(prev => (prev === id ? null : id));
   };
 
+  // Construye categorías filtradas según:
+  // - selectedLegendType: limita carreras a las ofrecidas por universidades del tipo seleccionado.
+  // - searchTerm global: filtra por texto.
   const filteredCareers = useMemo(() => {
     let careersToConsider: string[] = [];
 
@@ -589,6 +615,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
 
   const totalUniversitiesCount = universities.length;
 
+  // Número de universidades visibles según leyenda seleccionada
   const visibleUniversitiesCount = useMemo(() => {
     if (!selectedLegendType) {
       return totalUniversitiesCount;
@@ -609,7 +636,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     handleClearFilters(); // Limpiar todos los filtros
   };
 
-  // Efecto para abrir automáticamente la primera categoría si la búsqueda resulta en una sola.
+  // Abre automáticamente la primera categoría cuando la búsqueda arroja solo una coincidencia.
   useEffect(() => {
     if (searchTerm && filteredCareers.length === 1) {
       setOpenCategoryId(filteredCareers[0].id);
@@ -618,6 +645,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     }
   }, [searchTerm, filteredCareers]);
 
+  // Devuelve un filtro por-categoría usando el término específico de esa categoría
   const getFilteredCareersForCategory = useMemo(() => {
     return (categoryId: string, careers: string[]) => {
       const categorySearchTerm = categorySearchTerms[categoryId]?.toLowerCase() || '';
@@ -625,6 +653,9 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     };
   }, [categorySearchTerms]);
 
+  // Al seleccionar un tipo en la leyenda:
+  // - Alterna la selección (permite desactivar).
+  // - Limpia foco/popup del mapa y desplaza al mapa para visibilidad.
   const handleLegendClick = (type: string) => {
     setSelectedLegendType(prevType => {
       const newType = prevType === type ? null : type;
@@ -645,7 +676,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
       <h4 className="text-center">Descubre la gama de programas académicos y toma el primer paso hacia tu futuro profesional. ¡Las oportunidades te esperan!</h4>
       <h1 className="text-2xl font-bold mb-4 text-center">Instituciones Públicas y Privadas</h1>
       
-      {/* Búsqueda por nombre de universidad */}
+      {/* Buscador principal de universidades por nombre */}
       <div className="max-w-3xl mx-auto mb-6">
         <input
           type="text"
@@ -667,7 +698,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
           <div className="bg-gradient-to-l from-white to-transparent w-12 h-full"></div>
         </div>
         
-        {/* Scrollable university logos */}
+        {/* Carrusel horizontal de logos de universidades */}
         <div className="flex overflow-x-auto space-x-4 p-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
           {filteredUniversities.length > 0 ? (
             filteredUniversities.map((uni) => (
@@ -703,7 +734,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Overlay oscuro detrás del panel */}
+      {/* Overlay y panel de detalle de universidad seleccionada */}
       <AnimatePresence>
         {selectedUniversity && (
           <>
@@ -765,7 +796,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
                   {selectedUniversity.name}
                 </h2>
                 
-                {/* Pestañas */}
+                {/* Pestañas de contenido */}
                 <div className="border-b border-gray-200 mb-4">
                   <nav className="flex space-x-8" aria-label="Información de la universidad">
                     <button

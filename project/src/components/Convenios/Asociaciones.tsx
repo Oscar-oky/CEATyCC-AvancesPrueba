@@ -1,3 +1,8 @@
+/**
+ * Asociaciones y cámaras empresariales.
+ * - Muestra programas, beneficios y estadísticas de colaboración con asociaciones.
+ * - Preparado para conectar a datos dinámicos en el futuro.
+ */
 import React from 'react';
 import { Users, Link, Trophy, Target, Handshake, CheckCircle } from 'lucide-react';
 

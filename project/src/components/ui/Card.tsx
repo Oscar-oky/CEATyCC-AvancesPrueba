@@ -1,3 +1,10 @@
+/**
+ * Contenedor visual tipo tarjeta.
+ * Props:
+ * - hover: habilita elevación y transición en hover.
+ * - className: clases adicionales para personalizar estilos.
+ * - children: contenido arbitrario.
+ */
 import React from 'react';
 import { cn } from '@/utils/cn';
 

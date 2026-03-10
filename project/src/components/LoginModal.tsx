@@ -1,3 +1,9 @@
+/**
+ * Modal de inicio de sesión.
+ * - Solicita email y contraseña, muestra feedback de éxito/error.
+ * - Ofrece acceso al registro desde un enlace.
+ * - onLogin devuelve { success, message } para personalizar el feedback.
+ */
 import React, { useState, useEffect } from 'react';
 import { X, User, Mail, LogIn, Lock, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
 

@@ -1,3 +1,9 @@
+/**
+ * Estadías por universidad.
+ * - Permite seleccionar una institución y ver información de estadías/estancias.
+ * - Usa Universidades_Logo para el catálogo y un panel de detalle por institución.
+ * - Lee universityId desde querystring para acceso directo a una universidad.
+ */
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Universidades_Logo } from '../utils/data';

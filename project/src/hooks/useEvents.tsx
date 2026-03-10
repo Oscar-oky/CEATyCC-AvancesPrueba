@@ -1,4 +1,13 @@
-// hooks/useEvents.tsx
+/**
+ * Contexto de Eventos.
+ * - Provee lista de eventos (events) y categorías (categories).
+ * - Expone CRUD (crear/actualizar/eliminar) y utilidades (getEventsForDate, deleteFile).
+ * - Aplica filtros por fecha de publicación para usuarios no admin.
+ *
+ * API:
+ * - La URL base es relativa por defecto ('/api'); puede leerse de VITE_APP_BASE_URL.
+ * - parseEvent convierte datos del backend al modelo CalendarEvent (fechas y campos anidados).
+ */
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import axios from 'axios';
 import { CalendarEvent, LegendItem } from '@/types';
@@ -39,7 +48,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
   const [isLoadingEvents, setIsLoadingEvents] = useState(true); // Nuevo estado de carga para eventos
   const { isAdmin } = useAuth(); // Obtener isAdmin del contexto de autenticación
 
-  // Helper para parsear un evento que viene de la API
+  // Convierte un evento del backend al modelo CalendarEvent
   const parseEvent = (event: any): CalendarEvent => {
     let timesArray;
     
@@ -98,7 +107,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
     };
   };
 
-  // Función para aplicar los filtros de eventos
+  // Aplica filtros según rol: oculta eventos no publicados para usuarios no admin
   const applyEventFilters = (eventsToFilter: CalendarEvent[], adminStatus: boolean) => {
     const now = new Date();
     now.setHours(0, 0, 0, 0); // Normalizar 'now' al inicio del día para la comparación
@@ -112,7 +121,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Efecto para cargar los eventos y categorías desde el backend al iniciar
+  // Carga inicial de eventos y categorías desde el backend
   useEffect(() => {
     const fetchData = async () => {
       setIsLoadingEvents(true); // Iniciar carga
@@ -161,7 +170,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Función auxiliar para formatear fechas en formato YYYY-MM-DD (sin zona horaria)
+  // Formatea fechas a YYYY-MM-DD (zona horaria local) para el backend
   const formatDateForBackend = (date: Date | undefined): string | undefined => {
     if (!date) return undefined;
     // Asegurarnos de que la fecha se formatee como YYYY-MM-DD en la zona horaria local
@@ -172,7 +181,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addEvent = async (eventData: Omit<CalendarEvent, 'id'>) => {
-    // Formatear fechas antes de enviar al backend
+    // Prepara y envía un evento nuevo al backend
     const eventDataForBackend = {
       ...eventData,
       id: `${Date.now()}-${eventData.title.slice(0, 10)}`,
@@ -197,7 +206,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateEvent = async (updatedEvent: CalendarEvent) => {
-    // Formatear fechas antes de enviar al backend
+    // Actualiza un evento existente en el backend
     const eventDataForBackend = {
       ...updatedEvent,
       // Convertir fechas a strings en formato YYYY-MM-DD para evitar problemas de zona horaria
@@ -223,6 +232,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const deleteEvent = async (id: string) => {
+    // Elimina un evento por id y sincroniza el estado local
     try {
       await axios.delete(`${API_URL}/events/${id}`);
       setAllEvents(prevAllEvents => {
@@ -240,6 +250,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const deleteFile = async (eventId: string, fileType: 'photos' | 'videos' | 'documents', fileUrl: string, folderId?: string) => {
+    // Elimina un archivo asociado al evento (soporta carpetas de fotos)
     try {
       // Obtener el evento actual
       const eventToUpdate = allEvents.find(e => e.id === eventId);
@@ -280,6 +291,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getEventsForDate = (date: Date): CalendarEvent[] => {
+    // Devuelve eventos del día indicado, ordenados por hora de inicio
     const now = new Date();
     now.setHours(0, 0, 0, 0); // Normalizar 'now' al inicio del día para la comparación
 

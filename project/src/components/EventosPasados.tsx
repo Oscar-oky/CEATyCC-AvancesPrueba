@@ -1,3 +1,9 @@
+/**
+ * Galería de eventos pasados.
+ * - Combina eventos estáticos (utils/data) y dinámicos del backend.
+ * - Unifica fotos (mainPhoto + photos) y soporta carpetas de fotos en el modal.
+ * - Permite ver fotos/videos o documentos mediante un modal de contenido.
+ */
 import React, { useState, useMemo } from 'react';
 import { Clock, Camera, FileText } from 'lucide-react';
 import { eventosPasados as staticEvents } from '@/utils/data';

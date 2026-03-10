@@ -1,3 +1,9 @@
+/**
+ * Listado de próximos eventos.
+ * - Filtra eventos con fecha >= hoy, ordenados cronológicamente.
+ * - Permite ver más información (abre EventModal) e inscribirse/cancelar.
+ * - Reacciona a cambios de estado de inscripción vía CustomEvent.
+ */
 import React, { useState, useMemo, useEffect } from 'react';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { useAuth } from '@/hooks/AuthContext';

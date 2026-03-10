@@ -1,3 +1,9 @@
+/**
+ * Lógica de inscripción a eventos.
+ * - Expone estado (isProcessing, isEventPast, registrationStatus) y acciones (register/unregister).
+ * - Genera datos para QR de acceso con verificación local.
+ * - Consulta estado actual vía useRegistrations y respeta sesión vía useAuth.
+ */
 import { useState, useMemo, useCallback } from 'react';
 import { CalendarEvent, RegistrationStatus } from '@/types';
 import { useAuth } from './AuthContext';

@@ -1,3 +1,8 @@
+/**
+ * Convenios del sector privado.
+ * - Presenta métricas, programas y llamado a la acción para establecer convenios.
+ * - Estructura apta para enlazar a un backend en el futuro (datos simulados).
+ */
 import React from 'react';
 import { FileText, Handshake, Award, Target, Users, CheckCircle } from 'lucide-react';
 

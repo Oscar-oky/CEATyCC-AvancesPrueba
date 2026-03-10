@@ -1,3 +1,8 @@
+/**
+ * Hook de calendario simple.
+ * - Mantiene mes/año seleccionados y utilidades de navegación.
+ * - Provee helpers: días del mes, primer día (semana inicia en lunes) y nombre del mes.
+ */
 import { useState } from 'react';
 import { MONTH_NAMES } from '@/utils/constants';
 

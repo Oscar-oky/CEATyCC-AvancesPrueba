@@ -1,3 +1,13 @@
+/**
+ * Encabezado principal del sitio.
+ * - Muestra identidad (logo y nombre) desde SITE_CONFIG.
+ * - Icono de usuario con menú contextual (perfil, calendario, cerrar sesión).
+ * - Integra un portal para el modal de "Agregar Admin" (solo rol admin).
+ *
+ * Notas:
+ * - El menú se posiciona dinámicamente respecto al botón y se adapta a móvil.
+ * - Requiere un contenedor #portal-root en index.html para portales.
+ */
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import AgregarAdminModal from '@/components/AgregarAdmin';

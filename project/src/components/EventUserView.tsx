@@ -1,3 +1,10 @@
+/**
+ * Vista de usuario dentro del modal de eventos.
+ * - Presenta detalles (fecha, horarios, ubicación, capacidad, costo).
+ * - Navega a programa especial cuando aplica.
+ * - Muestra pestañas: descripción, asistencia (solo admin), fotos, videos, documentos.
+ * - Incluye un botón de inscripción provisto por el contenedor.
+ */
 import React, { useState } from 'react';
 import { CalendarEvent, RegistrationStatus } from '@/types';
 import { CalendarDays, Clock, MapPin, Users, DollarSign, CheckCircle, XCircle, AlertCircle, Loader, Video as VideoIcon } from 'lucide-react';

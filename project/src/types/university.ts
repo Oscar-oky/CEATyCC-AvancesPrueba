@@ -1,4 +1,12 @@
-// src/types/university.ts
+/**
+ * Modelo de Universidad orientado a fuentes externas (CSV).
+ * - Estructura pensada para mapear datos crudos (sostenimiento, nombre, URLs y categorías).
+ * - lat/lng opcionales para integrarse con el mapa si están disponibles.
+ *
+ * Uso:
+ * - Convertir/normalizar estos datos al modelo de UI (ver src/types/index.ts) cuando se muestren en componentes.
+ * - Mantener claves de categoría coherentes con el consumo en la UI.
+ */
 
 export interface CareerLink {
   name: string; // El nombre de la categoría de carrera del CSV (ej. "ADMINISTRACIÓN Y NEGOCIOS")

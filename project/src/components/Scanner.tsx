@@ -1,3 +1,14 @@
+/**
+ * Verificador de asistencia mediante QR.
+ * - Carga lista de asistentes aprobados del backend y la guarda en localStorage (uso offline).
+ * - Inicia escaneo con html5-qrcode y valida el QR contra la lista cargada.
+ * - Muestra resultado del escaneo (permitido/denegado) y datos del participante.
+ *
+ * Flujo:
+ * 1) Cargar Lista de Asistentes (requiere conexión).
+ * 2) Escanear QR (funciona offline usando la lista cacheada).
+ * 3) Mostrar resultado y permitir cancelar el escaneo.
+ */
 import React, { useState, useEffect } from 'react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import { CheckCircle, XCircle, Download, Camera, Users } from 'lucide-react';

@@ -1,3 +1,9 @@
+/**
+ * Vista de administración de eventos.
+ * - Formulario para crear/editar eventos con gestión de medios y categorías.
+ * - Soporta drag & drop para fotos, videos y documentos.
+ * - Acciones principales: guardar/actualizar, eliminar y mostrar QR de acceso.
+ */
 import React, { useRef, useState } from 'react';
 import { CalendarEvent } from '@/types';
 import { Trash2, Video, Loader, CalendarDays, Clock, UploadCloud, Plus, X } from 'lucide-react';

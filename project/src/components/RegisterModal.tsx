@@ -1,3 +1,9 @@
+/**
+ * Modal de registro de usuario.
+ * - Valida campos obligatorios y coincidencia de contraseñas.
+ * - Llama a register desde el contexto de autenticación y muestra feedback.
+ * - No inicia sesión automáticamente tras el registro (comportamiento actual).
+ */
 import React, { useState } from 'react';
 import { X, User, XCircle, CheckCircle } from 'lucide-react';
 import { useAuth } from '@/hooks/AuthContext';

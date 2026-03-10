@@ -1,3 +1,9 @@
+/**
+ * Mosaico de logos de universidades con enlaces.
+ * - Usa Universidades_Logo desde utils/data.ts.
+ * - Aplica un orden deseado (desiredOrder) y filtra acorde.
+ * - Cada logo abre el sitio correspondiente en nueva pestaña.
+ */
 import React from 'react';
 import { Universidades_Logo } from '@/utils/data';
 

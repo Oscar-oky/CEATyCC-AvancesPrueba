@@ -1,4 +1,16 @@
-// Constantes del proyecto
+/**
+ * Constantes de configuración y apoyo.
+ * - SITE_CONFIG: identidad del sitio.
+ * - CONTACT_INFO: datos de contacto institucional.
+ * - SOCIAL_LINKS: enlaces a redes sociales.
+ * - MONTH_NAMES, DAYS_OF_WEEK: utilidades para calendarios.
+ * - CALENDAR_LEGEND_COLORS: colores por categoría de eventos.
+ * - API_URL: endpoint base del backend (si no se usa proxy '/api').
+ *
+ * Nota:
+ * - En desarrollo puede haber un proxy que atienda '/api' (ver vite.config.*).
+ * - Mantener sincronizado API_URL con el backend desplegado si se consume directamente.
+ */
 
 export const SITE_CONFIG = {
   name: 'CEATyCC',
@@ -7,6 +19,7 @@ export const SITE_CONFIG = {
 } as const;
 
 
+// Datos de contacto principales del sitio
 export const CONTACT_INFO = {
   address: 'Tenayuca 200, Col. Santa Cruz Atoyac, CDMX, México, CP 03310',
   phone: '+52 (55) 5420 4948',
@@ -14,6 +27,7 @@ export const CONTACT_INFO = {
   department: 'Dirección de Tecnologías de la Información y Comunicación',
 } as const;
 
+// Enlaces a redes sociales
 export const SOCIAL_LINKS = {
   facebook: 'https://facebook.com',
   instagram: 'https://instagram.com',
@@ -21,6 +35,7 @@ export const SOCIAL_LINKS = {
   tiktok: 'https://tiktok.com',
 } as const;
 
+// Nombres de meses (minúsculas) y días (inicial)
 export const MONTH_NAMES = [
   'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
   'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
@@ -28,6 +43,7 @@ export const MONTH_NAMES = [
 
 export const DAYS_OF_WEEK = ['L', 'M', 'X', 'J', 'V', 'S', 'D'] as const;
 
+// Colores usados en la leyenda del calendario
 export const CALENDAR_LEGEND_COLORS = {
   administracion: '#8c3a4d',
   adquisiciones: '#999999',
@@ -46,4 +62,5 @@ export const CALENDAR_LEGEND_COLORS = {
   otrosEventos: '#FF0000',
 } as const;
 
+// URL base del API para despliegue. En dev, considerar proxy en Vite.
 export const API_URL = "https://site39574-vlysiu.scloudsite101.com/api";

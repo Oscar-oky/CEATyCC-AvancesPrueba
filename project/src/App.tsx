@@ -1,3 +1,13 @@
+/**
+ * Núcleo de enrutamiento y composición de la UI.
+ * - AppContent controla la navegación mediante un mapa de rutas (pathMap) y renderiza las vistas.
+ * - App configura Router y Providers (Auth, Events, Registrations).
+ *
+ * Para agregar una nueva vista:
+ * 1) Define la ruta en pathMap dentro de handleNavigation.
+ * 2) Añade el <Route path="..."> correspondiente en el bloque de <Routes>.
+ * 3) Si aplica, extiende el tipo CurrentView para tipar la navegación.
+ */
 import React, { useState, useEffect } from 'react';
 import Header from './components/layout/Header';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
@@ -70,6 +80,12 @@ const AppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  /**
+   * Navegación tipada por CurrentView.
+   * - pathMap centraliza la correspondencia entre vistas lógicas y paths del router.
+   * - params opcionales para vistas con query (ej. calendario con month/year).
+   * - Desplaza la ventana al tope después de navegar.
+   */
   const handleNavigation = (view: CurrentView, universityId?: string, month?: number, year?: number) => {
     const pathMap: Record<CurrentView, string> = {
       'home': '/',
@@ -134,6 +150,7 @@ const AppContent: React.FC = () => {
   const params = new URLSearchParams(location.search);
   const qrDataFromParams = params.get('data');
 
+  // Trazas de navegación útil para depuración. Mantener desactivable si no se requiere en producción.
   useEffect(() => {
     console.log('AppContent Location Pathname:', location.pathname);
     console.log('AppContent Location Search:', location.search);
@@ -151,6 +168,7 @@ const AppContent: React.FC = () => {
         <main className="flex-1 p-3 sm:p-4 md:p-6">
           <ErrorBoundary>
             <Routes>
+              {/* Página principal: carrusel, calendario, redes y paneles informativos */}
               <Route path="/" element={
                 <>
                   <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-6 md:mb-8">
@@ -166,6 +184,7 @@ const AppContent: React.FC = () => {
                   <UniversityLogos />
                 </>
               } />
+              {/* Secciones informativas y de navegación */}
               <Route path="/committee" element={<CommitteeDirectory isVisible={true} onClose={handleBackToHome} />} />
               <Route path="/mision-vision-objetivo" element={<MisionVisionObjetivo onNavigateToCommittee={handleCommitteeClick} />} />
               <Route path="/organizacion-estructura" element={<OrganizacionEstructura />} />
@@ -178,22 +197,27 @@ const AppContent: React.FC = () => {
               <Route path="/microcredenciales" element={<Microcredenciales />} />
               <Route path="/open-academy-santander" element={<OpenAcademySantander />} />
               <Route path="/reconocimientos" element={<Reconocimientos />} />
+              {/* Convenios */}
               <Route path="/municipal" element={<Municipal />} />
               <Route path="/sector-publico-estatal" element={<Estatal />} />
               <Route path="/asociaciones" element={<Asociaciones />} />
               <Route path="/interinstitucionales" element={<Convenios />} />
               <Route path="/colaboracion-academica" element={<ColaboracionAcademica />} />
               <Route path="/sector-privado" element={<SectorPrivado />} />
+              {/* Catálogo de universidades, escáner y perfil */}
               <Route path="/universidades" element={<Universidades onNavigate={handleNavigation} />} />
               <Route path="/scanner" element={<Scanner />} />
               <Route path="/perfil" element={<Profile />} />
+              {/* Estancias y estadías */}
               <Route path="/estancias" element={<Estancias />} />
               <Route path="/estadias" element={<Estadias />} />
               <Route path="/estancias-estadias" element={<EstanciasEstadias />} />
+              {/* Torneos y concursos */}
               <Route path="/torneo-programacion-basica" element={<TorneoProgramacionBasica />} />
               <Route path="/torneo-programacion-avanzado" element={<TorneoProgramacionAvanzado />} />
               <Route path="/torneo-hacking-ctf" element={<TorneoHackingCTF />} />
               <Route path="/concurso-carteles" element={<ConcursoCartelesCientificos />} />
+              {/* Administración y páginas auxiliares */}
               <Route path="/admin/ganadores" element={<AdminGanadores />} />
               <Route path="/evento-detallado" element={<EventoDetallado />} />
               <Route path="/universidad/:universityName" element={<UniversityDetailsPage />} />

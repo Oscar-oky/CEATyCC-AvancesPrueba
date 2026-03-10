@@ -1,3 +1,15 @@
+/**
+ * Vista de calendario completa.
+ * - Modos: mes, semana, día y lista, con filtros, búsqueda y ordenamiento.
+ * - CRUD de eventos para admins; inscripción/cancelación para usuarios.
+ * - Importación/exportación CSV y opciones de impresión.
+ *
+ * Integraciones:
+ * - useCalendar: utilidades de fechas y navegación de meses.
+ * - useEvents: fuente de eventos, categorías y operaciones.
+ * - useAuth/useRegistrations: autenticación e inscripciones.
+ * - Sincroniza parámetros de URL (p.ej. ?event=) para abrir eventos.
+ */
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Plus, Edit, Trash2, MapPin, LogIn, LogOut, User, Search, Filter, Download, Copy, FileText, FileSpreadsheet, TrendingUp, List, Grid, CalendarDays, Sun, Upload, Clock, X, SlidersHorizontal } from 'lucide-react';

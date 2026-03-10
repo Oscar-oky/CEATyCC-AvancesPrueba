@@ -1,3 +1,19 @@
+/**
+ * Modal de gestión y visualización de eventos.
+ * - Admin: crear/editar/eliminar eventos, subir fotos/videos/documentos, configurar horarios y publicación.
+ * - Usuario: ver detalles, registrarse, obtener QR y ver estado de inscripción.
+ *
+ * Estructura:
+ * - Estados y hooks: manejo de formulario, archivos, inscripción y categorías.
+ * - Inicialización: efecto que prepara formData según modo (creación/edición).
+ * - Handlers: fechas/horarios, drag&drop de archivos, CRUD de evento y eliminación de archivos.
+ * - Render: delega UI específica en EventAdminView (admin) o EventUserView (usuario).
+ *
+ * Notas:
+ * - Las fechas se normalizan a zona local para evitar desfaces.
+ * - Se mantiene compatibilidad con campos legacy (startTime/endTime) al guardar.
+ * - featuredVideos admite múltiples URLs; se normaliza desde blob: a URLs finales tras subida.
+ */
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { CalendarEvent, RegistrationStatus, User } from '@/types';
 

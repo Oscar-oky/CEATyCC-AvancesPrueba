@@ -1,3 +1,8 @@
+/**
+ * Pie de página del sitio.
+ * - Muestra información institucional básica y leyendas legales.
+ * - Contenido estático; actualizar textos de contacto según corresponda.
+ */
 import React from 'react';
 
 const Footer: React.FC = () => {

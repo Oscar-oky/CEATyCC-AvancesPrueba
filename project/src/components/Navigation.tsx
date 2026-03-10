@@ -1,3 +1,13 @@
+/**
+ * Barra de navegación principal.
+ * - Menú con categorías y submenús, con versión móvil y escritorio.
+ * - Buscador que recorre etiquetas del menú y permite navegar rápidamente.
+ * - Botones de autenticación (login/registro) cuando no hay sesión.
+ *
+ * Props:
+ * - onCommitteeClick: navegación rápida al comité (no usado en este archivo).
+ * - onNavigate: función tipada para cambiar de vista según CurrentView.
+ */
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Search, LogIn } from 'lucide-react';
 import { CurrentView, CalendarEvent } from '../types';
@@ -100,6 +110,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
     }
   };
 
+  // Estructura del menú principal (escritorio y móvil comparten esta fuente)
   const navItems: NavItem[] = [
     { label: 'Inicio', href: '/', onClick: () => onNavigate('home') },
     {
@@ -185,6 +196,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
     { label: 'Contacto', onClick: () => onNavigate('contacto') }
   ];
 
+  // Construye la lista plana de resultados del buscador a partir de la jerarquía
   const filteredNavItems = React.useMemo(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
     const matches: SearchResultItem[] = [];
@@ -299,7 +311,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
           {isMobileMenuOpen ? 'Cerrar' : 'Menú'}
         </button>
 
-        {/* Desktop navigation */}
+        {/* Navegación (escritorio) */}
         <div className="hidden md:flex items-center gap-2 flex-wrap">
           {navItems.map((item, index) => (
             <div
@@ -382,7 +394,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
           ))}
         </div>
 
-        {/* Desktop search and auth */}
+        {/* Buscador y autenticación (escritorio) */}
         <div className="hidden md:flex items-center">
           <div className="relative" ref={searchContainerRef}>
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -433,7 +445,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menú móvil (incluye buscador y navegación anidada) */}
       {isMobileMenuOpen && (
         <div className="md:hidden mt-4 bg-gray-600 rounded-lg shadow-xl py-3 border border-gray-500">
           {/* Mobile search */}

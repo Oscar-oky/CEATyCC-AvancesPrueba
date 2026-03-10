@@ -1,3 +1,9 @@
+/**
+ * Reporte de Open Academy Santander.
+ * - Presenta cursos destacados, beneficios y estadísticas de participación.
+ * - Incluye gráficas/imagenes importadas desde assets para evidenciar resultados.
+ * - Estructura lista para conectar con una fuente dinámica de datos.
+ */
 import React, { useState } from 'react';
 import { BookOpen, Users, Globe, Award, Play, CheckCircle } from 'lucide-react';
 import participacionInstitucion from '../../assets/images/Participacion por institucion.jpeg';

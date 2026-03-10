@@ -1,3 +1,9 @@
+/**
+ * Modal de contenido de eventos pasados.
+ * - Muestra fotos (con navegación por carpetas y visor ampliado), videos y documentos.
+ * - Admite abrirse en modo específico: 'photosVideos' o 'documents'.
+ * - Calcula índices globales para navegar entre fotos combinando raíz y carpetas.
+ */
 import React, { useState, useMemo } from 'react';
 import { Event } from '@/types';
 

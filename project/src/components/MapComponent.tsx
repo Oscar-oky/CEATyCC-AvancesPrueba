@@ -1,3 +1,15 @@
+/**
+ * Mapa de universidades (Leaflet).
+ * Props:
+ * - focusedLocation: centra y hace zoom en una ubicación concreta.
+ * - selectedType: filtra los marcadores por tipo (privada, pública, etc.).
+ * - universityToOpenPopup: abre el popup del marcador correspondiente.
+ *
+ * Detalles:
+ * - Usa un ícono SVG coloreado por tipo (iconMapping).
+ * - Combina 'universities' y 'exampleUniversities' para mayor cobertura.
+ * - Mantener las coordenadas actualizadas para centrar correctamente.
+ */
 import React, { useEffect, useMemo, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -20,12 +32,12 @@ const createColoredIcon = (color: string) => {
 };
 
 const iconMapping: { [key: string]: L.DivIcon } = {
-  'aeronautica': createColoredIcon('#f63b3bff'), // blue-500
-  'privada': createColoredIcon('#ef44d8ff'), // red-500
-  'politecnica': createColoredIcon('#f97316'), // orange-500
-  'tecnologica': createColoredIcon('#f97316'), // orange-500
-  'publica': createColoredIcon('#c800ffff'), // violet-500
-  'default': createColoredIcon('#6b7280'), // gray-500
+  'aeronautica': createColoredIcon('#f63b3bff'), // blue
+  'privada': createColoredIcon('#ef44d8ff'), // red
+  'politecnica': createColoredIcon('#f97316'), // orange
+  'tecnologica': createColoredIcon('#f97316'), // orange
+  'publica': createColoredIcon('#c800ffff'), // violet
+  'default': createColoredIcon('#6b7280'), // gray
 };
 
 

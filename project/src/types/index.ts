@@ -1,3 +1,9 @@
+/**
+ * Tipos principales usados en la aplicación.
+ * - Define contratos para UI (eventos, tarjetas, navegación).
+ * - La interfaz 'University' de este archivo modela el uso en componentes y utils/data.ts.
+ *   Existe otra variante orientada a CSV en src/types/university.ts; documentar/convertir según origen.
+ */
 export interface User {
   name: string;
   email: string;
@@ -114,7 +120,7 @@ export interface CarouselSlide {
 }
 
 export interface InfoCard {
-  icon: any; // Lucide React icon component
+  icon: any; // Icono de Lucide React
   title: string;
   description: string;
   color: string;
@@ -130,7 +136,7 @@ export interface InfoCard {
 }
 
 export interface Widget {
-  icon: any; // Lucide React icon component
+  icon: any; // Icono de Lucide React
   title: string;
   description: string;
   detailedContent?: {
@@ -145,7 +151,7 @@ export interface Widget {
 }
 
 export interface Widget2 {
-  icon: any; // Lucide React icon component
+  icon: any; // Icono de Lucide React
   title: string;
   description: string;
   detailedContent?: {
@@ -161,6 +167,17 @@ export interface Widget2 {
 }
 
 export interface University {
+  /**
+   * Modelo de universidad usado por la UI:
+   * - name/shortName: claves para búsquedas y despliegues.
+   * - logo/url: identidad visual y enlace principal.
+   * - careers: listado usado en pestaña "Carreras" y filtros por áreas.
+   * - coordinates: [lat, lng] para centrar y abrir popups en el mapa.
+   * - practiceInfo: texto de apoyo (opcional según uso actual).
+   *
+   * Nota: Para modelos provenientes de CSV externos ver src/types/university.ts
+   * y convertir a este formato cuando se consuman en la UI.
+   */
   name: string;
   shortName?: string;
   logo: string;

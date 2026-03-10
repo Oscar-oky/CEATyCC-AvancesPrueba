@@ -1,3 +1,8 @@
+/**
+ * Colaboración académica con el sector de data centers.
+ * - Presenta programas, beneficios, métricas y logos de aliados.
+ * - Datos ilustrativos; preparados para ser reemplazados por una fuente dinámica.
+ */
 import React from 'react';
 import { GraduationCap, BookOpen, Lightbulb, Users, Globe, CheckCircle } from 'lucide-react';
 import mexdcLogo from '../../assets/logos/mexdc.png';

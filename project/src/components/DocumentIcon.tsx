@@ -1,3 +1,8 @@
+/**
+ * Icono de documento por extensión.
+ * - Recibe fileName y elige un ícono lucide-react acorde al tipo.
+ * - Útil para listas de documentos en eventos y galerías.
+ */
 import React from 'react';
 import { FileText, File, FileSpreadsheet, FileJson, FileImage, FileArchive } from 'lucide-react';
 

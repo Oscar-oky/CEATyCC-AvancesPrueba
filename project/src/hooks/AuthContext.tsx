@@ -1,6 +1,16 @@
+/**
+ * Contexto de Autenticación.
+ * - Gestiona usuario y token, con persistencia en localStorage ("calendar-user", "calendar-token").
+ * - Provee operaciones de login, registro y administración (bloquear, eliminar, actualizar) para rol 'admin'.
+ * - Consume endpoints relativos /api/users... (asegurar backend o proxy en desarrollo).
+ * Consideraciones:
+ * - Validar roles/estados en el servidor; no confiar solo en el cliente.
+ * - Evitar exponer el token en logs o mensajes de error.
+ */
 
 import React, { createContext, useState, useEffect, useContext, ReactNode, useCallback } from 'react';
 
+/** Usuario autenticado en la aplicación */
 export interface User {
   name: string;
   email: string;
@@ -8,6 +18,7 @@ export interface User {
   status: 'active' | 'blocked';
 }
 
+/** Respuesta esperada del endpoint de login */
 export interface LoginResponse {
   name: string;
   email: string;
@@ -20,7 +31,8 @@ interface AuthContextType {
   user: User | null;
   token: string | null;
   allUsers: User[];
-  isLoadingAllUsers: boolean; // Nuevo estado de carga para allUsers
+  /** Indicador de carga al obtener el listado de usuarios (solo admin) */
+  isLoadingAllUsers: boolean;
   login: (email: string, password?: string) => Promise<{ success: boolean; message?: string }>;
   logout: () => void;
   isAdmin: () => boolean;
@@ -46,8 +58,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
-  const [isLoadingAllUsers, setIsLoadingAllUsers] = useState(true); // Nuevo estado de carga
+  const [isLoadingAllUsers, setIsLoadingAllUsers] = useState(true);
 
+  // Cargar usuario/token persistidos
   useEffect(() => {
     const savedUser = localStorage.getItem('calendar-user');
     const savedToken = localStorage.getItem('calendar-token');
@@ -61,6 +74,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   }, []);
 
+  // Persistir cambios de usuario/token
   useEffect(() => {
     if (user && token) {
       localStorage.setItem('calendar-user', JSON.stringify(user));
@@ -71,6 +85,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   }, [user, token]);
 
+  /**
+   * Inicia sesión contra /api/users/login.
+   * Devuelve un objeto { success, message } para manejar notificaciones en UI.
+   */
   const login = async (email: string, password?: string): Promise<{ success: boolean; message?: string }> => {
     try {
       const response = await fetch('/api/users/login', {
@@ -102,6 +120,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  /**
+   * Cambia el estado de un usuario (active/blocked). Requiere rol admin.
+   */
   const blockUser = async (email: string, status: 'active' | 'blocked') => {
     if (user?.role !== 'admin') return;
     try {
@@ -121,6 +142,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  /**
+   * Actualiza nombre/rol de un usuario. Requiere rol admin.
+   */
   const updateUser = async (email: string, name: string, role: 'admin' | 'user') => {
     if (user?.role !== 'admin') return;
     try {
@@ -141,12 +165,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  /**
+   * Obtiene el listado de usuarios para panel de administración.
+   * Si el usuario no es admin, evita la llamada y finaliza carga.
+   */
   const fetchAllUsers = useCallback(async () => {
     if (user?.role !== 'admin') {
-      setIsLoadingAllUsers(false); // Finaliza la carga si no es admin
+      setIsLoadingAllUsers(false);
       return;
     }
-    setIsLoadingAllUsers(true); // Inicia la carga
+    setIsLoadingAllUsers(true);
     try {
       const response = await fetch('/api/users');
       if (!response.ok) {
@@ -157,10 +185,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     } catch (error) {
       console.error('Error fetching users:', error);
     } finally {
-      setIsLoadingAllUsers(false); // Finaliza la carga
+      setIsLoadingAllUsers(false);
     }
   }, [user]);
 
+  // Auto-carga usuarios en modo admin
   useEffect(() => {
     if (user?.role === 'admin') {
       fetchAllUsers();
@@ -177,6 +206,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const openRegisterModal = () => setRegisterModalOpen(true);
   const closeRegisterModal = () => setRegisterModalOpen(false);
 
+  /**
+   * Registra un usuario vía /api/users.
+   * Por defecto, role='user'; se puede sobreescribir.
+   */
   const register = async (email: string, name: string, password: string, role: 'admin' | 'user' = 'user'): Promise<{ success: boolean; message?: string }> => {
     try {
       const response = await fetch('/api/users', {
@@ -202,6 +235,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  /**
+   * Elimina un usuario por email. Requiere rol admin.
+   */
   const deleteUser = async (email: string) => {
     if (user?.role !== 'admin') return;
     try {
@@ -221,7 +257,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     user,
     token,
     allUsers,
-    isLoadingAllUsers, // Exponer el nuevo estado de carga
+    isLoadingAllUsers,
     login,
     logout,
     isAdmin,

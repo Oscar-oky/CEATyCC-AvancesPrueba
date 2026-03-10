@@ -1,3 +1,9 @@
+/**
+ * Administración de ganadores y constancias.
+ * - Gestiona categorías, recuadros y ganadores; permite adjuntar PDFs y editar registros.
+ * - Integra autenticación de administrador y subida de archivos.
+ * - Pensado para alimentar la sección de Reconocimientos (descargas controladas).
+ */
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/AuthContext';
 import { Send, Plus, Trash2, Edit, X, Loader2, Upload, Eye } from 'lucide-react';
