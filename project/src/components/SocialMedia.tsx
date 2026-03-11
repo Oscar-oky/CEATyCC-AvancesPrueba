@@ -1,3 +1,9 @@
+/**
+ * Componente de redes sociales.
+ * - Muestra enlaces a redes sociales oficiales.
+ * - Incluye Facebook, Instagram y X (Twitter).
+ * - Diseño responsivo con animaciones hover.
+ */
 import React from 'react';
 import { Facebook, Instagram } from 'lucide-react';
 

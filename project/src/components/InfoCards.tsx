@@ -1,3 +1,9 @@
+/**
+ * Componente de tarjetas informativas.
+ * - Muestra cards con información clave de la aplicación.
+ * - Navegación a diferentes secciones mediante botones.
+ * - Diseño responsivo con animaciones hover.
+ */
 import React from 'react';
 import { infoCards } from '@/utils/data';
 import { useNavigate } from 'react-router-dom';

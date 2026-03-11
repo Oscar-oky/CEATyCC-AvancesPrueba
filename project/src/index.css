@@ -1,3 +1,9 @@
+/**
+ * Estilos globales de la aplicación.
+ * - Importa bases de Tailwind CSS.
+ * - Define estilos para impresión (oculta elementos no imprimibles).
+ * - Animación personalizada para transiciones de entrada.
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

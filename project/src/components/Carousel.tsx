@@ -1,3 +1,9 @@
+/**
+ * Carrusel de imágenes principal.
+ * - Muestra diapositivas con información de eventos importantes.
+ * - Navegación manual entre slides con controles.
+ * - Integración con eventos del calendario para mostrar información relevante.
+ */
 import React, { useState, useEffect, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, X, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';

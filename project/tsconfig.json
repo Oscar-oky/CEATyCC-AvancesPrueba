@@ -1,4 +1,12 @@
 {
+  /**
+   * Configuración de TypeScript para el proyecto.
+   * - Soporte JSX para React.
+   * - Target ES2020 con módulos ESNext.
+   * - Path alias '@' para imports desde src/.
+   * - Strict mode deshabilitado para flexibilidad.
+   * - Optimizado para bundler (Vite).
+   */
   "compilerOptions": {
     "jsx": "react-jsx",
     "target": "ES2020",

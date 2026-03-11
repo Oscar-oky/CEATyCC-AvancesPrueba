@@ -1,3 +1,10 @@
+/**
+ * Configuración de Vite para el proyecto.
+ * - Plugin React para soporte de JSX y desarrollo rápido.
+ * - Alias '@' para imports relativos desde src/.
+ * - Proxy para redirigir peticiones API al backend (puerto 5002).
+ * - Optimización de dependencias para desarrollo.
+ */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';

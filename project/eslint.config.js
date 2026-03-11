@@ -1,3 +1,10 @@
+/**
+ * Configuración de ESLint para el proyecto.
+ * - Soporte para TypeScript y React.
+ * - Reglas para hooks de React y hot module replacement.
+ * - Ignora directorio dist/ de compilación.
+ * - Configuración para entorno del navegador.
+ */
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';

@@ -1,3 +1,9 @@
+/**
+ * Configuración de Tailwind CSS.
+ * - Define rutas de contenido para escaneo de clases.
+ * - Animación personalizada 'scroll' para carruseles.
+ * - Extiende tema base con keyframes personalizados.
+ */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
