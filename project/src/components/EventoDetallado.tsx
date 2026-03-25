@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { chiengMoua, logoPrincipal, edgarVallejo, Bloque, bloque, juanRamon } from '../assets/images';
+import { chiengMoua, logoPrincipal, edgarVallejo, Bloque, bloque, juanRamon, rodrigoOrtiz, emilioVargas, fernandoNava, joseGuillermo, sandraEugenia, jorgeRaúl, davidIsaí, maryCarmen, angelIvan, veronicaCovarrubias, gerardoHernandez, jorgeIzaguirre } from '../assets/images';
 
 const EventoDetallado: React.FC = () => {
   const navigate = useNavigate();
@@ -238,7 +238,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={juanRamon}
+                      src={rodrigoOrtiz}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Dr. Juan Ramón Terven Salinas"
@@ -263,7 +263,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={emilioVargas}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -288,7 +288,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={fernandoNava}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -350,14 +350,13 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={joseGuillermo}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-
                     José Guillermo Chávez
                   </h3>
                   <p className="text-white/90 text-2xl font-medium mb-4">
@@ -454,7 +453,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={juanRamon}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -533,7 +532,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={sandraEugenia}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -559,7 +558,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={jorgeRaúl}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -609,7 +608,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={davidIsaí}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -661,18 +660,21 @@ const EventoDetallado: React.FC = () => {
 
                 {/* Comienzo de Ponentes 20 de Marzo */}
                 <div className="group relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-3">
-                  <div className="relative w-40 h-40 mx-auto mb-8">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative w-full h-full bg-gradient-to-br from-purple-600 to-pink-600 rounded-full border-4 border-white/30 shadow-2xl flex items-center justify-center">
-                      <span className="text-white text-4xl font-bold">HAJ</span>
-                    </div>
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-purple-300 mb-2 group-hover:text-purple-200 transition-colors">
-                    Dr. Héctor Acevedo Juárezssss
+                    Dr. Héctor Acevedo Juárez
                   </h3>
 
                   <p className="text-white/90 text-xl font-bold mb-4">
-                    Ciberseguridad: Protegiendo el Futuro Digital
+                    Ciberseguridad
                   </p>
 
                   <div className="mt-6 flex justify-center space-x-3">
@@ -684,18 +686,357 @@ const EventoDetallado: React.FC = () => {
 
                 <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
                   <div className="relative w-32 h-32 mx-auto mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-teal-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative w-full h-full bg-gradient-to-br from-green-600 to-teal-600 rounded-full border-4 border-white/30 shadow-2xl flex items-center justify-center">
-                      <span className="text-white text-3xl font-bold">MG</span>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={maryCarmen}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
                   </div>
-
                   <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
-                    Dra. María González López
+                    M.C. Mary Carmen García Carrillo
                   </h3>
 
                   <p className="text-white/90 text-xl font-medium mb-4">
-                    Inteligencia Artificial y Ética en el Desarrollo Tecnológico
+                    Desbloqueando el potencial de la Industria con la Transformación Digital y la convergencia IT/OT
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={angelIvan}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dr. Ángel Iván García Moreno
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    ¿Inteligencia Artificial o Racionalidad Artificial? La Era de las Máquinas que Deciden
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Ing. Alejandra Belén Medina Cruz
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Experiencia internacional para inspirar en ingeniería
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={veronicaCovarrubias}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Lic. Verónica Covarrubias
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    "Privacidad en juego: Gobernanza de datos en la era digital"
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Brenda Leticia Contreras Beltrán
+                  </h3>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Magdiel Elienai Jiménez Tabla
+                  </h3>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Sandra Anahí Ibarra Navarrete
+                  </h3>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Isidro Amarildo Bárcenas Reséndiz
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Foro de Egresados
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={gerardoHernandez}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Ing. Gerardo Hernández Calderón
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    "Inteligencia Artificial en AWS: retos y desafíos de la era moderna"
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dra. Armida González Lorence
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    La Inteligencia Artificial Aplicada en la Educación Superior
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={jorgeIzaguirre}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    MEC. Jorge Alberto Izaguirre Ysaguirre
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Cloud Computing como habilitador de la Transformación Digital: de la infraestructura a la inteligencia
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dr. Víctor Alberto Gómez Pérez
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Aprender en todas partes: el cómputo ubicuo y la educación del futuro
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Mtro. Ervin José Prado López
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Del Código a la Inteligencia: Cómo la IA esta Transformando el Desarrollo y el Futuro de la Ciberseguridad
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dr. Omar Rodríguez Abreo
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Algoritmos metaheurísticos: cómputo evolutivo
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dr. Pablo Alan Calderón Carrasco
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    La Inteligencia Artificial Aplicada a los Sistemas Agrícolas para una producción de alimentos más sostenibles
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dr. Miguel Ángel Carapia González
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Matriz de especialidades de la IA en Querétaro
+                  </p>
+
+                  <div className="mt-6 flex justify-center space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                  </div>
+                </div>
+
+                <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <img
+                      src={edgarVallejo}
+                      className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                      loading="lazy"
+                      alt="Mtro. Edgar Vallejo Cruz"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2 group-hover:text-green-200 transition-colors">
+                    Dr. Moyocoyani Molina Espíritu
+                  </h3>
+
+                  <p className="text-white/90 text-xl font-medium mb-4">
+                    Garantizando la confianza sobre la velocidad. Estrategias de evaluación en la era de la IA Generativa.
                   </p>
 
                   <div className="mt-6 flex justify-center space-x-3">
@@ -711,13 +1052,6 @@ const EventoDetallado: React.FC = () => {
       </div>
 
 
-
-
-
-
-
-
-
       {/* Sección de programa */}
       <div className="py-8 sm:py-12 px-3 sm:px-4">
         <div className="max-w-6xl mx-auto">
@@ -725,7 +1059,6 @@ const EventoDetallado: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-8">Programa</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-              {/* Día 1 */}
               <div className="mb-8">
                 <h3 className="text-lg sm:text-xl font-bold bg-blue-900 text-white py-2 px-3 sm:px-4 mb-4">
                   JUEVES 19 DE MARZO
@@ -733,88 +1066,222 @@ const EventoDetallado: React.FC = () => {
 
                 <div className="space-y-4">
                   <div className="grid grid-cols-12 gap-3 p-3 sm:p-4 hover:bg-gray-50 rounded transition-all duration-300 hover:shadow-sm hover:-translate-y-1" style={{ transitionDelay: '0.05s' }}>
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">08:00 - 09:00</div>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">08:30 - 09:00</div>
+                    <div className="col-span-full sm:col-span-8">Recepción</div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-3 sm:p-4 hover:bg-gray-50 rounded transition-all duration-300 hover:shadow-sm hover:-translate-y-1" style={{ transitionDelay: '0.05s' }}>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">08:30 - 09:00</div>
                     <div className="col-span-full sm:col-span-8">Inauguración</div>
                   </div>
+
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">09:00 - 10:00</div>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">09:30 - 10:20</div>
                     <div className="col-span-full sm:col-span-8">
-                      <span className="font-medium">FDr. Chieng Moua / NeuralApps </span>
-                      <p className="font-medium">Magistral</p>
+                      <span className="font-medium">Construyendo agentes de IA para automatizar y gestionar procesos de trabajo</span>
                       <div className="mb-2"></div>
-                      <p>Construyendo agentes de IA para automatizar y gestionar procesos de trabajo.</p>
-                      <p className="text-sm text-gray-600">(En Inglés)</p>
+                      <p className="text-sm text-gray-600">Dr. Chieng Moua</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-3 sm:p-4 hover:bg-gray-50 rounded transition-all duration-300 hover:shadow-sm hover:-translate-y-1" style={{ transitionDelay: '0.05s' }}>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">10:00 - 20:00</div>
+                    <div className="col-span-full sm:col-span-8">Carteles de Proyectos y Trabajos de Investigación</div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">10:00 - 14:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Torneo de Programación</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Categoría Básica</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
                     <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">10:20 - 11:10</div>
-                    <div className="col-span-full sm:col-span-8">Foro Mujeres STEM Egresadas de Universidades Querétaro
-                      <p className="font-medium">Sala 1</p>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Foro: Mujeres en STEM Egresadas de IES</span>
                       <div className="mb-2"></div>
-                      <p>Tecnologia que transforma vidas: IA y Accesibilidad educativa.</p>
-                      <p className="font-medium">Sala 2</p>
-                      <span className="font-medium">MIP. Rodrigo Ortiz Sánchez</span>
+                      <p className="text-sm text-gray-600">Ing. Abigail Santamaría Ramírez (Semblanza), Ing. Alondra María García Callejas e Ing. Alejandra Belén Medina Cruz</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Tecnología que transforma vidas: IA y accesibilidad educativa</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">MIP. Rodrigo Ortiz Sánchez</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
                     <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">11:10 - 12:00</div>
-                  </div>
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">12:20 - 1:10
-                      <p>1:10 - 2:00 </p>
-                    </div>
-                    <div className="col-span-full sm:col-span-8">Foro Empresas Auditorio
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Mantenimiento predictivo</span>
                       <div className="mb-2"></div>
-                      <p>Del Algoritmo a la estrategia: Pensamiento Computacional</p>
-                      <p className="font-medium">2.0. Sala 2</p>
-                      <span className="font-medium">Ing. Juan Carlos de Jesús Resendi</span>
+                      <p className="text-sm text-gray-600">Dr. Emilio Vargas</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">2:00 - 2:50</div>
-                  </div>
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-
-
-                  <h3 className="text-lg sm:text-xl font-bold bg-gray-900 text-white py-3 px-4 sm:px-6 w-full mb-4">
-                    Receso
-                    <span className="text-center text-white">  2:50 - 4:00</span>
-                  </h3>
-
-
-
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">4:00 - 4:50</div>
-                  </div>
-
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">4:50 - 5:40</div>
-                  </div>
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">6:00 - 6:50
-                    </div>
-                    <div className="col-span-full sm:col-span-8">Algoritmos en psicología positiva para la detección de riesgos en salud mental
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Big Data, Big Decisions</span>
                       <div className="mb-2"></div>
-                      <p className="font-medium">Sala 1</p>
-                      <span className="font-medium">Dr. Jorge Raúl Palacios Delgado</span>
+                      <p className="text-sm text-gray-600">Fernando Nava Velázquez</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-3 sm:p-4 hover:bg-gray-50 rounded transition-all duration-300 hover:shadow-sm hover:-translate-y-1" style={{ transitionDelay: '0.05s' }}>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">12:00 - 12:20</div>
+                    <div className="col-span-full sm:col-span-8">COFFEE BREAK</div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">12:20 - 13:10</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Foro: "La Nube como Habilitador de IA Generativa en Empresas: Casos, Retos y Aprendizajes"</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Fernando Nava Velázquez, Ing. Magdiel Elienai Jiménez Tabla, Ing. Ramón Alexandra Soltero Somella, Mta. María Fernanda Montes de Oca y David Adissi</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">6:50 - 7:40</div>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Emprender desde las Raíces en la Era Digital: Tribu, Tecnología y Propósito</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">José Guillermo Chávez</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">13:10 - 14:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Foro: "La Nube como Habilitador de IA Generativa en Empresas: Casos, Retos y Aprendizajes"</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Fernando Nava Velázquez, Ing. Magdiel Elienai Jiménez Tabla, Ing. Ramón Alexandra Soltero Somella, Mta. María Fernanda Montes de Oca y David Adissi</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Del Algoritmo a la Estrategia: Pensamiento Computacional 2.0</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Ing. Juan Carlos de Jesús Reséndiz</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">14:00 - 14:50</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Arquitectura de la Ciberseguridad: La Normatividad y los Fundamentos como el Kernel de la Defensa Digital</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">M.C. Diego Iván Rodríguez Sánchez</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">"Rompiendo silos: de departamentos a equipos dinámicos."</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Ing. Wilson Calderón</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-3 sm:p-4 hover:bg-gray-50 rounded transition-all duration-300 hover:shadow-sm hover:-translate-y-1" style={{ transitionDelay: '0.05s' }}>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">14:50 - 16:00</div>
+                    <div className="col-span-full sm:col-span-8">RECESSO</div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">16:00 - 20:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Torneo de Programación</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Categoría Avanzada</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">16:00 - 16:50</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">¿Por qué la IA inventa respuestas? Entendiendo las alucinaciones en los modelos de lenguaje</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Juan Ramón Terven Salinas</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Ingeniería y Ciencia de Datos como Infraestructura Invisible de las Plataformas Escalables de IA</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. José Alejandro Ascencio Laguna</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">16:50 - 17:40</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Diseño y Desarrollo Web Asistido con Inteligencia Artificial</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Juan Andrés García Morales</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Mujeres liderando la Revolución de lA y Cloud Computing</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">MMI. Sandra Eugenia Beristain Arroyo</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-3 sm:p-4 hover:bg-gray-50 rounded transition-all duration-300 hover:shadow-sm hover:-translate-y-1" style={{ transitionDelay: '0.05s' }}>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">17:40 - 18:00</div>
+                    <div className="col-span-full sm:col-span-8">COFFEE BREAK</div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">18:00 - 18:50</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Algoritmos en psicología positiva para la detección de riesgos en salud mental</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Jorge Raúl Palacios Delgado</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">El ecosistema de los semiconductores como motor de la transformación tecnológica</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dra. Delia María Hurtado Castañeda</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">18:50 - 19:40</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">"Capa x Capa: Imprimiendo el Futuro, hoy"</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Ing. David Isaí Basurto Torres</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">"Fundamentos Prácticos de Inteligencia Artificial para Empresarios"</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Lic. Christian Ricardo Díaz Ugartechea</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -828,60 +1295,207 @@ const EventoDetallado: React.FC = () => {
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
                     <div className="col-span-full sm:col-span-8">
                     </div>
-
                   </div>
+
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-8">Ciberseguridad
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">09:00 - 10:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Ciberseguridad</span>
                       <div className="mb-2"></div>
-                      <p className="font-medium">Dr. Héctor Acevedo Juárez</p>
-                      <span className="font-medium">Magistral</span>
+                      <p className="text-sm text-gray-600">Dr. Héctor Acevedo Juárez</p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-8">Cisco: Conectando el Mañana
-                      <div className="mb-2">Visión, Estrategia e Innovación</div>
-
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">10:00 - 14:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Torneo de Hacking</span>
                       <div className="mb-2"></div>
-
-                      <div className="mb-2">¿Inteligencia Artificial o Racionalidad Artificial? La Era de las Máquinas que Deciden</div>
-                      <p className="font-medium">Dr. Ángel Ivan Garcia Moreno</p>
-                      <span className="font-medium">(CIDESI) Sala 2 </span>
-                    </div>
-                  </div>
-
-
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-8">Experiencia Internacional para inspirar en ingeniería.
-                      <p className="font-medium">Sala 1</p>
-                      <span className="font-medium">Ing. Alejandra Medina </span>
+                      <p className="text-sm text-gray-600"></p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-8">Foro Egresados.
-                      <p className="font-medium">Sala 1</p>
-                      <span className="font-medium">Magistral</span>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">10:00 - 20:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Carteles de Proyectos y Trabajos de Investigación</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600"></p>
                     </div>
                   </div>
-
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded"> </div>
-
 
                   <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
-                    <div className="col-span-full sm:col-span-8">Cloud Computing como habilitador de la Transformación Digital: De la Infraestructura a la Inteligencia
-                      <p className="font-medium">Sala 1</p>
-                      <span className="font-medium">MEC. Jorge Alberto Izaguirre Ysaguirre </span>
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">10:20 - 11:10</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Desbloqueando el potencial de la Industria con la Transformación Digital y la convergencia IT/OT</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">M.C. Mary Carmen García Carrillo</p>
                     </div>
                   </div>
 
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">¿Inteligencia Artificial o Racionalidad Artificial? La Era de las Máquinas que Deciden</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Ángel Iván García Moreno</p>
+                    </div>
+                  </div>
 
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">11:10 - 12:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Experiencia internacional para inspirar en ingeniería</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Ing. Alejandra Belén Medina Cruz</p>
+                    </div>
+                  </div>
 
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">"Privacidad en juego: Gobernanza de datos en la era digital"</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Lic. Verónica Covarrubias</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">12:00 - 12:20</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">COFFEE BREAK</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600"></p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">12:20 - 13:10</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Foro de Egresados</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Brenda Leticia Contreras Beltrán, Magdiel Elienai Jiménez Tabla, Sandra Anahí Ibarra Navarrete e Isidro Amarildo Bárcenas Reséndiz.</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">"Inteligencia Artificial en AWS: retos y desafíos de la era moderna"</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Ing. Gerardo Hernández Calderón</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">13:10 - 14:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Foro de Egresados</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Brenda Leticia Contreras Beltrán, Magdiel Elienai Jiménez Tabla, Sandra Anahí Ibarra Navarrete e Isidro Amarildo Bárcenas Reséndiz.</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">La Inteligencia Artificial Aplicada en la Educación Superior</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dra. Armida González Lorence</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">14:00 - 14:50</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Cloud Computing como habilitador de la Transformación Digital: de la infraestructura a la inteligencia</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">MEC. Jorge Alberto Izaguirre Ysaguirre</p>
+                    </div>
+                  </div>
+
+                  
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Aprender en todas partes: el cómputo ubicuo y la educación del futuro</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Víctor Alberto Gómez Pérez</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">14:50 - 16:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">R E C E S O</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600"></p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">16:00 - 16:50</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Del Código a la Inteligencia: Cómo la IA esta Transformando el Desarrollo y el Futuro de la Ciberseguridad</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Mtro. Ervin José Prado López</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Algoritmos metaheurísticos: cómputo evolutivo</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Omar Rodríguez Abreo</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">16:50 - 17:40</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">La Inteligencia Artificial Aplicada a los Sistemas Agrícolas para una producción de alimentos más sostenibles</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Pablo Alan Calderón Carrasco</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0"></div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Matriz de especialidades de la IA en Querétaro</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Miguel Ángel Carapia González</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">17:40 - 18:00</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Premiaciones: Programación, Hacking, Carteles</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600"></p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">18:00 - 18:50</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Garantizando la confianza sobre la velocidad. Estrategias de evaluación en la era de la IA Generativa.</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600">Dr. Moyocoyani Molina Espíritu</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded">
+                    <div className="col-span-full sm:col-span-4 font-medium text-gray-700 mb-1 sm:mb-0">18:50 - 19:40</div>
+                    <div className="col-span-full sm:col-span-8">
+                      <span className="font-medium">Palabras de Cierre</span>
+                      <div className="mb-2"></div>
+                      <p className="text-sm text-gray-600"></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

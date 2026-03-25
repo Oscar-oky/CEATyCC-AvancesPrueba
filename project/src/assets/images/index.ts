@@ -65,10 +65,49 @@ export const logoTecnmSjr = new URL('../logos/TECNMSJR.png', import.meta.url).hr
 // Por favor, agrega la imagen estructuraEstanciasEstadias.png en el directorio /src/assets/images/
 export const estructuraEstanciasEstadias = new URL('./estructuraEstanciasEstadias.png', import.meta.url).href;
 
+
+
+
+
+
+
+
+
+
+
 // Imagen de ponentes
+// Ponentes 19 de Marzo
 export const chiengMoua = new URL('./Chieng Moua.png', import.meta.url).href;
 export const edgarVallejo = new URL('./Mtro. Edgar Vallejo Cruz.png', import.meta.url).href;
 export const juanRamon = new URL('./Dr. Juan Ramón Terven Salinas.png', import.meta.url).href;
+export const rodrigoOrtiz = new URL('./Rodrigo Ortiz Sánchez.png', import.meta.url).href;
+export const emilioVargas = new URL('./Emilio Vargas.png', import.meta.url).href;
+export const fernandoNava = new URL('./Fernando Nava.png', import.meta.url).href;
+export const joseGuillermo = new URL('./Jose Guillermo.png', import.meta.url).href;
+export const sandraEugenia = new URL('./Sandra Eugenia.png', import.meta.url).href;
+export const jorgeRaúl = new URL('./Jorge Raúl.png', import.meta.url).href;
+export const davidIsaí = new URL('./David Isaí.png', import.meta.url).href;
+
+//Ponentes 20 de Marzo
+export const maryCarmen = new URL('./Mary Carmen.png', import.meta.url).href;
+export const angelIvan = new URL('./Angel Ivan.png', import.meta.url).href;
+export const veronicaCovarrubias = new URL('./Veronica Covarrubias.png', import.meta.url).href;
+export const gerardoHernandez = new URL('./Gerardo Hernandez.png', import.meta.url).href;
+export const jorgeIzaguirre = new URL('./Jorge Izaguirre.png', import.meta.url).href;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Imagenes de Universidades_Simbologia
 //Administracion y Negocios
