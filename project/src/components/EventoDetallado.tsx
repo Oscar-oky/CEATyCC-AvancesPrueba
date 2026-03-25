@@ -155,11 +155,11 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
               <h3 className="text-4xl font-bold text-yellow-300 mb-3 group-hover:text-yellow-200 transition-colors"></h3>
-              <h3 className="text-3xl font-bold text-yellow-300 mb-2 group-hover:text-yellow-200 transition-colors">
-                Dr. Chieng Moua 
+              <h3 className="text-2xl font-bold text-yellow-300 mb-2 group-hover:text-yellow-200 transition-colors">
+                Dr. Chieng Moua
               </h3>
 
-              <p className="text-white/90 text-1xl font-bold mb-4">
+              <p className="text-white/90 text-2xl font-bold mb-4">
                 Construyendo agentes de IA para automatizar y gestionar procesos de trabajo
               </p>
 
@@ -186,12 +186,18 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Foro: Mujeres en STEM Egresadas de IES
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Ing. Abigail Santamaría Ramírez
+              </h3>
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Ing. Alondra María García Callejas e Ing
+              </h3>
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Alejandra Belén Medina Cruz
               </h3>
 
-              <p className="text-white/90 text-1xl font-medium mb-4">
-                Ing. Abigail Santamaría Ramírez (Semblanza), Ing. Alondra María García Callejas e Ing. Alejandra Belén Medina Cruz
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Foro: Mujeres en STEM Egresadas de IES
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -217,13 +223,12 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Tecnología que transforma vidas: IA y accesibilidad educativa
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 MIP. Rodrigo Ortiz Sánchez
+              </h3>
 
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Tecnología que transforma vidas: IA y accesibilidad educativa
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -247,12 +252,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Mantenimiento predictivo
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Dr. Emilio Vargas
               </h3>
 
-              <p className="text-white/90 text-1xl font-medium mb-4">
-                Dr. Emilio Vargas              </p>
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Mantenimiento predictivo.
+              </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
 
@@ -276,12 +282,12 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Big Data, Big Decisions
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Fernando Nava Velázquez
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Big Data, Big Decisions
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -306,13 +312,24 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+              <h3 className="text-1xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Fernando Nava Velázquez
+              </h3>
+              <h3 className="text-1xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Ing. Magdiel Elienai Jiménez Tabla
+              </h3>
+              <h3 className="text-1xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Ing. Ramón Alexandra Soltero Somella
+              </h3>
+              <h3 className="text-1xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Mta. María Fernanda Montes de Oca
+              </h3>
+              <h3 className="text-1xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                David Adissi
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
                 Foro: "La Nube como Habilitador de IA Generativa en Empresas: Casos, Retos y Aprendizajes"
-
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
-                Fernando Nava Velázquez, Ing. Magdiel Elienai Jiménez Tabla, Ing. Ramón Alexandra Soltero Somella, Mta. María Fernanda Montes de Oca y David Adissi
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -337,12 +354,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Emprender desde las Raíces en la Era Digital: Tribu, Tecnología y Propósito
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                
                 José Guillermo Chávez
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Emprender desde las Raíces en la Era Digital: Tribu, Tecnología y Propósito
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -356,35 +374,6 @@ const EventoDetallado: React.FC = () => {
               </div>
             </div>
 
-            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
-              <div className="relative w-32 h-32 mx-auto mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <img
-                  src={edgarVallejo}
-                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
-                  loading="lazy"
-                  alt="Mtro. Edgar Vallejo Cruz"
-                />
-              </div>
-
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Foro: "La Nube como Habilitador de IA Generativa en Empresas: Casos, Retos y Aprendizajes"
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
-                Fernando Nava Velázquez, Ing. Magdiel Elienai Jiménez Tabla, Ing. Ramón Alexandra Soltero Somella, Mta. María Fernanda Montes de Oca y David Adissi
-              </p>
-
-              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
-
-              </div>
-
-              <div className="mt-6 flex justify-center space-x-3">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
-              </div>
-            </div>
 
             <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
               <div className="relative w-32 h-32 mx-auto mb-6">
@@ -397,12 +386,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Del Algoritmo a la Estrategia: Pensamiento Computacional 2.0
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                
                 Ing. Juan Carlos de Jesús Reséndiz
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Del Algoritmo a la Estrategia: Pensamiento Computacional 2.0
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -427,12 +417,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Arquitectura de la Ciberseguridad: La Normatividad y los Fundamentos como el Kernel de la Defensa Digital
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 M.C. Diego Iván Rodríguez Sánchez
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                
+                Arquitectura de la Ciberseguridad: La Normatividad y los Fundamentos como el Kernel de la Defensa Digital
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -457,12 +448,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                "Rompiendo silos: de departamentos a equipos dinámicos."
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Ing. Wilson Calderón
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                
+                "Rompiendo silos: de departamentos a equipos dinámicos."
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -487,12 +479,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                ¿Por qué la IA inventa respuestas? Entendiendo las alucinaciones en los modelos de lenguaje
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Dr. Juan Ramón Terven Salinas
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                
+                ¿Por qué la IA inventa respuestas? Entendiendo las alucinaciones en los modelos de lenguaje
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -517,12 +510,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Ingeniería y Ciencia de Datos como Infraestructura Invisible de las Plataformas Escalables de IA
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Dr. José Alejandro Ascencio Laguna
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                
+                Ingeniería y Ciencia de Datos como Infraestructura Invisible de las Plataformas Escalables de IA
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -547,12 +541,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Diseño y Desarrollo Web Asistido con Inteligencia Artificial
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Dr. Juan Andrés García Morales
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                
+                Diseño y Desarrollo Web Asistido con Inteligencia Artificial
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -577,12 +572,13 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Mujeres liderando la Revolución de lA y Cloud Computing
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 MMI. Sandra Eugenia Beristain Arroyo
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                
+                Mujeres liderando la Revolución de lA y Cloud Computing
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -607,12 +603,12 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Algoritmos en psicología positiva para la detección de riesgos en salud mental
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Dr. Jorge Raúl Palacios Delgado
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                Algoritmos en psicología positiva para la detección de riesgos en salud mental
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -637,12 +633,12 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                El ecosistema de los semiconductores como motor de la transformación tecnológica
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Dra. Delia María Hurtado Castañeda
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                El ecosistema de los semiconductores como motor de la transformación tecnológica
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -667,12 +663,12 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                "Capa x Capa: Imprimiendo el Futuro, hoy"
-              </h3>
-
-              <p className="text-white/90 text-1xl font-medium mb-4">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
                 Ing. David Isaí Basurto Torres
+              </h3>
+
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                "Capa x Capa: Imprimiendo el Futuro, hoy"
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -698,12 +694,12 @@ const EventoDetallado: React.FC = () => {
                 />
               </div>
 
-              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                "Fundamentos Prácticos de Inteligencia Artificial para Empresarios"
+              <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Lic. Christian Ricardo Díaz Ugartechea
               </h3>
 
-              <p className="text-white/90 text-1xl font-medium mb-4">
-                Lic. Christian Ricardo Díaz Ugartechea
+              <p className="text-white/90 text-2xl font-medium mb-4">
+                "Fundamentos Prácticos de Inteligencia Artificial para Empresarios"
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
@@ -716,17 +712,6 @@ const EventoDetallado: React.FC = () => {
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
               </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
           </div>
         </div>
       </div>
