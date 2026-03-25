@@ -156,37 +156,15 @@ const EventoDetallado: React.FC = () => {
               </div>
               <h3 className="text-4xl font-bold text-yellow-300 mb-3 group-hover:text-yellow-200 transition-colors"></h3>
               <h3 className="text-3xl font-bold text-yellow-300 mb-2 group-hover:text-yellow-200 transition-colors">
-                Chieng Moua
+                Dr. Chieng Moua 
               </h3>
 
               <p className="text-white/90 text-1xl font-bold mb-4">
-                CEO & Head of Product en NeuralApps.ai
+                Construyendo agentes de IA para automatizar y gestionar procesos de trabajo
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
-                <p>Chieng Moua es un reconocido estratega en inteligencia artificial y
-                  líder empresarial con más de 25 años de trayectoria impulsando la
-                  transformación digital en distintos sectores. Actualmente dirige
-                  neuralapps.ai como Chief Executive Officer & Head of Product,
-                  liderando el diseño de soluciones de automatización inteligente y
-                  el desarrollo de productos de IA de nueva generación enfocados
-                  en mercados altamente regulados.</p>
 
-                <p>Graduado del Programa Ejecutivo en Inteligencia Artificial del MIT,
-                  Chieng Moua ha consolidado una carrera destacada en la
-                  convergencia entre innovación tecnológica, arquitectura
-                  empresarial y estrategia corporativa. Su liderazgo ha sido clave en
-                  la transformación de compañías Fortune 500 en sectores como
-                  banca, salud, retail, energía y gobierno, logrando resultados de
-                  negocio tangibles y promoviendo la adopción responsable y
-                  escalable de la inteligencia artificial.</p>
-
-                <p>Antes de incorporarse a neuralapps.ai, ocupó posiciones de
-                  liderazgo en GLYNT.AI, SS&C Technologies, Blue Prism, Oracle y
-                  TIBCO. En Blue Prism dirigió el proceso de salida a bolsa (IPO) y la
-                  adquisición por 1.7 mil millones de dólares; mientras que en
-                  GLYNT.AI reposicionó la empresa como referente en datos de
-                  sostenibilidad, multiplicando los ingresos por más de diez.</p>
               </div>
 
               <div className="mt-6 flex justify-center space-x-3">
@@ -209,35 +187,15 @@ const EventoDetallado: React.FC = () => {
               </div>
 
               <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Mtro. Edgar Vallejo Cruz
+                Foro: Mujeres en STEM Egresadas de IES
               </h3>
 
               <p className="text-white/90 text-1xl font-medium mb-4">
-                Director General para NeuralApps.ai en México
+                Ing. Abigail Santamaría Ramírez (Semblanza), Ing. Alondra María García Callejas e Ing. Alejandra Belén Medina Cruz
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
-                <p>El Mtro. Edgar Vallejo es experto en el diseño e implementación de
-                  estrategias de gobernanza, sustentabilidad y transformación digital.
-                  A lo largo de su trayectoria ha desarrollado una sólida experiencia en
-                  el análisis de marcos regulatorios, iniciativas de sostenibilidad y
-                  estrategias ESG, así como en la integración de soluciones
-                  tecnológicas avanzadas. Ha impulsado proyectos de alto impacto
-                  orientados a fortalecer la gobernanza institucional, la eficiencia
-                  operativa, la transparencia y la toma de decisiones estratégicas,
-                  incluyendo el desarrollo de iniciativas de gobernanza de la
-                  inteligencia artificial (AI Governance)..</p>
 
-                <p>Cuenta con amplia experiencia en la construcción de alianzas
-                  estratégicas con el sector privado, organismos multilaterales y
-                  gobiernos locales, participando activamente en el diseño de
-                  estrategias institucionales, pilotos tecnológicos y programas de
-                  transformación corporativa.</p>
-
-                <p>Es Licenciado en Derecho y posee dos maestrías por parte de The
-                  George Washington University y The George Washington University
-                  Law School en Washington, D.C., donde se especializó en Estudios
-                  Legales, así como en Derecho Ambiental y Energético.</p>
               </div>
 
               <div className="mt-6 flex justify-center space-x-3">
@@ -260,30 +218,16 @@ const EventoDetallado: React.FC = () => {
               </div>
 
               <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                Dr. Juan Ramón Terven Salinas
+                Tecnología que transforma vidas: IA y accesibilidad educativa
               </h3>
 
               <p className="text-white/90 text-1xl font-medium mb-4">
-                Profesor investigador del Instituto Politécnico Nacional en CICATA Querétaro
+                MIP. Rodrigo Ortiz Sánchez
+
               </p>
 
               <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
-                <p>El Dr. Juan Ramón Terven Salinas es profesor investigador del Instituto Politécnico Nacional, adscrito al CICATA Querétaro,
-                  y un referente en el área de inteligencia artificial y aprendizaje profundo aplicado.
-                  Su trayectoria combina investigación académica de alto impacto,
-                  experiencia industrial en Silicon Valley y una sólida labor de divulgación científica.</p>
 
-                <p>Cuenta con formación académica especializada en áreas relacionadas con tecnología e innovación, 
-                  lo que le ha permitido desarrollar una carrera interdisciplinaria enfocada en la inteligencia artificial, la visión por computadora y la interacción humano-máquina.
-                  En 2013 realizó una estancia de investigación en el Massachusetts Institute of Technology (MIT), 
-                  donde trabajó en técnicas de reconstrucción tridimensional.
-                  Posteriormente, en 2014, fue investigador interno en Microsoft Research, en Redmond, Washington, colaborando en proyectos de Interfaces Humano-Máquina.</p>
-
-                <p>Sus áreas de investigación abarcan la inteligencia artificial basada en aprendizaje profundo, con aplicaciones que van desde la medicina hasta la interacción humano-máquina. 
-                  En esta ponencia abordará de manera accesible el fenómeno de las alucinaciones en los modelos de lenguaje, 
-                  explicando por qué ocurren desde la perspectiva de su entrenamiento y funcionamiento, los riesgos asociados a su uso en entornos profesionales y empresariales, y 
-                  presentando estrategias prácticas y actuales para mitigar este problema, incluyendo técnicas de verificación, 
-                  uso de fuentes externas y buenas prácticas para sistemas desplegados en la nube.</p>
               </div>
               <div className="mt-6 flex justify-center space-x-3">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
@@ -291,6 +235,498 @@ const EventoDetallado: React.FC = () => {
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
               </div>
             </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Mantenimiento predictivo
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Dr. Emilio Vargas              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Big Data, Big Decisions
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Fernando Nava Velázquez
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Foro: "La Nube como Habilitador de IA Generativa en Empresas: Casos, Retos y Aprendizajes"
+
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Fernando Nava Velázquez, Ing. Magdiel Elienai Jiménez Tabla, Ing. Ramón Alexandra Soltero Somella, Mta. María Fernanda Montes de Oca y David Adissi
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Emprender desde las Raíces en la Era Digital: Tribu, Tecnología y Propósito
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                José Guillermo Chávez
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Foro: "La Nube como Habilitador de IA Generativa en Empresas: Casos, Retos y Aprendizajes"
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Fernando Nava Velázquez, Ing. Magdiel Elienai Jiménez Tabla, Ing. Ramón Alexandra Soltero Somella, Mta. María Fernanda Montes de Oca y David Adissi
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Del Algoritmo a la Estrategia: Pensamiento Computacional 2.0
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Ing. Juan Carlos de Jesús Reséndiz
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Arquitectura de la Ciberseguridad: La Normatividad y los Fundamentos como el Kernel de la Defensa Digital
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                M.C. Diego Iván Rodríguez Sánchez
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                "Rompiendo silos: de departamentos a equipos dinámicos."
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Ing. Wilson Calderón
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                ¿Por qué la IA inventa respuestas? Entendiendo las alucinaciones en los modelos de lenguaje
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Dr. Juan Ramón Terven Salinas
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Ingeniería y Ciencia de Datos como Infraestructura Invisible de las Plataformas Escalables de IA
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Dr. José Alejandro Ascencio Laguna
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Diseño y Desarrollo Web Asistido con Inteligencia Artificial
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Dr. Juan Andrés García Morales
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Mujeres liderando la Revolución de lA y Cloud Computing
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                MMI. Sandra Eugenia Beristain Arroyo
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                Algoritmos en psicología positiva para la detección de riesgos en salud mental
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Dr. Jorge Raúl Palacios Delgado
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                El ecosistema de los semiconductores como motor de la transformación tecnológica
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Dra. Delia María Hurtado Castañeda
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                "Capa x Capa: Imprimiendo el Futuro, hoy"
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Ing. David Isaí Basurto Torres
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+
+            <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 hover:bg-white/20 hover:scale-105 hover:-translate-y-2">
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img
+                  src={edgarVallejo}
+                  className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
+                  loading="lazy"
+                  alt="Mtro. Edgar Vallejo Cruz"
+                />
+              </div>
+
+              <h3 className="text-3xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
+                "Fundamentos Prácticos de Inteligencia Artificial para Empresarios"
+              </h3>
+
+              <p className="text-white/90 text-1xl font-medium mb-4">
+                Lic. Christian Ricardo Díaz Ugartechea
+              </p>
+
+              <div className="space-y-3 text-white/80 text-1xl leading-relaxed">
+
+              </div>
+
+              <div className="mt-6 flex justify-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
