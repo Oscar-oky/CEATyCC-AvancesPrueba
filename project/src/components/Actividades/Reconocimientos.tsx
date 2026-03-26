@@ -136,20 +136,26 @@ const Reconocimientos: React.FC = () => {
     setCurrentPdf({ url: absolutePdfUrl, ownerEmail, fileName });
     setEmailModalType(type);
     
-    if (isLoggedIn()) {
-      // Usuario está logueado, verificar si es admin o su correo coincide
-      if (user && (isAdmin() || user.email.toLowerCase() === ownerEmail.toLowerCase())) {
-        // Es admin o correo coincide, descargar directamente usando blob
-        downloadAndOpenPdf(absolutePdfUrl, fileName);
-      } else {
-        // No es admin y correo no coincide, mostrar mensaje de error
-        setEmailError('Tu correo electrónico no coincide con el propietario del reconocimiento');
-        setEmailSuccess('');
-        setIsEmailModalOpen(true);
-      }
+    if (!isLoggedIn()) {
+      // Usuario no está logueado, debe registrarse primero
+      setEmailError('Necesitas estar registrado para descargar reconocimientos. Por favor, inicia sesión o regístrate.');
+      setEmailSuccess('');
+      setIsEmailModalOpen(true);
+      return;
+    }
+    
+    // Usuario está logueado, verificar permisos
+    if (user && isAdmin()) {
+      // Es admin, puede descargar cualquier PDF sin restricciones
+      downloadAndOpenPdf(absolutePdfUrl, fileName);
+    } else if (user && user.email.toLowerCase() === ownerEmail.toLowerCase()) {
+      // Es el dueño del reconocimiento, puede descargar
+      downloadAndOpenPdf(absolutePdfUrl, fileName);
     } else {
-      // Usuario no está logueado, abrir modal de login
-      openLoginModal();
+      // No es admin ni el dueño, no puede descargar
+      setEmailError('Solo el administrador o el propietario del reconocimiento puede descargar este PDF.');
+      setEmailSuccess('');
+      setIsEmailModalOpen(true);
     }
   };
 
@@ -595,14 +601,26 @@ const Reconocimientos: React.FC = () => {
               <div className="flex justify-center mb-4 sm:mb-6">
                 <Shield className="w-12 h-12 sm:w-16 sm:h-16 text-red-500" />
               </div>
-              <p className="text-gray-600 mb-4 sm:mb-8 text-center text-sm sm:text-base">
+              <p className="text-gray-600 mb-6 sm:mb-8 text-center text-sm sm:text-base">
                 {emailError}
               </p>
               <div className="flex gap-3">
+                {!isLoggedIn() && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsEmailModalOpen(false);
+                      openLoginModal();
+                    }}
+                    className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline text-sm"
+                  >
+                    Iniciar Sesión
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={() => setIsEmailModalOpen(false)}
-                  className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline text-sm"
+                  className={`${!isLoggedIn() ? 'w-1/2' : 'w-full'} px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold rounded focus:outline-none focus:shadow-outline text-sm`}
                 >
                   Cerrar
                 </button>

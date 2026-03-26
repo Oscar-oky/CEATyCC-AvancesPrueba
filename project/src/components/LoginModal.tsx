@@ -113,13 +113,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin, onOpe
     return (
       <form onSubmit={handleSubmit} className="p-6 space-y-4">
         <div className="text-center mb-6">
-          <p className="text-gray-600">
-            Para la obtención del Reconomiento tienes que Iniciar session o Registrarte primero 
-          </p>
-          <br />
-          <strong>IMPORTANTE</strong>
-          <p>Solo podra descargar el PDF el dueño del Reconomiento</p>
-
           
         </div>
 
