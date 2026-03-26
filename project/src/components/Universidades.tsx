@@ -983,7 +983,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
               <div className="flex items-center space-x-2 mb-4">
                 <input
                   type="text"
-                  placeholder="Buscar carreras..."
+                  placeholder="Buscar Universidad"
                   className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -1019,14 +1019,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
                         className="absolute z-20 mt-2 w-full bg-white rounded-lg shadow-xl overflow-hidden p-4 border border-gray-200"
                         style={{ top: '100%', left: 0 }}
                       >
-                        <input
-                          type="text"
-                          placeholder="Buscar en esta área..."
-                          className="w-full px-3 py-2 mb-4 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
-                          value={categorySearchTerms[cat.id] || ''}
-                          onChange={(e) => setCategorySearchTerms(prev => ({ ...prev, [cat.id]: e.target.value }))}
-                          onClick={(e) => e.stopPropagation()}
-                        />
+                        
                         {getFilteredCareersForCategory(cat.id, cat.careers).length === 0 ? (
                           <p className="text-gray-600 text-sm">No hay carreras que coincidan con la búsqueda.</p>
                         ) : (
