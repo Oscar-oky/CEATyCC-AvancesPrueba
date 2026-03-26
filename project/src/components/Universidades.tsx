@@ -34,7 +34,7 @@ const categories: Category[] = [
       //'Carrera de Ejemplo 1',
       'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
       'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
-      'UNIVERSIDAD POLITECNICA DE QUERETARO',
+      'Universidad Politécnica de Querétaro',
       'Universidad Tecnológica de San Juan del Río',
       'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO',
       'Universidad Tecnológica de Corregidora',
@@ -306,7 +306,7 @@ const categories: Category[] = [
     careers: [
       'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
       'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
-      'UNIVERSIDAD POLITECNICA DE QUERETARO',
+      'Universidad Politécnica de Querétaro',
       'UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO',
       'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO',
       'Universidad Tecnológica de Querétaro',
@@ -374,7 +374,7 @@ const categories: Category[] = [
     careers: [
       'TECNOLÓGICO NACIONAL DE MÉXICO, CAMPUS QUERÉTARO',
       'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO',
-      'UNIVERSIDAD POLITECNICA DE QUERETARO',
+      'Universidad Politécnica de Querétaro',
       'UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO',
       'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO',
       'Universidad Tecnológica de Corregidora',
@@ -608,7 +608,14 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
         return matchesSearchTerm && matchesLegendType;
       });
       return { ...category, careers: filteredCategoryCareers };
-    }).filter(category => category.careers.length > 0);
+    }).filter(category => {
+      // Mostrar la categoría si:
+      // 1. Tiene carreras que coinciden con la búsqueda, O
+      // 2. El nombre de la categoría coincide con la búsqueda
+      const hasMatchingCareers = category.careers.length > 0;
+      const categoryMatchesSearch = searchTerm ? category.label.toLowerCase().includes(lowercasedSearch) : true;
+      return hasMatchingCareers || categoryMatchesSearch;
+    });
 
     return filtered;
   }, [searchTerm, selectedLegendType]);
@@ -649,9 +656,23 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
   const getFilteredCareersForCategory = useMemo(() => {
     return (categoryId: string, careers: string[]) => {
       const categorySearchTerm = categorySearchTerms[categoryId]?.toLowerCase() || '';
-      return careers.filter(career => career.toLowerCase().includes(categorySearchTerm));
+      const globalSearchTerm = searchTerm.toLowerCase();
+      
+      // Si hay búsqueda global y la categoría coincide, mostrar todas las carreras
+      if (searchTerm) {
+        const category = categories.find(cat => cat.id === categoryId);
+        if (category && category.label.toLowerCase().includes(globalSearchTerm)) {
+          return careers;
+        }
+      }
+      
+      // Filtrar por término de búsqueda (global o específico de categoría)
+      const searchToUse = categorySearchTerm || globalSearchTerm;
+      if (!searchToUse) return careers;
+      
+      return careers.filter(career => career.toLowerCase().includes(searchToUse));
     };
-  }, [categorySearchTerms]);
+  }, [categorySearchTerms, searchTerm, categories]);
 
   // Al seleccionar un tipo en la leyenda:
   // - Alterna la selección (permite desactivar).
@@ -979,11 +1000,11 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
           <div className="lg:w-1/2">
             <p className="mb-4 text-center lg:text-left">Seleccione una categoría para ver las carreras asociadas o utilice el buscador.</p>
 
-            <div className="mb-6 flex justify-center lg:justify-start">
-              <div className="flex items-center space-x-2 mb-4">
+            <div className="mb-3 flex justify-center lg:justify-start">
+              <div className="flex items-center space-x-2 mb-2 w-11/12">
                 <input
                   type="text"
-                  placeholder="Buscar Universidad"
+                  placeholder="Buscar por categoría o carrera..."
                   className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
