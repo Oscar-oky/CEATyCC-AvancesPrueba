@@ -1,22 +1,44 @@
 import React, { useState, useRef } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy, Upload, X } from 'lucide-react';
+import { useFileUpload } from '@/hooks/useFileUpload';
+import { useAuth } from '@/hooks/AuthContext';
 
 const ConcursoCartelesCientificos: React.FC = () => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // Hooks para subida de archivos y autenticación
+  const { photoFiles, setPhotoFiles, isUploading, uploadFiles, resetFiles } = useFileUpload();
+  const { isAdmin } = useAuth();
 
-  // Imágenes específicas para Concurso de Carteles Científicos
-  const [cartelesImages, setCartelesImages] = useState<string[]>([
-    '/src/assets/images/carteles-1.jpg',
-    '/src/assets/images/carteles-2.jpg',
-    '/src/assets/images/carteles-3.jpg',
-    '/src/assets/images/carteles-4.jpg',
-    '/src/assets/images/carteles-5.jpg',
-  ]);
+  // Imágenes específicas para Concurso de Carteles Científicos (cargar desde base de datos)
+  const [cartelesImages, setCartelesImages] = useState<string[]>([]);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
+
+  // Cargar imágenes desde la base de datos
+  const loadCartelesImages = async () => {
+    setIsLoadingImages(true);
+    try {
+      const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+      const response = await fetch(`${API_URL}/concurso-carteles/images`);
+      if (response.ok) {
+        const data = await response.json();
+        setCartelesImages(data.images || []);
+      }
+    } catch (error) {
+      console.error('Error al cargar imágenes del concurso de carteles:', error);
+    } finally {
+      setIsLoadingImages(false);
+    }
+  };
+
+  // Cargar imágenes al montar el componente
+  React.useEffect(() => {
+    loadCartelesImages();
+  }, []);
 
   // Iniciar slideshow
   const startSlideshow = () => {
@@ -43,31 +65,85 @@ const ConcursoCartelesCientificos: React.FC = () => {
     setIsGalleryModalOpen(true);
   };
 
-  // Manejar upload de imágenes
-  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files || files.length === 0) return;
+  // Manejar upload de imágenes con el mismo sistema que EventModal
+  const handleUpload = async () => {
+    if (!isAdmin) return;
+    
+    if (photoFiles.length === 0) {
+      alert('Por favor selecciona al menos una imagen');
+      return;
+    }
 
-    Array.from(files).forEach(file => {
-      if (file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const imageUrl = e.target?.result as string;
-          setCartelesImages(prev => [...prev, imageUrl]);
-        };
-        reader.readAsDataURL(file);
+    try {
+      const { photoUrls } = await uploadFiles(null);
+      
+      if (photoUrls.length > 0) {
+        // Guardar URLs en la base de datos
+        const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+        const response = await fetch(`${API_URL}/concurso-carteles/images`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ images: photoUrls }),
+        });
+
+        if (response.ok) {
+          // Actualizar estado local
+          setCartelesImages(prev => [...prev, ...photoUrls]);
+          // Resetear archivos
+          resetFiles();
+          // Limpiar input
+          if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+          }
+          alert(`Se subieron ${photoUrls.length} imágenes exitosamente`);
+        } else {
+          throw new Error('Error al guardar imágenes en la base de datos');
+        }
       }
-    });
+    } catch (error) {
+      console.error('Error al subir imágenes:', error);
+      alert('Error al subir imágenes. Intenta nuevamente.');
+    }
+  };
 
-    // Limpiar el input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+  // Manejar selección de archivos
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+      setPhotoFiles(imageFiles);
     }
   };
 
   // Eliminar imagen
-  const handleDeleteImage = (index: number) => {
-    setCartelesImages(prev => prev.filter((_, i) => i !== index));
+  const handleDeleteImage = async (index: number) => {
+    if (!isAdmin) return;
+    
+    const imageToDelete = cartelesImages[index];
+    
+    if (window.confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
+      try {
+        const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+        const response = await fetch(`${API_URL}/concurso-carteles/images`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ imageUrl: imageToDelete }),
+        });
+
+        if (response.ok) {
+          setCartelesImages(prev => prev.filter((_, i) => i !== index));
+        } else {
+          throw new Error('Error al eliminar imagen');
+        }
+      } catch (error) {
+        console.error('Error al eliminar imagen:', error);
+        alert('Error al eliminar imagen. Intenta nuevamente.');
+      }
+    }
   };
 
   const sections = [
@@ -146,18 +222,10 @@ const ConcursoCartelesCientificos: React.FC = () => {
       content: <>
         <div className="space-y-4">
           {/* Panel de Admin para subir imágenes */}
-          <div className="border rounded-lg p-4 bg-gray-50">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="font-semibold text-gray-700">Panel de Administración</h4>
-              <button
-                onClick={() => setIsAdmin(!isAdmin)}
-                className="text-sm text-blue-600 hover:text-blue-800"
-              >
-                {isAdmin ? 'Ocultar' : 'Mostrar'} opciones
-              </button>
-            </div>
-            
-            {isAdmin && (
+          {isAdmin && (
+            <div className="border rounded-lg p-4 bg-blue-50">
+              <h4 className="font-semibold text-gray-700 mb-3">Panel de Administración</h4>
+              
               <div className="space-y-3">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -168,15 +236,42 @@ const ConcursoCartelesCientificos: React.FC = () => {
                     type="file"
                     multiple
                     accept="image/*"
-                    onChange={handleUpload}
+                    onChange={handleFileChange}
                     className="block w-full text-sm text-gray-500 border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
 
+                {/* Vista previa de archivos seleccionados */}
+                {photoFiles.length > 0 && (
+                  <div>
+                    <h5 className="text-sm font-medium text-gray-700 mb-2">Archivos seleccionados ({photoFiles.length}):</h5>
+                    <div className="space-y-1">
+                      {photoFiles.map((file, index) => (
+                        <div key={index} className="text-xs text-gray-600 bg-white p-2 rounded border">
+                          {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Botón de subida */}
+                <button
+                  onClick={handleUpload}
+                  disabled={photoFiles.length === 0 || isUploading}
+                  className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
+                    photoFiles.length === 0 || isUploading
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                  }`}
+                >
+                  {isUploading ? 'Subiendo...' : `Subir ${photoFiles.length} imagen(es)`}
+                </button>
+
                 {/* Vista previa de imágenes actuales */}
                 {cartelesImages.length > 0 && (
                   <div>
-                    <h5 className="text-sm font-medium text-gray-700 mb-2">Imágenes actuales ({cartelesImages.length}):</h5>
+                    <h5 className="text-sm font-medium text-gray-700 mb-2">Imágenes en galería ({cartelesImages.length}):</h5>
                     <div className="grid grid-cols-3 gap-2 max-h-40 overflow-y-auto">
                       {cartelesImages.map((image, index) => (
                         <div key={index} className="relative group">
@@ -198,8 +293,8 @@ const ConcursoCartelesCientificos: React.FC = () => {
                   </div>
                 )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         <div className="text-center mt-6">

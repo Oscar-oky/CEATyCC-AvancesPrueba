@@ -1,22 +1,28 @@
 import React, { useState, useRef } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy, Upload, X } from 'lucide-react';
+import { useEvents } from '@/hooks/useEvents';
+import { useAuth } from '@/hooks/AuthContext';
 
 const TorneoHackingCTF: React.FC = () => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // Hooks existentes del sistema
+  const { allEvents, addEvent, deleteFile } = useEvents();
+  const { isAdmin } = useAuth();
 
-  // Imágenes específicas para Torneo Hacking CTF
-  const [ctfImages, setCtfImages] = useState<string[]>([
-    '/src/assets/images/ctf-1.jpg',
-    '/src/assets/images/ctf-2.jpg',
-    '/src/assets/images/ctf-3.jpg',
-    '/src/assets/images/ctf-4.jpg',
-    '/src/assets/images/ctf-5.jpg',
-  ]);
+  // Filtrar eventos específicos del Torneo Hacking CTF
+  const ctfEvents = allEvents.filter(event => 
+    event.category === 'Torneo Hacking CTF'
+  );
+
+  // Extraer todas las imágenes de los eventos del CTF
+  const ctfImages = ctfEvents.flatMap(event => 
+    event.photos ? event.photos.map(photo => photo.url) : []
+  );
 
   // Iniciar slideshow
   const startSlideshow = () => {
@@ -43,21 +49,61 @@ const TorneoHackingCTF: React.FC = () => {
     setIsGalleryModalOpen(true);
   };
 
-  // Manejar upload de imágenes
-  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // Manejar upload de imágenes creando un evento para el CTF
+  const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isAdmin) return;
+    
     const files = event.target.files;
     if (!files || files.length === 0) return;
 
-    Array.from(files).forEach(file => {
-      if (file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const imageUrl = e.target?.result as string;
-          setCtfImages(prev => [...prev, imageUrl]);
-        };
-        reader.readAsDataURL(file);
+    try {
+      // Crear un FormData para subir las imágenes
+      const formData = new FormData();
+      Array.from(files).forEach(file => {
+        if (file.type.startsWith('image/')) {
+          formData.append('photos', file);
+        }
+      });
+
+      // Subir imágenes al endpoint existente
+      const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+      const uploadResponse = await fetch(`${API_URL}/upload`, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (uploadResponse.ok) {
+        const uploadData = await uploadResponse.json();
+        
+        if (uploadData.photos && uploadData.photos.length > 0) {
+          // Crear un evento para el CTF con las imágenes subidas
+          const newEventData = {
+            title: `Torneo Hacking CTF - Imágenes ${new Date().toLocaleDateString()}`,
+            date: new Date(),
+            category: 'Torneo Hacking CTF',
+            description: 'Imágenes agregadas a la galería del Torneo Hacking CTF',
+            location: 'Galería Virtual',
+            photos: uploadData.photos.map((url: string, index: number) => ({
+              url,
+              name: files[index].name,
+              type: 'image'
+            })),
+            publicationDate: new Date(),
+            capacity: 0,
+            cost: 0,
+            times: [{ startTime: '00:00', endTime: '23:59' }]
+          };
+
+          await addEvent(newEventData);
+          alert(`Se subieron ${uploadData.photos.length} imágenes exitosamente`);
+        }
+      } else {
+        throw new Error('Error al subir imágenes');
       }
-    });
+    } catch (error) {
+      console.error('Error al subir imágenes:', error);
+      alert('Error al subir imágenes. Intenta nuevamente.');
+    }
 
     // Limpiar el input
     if (fileInputRef.current) {
@@ -66,8 +112,24 @@ const TorneoHackingCTF: React.FC = () => {
   };
 
   // Eliminar imagen
-  const handleDeleteImage = (index: number) => {
-    setCtfImages(prev => prev.filter((_, i) => i !== index));
+  const handleDeleteImage = async (imageUrl: string) => {
+    if (!isAdmin) return;
+    
+    if (window.confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
+      try {
+        // Buscar el evento que contiene esta imagen
+        const eventWithImage = ctfEvents.find(event => 
+          event.photos && event.photos.some(photo => photo.url === imageUrl)
+        );
+        
+        if (eventWithImage) {
+          await deleteFile(eventWithImage.id, 'photos', imageUrl);
+        }
+      } catch (error) {
+        console.error('Error al eliminar imagen:', error);
+        alert('Error al eliminar imagen. Intenta nuevamente.');
+      }
+    }
   };
 
   const sections = [
@@ -147,18 +209,10 @@ const TorneoHackingCTF: React.FC = () => {
       content: <>
         <div className="space-y-4">
           {/* Panel de Admin para subir imágenes */}
-          <div className="border rounded-lg p-4 bg-gray-50">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="font-semibold text-gray-700">Panel de Administración</h4>
-              <button
-                onClick={() => setIsAdmin(!isAdmin)}
-                className="text-sm text-blue-600 hover:text-blue-800"
-              >
-                {isAdmin ? 'Ocultar' : 'Mostrar'} opciones
-              </button>
-            </div>
-            
-            {isAdmin && (
+          {isAdmin && (
+            <div className="border rounded-lg p-4 bg-blue-50">
+              <h4 className="font-semibold text-gray-700 mb-3">Panel de Administración</h4>
+              
               <div className="space-y-3">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -177,7 +231,7 @@ const TorneoHackingCTF: React.FC = () => {
                 {/* Vista previa de imágenes actuales */}
                 {ctfImages.length > 0 && (
                   <div>
-                    <h5 className="text-sm font-medium text-gray-700 mb-2">Imágenes actuales ({ctfImages.length}):</h5>
+                    <h5 className="text-sm font-medium text-gray-700 mb-2">Imágenes en galería ({ctfImages.length}):</h5>
                     <div className="grid grid-cols-3 gap-2 max-h-40 overflow-y-auto">
                       {ctfImages.map((image, index) => (
                         <div key={index} className="relative group">
@@ -187,7 +241,7 @@ const TorneoHackingCTF: React.FC = () => {
                             className="w-full h-20 object-cover rounded border"
                           />
                           <button
-                            onClick={() => handleDeleteImage(index)}
+                            onClick={() => handleDeleteImage(image)}
                             className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                             title="Eliminar imagen"
                           >
@@ -199,8 +253,8 @@ const TorneoHackingCTF: React.FC = () => {
                   </div>
                 )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         <div className="text-center mt-6">
