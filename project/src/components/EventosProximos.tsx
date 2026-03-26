@@ -76,6 +76,12 @@ const EventosProximos: React.FC = () => {
     return (
       <div className="text-center py-16 bg-white rounded-2xl shadow-lg">
         <p className="text-gray-600 text-lg">No hay eventos próximos disponibles.</p>
+        <button 
+          onClick={() => window.location.href = '/'}
+          className="mt-6 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300 font-semibold"
+        >
+          Ir a Inicio
+        </button>
       </div>
     );
   }

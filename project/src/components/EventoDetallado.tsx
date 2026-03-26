@@ -216,7 +216,7 @@ const EventoDetallado: React.FC = () => {
                     Ing. Alondra María García Callejas e Ing
                   </h3>
                   <h3 className="text-2xl font-bold text-cyan-300 mb-2 group-hover:text-cyan-200 transition-colors">
-                    Alejandra Belén Medina Cruz
+                    Ing.Alejandra Belén Medina Cruz
                   </h3>
 
                   <p className="text-white/90 text-2xl font-medium mb-4">

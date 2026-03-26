@@ -174,7 +174,7 @@ const TorneoProgramacionBasica: React.FC = () => {
       title: 'Fotos de Edicion',
       icon: Camera,
       content: <>
-        Una galería de fotos de torneos  para mostrar el ambiente del evento y motivar a nuevos participantes. (Aquí irían las imágenes).<br /><br />
+        Una galería de fotos de torneos  para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
         <div className="text-center">
           <button
             onClick={handleOpenGallery}
