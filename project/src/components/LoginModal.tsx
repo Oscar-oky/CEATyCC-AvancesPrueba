@@ -113,12 +113,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin, onOpe
     return (
       <form onSubmit={handleSubmit} className="p-6 space-y-4">
         <div className="text-center mb-6">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Identificación de Usuario
-          </h3>
           <p className="text-gray-600">
-            Para gestionar eventos, necesitamos verificar tu identidad
+            Para la obtención del Reconomiento tienes que Iniciar session o Registrarte primero 
           </p>
+          <br />
+          <strong>IMPORTANTE</strong>
+          <p>Solo podra descargar el PDF el dueño del Reconomiento</p>
+
+          
         </div>
 
         {/* Email */}

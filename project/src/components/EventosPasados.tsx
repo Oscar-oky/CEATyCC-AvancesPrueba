@@ -87,10 +87,16 @@ const EventosPasados: React.FC = () => {
             // Calcular total de fotos incluyendo todas las carpetas
             const totalPhotos = (event.photos?.length || 0) + 
                                (event.photoFolders?.reduce((sum, folder) => sum + (folder.photos.length || 0), 0) || 0);
-                                
+                               
             return (
-              <div key={index} className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer hover:border-blue-500">
-                <div className="h-40 sm:h-48 md:h-56 bg-gray-200 flex items-center justify-center relative">
+              <div key={index} 
+                   className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer hover:border-blue-500 hover:scale-105 flex flex-col h-[32rem]" 
+                   onClick={(e) => {
+                     e.preventDefault();
+                     e.stopPropagation();
+                     handleOpenModal(event, totalPhotos > 0 ? 'photosVideos' : (Array.isArray(event.documents) && event.documents.length > 0 ? 'documents' : null));
+                   }}>
+                <div className="h-64 bg-gray-200 flex items-center justify-center relative flex-shrink-0">
                   {event.photos && event.photos.length > 0 ? (
                     <img
                       src={event.photos[0]}
@@ -101,8 +107,8 @@ const EventosPasados: React.FC = () => {
                     <div className="text-gray-500">No hay imágenes disponibles</div>
                   )}
                 </div>
-                <div className="p-3 sm:p-4">
-                  <h3 className="font-bold text-base sm:text-lg mb-1 cursor-pointer" onClick={() => handleOpenModal(event)}>{event.title}</h3>
+                <div className="p-3 sm:p-4 flex-1 flex flex-col min-h-0">
+                  <h3 className="font-bold text-base sm:text-lg mb-1">{event.title}</h3>
                   <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Fecha: {event.date}</p>
                   {event.location && (
                     <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Ubicación: {event.location}</p>
@@ -110,22 +116,28 @@ const EventosPasados: React.FC = () => {
                   {event.category && (
                     <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Categoría: {event.category}</p>
                   )}
-                  <p className="text-xs sm:text-sm text-gray-700">
-                    {totalPhotos > 0 ? `${totalPhotos} imágenes` : 'No hay imágenes'}
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-2 mt-2 sm:mt-3">
-                    {totalPhotos > 0 && (
-                      <button onClick={() => handleOpenModal(event, 'photosVideos')} className="flex items-center justify-center flex-1 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-xs sm:text-sm">
-                        <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                        Ver Fotos
-                      </button>
-                    )}
-                    {Array.isArray(event.documents) && event.documents.length > 0 && (
-                      <button onClick={() => handleOpenModal(event, 'documents')} className="flex items-center justify-center flex-1 px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors text-xs sm:text-sm">
-                        <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                        Documentos
-                      </button>
-                    )}
+                  
+                  {/* Contenido con scroll si es muy largo */}
+                  <div className="flex-1 overflow-y-auto min-h-0">
+                    <p className="text-xs sm:text-sm text-gray-700 mb-2">
+                      {event.description ? (
+                        event.description.length > 200 ? 
+                          `${event.description.substring(0, 200)}...` : 
+                          event.description
+                      ) : 'Sin descripción disponible'}
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-gray-700 flex-shrink-0 mt-2">
+                    <span>
+                      {totalPhotos > 0 ? `${totalPhotos} imágenes` : 'No hay imágenes'}
+                    </span>
+                    <span>
+                      {Array.isArray(event.documents) && event.documents.length > 0 ? 
+                        `${event.documents.length} documentos` : 
+                        'No hay documentos'
+                      }
+                    </span>
                   </div>
                 </div>
               </div>
