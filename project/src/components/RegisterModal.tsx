@@ -65,6 +65,22 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          <div className="text-center mb-6">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+              <h3 className="text-base font-semibold text-green-900 mb-3 text-center">Únete a la Comunidad CEATyCC</h3>
+              <p className="text-sm text-green-800 mb-3 text-center">
+                Al registrarte obtendrás acceso a:</p>
+              <ul className="text-sm text-green-700 space-y-2 text-center">
+                <li>• Descarga de tus reconocimientos y certificados</li>
+                <li>• Inscripción a eventos y capacitaciones</li>
+                <li>• Seguimiento de tu progreso académico</li>
+                <li>• Recursos y materiales exclusivos</li>
+              </ul>
+            </div>
+            <p className="text-gray-600 text-base text-center">
+              Completa el formulario para crear tu cuenta
+            </p>
+          </div>
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre</label>
             <input

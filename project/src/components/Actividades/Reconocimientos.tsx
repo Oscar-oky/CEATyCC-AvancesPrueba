@@ -381,6 +381,23 @@ const Reconocimientos: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Información importante sobre descargas */}
+        <div className="mb-8 sm:mb-10 bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0">
+              <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 mt-0.5" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm sm:text-base font-semibold text-blue-900 mb-2">Información importante sobre descargas</h3>
+              <ul className="text-xs sm:text-sm text-blue-800 space-y-1">
+                <li>• <strong>Administradores:</strong> Pueden descargar cualquier PDF sin restricciones</li>
+                <li>• <strong>Usuarios no registrados:</strong> Deben iniciar sesión o registrarse para descargar</li>
+                <li>• <strong>Usuarios registrados:</strong> Solo pueden descargar los PDFs de los que son propietarios</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-600 mb-4 sm:mb-6">

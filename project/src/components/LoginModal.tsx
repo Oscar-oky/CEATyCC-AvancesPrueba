@@ -113,7 +113,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin, onOpe
     return (
       <form onSubmit={handleSubmit} className="p-6 space-y-4">
         <div className="text-center mb-6">
-          
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+            <h3 className="text-base font-semibold text-blue-900 mb-3 text-center">Acceso a la Plataforma CEATyCC</h3>
+            <p className="text-sm text-blue-800 mb-3 text-center">
+              Inicia sesión para acceder a:</p>
+            <ul className="text-sm text-blue-700 space-y-2 text-center">
+              <li>• Descarga de reconocimientos y certificados</li>
+              <li>• Inscripción a eventos y talleres</li>
+              <li>• Seguimiento de tu participación</li>
+              <li>• Acceso a recursos exclusivos</li>
+            </ul>
+          </div>
+          <p className="text-gray-600 text-base text-center">
+            Ingresa tus credenciales para continuar
+          </p>
         </div>
 
         {/* Email */}
@@ -195,7 +208,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin, onOpe
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
             <LogIn className="w-6 h-6 text-blue-600" />
-            {loginResult ? 'Resultado de Acceso' : 'Identificación de Usuario'}
+            {loginResult ? 'Resultado de Acceso' : 'Iniciar Sesión'}
           </h2>
           <button
             onClick={handleClose}
