@@ -58,7 +58,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
             <User className="w-6 h-6 text-blue-600" />
-            Registrar Nuevo Usuario
+            Registrarse
           </h2>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
             <X className="w-5 h-5 text-gray-500" />
