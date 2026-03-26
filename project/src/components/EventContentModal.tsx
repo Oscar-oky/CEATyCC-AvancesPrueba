@@ -206,37 +206,39 @@ const EventContentModal: React.FC<EventContentModalProps> = ({
           </>
         )}
 
-        {(contentType === null || contentType === 'documents') && (
-          <>
-            {documents && documents.length > 0 ? (
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-gray-700 mb-3">Documentos</h3>
-                <ul className="list-disc pl-5 space-y-2">
-                  {documents.map((doc, index) => (
-                    <li key={index}>
-                      <a
-                        href={doc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.preventDefault(); // Prevent default download behavior
-                          if (window.confirm(`¿Estás de acuerdo en descargar el PDF: ${doc.name}?`)) {
-                            window.open(doc.url, '_blank');
-                          }
-                        }}
-                        className="text-blue-600 hover:underline text-lg"
-                      >
-                        {doc.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <p className="text-gray-600 text-center py-4">No hay documentos disponibles para este evento.</p>
-            )}
-          </>
-        )}
+        {/* Mostrar documentos SIEMPRE, sin importar el contentType */}
+        <div className="mb-6">
+          {documents && documents.length > 0 ? (
+            <>
+              <h3 className="text-xl font-semibold text-gray-700 mb-3">Documentos</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                {documents.map((doc, index) => (
+                  <li key={index}>
+                    <a
+                      href={doc.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent default download behavior
+                        if (window.confirm(`¿Estás de acuerdo en descargar el PDF: ${doc.name}?`)) {
+                          window.open(doc.url, '_blank');
+                        }
+                      }}
+                      className="text-blue-600 hover:underline text-lg"
+                    >
+                      {doc.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <div className="text-center py-4">
+              <h3 className="text-xl font-semibold text-gray-700 mb-3">Documentos</h3>
+              <p className="text-gray-600">No hay documentos disponibles para este evento.</p>
+            </div>
+          )}
+        </div>
       </div>
 
       {currentImage && (
