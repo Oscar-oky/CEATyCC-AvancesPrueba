@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy, Upload, X } from 'lucide-react';
 
 const TorneoProgramacionAvanzado: React.FC = () => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Imágenes específicas para Torneo de Programación Avanzado
-  const torneoAvanzadoImages = [
+  const [torneoAvanzadoImages, setTorneoAvanzadoImages] = useState<string[]>([
     '/src/assets/images/torneo-avanzado-1.jpg',
     '/src/assets/images/torneo-avanzado-2.jpg',
     '/src/assets/images/torneo-avanzado-3.jpg',
     '/src/assets/images/torneo-avanzado-4.jpg',
     '/src/assets/images/torneo-avanzado-5.jpg',
-  ];
+  ]);
 
   // Iniciar slideshow
   const startSlideshow = () => {
@@ -41,13 +43,40 @@ const TorneoProgramacionAvanzado: React.FC = () => {
     setIsGalleryModalOpen(true);
   };
 
+  // Manejar upload de imágenes
+  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+
+    Array.from(files).forEach(file => {
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imageUrl = e.target?.result as string;
+          setTorneoAvanzadoImages(prev => [...prev, imageUrl]);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Limpiar el input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  // Eliminar imagen
+  const handleDeleteImage = (index: number) => {
+    setTorneoAvanzadoImages(prev => prev.filter((_, i) => i !== index));
+  };
+
   const sections = [
     {
       title: 'Introducción',
       icon: BookOpen,
       content: <>
         El Torneo de Programación, categoría Avanzada, está dirigido a estudiantes universitarios de 6to. a 10mo. cuatrimestre y 1ro. a 10mo. semestre  que buscan llevar sus habilidades al siguiente nivel. Su propósito es ofrecer un espacio donde los participantes puedan resolver problemas complejos, aplicar estrategias avanzadas y demostrar su dominio en programación.<br /><br />
-        Más allá de la competencia, este torneo fomenta un ambiente amigable y colaborativo, donde cada reto se convierte en una oportunidad de aprendizaje, crecimiento y superación personal.<br /><br />
+        Más allá de la competencia, este Torneo fomenta un ambiente amigable y colaborativo, donde cada reto se convierte en una oportunidad de aprendizaje, crecimiento y superación personal.<br /><br />
         La participación en esta categoría es clave para fortalecer la confianza, adquirir nuevas perspectivas y prepararse para desafíos profesionales, todo mientras se disfruta de la experiencia de competir junto a otros apasionados por el código.<br />
       </>
     },
@@ -77,7 +106,7 @@ const TorneoProgramacionAvanzado: React.FC = () => {
         En Equipo, compuesto por 4 integrantes (al menos 1 mujer en el equipo).<br /><br />
         Registro de integrantes:<br /><br />
         - Nombre de su universidad que representan.<br />
-        - Programa académico al cual pertenece.<br />
+        - Programa académico al cual pertenecen.<br />
         - Cuatrimestre o semestre cursando actualmente.<br />
         - Matrícula o expediente.<br />
         - Nombre completo.<br />
@@ -115,14 +144,70 @@ const TorneoProgramacionAvanzado: React.FC = () => {
       title: 'Fotos de Edicion',
       icon: Camera,
       content: <>
-        Una galería de fotos de torneos para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
+        <div className="space-y-4">
+          {/* Panel de Admin para subir imágenes */}
+          <div className="border rounded-lg p-4 bg-gray-50">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-semibold text-gray-700">Panel de Administración</h4>
+              <button
+                onClick={() => setIsAdmin(!isAdmin)}
+                className="text-sm text-blue-600 hover:text-blue-800"
+              >
+                {isAdmin ? 'Ocultar' : 'Mostrar'} opciones
+              </button>
+            </div>
+            
+            {isAdmin && (
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Subir imágenes desde tu PC:
+                  </label>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handleUpload}
+                    className="block w-full text-sm text-gray-500 border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
 
-        <div className="text-center">
+                {/* Vista previa de imágenes actuales */}
+                {torneoAvanzadoImages.length > 0 && (
+                  <div>
+                    <h5 className="text-sm font-medium text-gray-700 mb-2">Imágenes actuales ({torneoAvanzadoImages.length}):</h5>
+                    <div className="grid grid-cols-3 gap-2 max-h-40 overflow-y-auto">
+                      {torneoAvanzadoImages.map((image, index) => (
+                        <div key={index} className="relative group">
+                          <img
+                            src={image}
+                            alt={`Imagen ${index + 1}`}
+                            className="w-full h-20 object-cover rounded border"
+                          />
+                          <button
+                            onClick={() => handleDeleteImage(index)}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                            title="Eliminar imagen"
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="text-center mt-6">
           <button
             onClick={handleOpenGallery}
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
           >
-            Ver Galería de Fotos
+            Ver Galería de Fotos ({torneoAvanzadoImages.length})
           </button>
         </div>
       </>
@@ -179,11 +264,17 @@ const TorneoProgramacionAvanzado: React.FC = () => {
                 {/* Imagen Principal */}
                 <div className="mb-6 text-center">
                   <div className="relative inline-block">
-                    <img
-                      src={torneoAvanzadoImages[selectedImageIndex]}
-                      alt={`Torneo Avanzado - Imagen ${selectedImageIndex + 1}`}
-                      className="max-w-full max-h-96 rounded-lg shadow-lg"
-                    />
+                    {torneoAvanzadoImages.length > 0 ? (
+                      <img
+                        src={torneoAvanzadoImages[selectedImageIndex]}
+                        alt={`Torneo Avanzado - Imagen ${selectedImageIndex + 1}`}
+                        className="max-w-full max-h-96 rounded-lg shadow-lg"
+                      />
+                    ) : (
+                      <div className="w-96 h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                        <p className="text-gray-500">No hay imágenes disponibles</p>
+                      </div>
+                    )}
                     
                     {/* Controles de navegación */}
                     {torneoAvanzadoImages.length > 1 && (
@@ -209,57 +300,63 @@ const TorneoProgramacionAvanzado: React.FC = () => {
                   </div>
                   
                   {/* Indicador de imagen actual */}
-                  <p className="mt-4 text-gray-600 font-medium">
-                    Imagen {selectedImageIndex + 1} de {torneoAvanzadoImages.length}
-                  </p>
+                  {torneoAvanzadoImages.length > 0 && (
+                    <p className="mt-4 text-gray-600 font-medium">
+                      Imagen {selectedImageIndex + 1} de {torneoAvanzadoImages.length}
+                    </p>
+                  )}
                 </div>
 
                 {/* Miniaturas */}
-                <div className="grid grid-cols-5 gap-3 max-h-32 overflow-y-auto">
-                  {torneoAvanzadoImages.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedImageIndex(index)}
-                      className={`relative rounded-lg overflow-hidden transition-all ${
-                        selectedImageIndex === index 
-                          ? 'ring-4 ring-blue-500 scale-105' 
-                          : 'hover:ring-2 hover:ring-gray-300'
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt={`Miniatura ${index + 1}`}
-                        className="w-full h-20 object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
+                {torneoAvanzadoImages.length > 0 && (
+                  <div className="grid grid-cols-5 gap-3 max-h-32 overflow-y-auto">
+                    {torneoAvanzadoImages.map((image, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedImageIndex(index)}
+                        className={`relative rounded-lg overflow-hidden transition-all ${
+                          selectedImageIndex === index 
+                            ? 'ring-4 ring-blue-500 scale-105' 
+                            : 'hover:ring-2 hover:ring-gray-300'
+                        }`}
+                      >
+                        <img
+                          src={image}
+                          alt={`Miniatura ${index + 1}`}
+                          className="w-full h-20 object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
 
                 {/* Controles adicionales */}
-                <div className="mt-6 flex justify-center gap-4">
-                  <button
-                    onClick={startSlideshow}
-                    disabled={isSlideshowActive}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      isSlideshowActive 
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                        : 'bg-green-600 text-white hover:bg-green-700'
-                    }`}
-                  >
-                    {isSlideshowActive ? 'Presentación en curso...' : 'Iniciar Presentación'}
-                  </button>
-                  <button
-                    onClick={stopSlideshow}
-                    disabled={!isSlideshowActive}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      !isSlideshowActive 
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                        : 'bg-red-600 text-white hover:bg-red-700'
-                    }`}
-                  >
-                    Detener Presentación
-                  </button>
-                </div>
+                {torneoAvanzadoImages.length > 0 && (
+                  <div className="mt-6 flex justify-center gap-4">
+                    <button
+                      onClick={startSlideshow}
+                      disabled={isSlideshowActive}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                        isSlideshowActive 
+                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                          : 'bg-green-600 text-white hover:bg-green-700'
+                      }`}
+                    >
+                      {isSlideshowActive ? 'Presentación en curso...' : 'Iniciar Presentación'}
+                    </button>
+                    <button
+                      onClick={stopSlideshow}
+                      disabled={!isSlideshowActive}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                        !isSlideshowActive 
+                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                          : 'bg-red-600 text-white hover:bg-red-700'
+                      }`}
+                    >
+                      Detener Presentación
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
