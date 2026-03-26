@@ -9,11 +9,6 @@ const TorneoHackingCTF: React.FC = () => {
 
   // Imágenes específicas para Torneo Hacking CTF
   const ctfImages = [
-    '/src/assets/images/ctf-1.jpg',
-    '/src/assets/images/ctf-2.jpg',
-    '/src/assets/images/ctf-3.jpg',
-    '/src/assets/images/ctf-4.jpg',
-    '/src/assets/images/ctf-5.jpg',
   ];
 
   // Iniciar slideshow

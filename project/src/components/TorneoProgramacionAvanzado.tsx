@@ -9,11 +9,6 @@ const TorneoProgramacionAvanzado: React.FC = () => {
 
   // Imágenes específicas para Torneo de Programación Avanzado
   const torneoAvanzadoImages = [
-    '/src/assets/images/torneo-avanzado-1.jpg',
-    '/src/assets/images/torneo-avanzado-2.jpg',
-    '/src/assets/images/torneo-avanzado-3.jpg',
-    '/src/assets/images/torneo-avanzado-4.jpg',
-    '/src/assets/images/torneo-avanzado-5.jpg',
   ];
 
   // Iniciar slideshow

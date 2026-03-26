@@ -14,7 +14,7 @@
 
 export const SITE_CONFIG = {
   name: 'CEATyCC',
-  fullName: 'La Comisión de Educación en Alta Tecnología y Cloud Computing',
+  fullName: 'Comisión de Educación en Alta Tecnología y Cloud Computing',
   description: 'Comisión de Educación en Alta Tecnología y Cloud Computing',
 } as const;
 

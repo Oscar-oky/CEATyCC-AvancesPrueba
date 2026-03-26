@@ -11,11 +11,6 @@ const TorneoProgramacionBasica: React.FC = () => {
 
   // Imágenes específicas para Torneo de Programación Básica
   const torneoBasicoImages = [
-    '/src/assets/images/torneo-basico-1.jpg',
-    '/src/assets/images/torneo-basico-2.jpg',
-    '/src/assets/images/torneo-basico-3.jpg',
-    '/src/assets/images/torneo-basico-4.jpg',
-    '/src/assets/images/torneo-basico-5.jpg',
   ];
 
   // Iniciar slideshow

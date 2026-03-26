@@ -1,29 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy } from 'lucide-react';
+import { useAuth } from '../hooks/AuthContext';
 
 const ConcursoCartelesCientificos: React.FC = () => {
+  const { user, isAdmin, isLoggedIn } = useAuth();
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
 
-  // Imágenes específicas para Concurso de Carteles Científicos
-  const cartelesImages = [
-    '/src/assets/images/carteles-1.jpg',
-    '/src/assets/images/carteles-2.jpg',
-    '/src/assets/images/carteles-3.jpg',
-    '/src/assets/images/carteles-4.jpg',
-    '/src/assets/images/carteles-5.jpg',
-  ];
+  // Imágenes específicas para Concurso de Carteles Científicos (persistentes)
+  const [cartelesImages, setCartelesImages] = useState<string[]>([]);
+
+  // Cargar imágenes desde localStorage al iniciar
+  useEffect(() => {
+    const savedImages = localStorage.getItem('concurso-carteles-images');
+    if (savedImages) {
+      try {
+        setCartelesImages(JSON.parse(savedImages));
+      } catch (error) {
+        console.error('Error loading images from localStorage:', error);
+      }
+    }
+  }, []);
+
+  // Guardar imágenes en localStorage cuando cambian
+  useEffect(() => {
+    if (cartelesImages.length > 0) {
+      localStorage.setItem('concurso-carteles-images', JSON.stringify(cartelesImages));
+    } else {
+      localStorage.removeItem('concurso-carteles-images');
+    }
+  }, [cartelesImages]);
 
   // Iniciar slideshow
   const startSlideshow = () => {
-    if (slideshowInterval) return;
+    if (slideshowInterval || cartelesImages.length === 0) return;
     const interval = setInterval(() => {
       setSelectedImageIndex(prev => (prev === cartelesImages.length - 1 ? 0 : prev + 1));
     }, 3000);
     setSlideshowInterval(interval);
     setIsSlideshowActive(true);
+  };
+
+  // Manejar carga de imágenes (solo admin)
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isAdmin()) return;
+    
+    const files = event.target.files;
+    if (!files) return;
+
+    const newImages: string[] = [];
+    let processedCount = 0;
+
+    Array.from(files).forEach((file) => {
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const result = e.target?.result as string;
+          newImages.push(result);
+          processedCount++;
+
+          if (processedCount === files.length) {
+            setCartelesImages(prev => [...prev, ...newImages]);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  };
+
+  // Eliminar imagen (solo admin)
+  const handleRemoveImage = (indexToRemove: number) => {
+    if (!isAdmin()) return;
+    setCartelesImages(prev => prev.filter((_, index) => index !== indexToRemove));
+    if (selectedImageIndex >= cartelesImages.length - 1 && selectedImageIndex > 0) {
+      setSelectedImageIndex(prev => prev - 1);
+    }
   };
 
   // Detener slideshow
@@ -117,13 +170,63 @@ const ConcursoCartelesCientificos: React.FC = () => {
       content: <>
         Una galería de fotos de concursos de carteles para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
 
-        <div className="text-center">
-          <button
-            onClick={handleOpenGallery}
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
-          >
-            Ver Galería de Fotos
-          </button>
+        <div className="space-y-4">
+          {/* Input para subir imágenes (solo admin) */}
+          {isLoggedIn() && isAdmin() && (
+            <div className="text-center">
+              <label className="inline-block">
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                />
+                <span className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                  Subir Imágenes
+                </span>
+              </label>
+            </div>
+          )}
+
+          {/* Botón para ver galería */}
+          <div className="text-center">
+            <button
+              onClick={handleOpenGallery}
+              disabled={cartelesImages.length === 0}
+              className={`inline-block font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 ${
+                cartelesImages.length === 0
+                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
+            >
+              Ver Galería de Fotos {cartelesImages.length > 0 && `(${cartelesImages.length})`}
+            </button>
+          </div>
+
+          {/* Indicador de imágenes cargadas */}
+          {cartelesImages.length > 0 && (
+            <div className="text-center text-sm text-gray-600">
+              {cartelesImages.length} imagen{cartelesImages.length !== 1 ? 'es' : ''} cargada{cartelesImages.length !== 1 ? 's' : ''}
+              {isAdmin() && <span className="ml-2 text-xs text-blue-600">(Admin)</span>}
+            </div>
+          )}
+
+          {/* Mensaje para usuarios no autenticados */}
+          {!isLoggedIn() && (
+            <div className="text-center text-sm text-orange-600 bg-orange-50 p-3 rounded-lg">
+              <Camera className="h-4 w-4 inline mr-1" />
+              Debes iniciar sesión como administrador para subir imágenes
+            </div>
+          )}
+
+          {/* Mensaje para usuarios no admin */}
+          {isLoggedIn() && !isAdmin() && (
+            <div className="text-center text-sm text-blue-600 bg-blue-50 p-3 rounded-lg">
+              <Camera className="h-4 w-4 inline mr-1" />
+              Solo los administradores pueden subir imágenes. Puedes ver las imágenes existentes.
+            </div>
+          )}
         </div>
       </>
     },
@@ -176,90 +279,151 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
               {/* Contenido del Modal */}
               <div className="p-6">
-                {/* Imagen Principal */}
-                <div className="mb-6 text-center">
-                  <div className="relative inline-block">
-                    <img
-                      src={cartelesImages[selectedImageIndex]}
-                      alt={`Carteles Científicos - Imagen ${selectedImageIndex + 1}`}
-                      className="max-w-full max-h-96 rounded-lg shadow-lg"
-                    />
-                    
-                    {/* Controles de navegación */}
-                    {cartelesImages.length > 1 && (
-                      <>
-                        <button
-                          onClick={() => setSelectedImageIndex((prev) => prev === 0 ? cartelesImages.length - 1 : prev - 1)}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                          </svg>
-                        </button>
-                        <button
-                          onClick={() => setSelectedImageIndex((prev) => (prev + 1) % cartelesImages.length)}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-                      </>
+                {cartelesImages.length === 0 ? (
+                  <div className="text-center py-12">
+                    <Camera className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+                    <p className="text-gray-500 mb-4">No hay imágenes cargadas</p>
+                    {isLoggedIn() && isAdmin() ? (
+                      <label className="inline-block">
+                        <input
+                          type="file"
+                          multiple
+                          accept="image/*"
+                          onChange={handleImageUpload}
+                          className="hidden"
+                        />
+                        <span className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                          Subir Primera Imagen
+                        </span>
+                      </label>
+                    ) : (
+                      <div className="text-sm text-gray-400">
+                        {!isLoggedIn() ? 'Inicia sesión como administrador para subir imágenes' : 'Solo los administradores pueden subir imágenes'}
+                      </div>
                     )}
                   </div>
-                  
-                  {/* Indicador de imagen actual */}
-                  <p className="mt-4 text-gray-600 font-medium">
-                    Imagen {selectedImageIndex + 1} de {cartelesImages.length}
-                  </p>
-                </div>
+                ) : (
+                  <>
+                    {/* Imagen Principal */}
+                    <div className="mb-6 text-center">
+                      <div className="relative inline-block">
+                        <img
+                          src={cartelesImages[selectedImageIndex]}
+                          alt={`Carteles Científicos - Imagen ${selectedImageIndex + 1}`}
+                          className="max-w-full max-h-96 rounded-lg shadow-lg"
+                        />
+                        
+                        {/* Controles de navegación */}
+                        {cartelesImages.length > 1 && (
+                          <>
+                            <button
+                              onClick={() => setSelectedImageIndex((prev) => prev === 0 ? cartelesImages.length - 1 : prev - 1)}
+                              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            <button
+                              onClick={() => setSelectedImageIndex((prev) => (prev + 1) % cartelesImages.length)}
+                              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </>
+                        )}
+                      </div>
+                      
+                      {/* Indicador de imagen actual */}
+                      <p className="mt-4 text-gray-600 font-medium">
+                        Imagen {selectedImageIndex + 1} de {cartelesImages.length}
+                        {isAdmin() && <span className="ml-2 text-xs text-blue-600">(Admin)</span>}
+                      </p>
+                    </div>
 
-                {/* Miniaturas */}
-                <div className="grid grid-cols-5 gap-3 max-h-32 overflow-y-auto">
-                  {cartelesImages.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedImageIndex(index)}
-                      className={`relative rounded-lg overflow-hidden transition-all ${
-                        selectedImageIndex === index 
-                          ? 'ring-4 ring-blue-500 scale-105' 
-                          : 'hover:ring-2 hover:ring-gray-300'
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt={`Miniatura ${index + 1}`}
-                        className="w-full h-20 object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
+                    {/* Miniaturas con opción de eliminar (solo admin) */}
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-sm font-medium text-gray-700">Miniaturas ({cartelesImages.length})</h3>
+                        {isAdmin() && cartelesImages.length > 0 && (
+                          <span className="text-xs text-red-500">Click en la X para eliminar</span>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-5 gap-3 max-h-32 overflow-y-auto">
+                        {cartelesImages.map((image, index) => (
+                          <div key={index} className="relative group">
+                            <button
+                              onClick={() => setSelectedImageIndex(index)}
+                              className={`relative rounded-lg overflow-hidden transition-all w-full ${
+                                selectedImageIndex === index 
+                                  ? 'ring-4 ring-blue-500 scale-105' 
+                                  : 'hover:ring-2 hover:ring-gray-300'
+                              }`}
+                            >
+                              <img
+                                src={image}
+                                alt={`Miniatura ${index + 1}`}
+                                className="w-full h-20 object-cover"
+                              />
+                            </button>
+                            {/* Botón de eliminar (solo admin) */}
+                            {isAdmin() && (
+                              <button
+                                onClick={() => handleRemoveImage(index)}
+                                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                                title="Eliminar imagen"
+                              >
+                                ×
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
 
-                {/* Controles adicionales */}
-                <div className="mt-6 flex justify-center gap-4">
-                  <button
-                    onClick={startSlideshow}
-                    disabled={isSlideshowActive}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      isSlideshowActive 
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                        : 'bg-green-600 text-white hover:bg-green-700'
-                    }`}
-                  >
-                    {isSlideshowActive ? 'Presentación en curso...' : 'Iniciar Presentación'}
-                  </button>
-                  <button
-                    onClick={stopSlideshow}
-                    disabled={!isSlideshowActive}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      !isSlideshowActive 
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                        : 'bg-red-600 text-white hover:bg-red-700'
-                    }`}
-                  >
-                    Detener Presentación
-                  </button>
-                </div>
+                    {/* Controles adicionales */}
+                    <div className="mt-6 flex justify-center gap-4 flex-wrap">
+                      <button
+                        onClick={startSlideshow}
+                        disabled={isSlideshowActive || cartelesImages.length === 0}
+                        className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                          isSlideshowActive || cartelesImages.length === 0
+                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                            : 'bg-green-600 text-white hover:bg-green-700'
+                        }`}
+                      >
+                        {isSlideshowActive ? 'Presentación en curso...' : 'Iniciar Presentación'}
+                      </button>
+                      <button
+                        onClick={stopSlideshow}
+                        disabled={!isSlideshowActive}
+                        className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                          !isSlideshowActive 
+                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                            : 'bg-red-600 text-white hover:bg-red-700'
+                        }`}
+                      >
+                        Detener Presentación
+                      </button>
+                      {isLoggedIn() && isAdmin() && (
+                        <label className="inline-block">
+                          <input
+                            type="file"
+                            multiple
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                            className="hidden"
+                          />
+                          <span className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                            Agregar Más Imágenes
+                          </span>
+                        </label>
+                      )}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
