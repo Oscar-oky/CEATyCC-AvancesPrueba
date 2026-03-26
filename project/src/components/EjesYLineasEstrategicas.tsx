@@ -13,14 +13,14 @@ const EjesYLineasEstrategicas: React.FC = () => {
       descripcion: "Programas universitarios avanzados en transformación digital, ciberseguridad, IA y gestión TI.",
       color: "bg-blue-600",
       icon: BookOpen,
-      ruta: "/diplomados"
+      ruta: "/"
     },
     {
       titulo: "Academia Abierta y Acceso Inclusivo",
       descripcion: "Cursos gratuitos y abiertos en programación, datos, ciberseguridad y transformación digital para ampliar el alcance educativo.",
       color: "bg-orange-600",
       icon: Award,
-      ruta: "/certificaciones"
+      ruta: "/"
     },
     {
       titulo: "Infraestructura y Conectividad Avanzada",
@@ -42,14 +42,14 @@ const EjesYLineasEstrategicas: React.FC = () => {
       descripcion: "Digitalización de procesos, cultura organizacional, chatbots, analítica predictiva y personalización del aprendizaje.",
       color: "bg-cyan-600",
       icon: Network,
-      ruta: "/interoperabilidad"
+      ruta: "/"
     },
     {
       titulo: "Innovación y Sostenibilidad Tecnológica",
       descripcion: "Laboratorios, startups, hackathones, redes de innovación educativa y prácticas de Green IT con energías renovables.",
       color: "bg-blue-600",
       icon: Server,
-      ruta: "/infraestructura"
+      ruta: "/"
     },
     
   ];

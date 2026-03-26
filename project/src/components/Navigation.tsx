@@ -400,7 +400,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Buscar eventos..."
+              placeholder="Buscar "
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => searchTerm.length > 0 && setShowSuggestions(true)}
@@ -431,7 +431,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
               className="flex items-center gap-1 px-4 py-3 text-white text-sm font-medium rounded-md transition-all duration-200 hover:bg-blue-600 hover:shadow-lg ml-2"
             >
               <LogIn className="w-4 h-4" />
-              Login
+              Iniciar sesión
             </button>
           )}
           {!isLoggedIn() && (
@@ -439,7 +439,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
               onClick={openRegisterModal}
               className="flex items-center gap-1 px-4 py-3 text-white text-sm font-medium rounded-md transition-all duration-200 hover:bg-green-600 hover:shadow-lg ml-2"
             >
-              Sing Up
+              Registrarse
             </button>
           )}
         </div>
@@ -453,7 +453,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Buscar eventos..."
+              placeholder="Buscar"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => searchTerm.length > 0 && setShowSuggestions(true)}
