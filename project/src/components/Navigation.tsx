@@ -148,13 +148,46 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
         { label: 'Próximos', onClick: () => onNavigate('eventos-proximos') },
         { label: 'Pasados', onClick: () => onNavigate('eventos-pasados') },
         { label: 'Calendario', onClick: () => onNavigate('calendario-eventos') },
+
+
+
+
+
+
+
+
+
+
+
         {
           label: 'Torneo de Programación',
           dropdown: [
-            { label: 'Categoría Básica', onClick: () => onNavigate('torneo-programacion-basica') },
-            { label: 'Categoría Avanzada', onClick: () => onNavigate('torneo-programacion-avanzado') }
+            { label: 'Categoría Básica ----2025', onClick: () => onNavigate('torneo-programacion-basica') },
+              dropdown:[
+                { label: 'Categoría Básica', onClick: () => onNavigate('torneo-programacion-basica') },
+              ]
+            { label: 'Categoría Avanzada ----2026', onClick: () => onNavigate('torneo-programacion-avanzado') }
           ]
         },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { label: 'Torneo de Hacking CTF ( Capture another Flag)', onClick: () => onNavigate('torneo-hacking') },
         { label: 'Concurso de Carteles Científicos', onClick: () => onNavigate('concurso-carteles') }
 

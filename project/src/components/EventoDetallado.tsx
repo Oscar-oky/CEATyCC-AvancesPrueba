@@ -202,7 +202,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -313,7 +313,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -375,7 +375,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -401,7 +401,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -427,7 +427,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -479,7 +479,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -505,7 +505,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -583,7 +583,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -633,7 +633,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -663,7 +663,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -738,7 +738,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -789,7 +789,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -849,7 +849,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -899,7 +899,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -924,7 +924,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -949,7 +949,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -974,7 +974,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -1000,7 +1000,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"
@@ -1025,7 +1025,7 @@ const EventoDetallado: React.FC = () => {
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <img
-                      src={edgarVallejo}
+                      src={logoPrincipal}
                       className="relative w-full h-full object-cover rounded-full border-4 border-white/30 shadow-2xl"
                       loading="lazy"
                       alt="Mtro. Edgar Vallejo Cruz"

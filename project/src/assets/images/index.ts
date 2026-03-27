@@ -65,16 +65,6 @@ export const logoTecnmSjr = new URL('../logos/TECNMSJR.png', import.meta.url).hr
 // Por favor, agrega la imagen estructuraEstanciasEstadias.png en el directorio /src/assets/images/
 export const estructuraEstanciasEstadias = new URL('./estructuraEstanciasEstadias.png', import.meta.url).href;
 
-
-
-
-
-
-
-
-
-
-
 // Imagen de ponentes
 // Ponentes 19 de Marzo
 export const chiengMoua = new URL('./Chieng Moua.png', import.meta.url).href;
@@ -94,19 +84,6 @@ export const angelIvan = new URL('./Angel Ivan.png', import.meta.url).href;
 export const veronicaCovarrubias = new URL('./Veronica Covarrubias.png', import.meta.url).href;
 export const gerardoHernandez = new URL('./Gerardo Hernandez.png', import.meta.url).href;
 export const jorgeIzaguirre = new URL('./Jorge Izaguirre.png', import.meta.url).href;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //Imagenes de Universidades_Simbologia

@@ -98,6 +98,7 @@ app.use('/api/users', require('./users'));
 app.use('/api/scans', require('./scans'));
 app.use('/api/reconocimientos', require('./reconocimientos'));
 app.use('/api/inscripciones', require('./Inscripciones'));
+app.use('/api/concurso-carteles-images', require('./concurso-carteles-images'));
 
 // Middleware de manejo de errores
 app.use(errorHandler);
