@@ -403,9 +403,6 @@ const categories: Category[] = [
       'INSTITUTO TECNOLOGICO DE ESTUDIOS SUPERIORES DE MONTERREY "UNIDAD QUERETARO"',
     ],
   },
-
-
-
 ];
 
 
