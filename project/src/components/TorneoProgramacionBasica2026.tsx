@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy } from 'lucide-react';
+import { useEvents } from '@/hooks/useEvents';
+import { CalendarEvent } from '@/types';
 
-const TorneoProgramacionAvanzado: React.FC = () => {
+const TorneoProgramacionBasica: React.FC = () => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
 
-  // Imágenes específicas para Torneo de Programación Avanzado
-  const torneoAvanzadoImages = [
+  // Imágenes específicas para Torneo de Programación Básica
+  const torneoBasicoImages = [
   ];
 
   // Iniciar slideshow
   const startSlideshow = () => {
     if (slideshowInterval) return;
     const interval = setInterval(() => {
-      setSelectedImageIndex(prev => (prev === torneoAvanzadoImages.length - 1 ? 0 : prev + 1));
+      setSelectedImageIndex(prev => (prev === torneoBasicoImages.length - 1 ? 0 : prev + 1));
     }, 3000);
     setSlideshowInterval(interval);
     setIsSlideshowActive(true);
@@ -30,7 +32,7 @@ const TorneoProgramacionAvanzado: React.FC = () => {
     }
   };
 
-  // Abrir galería específica del Torneo Avanzado
+  // Abrir galería específica del Torneo Básico
   const handleOpenGallery = () => {
     setSelectedImageIndex(0);
     setIsGalleryModalOpen(true);
@@ -41,9 +43,10 @@ const TorneoProgramacionAvanzado: React.FC = () => {
       title: 'Introducción',
       icon: BookOpen,
       content: <>
-        El Torneo de Programación, categoría Avanzada, está dirigido a estudiantes universitarios de 6to. a 10mo. cuatrimestre y 1ro. a 10mo. semestre  que buscan llevar sus habilidades al siguiente nivel. Su propósito es ofrecer un espacio donde los participantes puedan resolver problemas complejos, aplicar estrategias avanzadas y demostrar su dominio en programación.<br /><br />
-        Más allá de la competencia, este torneo fomenta un ambiente amigable y colaborativo, donde cada reto se convierte en una oportunidad de aprendizaje, crecimiento y superación personal.<br /><br />
-        La participación en esta categoría es clave para fortalecer la confianza, adquirir nuevas perspectivas y prepararse para desafíos profesionales, todo mientras se disfruta de la experiencia de competir junto a otros apasionados por el código.<br />
+        Está diseñado especialmente para estudiantes universitarios de 1ro. a 5to. cuatrimestre y 1ro. a 4to. semestre y que sienten pasión por el mundo del código y desean fortalecer sus habilidades desde las primeras etapas de su formación.<br /><br />
+        Su propósito es brindar un espacio donde los participantes puedan aprender, practicar y retarse en un ambiente competitivo pero amigable, fomentando tanto el crecimiento académico como el trabajo en equipo.<br /><br />
+        Participar en este torneo no solo significa poner a prueba tus conocimientos, sino también adquirir nuevas experiencias, descubrir diferentes formas de resolver problemas y convivir con otros jóvenes que comparten la misma pasión por la programación.<br /><br />
+        En esencia, es una oportunidad para aprender mientras compites, crecer mientras colaboras y disfrutar mientras desarrollas tu talento.<br />
       </>
     },
     {
@@ -106,12 +109,12 @@ const TorneoProgramacionAvanzado: React.FC = () => {
         Hora Fin: 20:00 hrs.<br />
       </>
     },
+
     {
       title: 'Fotos de Edicion',
       icon: Camera,
       content: <>
-        Una galería de fotos de torneos para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
-
+        Una galería de fotos de torneos  para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
         <div className="text-center">
           <button
             onClick={handleOpenGallery}
@@ -129,10 +132,10 @@ const TorneoProgramacionAvanzado: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-blue-600 tracking-tight">
-            Torneo de Programación 2025
+            Torneo de Programación 2026
           </h1>
           <p className="mt-4 text-xl text-gray-500">
-            Categoría Avanzada
+            Categoría Básica
           </p>
         </div>
 
@@ -152,13 +155,13 @@ const TorneoProgramacionAvanzado: React.FC = () => {
           ))}
         </div>
 
-        {/* Modal de Galería Específica del Torneo Avanzado */}
+        {/* Modal de Galería Específica del Torneo Básico */}
         {isGalleryModalOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden">
               {/* Header Modal */}
               <div className="flex justify-between items-center p-6 border-b bg-gradient-to-r from-blue-600 to-blue-700">
-                <h2 className="text-2xl font-bold text-white">Galería - Torneo de Programación Avanzada</h2>
+                <h2 className="text-2xl font-bold text-white">Galería - Torneo de Programación Básica</h2>
                 <button
                   onClick={() => setIsGalleryModalOpen(false)}
                   className="text-white hover:text-gray-200 focus:outline-none transition-colors"
@@ -175,16 +178,16 @@ const TorneoProgramacionAvanzado: React.FC = () => {
                 <div className="mb-6 text-center">
                   <div className="relative inline-block">
                     <img
-                      src={torneoAvanzadoImages[selectedImageIndex]}
-                      alt={`Torneo Avanzado - Imagen ${selectedImageIndex + 1}`}
+                      src={torneoBasicoImages[selectedImageIndex]}
+                      alt={`Torneo Básico - Imagen ${selectedImageIndex + 1}`}
                       className="max-w-full max-h-96 rounded-lg shadow-lg"
                     />
                     
                     {/* Controles de navegación */}
-                    {torneoAvanzadoImages.length > 1 && (
+                    {torneoBasicoImages.length > 1 && (
                       <>
                         <button
-                          onClick={() => setSelectedImageIndex((prev) => prev === 0 ? torneoAvanzadoImages.length - 1 : prev - 1)}
+                          onClick={() => setSelectedImageIndex((prev) => prev === 0 ? torneoBasicoImages.length - 1 : prev - 1)}
                           className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -192,7 +195,7 @@ const TorneoProgramacionAvanzado: React.FC = () => {
                           </svg>
                         </button>
                         <button
-                          onClick={() => setSelectedImageIndex((prev) => (prev + 1) % torneoAvanzadoImages.length)}
+                          onClick={() => setSelectedImageIndex((prev) => (prev + 1) % torneoBasicoImages.length)}
                           className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -205,13 +208,13 @@ const TorneoProgramacionAvanzado: React.FC = () => {
                   
                   {/* Indicador de imagen actual */}
                   <p className="mt-4 text-gray-600 font-medium">
-                    Imagen {selectedImageIndex + 1} de {torneoAvanzadoImages.length}
+                    Imagen {selectedImageIndex + 1} de {torneoBasicoImages.length}
                   </p>
                 </div>
 
                 {/* Miniaturas */}
                 <div className="grid grid-cols-5 gap-3 max-h-32 overflow-y-auto">
-                  {torneoAvanzadoImages.map((image, index) => (
+                  {torneoBasicoImages.map((image, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
@@ -264,4 +267,4 @@ const TorneoProgramacionAvanzado: React.FC = () => {
   );
 };
 
-export default TorneoProgramacionAvanzado;
+export default TorneoProgramacionBasica;

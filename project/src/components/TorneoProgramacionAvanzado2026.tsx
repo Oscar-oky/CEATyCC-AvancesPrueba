@@ -129,7 +129,7 @@ const TorneoProgramacionAvanzado: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-blue-600 tracking-tight">
-            Torneo de Programación 2025
+            Torneo de Programación 2026
           </h1>
           <p className="mt-4 text-xl text-gray-500">
             Categoría Avanzada

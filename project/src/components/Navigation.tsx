@@ -148,46 +148,24 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
         { label: 'Próximos', onClick: () => onNavigate('eventos-proximos') },
         { label: 'Pasados', onClick: () => onNavigate('eventos-pasados') },
         { label: 'Calendario', onClick: () => onNavigate('calendario-eventos') },
-
-
-
-
-
-
-
-
-
-
-
         {
           label: 'Torneo de Programación',
           dropdown: [
-            { label: 'Categoría Básica ----2025', onClick: () => onNavigate('torneo-programacion-basica') },
-              dropdown:[
-                { label: 'Categoría Básica', onClick: () => onNavigate('torneo-programacion-basica') },
+            {
+              label: '2025',
+              dropdown: [ 
+                { label: 'Categoria Básica', onClick: () => onNavigate('torneo-programacion-basica') },
+                { label: 'Categoria Avanzada', onClick: () => onNavigate('torneo-programacion-avanzado')}
               ]
-            { label: 'Categoría Avanzada ----2026', onClick: () => onNavigate('torneo-programacion-avanzado') }
+            },
+            { label: '2026',
+              dropdown: [ 
+                { label: 'Categoria Básica', onClick: () => onNavigate('torneo-programacion-basica-2026') },
+                { label: 'Categoria Avanzada', onClick: () => onNavigate('torneo-programacion-avanzado-2026') }
+              ]
+            }
           ]
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         { label: 'Torneo de Hacking CTF ( Capture another Flag)', onClick: () => onNavigate('torneo-hacking') },
         { label: 'Concurso de Carteles Científicos', onClick: () => onNavigate('concurso-carteles') }
 
@@ -351,7 +329,6 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
               key={index}
               className="relative"
               onMouseEnter={() => item.dropdown && handleMouseEnter(item.label)}
-              onMouseLeave={handleMouseLeave}
             >
               <a
                 href={item.href || '#'}
@@ -366,39 +343,83 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
                 <div
                   className="absolute top-full left-0 mt-1 bg-gray-600 rounded-lg shadow-xl py-3 min-w-[250px] z-50 border border-gray-500"
                   onMouseEnter={() => handleDropdownMouseEnter(item.label)} // Keep parent active
+                  onMouseLeave={handleMouseLeave}
                 >
                   {item.dropdown.map((dropdownItem, dropdownIndex) => (
                     <div
                       key={dropdownIndex}
                       className="relative"
-                      onMouseEnter={() => handleDropdownMouseEnter(dropdownItem.dropdown ? `${item.label}/${dropdownItem.label}` : item.label)}
+                      onMouseEnter={() => handleDropdownMouseEnter(`${item.label}/${dropdownItem.label}`)}
                     >
                       {dropdownItem.dropdown ? (
                         <>
                           <a
-                            href={dropdownItem.href || '#'}
-                            className="block whitespace-nowrap px-4 py-3 text-gray-100 text-sm hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer hover:pl-6"
+                            href="#"
+                            onClick={(e) => e.preventDefault()}
+                            className="flex items-center justify-between whitespace-nowrap px-4 py-3 text-gray-100 text-sm hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer hover:pl-6"
                           >
                             {dropdownItem.label}
+                            <ChevronDown className="w-4 h-4" />
                           </a>
-                          {activeDropdown === `${item.label}/${dropdownItem.label}` && (
+                          {activeDropdown?.startsWith(`${item.label}/${dropdownItem.label}`) && (
                             <div
-                              className="absolute left-full top-0 mt-0 bg-gray-600 rounded-lg shadow-xl py-3 min-w-[250px] z-50 max-h-96 overflow-y-auto border border-gray-500"
-                            >
+                                           className="absolute left-full top-0 mt-0 bg-gray-600 rounded-lg shadow-xl py-3 min-w-[250px] z-50 border border-gray-500"
+                                         >
                               {dropdownItem.dropdown.map((subItem, subIndex) => (
-                                <a
+                                <div
                                   key={subIndex}
-                                  href={subItem.href || '#'}
-                                  onClick={(e) => {
-                                    if (subItem.onClick) {
-                                      e.preventDefault();
-                                      handleDropdownItemClick(subItem);
-                                    }
-                                  }}
-                                  className="block whitespace-nowrap px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer hover:pl-6 border-l border-gray-500"
+                                  className="relative"
+                                  onMouseEnter={() => handleDropdownMouseEnter(`${item.label}/${dropdownItem.label}/${subItem.label}`)}
                                 >
-                                  {subItem.label}
-                                </a>
+                                  {subItem.dropdown ? (
+                                    <>
+                                      <a
+                                        href="#"
+                                        onClick={(e) => e.preventDefault()}
+                                        className="flex items-center justify-between whitespace-nowrap px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer hover:pl-6 border-l border-gray-500"
+                                      >
+                                        {subItem.label}
+                                        <ChevronDown className="w-4 h-4" />
+                                      </a>
+                                      {activeDropdown?.startsWith(`${item.label}/${dropdownItem.label}/${subItem.label}`) && (
+                                        <div
+                                          className="absolute left-full top-0 mt-0 bg-gray-600 rounded-lg shadow-xl py-3 min-w-[250px] z-50 max-h-96 overflow-y-auto border border-gray-500"
+                                        >
+                                          {subItem.dropdown.map((subSubItem, subSubIndex) => (
+                                            <a
+                                              key={subSubIndex}
+                                              href={subSubItem.href || '#'}
+                                              onClick={(e) => {
+                                                if (subSubItem.onClick) {
+                                                  e.preventDefault();
+                                                  handleDropdownItemClick(subSubItem);
+                                                }
+                                              }}
+                                              className="block whitespace-nowrap px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer hover:pl-6 border-l border-gray-500"
+                                            >
+                                              {subSubItem.label}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </>
+                                  ) : (
+                                    <a
+                                      href={subItem.href || '#'}
+                                      target={subItem.target}
+                                      rel={subItem.rel}
+                                      onClick={(e) => {
+                                        if (subItem.onClick) {
+                                          e.preventDefault();
+                                          handleDropdownItemClick(subItem);
+                                        }
+                                      }}
+                                      className="block whitespace-nowrap px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer hover:pl-6 border-l border-gray-500"
+                                    >
+                                      {subItem.label}
+                                    </a>
+                                  )}
+                                </div>
                               ))}
                             </div>
                           )}
@@ -540,7 +561,9 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
                                 <button
                                   className="flex items-center justify-between w-full px-4 py-2 text-gray-100 text-sm hover:bg-blue-500 hover:text-white transition-colors duration-150 cursor-pointer rounded-md"
                                   onClick={() => setMobileActiveDropdown(
-                                    mobileActiveDropdown === `${item.label}/${dropdownItem.label}` ? item.label : `${item.label}/${dropdownItem.label}`
+                                    mobileActiveDropdown && mobileActiveDropdown.startsWith(`${item.label}/${dropdownItem.label}`)
+                                      ? item.label
+                                      : `${item.label}/${dropdownItem.label}`
                                   )}
                                 >
                                   <span>{dropdownItem.label}</span>

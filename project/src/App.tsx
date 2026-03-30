@@ -34,6 +34,8 @@ import OpenAcademySantander from './components/AreasEstrategicas/OpenAcademySant
 import Reconocimientos from './components/Actividades/Reconocimientos';
 import TorneoProgramacionBasica from './components/TorneoProgramacionBasica';
 import TorneoProgramacionAvanzado from './components/TorneoProgramacionAvanzado';
+import TorneoProgramacionBasica2026 from './components/TorneoProgramacionBasica2026';
+import TorneoProgramacionAvanzado2026 from './components/TorneoProgramacionAvanzado2026';
 import TorneoHackingCTF from './components/TorneoHackingCTF';
 import ConcursoCartelesCientificos from './components/ConcursoCartelesCientificos';
 import { CurrentView } from './types';
@@ -118,6 +120,8 @@ const AppContent: React.FC = () => {
       'estadias': '/estadias',
       'torneo-programacion-basica': '/torneo-programacion-basica',
       'torneo-programacion-avanzado': '/torneo-programacion-avanzado',
+      'torneo-programacion-basica-2026': '/torneo-programacion-basica-2026',
+      'torneo-programacion-avanzado-2026': '/torneo-programacion-avanzado-2026',
       'torneo-hacking': '/torneo-hacking-ctf',
       'concurso-carteles': '/concurso-carteles',
       'evento-detallado': '/evento-detallado'
@@ -215,6 +219,8 @@ const AppContent: React.FC = () => {
               {/* Torneos y concursos */}
               <Route path="/torneo-programacion-basica" element={<TorneoProgramacionBasica />} />
               <Route path="/torneo-programacion-avanzado" element={<TorneoProgramacionAvanzado />} />
+              <Route path="/torneo-programacion-basica-2026" element={<TorneoProgramacionBasica2026 />} />
+              <Route path="/torneo-programacion-avanzado-2026" element={<TorneoProgramacionAvanzado2026 />} />
               <Route path="/torneo-hacking-ctf" element={<TorneoHackingCTF />} />
               <Route path="/concurso-carteles" element={<ConcursoCartelesCientificos />} />
               {/* Administración y páginas auxiliares */}

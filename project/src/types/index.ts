@@ -112,7 +112,14 @@ export type CurrentView =
   | 'profile'
   | 'resumen'
   | 'qr-display'
-  | 'estancias-estadias';
+  | 'estancias-estadias'
+  | 'torneo-programacion-basica'
+  | 'torneo-programacion-avanzado'
+  | 'torneo-programacion-basica-2026'
+  | 'torneo-programacion-avanzado-2026'
+  | 'torneo-hacking'
+  | 'concurso-carteles'
+  | 'quienes-somos';
 
 export interface CarouselSlide {
   image: string;
