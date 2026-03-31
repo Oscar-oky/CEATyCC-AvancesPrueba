@@ -619,16 +619,22 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
 
   const totalUniversitiesCount = universities.length;
 
-  // Número de universidades visibles según leyenda seleccionada
+  // Número de universidades visibles según leyenda seleccionada (incluye todas las universidades sin duplicados)
   const visibleUniversitiesCount = useMemo(() => {
+    // Combinar todos los arrays y eliminar duplicados por nombre
+    const allUniversities = [...universities, ...exampleUniversities];
+    const uniqueUniversities = allUniversities.filter((uni, index, self) => 
+      index === self.findIndex(u => u.name === uni.name)
+    );
+    
     if (!selectedLegendType) {
-      return totalUniversitiesCount;
+      return uniqueUniversities.length;
     }
     if (selectedLegendType === 'politecnica-tecnologica') {
-      return universities.filter(uni => uni.type === 'politecnica' || uni.type === 'tecnologica').length;
+      return uniqueUniversities.filter(uni => uni.type === 'politecnica' || uni.type === 'tecnologica').length;
     }
-    return universities.filter(uni => uni.type === selectedLegendType).length;
-  }, [selectedLegendType, totalUniversitiesCount]);
+    return uniqueUniversities.filter(uni => uni.type === selectedLegendType).length;
+  }, [selectedLegendType, universities, exampleUniversities]);
   const handleClearFilters = () => {
     setSearchTerm('');
     setSelectedLegendType(null);
@@ -1073,7 +1079,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
               <div className="mt-4 p-4 border rounded-lg shadow-sm">
                   <h3 className="text-lg font-semibold mb-2 text-center">Simbología</h3>
                   <p className="text-sm text-gray-600 text-center mb-4">
-                    Mostrando {visibleUniversitiesCount} de {totalUniversitiesCount} universidades
+                    Mostrando {visibleUniversitiesCount} de 101 universidades
                   </p>
                   
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">

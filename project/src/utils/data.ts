@@ -398,7 +398,7 @@ export const universities: University[] = [
 export const exampleUniversities: University[] = [
   
   //Administracion Y Negocios
- // { name: 'Universidad de Ejemplo', shortName: 'U Ejemplo', logo: images.logoUNAQ, url: 'https://www.ejemplo.com', type: 'privada', coordinates: [20.5880, -100.3880] },
+ // { name: 'Universidad de Ejemplo', shortName: 'U Ejemplo', logo: images.logoUNAQ, url: 'https://www.ejemplo.com', type: 'publica', coordinates: [20.5880, -100.3880] },
 
   //{ name: 'INSTITUTO TECNOLOGICO DE SAN JUAN DEL RIO', shortName: 'ITSJR', logo: images.ITSJR, url: 'https://itsanjuan.edu.mx', type: 'tecnologica', coordinates: [20.373656077475115, -99.98401882977134] },
   //{ name: 'UNIDAD ACADEMICA DE LA UNIVERSIDAD TECNOLOGICA DE SAN JUAN DEL RIO EN JALPAN DE SERRA, QUERETARO', shortName: 'UTSJR JALPAN', logo: images.UT_JALPAN, url: 'https://utsjr.edu.mx/datos_institucionales.php', type: 'politecnica', coordinates: [21.2024366011847, -99.44700666073041] },
@@ -497,7 +497,7 @@ export const exampleUniversities: University[] = [
   { name: 'INSTITUTO LA PAZ DE QUERETARO, A.C.', shortName: 'ILPQ', logo: images.U_ILPQ, url: 'https://ilapazdequeretaro.edu.mx', type: 'privada', coordinates: [20.599412185736995, -100.37762054232884] },
 
   //Ingenieria, manufactura y construccion
-  { name: 'UNIVERSIDAD AERONAUTICA EN QUERETARO', shortName: 'UNAQ', logo: images.logoUNAQ, url: 'https://www.unaq.edu.mx/#', type: 'aeronautica', coordinates: [20.626039241112853, -100.18745265767114] },
+  //{ name: 'UNIVERSIDAD AERONAUTICA EN QUERETARO', shortName: 'UNAQ', logo: images.logoUNAQ, url: 'https://www.unaq.edu.mx/#', type: 'aeronautica', coordinates: [20.626039241112853, -100.18745265767114] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS AMAZCALA', shortName: 'UAQ Campus Amazcala', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.704264664057174, -100.25952875767115] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS PINAL DE AMOLES', shortName: 'UAQ Campus Pinal de Amoles', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [21.138765513781024, -99.6255415] },
   { name: 'UNIVERSIDAD AUTONOMA DE QUERETARO, CAMPUS PEDRO ESCOBEDO', shortName: 'UAQ Campus Pedro Escobedo', logo: images.logoUAQ, url: 'https://www.uaq.mx/index.php/oferta-educativa/programas-educativos', type: 'publica', coordinates: [20.48924374989298, -100.13226652883557] },
