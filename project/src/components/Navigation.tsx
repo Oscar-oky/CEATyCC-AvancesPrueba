@@ -329,6 +329,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
               key={index}
               className="relative"
               onMouseEnter={() => item.dropdown && handleMouseEnter(item.label)}
+              onMouseLeave={item.dropdown ? handleMouseLeave : undefined}
             >
               <a
                 href={item.href || '#'}
