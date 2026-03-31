@@ -598,16 +598,33 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     // Paso 2: Filtrar categorías basándose en careersToConsider y searchTerm
     const lowercasedSearch = searchTerm.toLowerCase();
 
+    // Buscar si el término coincide con alguna universidad (nombre o siglas)
+    const matchingUniversities = universities.filter(uni => 
+      uni.name.toLowerCase().includes(lowercasedSearch) || 
+      (uni.shortName && uni.shortName.toLowerCase().includes(lowercasedSearch))
+    );
+    
+    // Recopilar todas las carreras de las universidades que coinciden con la búsqueda
+    const careersFromMatchingUnis = new Set<string>();
+    matchingUniversities.forEach(uni => {
+      uni.careers?.forEach(career => careersFromMatchingUnis.add(career));
+    });
+
     const filtered = categories.map(category => {
       const filteredCategoryCareers = category.careers.filter(career => {
-        const matchesSearchTerm = searchTerm ? career.toLowerCase().includes(lowercasedSearch) : true;
+        // Coincide si: 
+        // 1. El nombre de la carrera incluye el término de búsqueda
+        // 2. O la carrera pertenece a una universidad que coincide con la búsqueda
+        const matchesSearchTerm = searchTerm ? 
+          (career.toLowerCase().includes(lowercasedSearch) || careersFromMatchingUnis.has(career)) : true;
+          
         const matchesLegendType = selectedLegendType ? careersToConsider.includes(career) : true;
         return matchesSearchTerm && matchesLegendType;
       });
       return { ...category, careers: filteredCategoryCareers };
     }).filter(category => {
       // Mostrar la categoría si:
-      // 1. Tiene carreras que coinciden con la búsqueda, O
+      // 1. Tiene carreras que coinciden con la búsqueda (o pertenecen a una uni buscada), O
       // 2. El nombre de la categoría coincide con la búsqueda
       const hasMatchingCareers = category.careers.length > 0;
       const categoryMatchesSearch = searchTerm ? category.label.toLowerCase().includes(lowercasedSearch) : true;
@@ -1007,7 +1024,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
               <div className="flex items-center space-x-2 mb-2 w-11/12">
                 <input
                   type="text"
-                  placeholder="Buscar por categoría o carrera..."
+                  placeholder="Buscar por universidad, categoría o carrera..."
                   className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -1063,6 +1080,29 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
                     )}
                   </div>
                 ))}
+            </div>
+
+            {/* Cuadro explicativo sobre las categorías */}
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm mb-6">
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <svg className="h-5 w-5 text-blue-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <h3 className="text-sm font-medium text-blue-800">¿Cómo funcionan estas categorías?</h3>
+                  <div className="mt-1 text-sm text-blue-700 space-y-2">
+                    <p>
+                      Estos recuadros agrupan a las universidades según las <strong>áreas de estudio</strong> de las carreras que ofrecen. 
+                      Por lo tanto, una misma universidad puede aparecer en múltiples categorías si cuenta con una oferta académica multidisciplinaria.
+                    </p>
+                    <p className="font-medium">
+                      Para conocer la oferta educativa completa y detallada, te recomendamos visitar el sitio web oficial de cada institución.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
