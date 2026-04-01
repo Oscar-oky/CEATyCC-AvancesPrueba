@@ -563,9 +563,10 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     setOpenCategoryId(prev => (prev === id ? null : id));
   };
 
-  // Construye categorías filtradas según:
-  // - selectedLegendType: limita carreras a las ofrecidas por universidades del tipo seleccionado.
-  // - searchTerm global: filtra por texto.
+    // ================================================
+  // ✅ NUEVO useMemo ACTUALIZADO (soporta shortName)
+  // ================================================
+  // Filtrado de categorías y carreras (ahora soporta búsqueda por nombre completo Y shortName)
   const filteredCareers = useMemo(() => {
     let careersToConsider: string[] = [];
 
@@ -580,14 +581,12 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
         universitiesMatchingLegend = universities.filter(uni => uni.type === selectedLegendType);
       }
       
-      // Recopilar todas las carreras únicas de estas universidades coincidentes
       const uniqueCareers = new Set<string>();
       universitiesMatchingLegend.forEach(uni => {
         uni.careers?.forEach(career => uniqueCareers.add(career));
       });
       careersToConsider = Array.from(uniqueCareers);
     } else {
-      // Si no se selecciona ningún tipo de leyenda, considerar todas las carreras de todas las universidades
       const uniqueCareers = new Set<string>();
       universities.forEach(uni => {
         uni.careers?.forEach(career => uniqueCareers.add(career));
@@ -596,43 +595,59 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     }
 
     // Paso 2: Filtrar categorías basándose en careersToConsider y searchTerm
-    const lowercasedSearch = searchTerm.toLowerCase();
+    const lowercasedSearch = searchTerm.toLowerCase().trim();
 
-    // Buscar si el término coincide con alguna universidad (nombre o siglas)
-    const matchingUniversities = universities.filter(uni => 
-      uni.name.toLowerCase().includes(lowercasedSearch) || 
+    // 🔑 NUEVO: Combinamos ambos arrays para buscar por name Y shortName
+    const allUnis = [...universities, ...exampleUniversities];
+
+    // Universidades que coinciden por nombre completo o por shortName
+    const matchingUnis = allUnis.filter(uni =>
+      uni.name.toLowerCase().includes(lowercasedSearch) ||
       (uni.shortName && uni.shortName.toLowerCase().includes(lowercasedSearch))
     );
-    
-    // Recopilar todas las carreras de las universidades que coinciden con la búsqueda
+
+    // Nombres exactos de las universidades que coinciden
+    const matchingUniversityNames = new Set(
+      matchingUnis.map(uni => uni.name.trim())
+    );
+
+    // Todas las carreras que pertenecen a las universidades que coinciden
     const careersFromMatchingUnis = new Set<string>();
-    matchingUniversities.forEach(uni => {
+    matchingUnis.forEach(uni => {
       uni.careers?.forEach(career => careersFromMatchingUnis.add(career));
     });
 
     const filtered = categories.map(category => {
       const filteredCategoryCareers = category.careers.filter(career => {
-        // Coincide si: 
-        // 1. El nombre de la carrera incluye el término de búsqueda
-        // 2. O la carrera pertenece a una universidad que coincide con la búsqueda
-        const matchesSearchTerm = searchTerm ? 
-          (career.toLowerCase().includes(lowercasedSearch) || careersFromMatchingUnis.has(career)) : true;
-          
-        const matchesLegendType = selectedLegendType ? careersToConsider.includes(career) : true;
+        const careerLower = career.toLowerCase();
+
+        const matchesSearchTerm = searchTerm
+          ? (
+              careerLower.includes(lowercasedSearch) ||
+              careersFromMatchingUnis.has(career) ||
+              matchingUniversityNames.has(career)
+            )
+          : true;
+
+        const matchesLegendType = selectedLegendType 
+          ? careersToConsider.includes(career) 
+          : true;
+
         return matchesSearchTerm && matchesLegendType;
       });
+
       return { ...category, careers: filteredCategoryCareers };
     }).filter(category => {
-      // Mostrar la categoría si:
-      // 1. Tiene carreras que coinciden con la búsqueda (o pertenecen a una uni buscada), O
-      // 2. El nombre de la categoría coincide con la búsqueda
       const hasMatchingCareers = category.careers.length > 0;
-      const categoryMatchesSearch = searchTerm ? category.label.toLowerCase().includes(lowercasedSearch) : true;
+      const categoryMatchesSearch = searchTerm 
+        ? category.label.toLowerCase().includes(lowercasedSearch) 
+        : true;
+
       return hasMatchingCareers || categoryMatchesSearch;
     });
 
     return filtered;
-  }, [searchTerm, selectedLegendType]);
+  }, [searchTerm, selectedLegendType, universities, exampleUniversities, categories]);
 
   const totalUniversitiesCount = universities.length;
 
@@ -672,25 +687,18 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     }
   }, [searchTerm, filteredCareers]);
 
-  // Devuelve un filtro por-categoría usando el término específico de esa categoría
   const getFilteredCareersForCategory = useMemo(() => {
     return (categoryId: string, careers: string[]) => {
       const categorySearchTerm = categorySearchTerms[categoryId]?.toLowerCase() || '';
-      const globalSearchTerm = searchTerm.toLowerCase();
-      
-      // Si hay búsqueda global y la categoría coincide, mostrar todas las carreras
-      if (searchTerm) {
-        const category = categories.find(cat => cat.id === categoryId);
-        if (category && category.label.toLowerCase().includes(globalSearchTerm)) {
-          return careers;
-        }
+      const globalSearchTerm = searchTerm.toLowerCase().trim();
+
+      if (!searchTerm) {
+        if (!categorySearchTerm) return careers;
+        return careers.filter(career => 
+          career.toLowerCase().includes(categorySearchTerm)
+        );
       }
-      
-      // Filtrar por término de búsqueda (global o específico de categoría)
-      const searchToUse = categorySearchTerm || globalSearchTerm;
-      if (!searchToUse) return careers;
-      
-      return careers.filter(career => career.toLowerCase().includes(searchToUse));
+      return careers;
     };
   }, [categorySearchTerms, searchTerm, categories]);
 
