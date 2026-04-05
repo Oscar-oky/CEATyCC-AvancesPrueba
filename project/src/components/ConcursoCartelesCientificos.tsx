@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { BookOpen, Users, ListChecks, Calendar, Camera, Trophy } from 'lucide-react';
-import { useAuth } from '../hooks/AuthContext';
 
-interface Image {
-  id: number;
-  url: string;
-  filename: string;
-  uploadedBy: number;
-  createdAt: string;
-}
+import React, { useState, useRef } from 'react';
+import { BookOpen, Users, ListChecks, Calendar, Star, Award, Camera, Trophy, Upload, X } from 'lucide-react';
+import { useFileUpload } from '@/hooks/useFileUpload';
+import { useAuth } from '@/hooks/AuthContext';
 
 const ConcursoCartelesCientificos: React.FC = () => {
   const { user, isAdmin, isLoggedIn, token } = useAuth(); // asume que token está disponible en el contexto
@@ -18,10 +12,36 @@ const ConcursoCartelesCientificos: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // Hooks para subida de archivos y autenticación
+  const { photoFiles, setPhotoFiles, isUploading, uploadFiles, resetFiles } = useFileUpload();
 
-  // Cargar imágenes desde la API al montar el componente
-  useEffect(() => {
-    fetchImages();
+
+  // Imágenes específicas para Concurso de Carteles Científicos (cargar desde base de datos)
+  const [cartelesImages, setCartelesImages] = useState<string[]>([]);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
+
+  // Cargar imágenes desde la base de datos
+  const loadCartelesImages = async () => {
+    setIsLoadingImages(true);
+    try {
+      const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+      const response = await fetch(`${API_URL}/concurso-carteles/images`);
+      if (response.ok) {
+        const data = await response.json();
+        setCartelesImages(data.images || []);
+      }
+    } catch (error) {
+      console.error('Error al cargar imágenes del concurso de carteles:', error);
+    } finally {
+      setIsLoadingImages(false);
+    }
+  };
+
+  // Cargar imágenes al montar el componente
+  React.useEffect(() => {
+    loadCartelesImages();
   }, []);
 
   const fetchImages = async () => {
@@ -111,7 +131,87 @@ const ConcursoCartelesCientificos: React.FC = () => {
     setIsGalleryModalOpen(true);
   };
 
-  // Secciones informativas (sin cambios)
+  // Manejar upload de imágenes con el mismo sistema que EventModal
+  const handleUpload = async () => {
+    if (!isAdmin) return;
+    
+    if (photoFiles.length === 0) {
+      alert('Por favor selecciona al menos una imagen');
+      return;
+    }
+
+    try {
+      const { photoUrls } = await uploadFiles(null);
+      
+      if (photoUrls.length > 0) {
+        // Guardar URLs en la base de datos
+        const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+        const response = await fetch(`${API_URL}/concurso-carteles/images`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ images: photoUrls }),
+        });
+
+        if (response.ok) {
+          // Actualizar estado local
+          setCartelesImages(prev => [...prev, ...photoUrls]);
+          // Resetear archivos
+          resetFiles();
+          // Limpiar input
+          if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+          }
+          alert(`Se subieron ${photoUrls.length} imágenes exitosamente`);
+        } else {
+          throw new Error('Error al guardar imágenes en la base de datos');
+        }
+      }
+    } catch (error) {
+      console.error('Error al subir imágenes:', error);
+      alert('Error al subir imágenes. Intenta nuevamente.');
+    }
+  };
+
+  // Manejar selección de archivos
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+      setPhotoFiles(imageFiles);
+    }
+  };
+
+  // Eliminar imagen
+  const handleDeleteImage = async (index: number) => {
+    if (!isAdmin) return;
+    
+    const imageToDelete = cartelesImages[index];
+    
+    if (window.confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
+      try {
+        const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+        const response = await fetch(`${API_URL}/concurso-carteles/images`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ imageUrl: imageToDelete }),
+        });
+
+        if (response.ok) {
+          setCartelesImages(prev => prev.filter((_, i) => i !== index));
+        } else {
+          throw new Error('Error al eliminar imagen');
+        }
+      } catch (error) {
+        console.error('Error al eliminar imagen:', error);
+        alert('Error al eliminar imagen. Intenta nuevamente.');
+      }
+    }
+  };
+
   const sections = [
     {
       title: 'Introducción',
@@ -185,62 +285,90 @@ const ConcursoCartelesCientificos: React.FC = () => {
       title: 'Fotos de Edicion',
       icon: Camera,
       content: <>
-        Una galería de fotos de concursos de carteles para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
-
         <div className="space-y-4">
-          {/* Input para subir imágenes (solo admin) */}
-          {isLoggedIn() && isAdmin() && (
-            <div className="text-center">
-              <label className="inline-block">
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                />
-                <span className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                  Subir Imágenes
-                </span>
-              </label>
-            </div>
-          )}
+          {/* Panel de Admin para subir imágenes */}
+          {isAdmin && (
+            <div className="border rounded-lg p-4 bg-blue-50">
+              <h4 className="font-semibold text-gray-700 mb-3">Panel de Administración</h4>
+              
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Subir imágenes desde tu PC:
+                  </label>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="block w-full text-sm text-gray-500 border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
 
-          {/* Botón para ver galería */}
-          <div className="text-center">
-            <button
-              onClick={handleOpenGallery}
-              disabled={images.length === 0}
-              className={`inline-block font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 ${images.length === 0
-                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-700 text-white'
-                }`}
-            >
-              Ver Galería de Fotos {images.length > 0 && `(${images.length})`}
-            </button>
-          </div>
+                {/* Vista previa de archivos seleccionados */}
+                {photoFiles.length > 0 && (
+                  <div>
+                    <h5 className="text-sm font-medium text-gray-700 mb-2">Archivos seleccionados ({photoFiles.length}):</h5>
+                    <div className="space-y-1">
+                      {photoFiles.map((file, index) => (
+                        <div key={index} className="text-xs text-gray-600 bg-white p-2 rounded border">
+                          {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-          {/* Indicador de imágenes cargadas */}
-          {images.length > 0 && (
-            <div className="text-center text-sm text-gray-600">
-              {images.length} imagen{images.length !== 1 ? 'es' : ''} cargada{images.length !== 1 ? 's' : ''}
-              {isAdmin() && <span className="ml-2 text-xs text-blue-600">(Admin)</span>}
-            </div>
-          )}
+                {/* Botón de subida */}
+                <button
+                  onClick={handleUpload}
+                  disabled={photoFiles.length === 0 || isUploading}
+                  className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
+                    photoFiles.length === 0 || isUploading
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                  }`}
+                >
+                  {isUploading ? 'Subiendo...' : `Subir ${photoFiles.length} imagen(es)`}
+                </button>
 
-          {/* Mensajes de autenticación */}
-          {!isLoggedIn() && (
-            <div className="text-center text-sm text-orange-600 bg-orange-50 p-3 rounded-lg">
-              <Camera className="h-4 w-4 inline mr-1" />
-              Debes iniciar sesión como administrador para subir imágenes
+                {/* Vista previa de imágenes actuales */}
+                {cartelesImages.length > 0 && (
+                  <div>
+                    <h5 className="text-sm font-medium text-gray-700 mb-2">Imágenes en galería ({cartelesImages.length}):</h5>
+                    <div className="grid grid-cols-3 gap-2 max-h-40 overflow-y-auto">
+                      {cartelesImages.map((image, index) => (
+                        <div key={index} className="relative group">
+                          <img
+                            src={image}
+                            alt={`Imagen ${index + 1}`}
+                            className="w-full h-20 object-cover rounded border"
+                          />
+                          <button
+                            onClick={() => handleDeleteImage(index)}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                            title="Eliminar imagen"
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           )}
-          {isLoggedIn() && !isAdmin() && (
-            <div className="text-center text-sm text-blue-600 bg-blue-50 p-3 rounded-lg">
-              <Camera className="h-4 w-4 inline mr-1" />
-              Solo los administradores pueden subir imágenes. Puedes ver las imágenes existentes.
-            </div>
-          )}
+        </div>
+
+        <div className="text-center mt-6">
+          <button
+            onClick={handleOpenGallery}
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
+          >
+            Ver Galería de Fotos ({cartelesImages.length})
+          </button>
         </div>
       </>
     },
@@ -432,8 +560,6 @@ const ConcursoCartelesCientificos: React.FC = () => {
                       )}
                     </div>
                   </>
-                )}
-              </div>
             </div>
           </div>
         )}
