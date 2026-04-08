@@ -316,11 +316,65 @@ const Reconocimientos: React.FC = () => {
 
   const categorias: Categoria[] = [
     {
-      nombre: "Ponentes y Panelistas",
+      nombre: "Ponentes y Moderadores",
       descripcion: "Reconoce a instituciones que han demostrado liderazgo en la implementación de tecnologías",
-      criterios: ["Innovación tecnológica", "Impacto en la comunidad", "Sostenibilidad del proyecto"],
-      premio: "$50,000 MXN + Certificación",
+      criterios: [""],
+      premio: "",
       pdfs: [
+        
+        //19
+        { nombre: "Ángel Martínez Velázquez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19/Ángel Martínez Velázquez.pdf" },
+        { nombre: "Carlos Santiago De León Avila", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19/Carlos Santiago De León Ávila.pdf" },
+        { nombre: "Cristian Barac Fabregat Gallegos", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19/Cristian Barac Fabregat Gallegos.pdf" },
+        { nombre: "Emma Reséndiz Juárez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19/Emma Reséndiz Juárez.pdf" },
+        { nombre: "Jonathan Israel González Ruiz", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19/Jonathan Israel González Ruiz.pdf" },
+        { nombre: "Valeria Osorio Ferreiro", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19/Valeria Osorio Ferreiro.pdf" },
+
+        //19 y 20
+        { nombre: "Andrea Montserrat Cruz Rodríguez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Andrea Montserrat Cruz Rodríguez.pdf" },
+        { nombre: "Brenda Guadalupe Luna Álvarez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Brenda Guadalupe Luna Álvarez.pdf" },
+        { nombre: "Daniel Ferruzca", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Daniel Ferruzca.pdf" },
+        { nombre: "David Adissi", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/David Adissi.pdf" },
+        { nombre: "Diana Laura González Camacho, Vanessa Rangel", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Diana Laura González Camacho, Vanessa Rangel.pdf" },
+        { nombre: "Dr. Chieng Moua", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Dr. Chieng Moua.pdf" },
+        { nombre: "Dr. Víctor Alberto Gómez Pérez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Dr. Víctor Alberto Gómez Pérez.pdf" },
+        { nombre: "E. Donjuán, E. Navarro, J. Cabrera y D. García", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/E. Donjuán, E. Navarro, J. Cabrera y D. García.pdf" },
+        { nombre: "Fernando Nava Velázquez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Fernando Nava Velázquez.pdf" },
+        { nombre: "Gerardo Jair Aguilar Belmonte, Lucy Carmona Vieyra, Jorge Emiliano Gutiérrez Ramírez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Gerardo Jair Aguilar Belmonte, Lucy Carmona Vieyra, Jorge Emiliano Gutiérrez Ramírez.pdf" },
+        { nombre: "Hugo Mauricio Romero Rodríguez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Hugo Mauricio Romero Rodríguez.pdf" },
+        { nombre: "Jorge Luis Medellín Martín", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Jorge Luis Medellín Martín.pdf" },
+        { nombre: "José Antonio Reséndiz Muñoz", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/José Antonio Reséndiz Muñoz.pdf" },
+        { nombre: "José Luis González Pérez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/José Luis González Pérez.pdf" },
+        { nombre: "Juan Antonio Villalpando Sandoval, Pedro Eduardo Leal Villalvazo, Jacinto Eliseo Quintana Landaverde", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Juan Antonio Villalpando Sandoval, Pedro Eduardo Leal Villalvazo, Jacinto Eliseo Quintana Landaverde.pdf" },
+        { nombre: "Luis Morales-Velázquez, Arturo Y. Jaen- Cuellar,Luis A. Morales-Hernández", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Luis Morales-Velázquez, Arturo Y. Jaen- Cuellar,Luis A. Morales-Hernández.pdf" },
+        { nombre: "MIP. Rodrigo Ortiz Sánchez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/MIP. Rodrigo Ortiz Sánchez.pdf" },
+        { nombre: "Magdiel Elienai Jiménez Tabla", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Magdiel Elienai Jiménez Tabla.pdf" },
+        { nombre: "Marcos Cortés", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Marcos Cortés.pdf" },
+        { nombre: "Mauricio Sánchez Herrera, Xana Karen Mendoza Camacho, Eliel Bustamante Arroyo", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Mauricio Sánchez Herrera, Xana Karen Mendoza.pdf" },
+        { nombre: "Milton Adán Becerra Maqueda, MiriamEdithGarcíaMiguel, Oliver Giovanni Jara Dionicio, ArturoMartínezMarcos,Eduardo Pimentel Ochoa Almaraz, Eduardo AguilarLuis,Uriel Romero Martínez, Esryil Falcón Vidales Peña", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Milton Adán Becerra Maqueda, Miriam Edith García.pdf" },
+        { nombre: "Miriam Wendoline Ruiz Loredo, Gerardo Cruz Gudiño,Carlos Enrique Villarreal Barrón, Emma ReséndizJuárez,Francisco Arturo Munguía López, José Omar GarcíaCruz,César Eduardo Estrada Fragoso, Antonio Jesús HernándezOrozco", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Miriam Wendoline Ruiz Loredo, Gerardo Cruz Gudiño,.pdf" },
+        { nombre: "Rubén Gabriel Aguilar Santiago", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Rubén Gabriel Aguilar Santiago.pdf" },
+        { nombre: "Sandra Eugenia Beristain Arroyo", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Sandra Eugenia Beristain Arroyo.pdf" },
+        { nombre: "Víctor Alejandro González Huitrón", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/19 y 20/Víctor Alejandro González Huitrón.pdf" },
+
+        //20
+        { nombre: "Aldo Mendoza Mendoza", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Aldo Mendoza Mendoza .pdf" },
+        { nombre: "Aldo Rogelio Hernández Martínez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Aldo Rogelio Hernández Martínez .pdf" },
+        { nombre: "Alejandro Serrano García", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Alejandro Serrano García.pdf" },
+        { nombre: "Axel Fabricio Colchado Juárez", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Axel Fabricio Colchado Juárez.pdf" },
+        { nombre: "Betsy Valeria Licona Cruz", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Betsy Valeria Licona Cruz .pdf" },
+        { nombre: "Cesar Eduardo Estada Fragoso", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Cesar Eduardo Estada Fragoso.pdf" },
+        { nombre: "Emiliano Focil Torres", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Emiliano Focil Torres.pdf" },
+        { nombre: "Estrada Fragoso Cesar Eduardo", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Estrada Fragoso Cesar Eduardo.pdf" },
+        { nombre: "Francisco Javier Gutiérrez Araujo", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Francisco Javier Gutiérrez Araujo.pdf" },
+        { nombre: "Gabriel Martínez Mendoza", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Gabriel Martínez Mendoza .pdf" },
+        { nombre: "Hernández Martínez Aldo Rogelio", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Hernández Martínez Aldo Rogelio.pdf" },
+        { nombre: "Melissa Mata Almaraz", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Melissa Mata Almaraz .pdf" },
+        { nombre: "Miriam Wendoline Ruiz Loredo", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Miriam Wendoline Ruiz Loredo.pdf" },
+        { nombre: "Osvaldo Peña Navarrete", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Osvaldo Peña Navarrete.pdf" },
+        { nombre: "Ulises Yasua Ángeles Arteaga", email: "", pdfUrl: "/docs/2do Foro de Educación en Alta/20/Ulises Yasua Ángeles Arteaga.pdf" },
+
+        /*/
         { nombre: "Adriana C. Chazaro Zaharias", email: "adriana.chazaro@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Adriana C. Chazaro Zaharias.pdf" },
         { nombre: "Alessio Hagen", email: "alessio.hagen@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Alessio Hagen.pdf" },
         { nombre: "Ana Laura Quintanar Reséndiz", email: "ana.quintanar@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Ana Laura Quintanar Reséndiz.pdf" },
@@ -332,14 +386,26 @@ const Reconocimientos: React.FC = () => {
         { nombre: "Fernanada Montes de Oca.", email: "fernanda.montes@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Fernanada Montes de Oca..pdf" },
         { nombre: "Fernanda Montes de Oca", email: "fernanda.montes@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Fernanda Montes de Oca.pdf" },
         { nombre: "Fernando Nava Velázquez", email: "fernando.nava@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Fernando Nava Velázquez.pdf" },
+        */
       ]
     },
     {
-      nombre: "Moderadores y Organizadores ",
-      descripcion: "Premia proyectos desarrollados por estudiantes que resuelvan problemas reales",
-      criterios: ["Originalidad", "Viabilidad técnica", "Impacto social"],
-      premio: "$25,000 MXN + Mentoría",
+      nombre: "Participantes en Concursos de Programación categoría Avanzado",
+      descripcion: "Reconoce la destacada participación de estudiantes en competencias avanzadas de programación.",
+      criterios: [""],
+      premio: "",
       pdfs: [
+        //19
+        { nombre: "Alejandro Barrios Martínez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Alejandro Barrios Martínez.pdf" },
+        { nombre: "Antonio Jesús Hernández Orozco", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Antonio Jesús Hernández Orozco.pdf" },
+        { nombre: "Jesús Enrique López Zavala", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Jesús Enrique López Zavala.pdf" },
+        { nombre: "Leonardo Valdelamar Martínez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Leonardo Valdelamar Martínez.pdf" },
+        { nombre: "María José Reséndiz Medellín", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/María José Reséndiz Medellín.pdf" },
+        { nombre: "Mariana Guadalupe Cano Márquez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Mariana Guadalupe Cano Márquez.pdf" },
+        { nombre: "Mateo David Dwyer Morris", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Mateo David Dwyer Morris.pdf" },
+        { nombre: "Yerik Axel Rodríguez González", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel avanzado/19/Yerik Axel Rodríguez González.pdf" },
+
+        /*
         { nombre: "Francisco González", email: "francisco.gonzalez@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Francisco González.pdf" },
         { nombre: "Gerardo Hernández Calderón", email: "gerardo.hernandez@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Gerardo Hernández Calderón.pdf" },
         { nombre: "Héctor Rodríguez Rangel", email: "hector.rodriguez@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Héctor Rodríguez Rangel.pdf" },
@@ -351,9 +417,151 @@ const Reconocimientos: React.FC = () => {
         { nombre: "Juan Alejandro Parra Rodríguez", email: "juan.parra@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Juan Alejandro Parra Rodríguez.pdf" },
         { nombre: "Luciano Palla", email: "luciano.palla@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Luciano Palla.pdf" },
         { nombre: "Luis Guillermo Vidal Gaona", email: "luis.vidal@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Luis Guillermo Vidal Gaona.pdf" },
+         */
+
+      ]
+    },
+
+    {
+      nombre: "Participantes en Concursos de Programación categoría Básico",
+      descripcion: "Reconoce la destacada participación de estudiantes en competencias básicas de programación.",
+      criterios: [""],
+      premio: "",
+      pdfs: [
+        //19
+        { nombre: "Aldo Damián Gómez Pichardo", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Aldo Damián Gómez Pichardo.pdf" },
+        { nombre: "Alejandra López Franco", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Alejandra López Franco.pdf" },
+        { nombre: "Alejandro Banda Suárez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Alejandro Banda Suárez.pdf" },
+        { nombre: "Alejandro Serrano García", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Alejandro Serrano García.pdf" },
+        { nombre: "Alexis Sánchez Sixto", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Alexis Sánchez Sixto.pdf" },
+        { nombre: "Ali Gael López Casimiro", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Ali Gael López Casimiro.pdf" },
+        { nombre: "Alondra Daniela Sánchez Domínguez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Alondra Daniela Sánchez Domínguez.pdf" },
+        { nombre: "Andrés González Licea", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Andrés González Licea.pdf" },
+        { nombre: "Antonio Jesús Hernández Orozco", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Antonio Jesús Hernández Orozco.pdf" },
+        { nombre: "Antonio Jesús Hernández Orozco", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Antonio Jesús Hernández Orozco .pdf" },
+        { nombre: "Ariel de Jesús Ortega López", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Ariel de Jesús Ortega López.pdf" },
+        { nombre: "Axel Fabricio Colchado Juárez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Axel Fabricio Colchado Juárez.pdf" },
+        { nombre: "Betel Alejandra Montes Muñoz", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Betel Alejandra Montes Muñoz.pdf" },
+        { nombre: "Bryan Gerardo García González", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Bryan Gerardo García González.pdf" },
+        { nombre: "Bryan de Jesús Santiago Gutiérrez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Bryan de Jesús Santiago Gutiérrez.pdf" },
+        { nombre: "Cesar de Jesús Moreno Colchado", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Cesar de Jesús Moreno Colchado .pdf" },
+        { nombre: "Cesar de Jesús Moreno Colchado", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Cesar de Jesús Moreno Colchado.pdf" },
+        { nombre: "David Merino Domínguez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/David Merino Domínguez.pdf" },
+        { nombre: "Davis Alejandro Perera Allen", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Davis Alejandro Perera Allen.pdf" },
+        { nombre: "Eliel Priske Alanis", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Eliel Priske Alanis .pdf" },
+        { nombre: "Elizabeth Reséndiz Ramos", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Elizabeth Reséndiz Ramos.pdf" },
+        { nombre: "Emiliano Antonio Lara Sánchez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Emiliano Antonio Lara Sánchez.pdf" },
+        { nombre: "Emiliano García Perales", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Emiliano García Perales.pdf" },
+        { nombre: "Emilio Antonio Lara Sánchez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Emilio Antonio Lara Sánchez.pdf" },
+        { nombre: "Emilio Rojas Badillo", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Emilio Rojas Badillo.pdf" },
+        { nombre: "Favián Orduña Suárez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Favián Orduña Suárez.pdf" },
+        { nombre: "Francisco Arturo Munguía López", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Francisco Arturo Munguía López .pdf" },
+        { nombre: "Fátima Trejo Zarazúa", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Fátima Trejo Zarazúa.pdf" },
+        { nombre: "Georgina Flores Carrillo", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Georgina Flores Carrillo.pdf" },
+        { nombre: "Hanniel Olvera Mata", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Hanniel Olvera Mata.pdf" },
+        { nombre: "Héctor Alejandro Xolocotzi Girón", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Héctor Alejandro Xolocotzi Girón.pdf" },
+        { nombre: "Itzel Ramírez Medina", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Itzel Ramírez Medina.pdf" },
+        { nombre: "Jesús Iglesias Heredia", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Jesús Iglesias Heredia.pdf" },
+        { nombre: "Jesús Yeray Nila Bello", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Jesús Yeray Nila Bello.pdf" },
+        { nombre: "Jocelyn Sánchez Leal", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Jocelyn Sánchez Leal.pdf" },
+        { nombre: "Joshua Ortiz Garcia", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Joshua Ortiz Garcia.pdf" },
+        { nombre: "José Emiliano Gutiérrez Méndez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/José Emiliano Gutiérrez Méndez.pdf" },
+        { nombre: "Leslie Daniela Gómez Martínez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Leslie Daniela Gómez Martínez.pdf" },
+        { nombre: "Lizeth Bocanegra Martínez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Lizeth Bocanegra Martínez.pdf" },
+        { nombre: "Lizeth Bonegra", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Lizeth Bonegra.pdf" },
+        { nombre: "Luis Everardo Moreno Caracheo", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Luis Everardo Moreno Caracheo.pdf" },
+        { nombre: "Melina Dannaé Ayala Sandoval", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Melina Dannaé Ayala Sandoval.pdf" },
+        { nombre: "Melissa Mata Almaraz", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Melissa Mata Almaraz.pdf" },
+        { nombre: "Octavio Cuevas Jiménez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Octavio Cuevas Jiménez.pdf" },
+        { nombre: "Osvaldo Peña Navarrete", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Osvaldo Peña Navarrete.pdf" },
+        { nombre: "Raquel de León Vázquez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Raquel de León Vázquez.pdf" },
+        { nombre: "Raúl Fernando Moreno Gómez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Raúl Fernando Moreno Gómez.pdf" },
+        { nombre: "Ricardo Sosa Chico", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Ricardo Sosa Chico.pdf" },
+        { nombre: "Roberto Carlos Jiménez Rodríguez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Roberto Carlos Jiménez Rodríguez.pdf" },
+        { nombre: "Rodrigo Bautista Sánchez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Rodrigo Bautista Sánchez.pdf" },
+        { nombre: "Rubén Gabriel Aguilar Santiago", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Rubén Gabriel Aguilar Santiago.pdf" },
+        { nombre: "Sam Angen Iniestra Miranda", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Sam Angen Iniestra Miranda.pdf" },
+        { nombre: "Schoenstatt Olalde Campos", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Schoenstatt Olalde Campos.pdf" },
+        { nombre: "Sergio Altamira Mojarro", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Sergio Altamira Mojarro.pdf" },
+        { nombre: "Tanny Geraldine Correa Chávez", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Tanny Geraldine Correa Chávez.pdf" },
+        { nombre: "Ulises Eduardo López Acosta", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Ulises Eduardo López Acosta.pdf" },
+        { nombre: "Uriel Moreno González", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Uriel Moreno González.pdf" },
+        { nombre: "Xolocotzi Girón Héctor Alejandro", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Xolocotzi Girón Héctor Alejandro.pdf" },
+        { nombre: "Zelinda Flores Cantú", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Zelinda Flores Cantú.pdf" },
+        { nombre: "Ángel Antonio Arvizu Herrera", email: "", pdfUrl: "/docs/concurso de programación en categoría nivel Básico/19/Ángel Antonio Arvizu Herrera.pdf" },
+        
       ]
     },
     
+    {
+      nombre: "Mujeres STEM",
+      descripcion: "Reconoce a mujeres destacadas del CEATyCC por su excelencia en Ciencia, Tecnología y Ingeniería.",
+      criterios: [""],
+      premio: "",
+      pdfs: [
+        { nombre: "Ing. Abigail Santamaría Ramírez", email: "", pdfUrl: "/docs/Mujeres STEM/Ing. Abigail Santamaría Ramírez.pdf" },
+        { nombre: "Ing. Alejandra Belén Medina Cruz", email: "", pdfUrl: "/docs/Mujeres STEM/Ing. Alejandra Belén Medina Cruz.pdf" },
+        { nombre: "Ing. Alondra María García Callejas", email: "", pdfUrl: "/docs/Mujeres STEM/Ing. Alondra María García Callejas.pdf" },
+        
+      ]
+    },
+
+    {
+      nombre: "Constancias Jueces",
+      descripcion: "Reconoce la valiosa participación de los profesores que fungieron como jueces en los concursos de programación, garantizando la calidad y la imparcialidad de las evaluaciones.",
+      criterios: [""],
+      premio: "",
+      pdfs: [
+        { nombre: "Dr. José Alejandro Ascencio Laguna", email: "", pdfUrl: "/docs/Constancias Jueces/Dr. José Alejandro Ascencio Laguna.pdf" },
+        { nombre: "Ing. Adriana Yazmín Contreras Álvarez", email: "", pdfUrl: "/docs/Constancias Jueces/Ing. Adriana Yazmín Contreras Álvarez.pdf" },
+        { nombre: "Ing. Julio Alejandro Villeda Maldonado", email: "", pdfUrl: "/docs/Constancias Jueces/Ing. Julio Alejandro Villeda Maldonado.pdf" },
+        { nombre: "Mtra. Ma. Elena Montes Almanza", email: "", pdfUrl: "/docs/Constancias Jueces/Mtra. Ma. Elena Montes Almanza.pdf" },
+        { nombre: "Mtro. Edgar Emmanuel Sánchez Coronado", email: "", pdfUrl: "/docs/Constancias Jueces/Mtro. Edgar Emmanuel Sánchez Coronado.pdf" },
+        { nombre: "Mtro. Gabriel González Milina", email: "", pdfUrl: "/docs/Constancias Jueces/Mtro. Gabriel González Milina.pdf" },
+        { nombre: "Mtro. Gregorio Rodríguez Miranda", email: "", pdfUrl: "/docs/Constancias Jueces/Mtro. Gregorio Rodríguez Miranda.pdf" },
+        { nombre: "Mtro. Omar Eden Mendez Gomez", email: "", pdfUrl: "/docs/Constancias Jueces/Mtro. Omar Eden Mendez Gomez.pdf" },
+       
+      ]
+    },
+
+    {
+      nombre: "Egresados",
+      descripcion: "Reconoce a los egresados del CEATyCC por su excelencia académica.",
+      criterios: [""],
+      premio: "",
+      pdfs: [
+        { nombre: "Brenda Leticia Contreras Beltrán", email: "", pdfUrl: "/docs/Egresados/Brenda Leticia Contreras Beltrán.pdf" },
+        { nombre: "Isidro Amarildo Bárcenas Reséndiz", email: "", pdfUrl: "/docs/Egresados/Isidro Amarildo Bárcenas Reséndiz.pdf" },
+        { nombre: "Magdiel Elienai Jiménez Tabla", email: "", pdfUrl: "/docs/Egresados/Magdiel Elienai Jiménez Tabla.pdf" },
+        { nombre: "Sandra Anahí Ibarra Navarrete", email: "", pdfUrl: "/docs/Egresados/Sandra Anahí Ibarra Navarrete.pdf" },
+        
+      ]
+    },
+
+    {
+      nombre: "Empresas",
+      descripcion: "Reconoce a las empresas colaboradoras del CEATyCC por su apoyo y compromiso con la formación de talento en tecnologías de la información y comunicaciones.",
+      criterios: [""],
+      premio: "",
+      pdfs: [
+        
+        { nombre: "38 Grados Lab", email: "", pdfUrl: "/docs/Empresas/38 Grados Lab.pdf" },
+        { nombre: "ADDITEQ by 3D PRYNXZ", email: "", pdfUrl: "/docs/Empresas/ADDITEQ by 3D PRYNXZ.pdf" },
+        { nombre: "CBS México", email: "", pdfUrl: "/docs/Empresas/CBS México.pdf" },
+        { nombre: "Chill Byte Solutions", email: "", pdfUrl: "/docs/Empresas/Chill Byte Solutions.pdf" },
+        { nombre: "CQESH", email: "", pdfUrl: "/docs/Empresas/CQESH.pdf" },
+        { nombre: "Faltantes empresas", email: "", pdfUrl: "/docs/Empresas/Faltantes empresas.pdf" },
+        { nombre: "Gentres Talent Activation", email: "", pdfUrl: "/docs/Empresas/Gentres Talent Activation.pdf" },
+        { nombre: "Grupo Lehren Artek", email: "", pdfUrl: "/docs/Empresas/Grupo Lehren Artek.pdf" },
+        { nombre: "Health System", email: "", pdfUrl: "/docs/Empresas/Health System.pdf" },
+        { nombre: "NOVATECH", email: "", pdfUrl: "/docs/Empresas/NOVATECH.pdf" },
+        { nombre: "Open Source Integrators (OSI)", email: "", pdfUrl: "/docs/Empresas/Open Source Integrators (OSI).pdf" },
+        { nombre: "TRIBUU", email: "", pdfUrl: "/docs/Empresas/TRIBUU.pdf" },
+        { nombre: "Universidad IDESUM", email: "", pdfUrl: "/docs/Empresas/Universidad IDESUM.pdf" },
+        
+      ]
+    },
+
   ];
 
   const estadisticas = [
@@ -525,7 +733,7 @@ const Reconocimientos: React.FC = () => {
             {categorias.map((categoria, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6 border border-gray-200"
+                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6 border border-gray-200 flex flex-col justify-between h-full"
               >
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
                   {categoria.nombre}
@@ -534,7 +742,7 @@ const Reconocimientos: React.FC = () => {
                   {categoria.descripcion}
                 </p>
                 
-                <div className="mt-6">
+                <div className="mt-6 relative">
                   <button
                     onClick={() => setExpandedCategoria(expandedCategoria === categoria.nombre ? null : categoria.nombre)}
                     className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -542,7 +750,7 @@ const Reconocimientos: React.FC = () => {
                     Ver reconocimientos <Download className="w-4 h-4" />
                   </button>
                   {expandedCategoria === categoria.nombre && (
-                    <div className="mt-4 space-y-2 max-h-60 overflow-y-auto">
+                    <div className="mt-4 space-y-2 max-h-60 overflow-y-auto absolute top-full left-0 right-0 z-10 bg-white shadow-lg rounded-b-xl border border-t-0">
                       {categoria.pdfs.map((pdf, pdfIndex) => (
                         <button
                           key={pdfIndex}
