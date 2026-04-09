@@ -1,13 +1,6 @@
-/**
- * Reconocimientos y descarga de constancias.
- * - Muestra categorías, premios y ganadores con descarga controlada de PDFs.
- * - Integra validación de acceso (modal) y feedback visual.
- * - Combina datos estáticos con posibilidad de expansión desde API.
- */
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/AuthContext';
-import { Award, Star, Trophy, Medal, Users, Calendar, Download, Shield, Loader2 } from 'lucide-react';
-
+import { Award, Trophy, Users, Shield, Loader2, Download } from 'lucide-react';
 // Define the types for winners
 type Winner = {
   nombre: string;
