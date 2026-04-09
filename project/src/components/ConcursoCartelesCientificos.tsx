@@ -21,13 +21,24 @@ const ConcursoCartelesCientificos: React.FC = () => {
     formData.append('image', selectedFile);
 
     try {
-      // Aquí iría la llamada a tu API de backend para subir la imagen
-      // Por ahora, solo mostraremos un mensaje de éxito
-      alert('Imagen subida con éxito (simulado)!');
-      console.log('Archivo seleccionado:', selectedFile);
+      const response = await fetch('http://localhost:3007/api/concurso-carteles-images', { // Ajusta la URL de tu backend
+        method: 'POST',
+        body: formData,
+        // Si necesitas autenticación, añade los headers aquí
+        // headers: {
+        //   'Authorization': `Bearer ${yourAuthToken}`,
+        // },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      alert('Imagen subida con éxito!');
+      console.log('Respuesta del servidor:', result);
       setSelectedFile(null); // Limpiar el archivo seleccionado después de la subida
-      // Después de subir, podríamos querer refrescar la lista de fotos
-      // fetchPhotos();
+      fetchPhotos(); // Refrescar la lista de fotos después de subir una nueva
     } catch (error) {
       console.error('Error al subir la imagen:', error);
       alert('Error al subir la imagen.');
@@ -37,15 +48,13 @@ const ConcursoCartelesCientificos: React.FC = () => {
   // Nueva función para obtener fotos
   const fetchPhotos = async () => {
     try {
-      // Aquí iría la llamada a tu API de backend para obtener las imágenes
-      // Por ahora, simularemos algunas URLs de imágenes
-      const dummyPhotos = [
-        'https://via.placeholder.com/150/FF0000/FFFFFF?text=Foto1',
-        'https://via.placeholder.com/150/00FF00/000000?text=Foto2',
-        'https://via.placeholder.com/150/0000FF/FFFFFF?text=Foto3',
-      ];
-      setPhotos(dummyPhotos);
-      alert('Fotos cargadas (simulado)!');
+      const response = await fetch('http://localhost:3007/api/concurso-carteles-images'); // Ajusta la URL de tu backend
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setPhotos(data.map((img: any) => img.url)); // Asume que el backend devuelve un array de objetos con una propiedad 'url'
+      alert('Fotos cargadas!');
     } catch (error) {
       console.error('Error al obtener las fotos:', error);
       alert('Error al obtener las fotos.');
