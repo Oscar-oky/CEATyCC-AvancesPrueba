@@ -1,117 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Camera, Trophy } from 'lucide-react';
-import { useAuth } from '../hooks/AuthContext';
-
-interface Image {
-  id: number;
-  url: string;
-  filename: string;
-  uploadedBy: number;
-  createdAt: string;
-}
 
 const ConcursoCartelesCientificos: React.FC = () => {
-  const { user, isAdmin, isLoggedIn, token } = useAuth(); // asume que token está disponible en el contexto
-  const [images, setImages] = useState<Image[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [isSlideshowActive, setIsSlideshowActive] = useState(false);
-  const [slideshowInterval, setSlideshowInterval] = useState<NodeJS.Timeout | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [photos, setPhotos] = useState<string[]>([]); // Nuevo estado para las fotos
 
-  // Cargar imágenes desde la API al montar el componente
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
-  const fetchImages = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/concurso-carteles-images');
-      if (!response.ok) throw new Error('Error al cargar imágenes');
-      const data = await response.json();
-      setImages(data);
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    } finally {
-      setIsLoading(false);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
     }
   };
 
-  // Subir imágenes (solo admin)
-  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isAdmin()) return;
-    const files = event.target.files;
-    if (!files || files.length === 0) return;
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      alert('Por favor, selecciona un archivo primero.');
+      return;
+    }
 
     const formData = new FormData();
-    Array.from(files).forEach((file) => {
-      formData.append('images', file);
-    });
+    formData.append('image', selectedFile);
 
     try {
-      const response = await fetch('/api/concurso-carteles-images', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`, // ajusta según tu mecanismo de autenticación
-        },
-        body: formData,
-      });
-      if (!response.ok) throw new Error('Error al subir imágenes');
-      await fetchImages(); // recargar galería
+      // Aquí iría la llamada a tu API de backend para subir la imagen
+      // Por ahora, solo mostraremos un mensaje de éxito
+      alert('Imagen subida con éxito (simulado)!');
+      console.log('Archivo seleccionado:', selectedFile);
+      setSelectedFile(null); // Limpiar el archivo seleccionado después de la subida
+      // Después de subir, podríamos querer refrescar la lista de fotos
+      // fetchPhotos();
     } catch (error) {
-      console.error('Error uploading images:', error);
-      alert('Error al subir imágenes. Intenta de nuevo.');
+      console.error('Error al subir la imagen:', error);
+      alert('Error al subir la imagen.');
     }
   };
 
-  // Eliminar imagen (solo admin)
-  const handleRemoveImage = async (id: number, index: number) => {
-    if (!isAdmin()) return;
-    if (!confirm('¿Eliminar esta imagen permanentemente?')) return;
-
+  // Nueva función para obtener fotos
+  const fetchPhotos = async () => {
     try {
-      const response = await fetch(`/api/concurso-carteles-images/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (!response.ok) throw new Error('Error al eliminar');
-      setImages(prev => prev.filter((_, i) => i !== index));
-      if (selectedImageIndex >= images.length - 1 && selectedImageIndex > 0) {
-        setSelectedImageIndex(prev => prev - 1);
-      }
+      // Aquí iría la llamada a tu API de backend para obtener las imágenes
+      // Por ahora, simularemos algunas URLs de imágenes
+      const dummyPhotos = [
+        'https://via.placeholder.com/150/FF0000/FFFFFF?text=Foto1',
+        'https://via.placeholder.com/150/00FF00/000000?text=Foto2',
+        'https://via.placeholder.com/150/0000FF/FFFFFF?text=Foto3',
+      ];
+      setPhotos(dummyPhotos);
+      alert('Fotos cargadas (simulado)!');
     } catch (error) {
-      console.error('Error deleting image:', error);
-      alert('Error al eliminar la imagen');
+      console.error('Error al obtener las fotos:', error);
+      alert('Error al obtener las fotos.');
     }
   };
 
-  // Slideshow
-  const startSlideshow = () => {
-    if (slideshowInterval || images.length === 0) return;
-    const interval = setInterval(() => {
-      setSelectedImageIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 3000);
-    setSlideshowInterval(interval);
-    setIsSlideshowActive(true);
-  };
-
-  const stopSlideshow = () => {
-    if (slideshowInterval) {
-      clearInterval(slideshowInterval);
-      setSlideshowInterval(null);
-      setIsSlideshowActive(false);
-    }
-  };
-
-  const handleOpenGallery = () => {
-    setSelectedImageIndex(0);
-    setIsGalleryModalOpen(true);
-  };
-
-  // Secciones informativas (sin cambios)
+  // Secciones informativas
   const sections = [
     {
       title: 'Introducción',
@@ -182,65 +123,26 @@ const ConcursoCartelesCientificos: React.FC = () => {
       </>
     },
     {
-      title: 'Fotos de Edicion',
+      title: 'Fotos de Edición',
       icon: Camera,
       content: <>
-        Una galería de fotos de concursos de carteles para mostrar el ambiente del evento y motivar a nuevos participantes.<br /><br />
-
-        <div className="space-y-4">
-          {/* Input para subir imágenes (solo admin) */}
-          {isLoggedIn() && isAdmin() && (
-            <div className="text-center">
-              <label className="inline-block">
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                />
-                <span className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                  Subir Imágenes
-                </span>
-              </label>
-            </div>
-          )}
-
-          {/* Botón para ver galería */}
-          <div className="text-center">
-            <button
-              onClick={handleOpenGallery}
-              disabled={images.length === 0}
-              className={`inline-block font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 ${images.length === 0
-                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-700 text-white'
-                }`}
-            >
-              Ver Galería de Fotos {images.length > 0 && `(${images.length})`}
-            </button>
-          </div>
-
-          {/* Indicador de imágenes cargadas */}
-          {images.length > 0 && (
-            <div className="text-center text-sm text-gray-600">
-              {images.length} imagen{images.length !== 1 ? 'es' : ''} cargada{images.length !== 1 ? 's' : ''}
-              {isAdmin() && <span className="ml-2 text-xs text-blue-600">(Admin)</span>}
-            </div>
-          )}
-
-          {/* Mensajes de autenticación */}
-          {!isLoggedIn() && (
-            <div className="text-center text-sm text-orange-600 bg-orange-50 p-3 rounded-lg">
-              <Camera className="h-4 w-4 inline mr-1" />
-              Debes iniciar sesión como administrador para subir imágenes
-            </div>
-          )}
-          {isLoggedIn() && !isAdmin() && (
-            <div className="text-center text-sm text-blue-600 bg-blue-50 p-3 rounded-lg">
-              <Camera className="h-4 w-4 inline mr-1" />
-              Solo los administradores pueden subir imágenes. Puedes ver las imágenes existentes.
-            </div>
-          )}
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <button
+          onClick={handleUpload}
+          className="mt-4 mr-2 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
+        >
+          Subir Foto
+        </button>
+        <button
+          onClick={fetchPhotos}
+          className="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
+        >
+          Ver Fotos
+        </button>
+        <div className="mt-4 grid grid-cols-2 gap-4">
+          {photos.map((photo, index) => (
+            <img key={index} src={photo} alt={`Foto ${index + 1}`} className="w-full h-auto rounded-lg shadow-md" />
+          ))}
         </div>
       </>
     },
@@ -273,170 +175,6 @@ const ConcursoCartelesCientificos: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Modal de Galería */}
-        {isGalleryModalOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden">
-              {/* Header */}
-              <div className="flex justify-between items-center p-6 border-b bg-gradient-to-r from-blue-600 to-blue-700">
-                <h2 className="text-2xl font-bold text-white">Galería - Concurso de Carteles Científicos</h2>
-                <button
-                  onClick={() => setIsGalleryModalOpen(false)}
-                  className="text-white hover:text-gray-200 focus:outline-none transition-colors"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Contenido del Modal */}
-              <div className="p-6">
-                {isLoading && (
-                  <div className="text-center py-12">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                    <p className="mt-4 text-gray-600">Cargando imágenes...</p>
-                  </div>
-                )}
-                {!isLoading && images.length === 0 && (
-                  <div className="text-center py-12">
-                    <Camera className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500 mb-4">No hay imágenes cargadas</p>
-                    {isLoggedIn() && isAdmin() && (
-                      <label className="inline-block">
-                        <input
-                          type="file"
-                          multiple
-                          accept="image/*"
-                          onChange={handleImageUpload}
-                          className="hidden"
-                        />
-                        <span className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                          Subir Primera Imagen
-                        </span>
-                      </label>
-                    )}
-                  </div>
-                )}
-                {!isLoading && images.length > 0 && (
-                  <>
-                    {/* Imagen Principal */}
-                    <div className="mb-6 text-center">
-                      <div className="relative inline-block">
-                        <img
-                          src={images[selectedImageIndex].url}
-                          alt={`Carteles Científicos - Imagen ${selectedImageIndex + 1}`}
-                          className="max-w-full max-h-96 rounded-lg shadow-lg"
-                        />
-                        {images.length > 1 && (
-                          <>
-                            <button
-                              onClick={() => setSelectedImageIndex(prev => (prev === 0 ? images.length - 1 : prev - 1))}
-                              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
-                            >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                              </svg>
-                            </button>
-                            <button
-                              onClick={() => setSelectedImageIndex(prev => (prev + 1) % images.length)}
-                              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all"
-                            >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </button>
-                          </>
-                        )}
-                      </div>
-                      <p className="mt-4 text-gray-600 font-medium">
-                        Imagen {selectedImageIndex + 1} de {images.length}
-                        {isAdmin() && <span className="ml-2 text-xs text-blue-600">(Admin)</span>}
-                      </p>
-                    </div>
-
-                    {/* Miniaturas con opción de eliminar (solo admin) */}
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-sm font-medium text-gray-700">Miniaturas ({images.length})</h3>
-                        {isAdmin() && images.length > 0 && (
-                          <span className="text-xs text-red-500">Click en la X para eliminar</span>
-                        )}
-                      </div>
-                      <div className="grid grid-cols-5 gap-3 max-h-32 overflow-y-auto">
-                        {images.map((image, idx) => (
-                          <div key={image.id} className="relative group">
-                            <button
-                              onClick={() => setSelectedImageIndex(idx)}
-                              className={`relative rounded-lg overflow-hidden transition-all w-full ${selectedImageIndex === idx
-                                  ? 'ring-4 ring-blue-500 scale-105'
-                                  : 'hover:ring-2 hover:ring-gray-300'
-                                }`}
-                            >
-                              <img
-                                src={image.url}
-                                alt={`Miniatura ${idx + 1}`}
-                                className="w-full h-20 object-cover"
-                              />
-                            </button>
-                            {isAdmin() && (
-                              <button
-                                onClick={() => handleRemoveImage(image.id, idx)}
-                                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
-                                title="Eliminar imagen"
-                              >
-                                ×
-                              </button>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Controles adicionales */}
-                    <div className="mt-6 flex justify-center gap-4 flex-wrap">
-                      <button
-                        onClick={startSlideshow}
-                        disabled={isSlideshowActive}
-                        className={`px-4 py-2 rounded-lg font-medium transition-all ${isSlideshowActive
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : 'bg-green-600 text-white hover:bg-green-700'
-                          }`}
-                      >
-                        {isSlideshowActive ? 'Presentación en curso...' : 'Iniciar Presentación'}
-                      </button>
-                      <button
-                        onClick={stopSlideshow}
-                        disabled={!isSlideshowActive}
-                        className={`px-4 py-2 rounded-lg font-medium transition-all ${!isSlideshowActive
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : 'bg-red-600 text-white hover:bg-red-700'
-                          }`}
-                      >
-                        Detener Presentación
-                      </button>
-                      {isLoggedIn() && isAdmin() && (
-                        <label className="inline-block">
-                          <input
-                            type="file"
-                            multiple
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            className="hidden"
-                          />
-                          <span className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                            Agregar Más Imágenes
-                          </span>
-                        </label>
-                      )}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

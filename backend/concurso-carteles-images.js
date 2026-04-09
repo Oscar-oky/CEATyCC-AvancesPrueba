@@ -39,14 +39,13 @@ const upload = multer({
 const createTableIfNotExists = async () => {
   try {
     await db.query(`
-      CREATE TABLE IF NOT EXISTS concurso_carteles_images (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+      CREATE TABLE IF NOT EXISTS concurso_carteles_fotos (
+        id INT(11) NOT NULL AUTO_INCREMENT,
+        url VARCHAR(255) NOT NULL,
         filename VARCHAR(255) NOT NULL,
-        original_name VARCHAR(255) NOT NULL,
-        file_path VARCHAR(500) NOT NULL,
-        uploaded_by VARCHAR(100) NOT NULL,
-        upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        is_active BOOLEAN DEFAULT TRUE
+        uploaded_by VARCHAR(255) DEFAULT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (id)
       )
     `);
   } catch (error) {
@@ -57,23 +56,16 @@ const createTableIfNotExists = async () => {
 // Crear tabla al iniciar
 createTableIfNotExists();
 
-// GET: Obtener todas las imágenes activas
+// GET: Obtener todas las imágenes
 router.get('/', async (req, res) => {
   try {
     const [images] = await db.query(`
-      SELECT id, filename, original_name, file_path, uploaded_by, upload_date 
-      FROM concurso_carteles_images 
-      WHERE is_active = TRUE 
-      ORDER BY upload_date ASC
+      SELECT id, filename, url, uploaded_by, created_at
+      FROM concurso_carteles_fotos
+      ORDER BY created_at ASC
     `);
-    
-    // Convertir rutas de archivo a URLs públicas
-    const imagesWithUrls = images.map(img => ({
-      ...img,
-      url: `/public/concurso-carteles/${img.filename}`
-    }));
-    
-    res.json(imagesWithUrls);
+
+    res.json(images);
   } catch (error) {
     console.error('Error fetching concurso images:', error);
     res.status(500).json({ message: 'Error al obtener las imágenes' });
@@ -103,16 +95,16 @@ router.post('/', auth, upload.array('images', 10), async (req, res) => {
     for (const file of req.files) {
       try {
         // Guardar en base de datos
+        const imageUrl = `/public/concurso-carteles/${file.filename}`;
         const [result] = await db.query(`
-          INSERT INTO concurso_carteles_images (filename, original_name, file_path, uploaded_by)
-          VALUES (?, ?, ?, ?)
-        `, [file.filename, file.originalname, file.path, req.user.email]);
+          INSERT INTO concurso_carteles_fotos (filename, url, uploaded_by)
+          VALUES (?, ?, ?)
+        `, [file.filename, imageUrl, req.user.email]);
 
         uploadedImages.push({
           id: result.insertId,
           filename: file.filename,
-          original_name: file.originalname,
-          url: `/public/concurso-carteles/${file.filename}`,
+          url: imageUrl,
           uploaded_by: req.user.email
         });
       } catch (dbError) {
@@ -156,25 +148,25 @@ router.delete('/:id', auth, async (req, res) => {
       return res.status(403).json({ message: 'Solo los administradores pueden eliminar imágenes' });
     }
 
-    const [images] = await db.query('SELECT * FROM concurso_carteles_images WHERE id = ?', [req.params.id]);
-    
+    const [images] = await db.query('SELECT filename FROM concurso_carteles_fotos WHERE id = ?', [req.params.id]);
+
     if (images.length === 0) {
       return res.status(404).json({ message: 'Imagen no encontrada' });
     }
 
     const image = images[0];
+    const filePath = path.join(__dirname, 'public/concurso-carteles', image.filename);
 
-    // Marcar como inactiva en la base de datos
-    await db.query('UPDATE concurso_carteles_images SET is_active = FALSE WHERE id = ?', [req.params.id]);
+    // Eliminar de la base de datos
+    await db.query('DELETE FROM concurso_carteles_fotos WHERE id = ?', [req.params.id]);
 
     // Eliminar archivo físico
     try {
-      if (fs.existsSync(image.file_path)) {
-        fs.unlinkSync(image.file_path);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
       }
     } catch (fileError) {
       console.error('Error deleting physical file:', fileError);
-      // No devolvemos error si el archivo no existe, ya que la DB ya está actualizada
     }
 
     res.json({ message: 'Imagen eliminada exitosamente' });
