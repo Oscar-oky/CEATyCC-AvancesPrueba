@@ -75,16 +75,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
   try {
-    // Verificar si es admin
-    if (req.user.role !== 'admin') {
-      // Eliminar archivos subidos si no es admin
-      if (req.files) {
-        req.files.forEach(file => {
-          fs.unlinkSync(file.path);
-        });
-      }
-      return res.status(403).json({ message: 'Solo los administradores pueden subir imágenes' });
-    }
+    // Para pruebas locales sin autenticación, asignamos un usuario por defecto
+    const uploadedBy = req.user && req.user.email ? req.user.email : 'test_user@example.com';
 
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: 'No se subieron imágenes' });
@@ -94,18 +86,17 @@ router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
     
     for (const file of req.files) {
       try {
-        // Guardar en base de datos
         const imageUrl = `/public/concurso-carteles/${file.filename}`;
         const [result] = await db.query(`
           INSERT INTO concurso_carteles_fotos (filename, url, uploaded_by)
           VALUES (?, ?, ?)
-        `, [file.filename, imageUrl, req.user.email]);
+        `, [file.filename, imageUrl, uploadedBy]);
 
         uploadedImages.push({
           id: result.insertId,
           filename: file.filename,
           url: imageUrl,
-          uploaded_by: req.user.email
+          uploaded_by: uploadedBy
         });
       } catch (dbError) {
         // Eliminar archivo si falla la inserción en DB

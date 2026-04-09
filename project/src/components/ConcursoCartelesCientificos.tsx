@@ -18,7 +18,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
     }
 
     const formData = new FormData();
-    formData.append('image', selectedFile);
+    formData.append('images', selectedFile);
 
     try {
       const response = await fetch('http://localhost:5003/api/concurso-carteles-images', { // Ajusta la URL de tu backend
