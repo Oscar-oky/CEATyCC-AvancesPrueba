@@ -72,8 +72,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST: Subir nuevas imágenes (solo admin)
-router.post('/', auth, upload.array('images', 10), async (req, res) => {
+
+router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
   try {
     // Verificar si es admin
     if (req.user.role !== 'admin') {

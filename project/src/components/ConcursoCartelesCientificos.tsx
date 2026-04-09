@@ -21,7 +21,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:3007/api/concurso-carteles-images', { // Ajusta la URL de tu backend
+      const response = await fetch('http://localhost:5003/api/concurso-carteles-images', { // Ajusta la URL de tu backend
         method: 'POST',
         body: formData,
         // Si necesitas autenticación, añade los headers aquí
@@ -48,7 +48,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
   // Nueva función para obtener fotos
   const fetchPhotos = async () => {
     try {
-      const response = await fetch('http://localhost:3007/api/concurso-carteles-images'); // Ajusta la URL de tu backend
+      const response = await fetch('http://localhost:5003/api/concurso-carteles-images'); // Ajusta la URL de tu backend
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
