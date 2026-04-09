@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 09-04-2026 a las 16:58:41
+-- Tiempo de generación: 09-04-2026 a las 20:59:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -54,6 +54,29 @@ CREATE TABLE `categorias_reconocimientos` (
   `descripcion` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `concurso_carteles_fotos`
+--
+
+CREATE TABLE `concurso_carteles_fotos` (
+  `id` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `uploaded_by` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `concurso_carteles_fotos`
+--
+
+INSERT INTO `concurso_carteles_fotos` (`id`, `url`, `filename`, `uploaded_by`, `created_at`) VALUES
+(2, '/public/concurso-carteles/1775752895860-GitHub-icono.png', '1775752895860-GitHub-icono.png', 'test_user@example.com', '2026-04-09 16:41:35'),
+(3, '/public/concurso-carteles/1775753764607-GitHub-icono.png', '1775753764607-GitHub-icono.png', 'test_user@example.com', '2026-04-09 16:56:04'),
+(4, '/public/concurso-carteles/1775754179911-Captura_de_pantalla_2026-02-06_092852.png', '1775754179911-Captura_de_pantalla_2026-02-06_092852.png', 'test_user@example.com', '2026-04-09 17:02:59');
 
 -- --------------------------------------------------------
 
@@ -239,6 +262,12 @@ ALTER TABLE `categorias_reconocimientos`
   ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
+-- Indices de la tabla `concurso_carteles_fotos`
+--
+ALTER TABLE `concurso_carteles_fotos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `contacto`
 --
 ALTER TABLE `contacto`
@@ -285,6 +314,12 @@ ALTER TABLE `usuarios_eventos`
 --
 ALTER TABLE `categorias_reconocimientos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `concurso_carteles_fotos`
+--
+ALTER TABLE `concurso_carteles_fotos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`

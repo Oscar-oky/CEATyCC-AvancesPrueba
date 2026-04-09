@@ -37,7 +37,16 @@ app.use(express.json());
 const errorHandler = require('./middleware/errorHandler');
 
 // Servir archivos estáticos
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public'), {
+  // Añadir un manejador de errores para archivos estáticos
+  setHeaders: (res, path, stat) => {
+    res.on('finish', () => {
+      if (res.statusCode === 404 || res.statusCode === 500) {
+        console.error(`Error al servir archivo estático: ${path}, Status: ${res.statusCode}`);
+      }
+    });
+  }
+}));
 
 // --- Configuración de Multer ---
 const storage = multer.diskStorage({

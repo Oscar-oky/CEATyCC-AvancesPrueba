@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
-import { BookOpen, Users, ListChecks, Calendar, Camera, Trophy } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { BookOpen, Users, ListChecks, Calendar, Camera, Trophy, Image as ImageIcon } from 'lucide-react';
 
 const ConcursoCartelesCientificos: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [photos, setPhotos] = useState<string[]>([]); // Nuevo estado para las fotos
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Estado para la vista previa
+  const [photos, setPhotos] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const API_BASE_URL = 'http://localhost:5003'; // Definir la URL base del backend
+
+  // Cargar fotos al montar el componente
+  useEffect(() => {
+    fetchPhotos();
+  }, []);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      setSelectedFile(event.target.files[0]);
+      const file = event.target.files[0];
+      setSelectedFile(file);
+      // Crear una URL temporal para la vista previa
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
     }
   };
 
@@ -21,13 +34,10 @@ const ConcursoCartelesCientificos: React.FC = () => {
     formData.append('images', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:5003/api/concurso-carteles-images', { // Ajusta la URL de tu backend
+      setLoading(true);
+      const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images`, {
         method: 'POST',
         body: formData,
-        // Si necesitas autenticación, añade los headers aquí
-        // headers: {
-        //   'Authorization': `Bearer ${yourAuthToken}`,
-        // },
       });
 
       if (!response.ok) {
@@ -36,28 +46,31 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
       const result = await response.json();
       alert('Imagen subida con éxito!');
-      console.log('Respuesta del servidor:', result);
-      setSelectedFile(null); // Limpiar el archivo seleccionado después de la subida
-      fetchPhotos(); // Refrescar la lista de fotos después de subir una nueva
+      setSelectedFile(null);
+      setPreviewUrl(null); // Limpiar vista previa
+      fetchPhotos();
     } catch (error) {
       console.error('Error al subir la imagen:', error);
       alert('Error al subir la imagen.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Nueva función para obtener fotos
   const fetchPhotos = async () => {
     try {
-      const response = await fetch('http://localhost:5003/api/concurso-carteles-images'); // Ajusta la URL de tu backend
+      const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setPhotos(data.map((img: any) => img.url)); // Asume que el backend devuelve un array de objetos con una propiedad 'url'
-      alert('Fotos cargadas!');
+      // Asegurarse de que las URLs sean completas
+      const formattedPhotos = data.map((img: any) => 
+        img.url.startsWith('http') ? img.url : `${API_BASE_URL}${img.url}`
+      );
+      setPhotos(formattedPhotos);
     } catch (error) {
       console.error('Error al obtener las fotos:', error);
-      alert('Error al obtener las fotos.');
     }
   };
 
@@ -134,26 +147,87 @@ const ConcursoCartelesCientificos: React.FC = () => {
     {
       title: 'Fotos de Edición',
       icon: Camera,
-      content: <>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-        <button
-          onClick={handleUpload}
-          className="mt-4 mr-2 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
-        >
-          Subir Foto
-        </button>
-        <button
-          onClick={fetchPhotos}
-          className="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
-        >
-          Ver Fotos
-        </button>
-        <div className="mt-4 grid grid-cols-2 gap-4">
-          {photos.map((photo, index) => (
-            <img key={index} src={photo} alt={`Foto ${index + 1}`} className="w-full h-auto rounded-lg shadow-md" />
-          ))}
+      content: (
+        <div className="space-y-4">
+          <div className="flex flex-col items-center p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="hidden"
+              id="file-upload"
+            />
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer flex flex-col items-center space-y-2 text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              <ImageIcon className="h-10 w-10" />
+              <span className="font-medium">Seleccionar archivo</span>
+            </label>
+
+            {previewUrl && (
+              <div className="mt-4 relative group">
+                <img
+                  src={previewUrl}
+                  alt="Vista previa"
+                  className="w-32 h-32 object-cover rounded-lg shadow-md border-2 border-blue-500"
+                />
+                <button
+                  onClick={() => {
+                    setSelectedFile(null);
+                    setPreviewUrl(null);
+                  }}
+                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow-lg hover:bg-red-600 transition-colors"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className="flex gap-2">
+            <button
+              onClick={handleUpload}
+              disabled={!selectedFile || loading}
+              className={`flex-1 font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 ${
+                !selectedFile || loading
+                  ? 'bg-gray-400 cursor-not-allowed text-white'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
+            >
+              {loading ? 'Subiendo...' : 'Subir Foto'}
+            </button>
+            <button
+              onClick={fetchPhotos}
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
+            >
+              Ver Fotos
+            </button>
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-4 max-h-96 overflow-y-auto p-2">
+            {photos.length > 0 ? (
+              photos.map((photo, index) => (
+                <div key={index} className="relative group">
+                  <img
+                    src={photo}
+                    alt={`Foto ${index + 1}`}
+                    className="w-full h-32 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://via.placeholder.com/150?text=Error+Carga';
+                    }}
+                  />
+                </div>
+              ))
+            ) : (
+              <p className="col-span-2 text-center text-gray-400 italic">No hay fotos subidas aún</p>
+            )}
+          </div>
         </div>
-      </>
+      ),
     },
   ];
 
