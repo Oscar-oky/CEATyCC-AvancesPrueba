@@ -64,6 +64,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
     const formData = new FormData();
     formData.append('images', selectedFile);
+    formData.append('event_type', 'carteles');
 
     try {
       setLoading(true);
@@ -91,7 +92,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
   const fetchPhotos = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images`);
+      const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images?event_type=carteles`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

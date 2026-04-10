@@ -44,6 +44,7 @@ const createTableIfNotExists = async () => {
         url VARCHAR(255) NOT NULL,
         filename VARCHAR(255) NOT NULL,
         uploaded_by VARCHAR(255) DEFAULT NULL,
+        event_type VARCHAR(50) DEFAULT 'carteles',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (id)
       )
@@ -56,14 +57,25 @@ const createTableIfNotExists = async () => {
 // Crear tabla al iniciar
 createTableIfNotExists();
 
-// GET: Obtener todas las imágenes
+// GET: Obtener todas las imágenes (filtrar por event_type si se proporciona)
 router.get('/', async (req, res) => {
   try {
-    const [images] = await db.query(`
-      SELECT id, filename, url, uploaded_by, created_at
+    const { event_type } = req.query;
+    
+    let query = `
+      SELECT id, filename, url, uploaded_by, event_type, created_at
       FROM concurso_carteles_fotos
-      ORDER BY created_at ASC
-    `);
+    `;
+    const params = [];
+    
+    if (event_type) {
+      query += ` WHERE event_type = ?`;
+      params.push(event_type);
+    }
+    
+    query += ` ORDER BY created_at ASC`;
+    
+    const [images] = await db.query(query, params);
 
     res.json(images);
   } catch (error) {
@@ -77,6 +89,7 @@ router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
   try {
     // Para pruebas locales sin autenticación, asignamos un usuario por defecto
     const uploadedBy = req.user && req.user.email ? req.user.email : 'test_user@example.com';
+    const eventType = req.body.event_type || 'carteles';
 
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: 'No se subieron imágenes' });
@@ -88,15 +101,16 @@ router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
       try {
         const imageUrl = `/public/concurso-carteles/${file.filename}`;
         const [result] = await db.query(`
-          INSERT INTO concurso_carteles_fotos (filename, url, uploaded_by)
-          VALUES (?, ?, ?)
-        `, [file.filename, imageUrl, uploadedBy]);
+          INSERT INTO concurso_carteles_fotos (filename, url, uploaded_by, event_type)
+          VALUES (?, ?, ?, ?)
+        `, [file.filename, imageUrl, uploadedBy, eventType]);
 
         uploadedImages.push({
           id: result.insertId,
           filename: file.filename,
           url: imageUrl,
-          uploaded_by: uploadedBy
+          uploaded_by: uploadedBy,
+          event_type: eventType
         });
       } catch (dbError) {
         // Eliminar archivo si falla la inserción en DB
