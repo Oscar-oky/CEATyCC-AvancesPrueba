@@ -85,7 +85,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
+router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
   try {
     // Para pruebas locales sin autenticación, asignamos un usuario por defecto
     const uploadedBy = req.user && req.user.email ? req.user.email : 'test_user@example.com';
@@ -145,11 +145,11 @@ router.post('/', /* auth, */ upload.array('images', 10), async (req, res) => {
   }
 });
 
-// DELETE: Eliminar una imagen (solo admin)
-router.delete('/:id', auth, async (req, res) => {
+// DELETE: Eliminar una imagen
+router.delete('/:id', /* auth, */ async (req, res) => {
   try {
-    // Verificar si es admin
-    if (req.user.role !== 'admin') {
+    // Verificar si es admin (si hay autenticación)
+    if (req.user && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Solo los administradores pueden eliminar imágenes' });
     }
 

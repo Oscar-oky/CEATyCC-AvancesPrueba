@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Camera, Trophy, Image as ImageIcon } from 'lucide-react';
 
 const ConcursoCartelesCientificos: React.FC = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [photos, setPhotos] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  const [photos, setPhotos] = useState<{id: number, url: string}[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState<boolean>(false); 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number>(0); 
@@ -49,21 +49,23 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      setSelectedFile(file);
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
+      const files = Array.from(event.target.files);
+      setSelectedFiles(files);
+      const urls = files.map(file => URL.createObjectURL(file));
+      setPreviewUrls(urls);
     }
   };
 
   const handleUpload = async () => {
-    if (!selectedFile) {
-      alert('Por favor, selecciona un archivo primero.');
+    if (selectedFiles.length === 0) {
+      alert('Por favor, selecciona al menos un archivo primero.');
       return;
     }
 
     const formData = new FormData();
-    formData.append('images', selectedFile);
+    selectedFiles.forEach(file => {
+      formData.append('images', file);
+    });
     formData.append('event_type', 'carteles');
 
     try {
@@ -78,13 +80,13 @@ const ConcursoCartelesCientificos: React.FC = () => {
       }
 
       const result = await response.json();
-      alert('Imagen subida con éxito!');
-      setSelectedFile(null);
-      setPreviewUrl(null); 
+      alert(`${selectedFiles.length} ${selectedFiles.length === 1 ? 'imagen subida' : 'imágenes subidas'} con éxito!`);
+      setSelectedFiles([]);
+      setPreviewUrls([]); 
       fetchPhotos();
     } catch (error) {
-      console.error('Error al subir la imagen:', error);
-      alert('Error al subir la imagen.');
+      console.error('Error al subir las imágenes:', error);
+      alert('Error al subir las imágenes.');
     } finally {
       setLoading(false);
     }
@@ -97,9 +99,10 @@ const ConcursoCartelesCientificos: React.FC = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      const formattedPhotos = data.map((img: any) => 
-        img.url.startsWith('http') ? img.url : `${API_BASE_URL}${img.url}`
-      );
+      const formattedPhotos = data.map((img: any) => ({
+        id: img.id,
+        url: img.url.startsWith('http') ? img.url : `${API_BASE_URL}${img.url}`
+      }));
       setPhotos(formattedPhotos);
     } catch (error) {
       console.error('Error al obtener las fotos:', error);
@@ -121,6 +124,29 @@ const ConcursoCartelesCientificos: React.FC = () => {
     } else {
       setIsImageExpanded(true);
       setZoomLevel(2.8); // zoom grande pero dentro del mismo recuadro
+    }
+  };
+
+  // Eliminar imagen
+  const handleDelete = async (id: number) => {
+    if (!confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      alert('Imagen eliminada con éxito!');
+      fetchPhotos();
+    } catch (error) {
+      console.error('Error al eliminar la imagen:', error);
+      alert('Error al eliminar la imagen.');
     }
   };
 
@@ -203,6 +229,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
             <input
               type="file"
               accept="image/*"
+              multiple
               onChange={handleFileChange}
               className="hidden"
               id="file-upload"
@@ -215,31 +242,54 @@ const ConcursoCartelesCientificos: React.FC = () => {
                 <ImageIcon className="h-12 w-12" />
               </div>
               <div className="text-center">
-                <span className="font-semibold text-xl block">Selecciona tu cartel</span>
-                <span className="text-sm text-blue-500/80">PNG, JPG o PDF • Máximo 10 MB</span>
+                <span className="font-semibold text-xl block">Selecciona tus carteles</span>
+                <span className="text-sm text-blue-500/80">• Máximo 10 MB por archivo • Puedes seleccionar varios</span>
               </div>
             </label>
 
-            {previewUrl && (
-              <div className="mt-8 relative group">
-                <div className="bg-white p-3 rounded-3xl shadow-xl border border-blue-200">
-                  <img
-                    src={previewUrl}
-                    alt="Vista previa"
-                    className="w-64 h-64 object-cover rounded-2xl shadow-inner"
-                  />
+            {previewUrls.length > 0 && (
+              <div className="mt-8 w-full">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-sm font-semibold text-gray-600">{previewUrls.length} {previewUrls.length === 1 ? 'archivo seleccionado' : 'archivos seleccionados'}</p>
+                  <button
+                    onClick={() => {
+                      setSelectedFiles([]);
+                      setPreviewUrls([]);
+                    }}
+                    className="text-red-500 hover:text-red-600 text-sm font-semibold flex items-center gap-1"
+                  >
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Limpiar selección
+                  </button>
                 </div>
-                <button
-                  onClick={() => {
-                    setSelectedFile(null);
-                    setPreviewUrl(null);
-                  }}
-                  className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white rounded-2xl p-3 shadow-lg transition-all hover:scale-110"
-                >
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {previewUrls.map((url, index) => (
+                    <div key={index} className="relative group">
+                      <div className="bg-white p-2 rounded-2xl shadow-xl border border-blue-200">
+                        <img
+                          src={url}
+                          alt={`Vista previa ${index + 1}`}
+                          className="w-full h-32 object-cover rounded-xl shadow-inner"
+                        />
+                      </div>
+                      <button
+                        onClick={() => {
+                          const newFiles = selectedFiles.filter((_, i) => i !== index);
+                          const newUrls = previewUrls.filter((_, i) => i !== index);
+                          setSelectedFiles(newFiles);
+                          setPreviewUrls(newUrls);
+                        }}
+                        className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-xl p-2 shadow-lg transition-all hover:scale-110"
+                      >
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -248,9 +298,9 @@ const ConcursoCartelesCientificos: React.FC = () => {
           <div className="flex gap-3">
             <button
               onClick={handleUpload}
-              disabled={!selectedFile || loading}
+              disabled={selectedFiles.length === 0 || loading}
               className={`flex-1 font-bold py-4 px-6 rounded-3xl shadow-lg text-lg transition-all duration-300 flex items-center justify-center gap-3 ${
-                !selectedFile || loading
+                selectedFiles.length === 0 || loading
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-xl hover:-translate-y-1'
               }`}
@@ -266,7 +316,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
               ) : (
                 <>
                   <ImageIcon className="h-6 w-6" />
-                  Subir Foto
+                  Subir {selectedFiles.length === 1 ? 'Foto' : `${selectedFiles.length} Fotos`}
                 </>
               )}
             </button>
@@ -290,32 +340,48 @@ const ConcursoCartelesCientificos: React.FC = () => {
             <div>
               <p className="text-sm font-semibold text-gray-500 mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                ÚLTIMAS FOTOS SUBIDAS
+                ÚLTIMAS FOTOS SUBIDAS ({photos.length} total)
               </p>
               <div className="grid grid-cols-4 gap-4">
                 {photos.slice(-4).map((photo, localIndex) => {
                   const globalIndex = Math.max(0, photos.length - 4) + localIndex;
                   return (
                     <div 
-                      key={globalIndex}
-                      onClick={() => {
-                        setSelectedPhotoIndex(globalIndex);
-                        setIsGalleryOpen(true);
-                        setIsImageExpanded(false);
-                        setZoomLevel(1);
-                      }}
-                      className="relative aspect-square overflow-hidden rounded-3xl shadow-md border border-gray-100 cursor-pointer hover:scale-105 hover:shadow-2xl transition-all duration-300 group"
+                      key={photo.id}
+                      className="relative aspect-square overflow-hidden rounded-3xl shadow-md border border-gray-100 group"
                     >
-                      <img
-                        src={photo}
-                        alt={`Cartel ${globalIndex + 1}`}
-                        className="w-full h-full object-cover group-active:scale-110 transition-transform"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                        <span className="text-white text-xs font-bold bg-black/60 px-3 py-1 rounded-2xl backdrop-blur-md">
-                          Ver en galería
-                        </span>
+                      <div
+                        onClick={() => {
+                          setSelectedPhotoIndex(globalIndex);
+                          setIsGalleryOpen(true);
+                          setIsImageExpanded(false);
+                          setZoomLevel(1);
+                        }}
+                        className="cursor-pointer hover:scale-105 hover:shadow-2xl transition-all duration-300"
+                      >
+                        <img
+                          src={photo.url}
+                          alt={`Cartel ${globalIndex + 1}`}
+                          className="w-full h-full object-cover group-active:scale-110 transition-transform"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                          <span className="text-white text-xs font-bold bg-black/60 px-3 py-1 rounded-2xl backdrop-blur-md">
+                            Ver en galería
+                          </span>
+                        </div>
                       </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(photo.id);
+                        }}
+                        className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-lg p-1 shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100"
+                        title="Eliminar imagen"
+                      >
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
                     </div>
                   );
                 })}
@@ -422,7 +488,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
                     {/* IMAGEN (siempre dentro del recuadro fijo) */}
                     <img
-                      src={photos[selectedPhotoIndex]}
+                      src={photos[selectedPhotoIndex].url}
                       alt={`Cartel ${selectedPhotoIndex + 1}`}
                       className="max-w-full max-h-full object-contain transition-transform duration-300 rounded-3xl shadow-2xl"
                       style={{ transform: `scale(${zoomLevel})` }}
@@ -445,7 +511,7 @@ const ConcursoCartelesCientificos: React.FC = () => {
                       {isImageExpanded ? (
                         <>
                           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 19V5l-7 7 7 7" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 19V5l-7 7 7-7" />
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 5v14l7-7-7-7" />
                           </svg>
                           Contraer
@@ -458,6 +524,18 @@ const ConcursoCartelesCientificos: React.FC = () => {
                           Expandir
                         </>
                       )}
+                    </button>
+
+                    {/* Botón eliminar (aparece al pasar el mouse) */}
+                    <button 
+                      onClick={() => handleDelete(photos[selectedPhotoIndex].id)}
+                      className="absolute top-6 left-6 z-40 bg-red-500 hover:bg-red-600 shadow-2xl text-white rounded-2xl p-3 transition-all hover:scale-110 flex items-center gap-2 text-sm font-semibold opacity-0 group-hover:opacity-100"
+                      title="Eliminar imagen"
+                    >
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                      Eliminar
                     </button>
 
                     {/* Flecha derecha */}
@@ -477,21 +555,34 @@ const ConcursoCartelesCientificos: React.FC = () => {
                     <div className="mt-10 w-full max-w-4xl">
                       <div className="flex gap-4 overflow-x-auto pb-6 snap-x scrollbar-hide">
                         {photos.map((photo, index) => (
-                          <button
-                            key={index}
-                            onClick={() => changePhoto(index)}
-                            className={`flex-shrink-0 snap-center w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all duration-200 ${
-                              index === selectedPhotoIndex 
-                                ? 'border-blue-500 scale-110 shadow-2xl' 
-                                : 'border-transparent hover:border-gray-300'
-                            }`}
-                          >
-                            <img
-                              src={photo}
-                              alt=""
-                              className="w-full h-full object-cover"
-                            />
-                          </button>
+                          <div key={photo.id} className="relative flex-shrink-0 snap-center">
+                            <button
+                              onClick={() => changePhoto(index)}
+                              className={`w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all duration-200 ${
+                                index === selectedPhotoIndex 
+                                  ? 'border-blue-500 scale-110 shadow-2xl' 
+                                  : 'border-transparent hover:border-gray-300'
+                              }`}
+                            >
+                              <img
+                                src={photo.url}
+                                alt=""
+                                className="w-full h-full object-cover"
+                              />
+                            </button>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDelete(photo.id);
+                              }}
+                              className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-lg p-1 shadow-lg transition-all hover:scale-110"
+                              title="Eliminar imagen"
+                            >
+                              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                            </button>
+                          </div>
                         ))}
                       </div>
                     </div>
