@@ -562,7 +562,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
                                 <button
                                   className="flex items-center justify-between w-full px-4 py-2 text-gray-100 text-sm hover:bg-blue-500 hover:text-white transition-colors duration-150 cursor-pointer rounded-md"
                                   onClick={() => setMobileActiveDropdown(
-                                    mobileActiveDropdown && mobileActiveDropdown.startsWith(`${item.label}/${dropdownItem.label}`)
+                                    mobileActiveDropdown === `${item.label}/${dropdownItem.label}`
                                       ? item.label
                                       : `${item.label}/${dropdownItem.label}`
                                   )}
@@ -571,27 +571,72 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
                                   <ChevronDown className={`w-4 h-4 transition-transform duration-150 ${mobileActiveDropdown === `${item.label}/${dropdownItem.label}` ? 'rotate-180' : ''}`} />
                                 </button>
                                 
-                                {mobileActiveDropdown === `${item.label}/${dropdownItem.label}` && (
+                                {mobileActiveDropdown && mobileActiveDropdown.startsWith(`${item.label}/${dropdownItem.label}`) && (
                                   <div className="mt-1 ml-4 space-y-1 border-l-2 border-gray-500 pl-4">
                                     {dropdownItem.dropdown.map((subItem, subIndex) => (
-                                      <a
-                                        key={subIndex}
-                                        href={subItem.href || '#'}
-                                        target={subItem.target}
-                                        rel={subItem.rel}
-                                        onClick={(e) => {
-                                          if (subItem.onClick) {
-                                            e.preventDefault();
-                                            subItem.onClick();
-                                          }
-                                          // Cerrar el menú después del clic en cualquier caso
-                                          setIsMobileMenuOpen(false);
-                                          setMobileActiveDropdown(null);
-                                        }}
-                                        className="block px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-colors duration-150 cursor-pointer rounded-md"
-                                      >
-                                        {subItem.label}
-                                      </a>
+                                      <div key={subIndex}>
+                                        {subItem.dropdown ? (
+                                          <>
+                                            <button
+                                              className="flex items-center justify-between w-full px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-colors duration-150 cursor-pointer rounded-md"
+                                              onClick={() => {
+                                                console.log('Click en subItem:', subItem.label);
+                                                console.log('Estado actual:', mobileActiveDropdown);
+                                                console.log('Ruta esperada:', `${item.label}/${dropdownItem.label}/${subItem.label}`);
+                                                const newState = mobileActiveDropdown === `${item.label}/${dropdownItem.label}/${subItem.label}`
+                                                  ? `${item.label}/${dropdownItem.label}`
+                                                  : `${item.label}/${dropdownItem.label}/${subItem.label}`;
+                                                console.log('Nuevo estado:', newState);
+                                                setMobileActiveDropdown(newState);
+                                              }}
+                                            >
+                                              <span>{subItem.label}</span>
+                                              <ChevronDown className={`w-4 h-4 transition-transform duration-150 ${mobileActiveDropdown === `${item.label}/${dropdownItem.label}/${subItem.label}` ? 'rotate-180' : ''}`} />
+                                            </button>
+                                            
+                                            {mobileActiveDropdown === `${item.label}/${dropdownItem.label}/${subItem.label}` && (
+                                              <div className="mt-1 ml-4 space-y-1 border-l-2 border-gray-500 pl-4">
+                                                {subItem.dropdown.map((subSubItem, subSubIndex) => (
+                                                  <a
+                                                    key={subSubIndex}
+                                                    href={subSubItem.href || '#'}
+                                                    target={subSubItem.target}
+                                                    rel={subSubItem.rel}
+                                                    onClick={(e) => {
+                                                      if (subSubItem.onClick) {
+                                                        e.preventDefault();
+                                                        subSubItem.onClick();
+                                                      }
+                                                      setIsMobileMenuOpen(false);
+                                                      setMobileActiveDropdown(null);
+                                                    }}
+                                                    className="block px-4 py-2 text-gray-400 text-sm hover:bg-blue-500 hover:text-white transition-colors duration-150 cursor-pointer rounded-md"
+                                                  >
+                                                    {subSubItem.label}
+                                                  </a>
+                                                ))}
+                                              </div>
+                                            )}
+                                          </>
+                                        ) : (
+                                          <a
+                                            href={subItem.href || '#'}
+                                            target={subItem.target}
+                                            rel={subItem.rel}
+                                            onClick={(e) => {
+                                              if (subItem.onClick) {
+                                                e.preventDefault();
+                                                subItem.onClick();
+                                              }
+                                              setIsMobileMenuOpen(false);
+                                              setMobileActiveDropdown(null);
+                                            }}
+                                            className="block px-4 py-2 text-gray-300 text-sm hover:bg-blue-500 hover:text-white transition-colors duration-150 cursor-pointer rounded-md"
+                                          >
+                                            {subItem.label}
+                                          </a>
+                                        )}
+                                      </div>
                                     ))}
                                   </div>
                                 )}
