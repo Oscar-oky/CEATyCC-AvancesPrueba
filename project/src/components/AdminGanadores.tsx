@@ -32,6 +32,11 @@ interface GanadorForm {
   selectedFile: File | null;
 }
 
+interface RecuadroConfig {
+  id: number;
+  nombre: string;
+}
+
 interface Categoria {
   id: number;
   nombre: string;
@@ -41,7 +46,7 @@ interface Categoria {
 }
 
 const AdminGanadores: React.FC = () => {
-  const { user, isAdmin, sendRegistrationLink, allUsers, token } = useAuth();
+  const { user, isAdmin, allUsers, token } = useAuth();
 
   // Estado para categorías
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -336,16 +341,13 @@ const AdminGanadores: React.FC = () => {
           const ganador = ganadoresToSubmit[i];
 
           // Datos a enviar al servidor
-          const ganadorData = {
+          const ganadorData: any = {
             nombre: ganador.nombre,
             email: ganador.email,
             institucion: ganador.institucion,
             pdfUrl: ganador.pdfUrl,
             categoria: categoriaSeleccionada,
-            // Usar lugar como premio para almacenar el nombre del recuadro
-            premio: ganador.lugar,
-            // El backend no almacena recuadro, pero lo enviamos por compatibilidad
-            recuadro: recuadroSeleccionado[i] || 1
+            premio: ganador.lugar // El campo 'premio' en la BD guarda el texto del lugar/recuadro
           };
 
           let url = `${API_BASE_URL}/reconocimientos`;
@@ -363,9 +365,7 @@ const AdminGanadores: React.FC = () => {
           console.log('URL:', url);
           console.log('Método:', method);
           console.log('Token presente:', !!token);
-          console.log('Token:', token ? token.substring(0, 10) + '...' : 'No token');
           console.log('Datos:', ganadorData);
-          console.log('Campo recuadro:', ganadorData.recuadro);
           console.log('Datos JSON:', JSON.stringify(ganadorData));
 
           const response = await fetch(url, {
@@ -493,10 +493,10 @@ const AdminGanadores: React.FC = () => {
   const handleEdit = (ganador: Ganador) => {
     // Para edición, resetear la lista y colocar solo el ganador a editar
     setGanadoresForm([{
-      nombre: ganador.nombre || ganador.name || '',
+      nombre: ganador.nombre || '',
       email: ganador.email || '',
-      institucion: ganador.institucion || ganador.institution || '',
-      pdfUrl: ganador.pdfUrl || ganador.pdf_url || '',
+      institucion: ganador.institucion || '',
+      pdfUrl: ganador.pdfUrl || '',
       lugar: ganador.premio || '', // El campo 'premio' del ganador almacena el 'lugar' (nombre del recuadro)
       premio: ganador.premio || '', // Mantener el premio original si es necesario, o ajustar según la lógica
       selectedFile: null
@@ -1003,13 +1003,6 @@ const AdminGanadores: React.FC = () => {
                     <td className="py-2 px-3 sm:py-3 sm:px-4">{ganador.institucion}</td>
                     <td className="py-2 px-3 sm:py-3 sm:px-4">{ganador.categoria}</td>
                     <td className="py-2 px-3 sm:py-3 sm:px-4 flex flex-wrap gap-1 sm:gap-2">
-                      <button
-                        onClick={() => handleSendLink(ganador)}
-                        className="flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-xs sm:text-sm"
-                      >
-                        <Send className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                        <span className="hidden sm:inline">Enviar Enlace</span>
-                      </button>
                       <button
                         onClick={() => handleEdit(ganador)}
                         className="flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-xs sm:text-sm"
