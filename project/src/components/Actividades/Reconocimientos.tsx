@@ -106,8 +106,9 @@ const Reconocimientos: React.FC = () => {
 
   // Función para manejar la apertura del modal de correo
   const handlePdfDownloadClick = (pdfUrl: string, ownerEmail: string, fileName: string, type: 'ganador' | 'categoria') => {
-    // Asegurar que la URL del PDF es absoluta
-    const absolutePdfUrl = pdfUrl.startsWith('http') ? pdfUrl : `${BASE_URL}${pdfUrl}`;
+    // Asegurar que la URL del PDF es absoluta desde la raíz del dominio
+    // No usamos BASE_URL si contiene '/api' para evitar rutas como /api/public/docs
+    const absolutePdfUrl = pdfUrl.startsWith('http') ? pdfUrl : pdfUrl;
     
     setCurrentPdf({ url: absolutePdfUrl, ownerEmail, fileName });
     setEmailModalType(type);
