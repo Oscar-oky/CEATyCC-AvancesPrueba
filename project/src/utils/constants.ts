@@ -63,4 +63,4 @@ export const CALENDAR_LEGEND_COLORS = {
 } as const;
 
 // URL base del API para despliegue. En dev, considerar proxy en Vite.
-export const API_URL = "https://site39574-vlysiu.scloudsite101.com/api";
+export const API_URL = "/api";

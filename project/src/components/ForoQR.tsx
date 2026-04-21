@@ -3,7 +3,7 @@ import { QRCodeCanvas } from 'qrcode.react';
 
 const ForoQR: React.FC = () => {
   // URL del evento en el calendario (marzo 2026, mes=2 en 0-indexado)
-  const foroUrl = 'https://site39574-vlysiu.cloudsite101.com/calendario-eventos?month=2&year=2026';
+  const foroUrl = '/api/calendario-eventos?month=2&year=2026';
 
   return (
     <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg">
