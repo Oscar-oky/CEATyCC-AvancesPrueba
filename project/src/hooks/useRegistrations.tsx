@@ -10,8 +10,8 @@
  */
 import React, { useState, useEffect, useCallback, createContext, useContext, ReactNode } from 'react';
 import { useAuth } from './AuthContext';
+import { API_URL } from '@/utils/constants';
 
-const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
 export type RegistrationStatus = 'solicitado' | 'aprobado' | 'negado';
 
 export interface Registration {

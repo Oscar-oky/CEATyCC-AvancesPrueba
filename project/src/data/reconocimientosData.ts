@@ -234,7 +234,7 @@ export const categoriasData: Categoria[] = [
     ]
   },
   {
-    nombre: "Constancias Jueces",
+    nombre: "Constancias Jueces (carteles)",
     descripcion: "Reconoce la valiosa participación de los profesores que fungieron como jueces en los concursos de programación, garantizando la calidad y la imparcialidad de las evaluaciones.",
     criterios: [""],
     premio: "",

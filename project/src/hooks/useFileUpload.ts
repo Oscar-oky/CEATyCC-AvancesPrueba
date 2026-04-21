@@ -9,6 +9,7 @@
  * - Respuesta: { photos, videos, documents, mainPhoto } como rutas.
  */
 import { useState, useCallback } from 'react';
+import { API_URL } from '@/utils/constants';
 
 /**
  * @interface FileUploadResult
@@ -81,7 +82,6 @@ export const useFileUpload = () => {
     console.log('useFileUpload: FormData before fetch:', formData);
 
     try {
-      const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
       const response = await fetch(`${API_URL}/upload`, { 
         method: 'POST',
         body: formData,

@@ -188,7 +188,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
     {
       label: 'Perspectivas de Aprendizaje',
       dropdown: [
-        { label: 'Microcredenciales', href: 'https://site36787-lxnz30.scloudsite101.com/screens/home', target: '_blank', rel: 'noopener noreferrer' },
+        { label: 'Microcredenciales', href: 'https://site20834-92kg2z.scloudsite101.com/screens/home', target: '_blank', rel: 'noopener noreferrer' },
         {
           label: 'Universidades',
           onClick: () => onNavigate('universidades')

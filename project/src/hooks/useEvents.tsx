@@ -11,11 +11,8 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import axios from 'axios';
 import { CalendarEvent, LegendItem } from '@/types';
-import { useAuth } from './AuthContext'; // Importar useAuth
-
-// Define la URL base de tu API. Asegúrate de que el puerto coincida con el de tu backend.
-// La URL de la API ahora es relativa, para que funcione tanto en local como en producción.
-const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+import { useAuth } from './AuthContext';
+import { API_URL } from '@/utils/constants';
 
 interface EventsContextType {
   events: CalendarEvent[];
@@ -146,7 +143,7 @@ export const EventsProvider = ({ children }: { children: ReactNode }) => {
     };
 
     fetchData();
-  }, [isAdmin]); // Dependencia de isAdmin
+  }, [isAdmin()]); // Dependencia de isAdmin()
 
   const addCategory = async (category: { label: string; color: string }) => {
     const newCategory: LegendItem = {

@@ -71,7 +71,20 @@ const CalendarioEventos: React.FC<CalendarioEventosProps> = ({
   const { events, allEvents, addEvent, updateEvent, deleteEvent, deleteFile, getEventsForDate, categories } = useEvents();
   const { user, login, logout, isAdmin, isLoggedIn, openLoginModal, isLoginModalOpen, closeLoginModal } = useAuth();
   const { addRegistration, removeRegistration } = useRegistrations();
-  const { selectedMonth, selectedYear, getDaysInMonth, getFirstDayOfMonth, goToPreviousMonth, goToNextMonth, goToToday, monthName, goToDate } = useCalendar(initialYear, initialMonth);
+  const { 
+    selectedMonth, 
+    selectedYear, 
+    currentDate,
+    getDaysInMonth, 
+    getFirstDayOfMonth, 
+    goToPreviousMonth, 
+    goToNextMonth, 
+    goToPreviousWeek,
+    goToNextWeek,
+    goToToday, 
+    monthName, 
+    goToDate 
+  } = useCalendar(initialYear, initialMonth);
 
   useEffect(() => {
     // Efecto para manejar los parámetros de URL (evento)
