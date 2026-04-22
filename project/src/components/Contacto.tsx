@@ -22,6 +22,7 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
   const [captcha, setCaptcha] = useState('');
   const [captchaInput, setCaptchaInput] = useState('');
   const [captchaValid, setCaptchaValid] = useState<boolean | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Generate random CAPTCHA
   const generateCaptcha = () => {
@@ -69,6 +70,8 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
     return;
   }
 
+  setIsSubmitting(true);
+
   try {
     const response = await fetch(`${API_URL}/contacto`, {
       method: 'POST',
@@ -108,6 +111,8 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
   } catch (error) {
     console.error('Error de red:', error);
     alert('Error de red. No se pudo conectar al servidor.');
+  } finally {
+    setIsSubmitting(false);
   }
 };
 
@@ -333,11 +338,20 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={!formData.privacidad || captchaValid !== true}
+                disabled={!formData.privacidad || captchaValid !== true || isSubmitting}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300"
               >
-                <Send className="w-5 h-5" />
-                Enviar mensaje
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Enviar mensaje
+                  </>
+                )}
               </button>
             </form>
           </div>
