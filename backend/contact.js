@@ -35,9 +35,9 @@ const transporter = nodemailer.createTransport({
  * POST /
  * @description Maneja el envío del formulario de contacto.
  * Guarda la información en la base de datos y envía una notificación por correo electrónico.
- * Requiere autenticación JWT.
+ * No requiere autenticación - público para cualquier usuario.
  */
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   const { nombre, correo, telefono, asunto, mensaje, captcha_valido, preferencia, privacidad } = req.body;
 
   const sql = `INSERT INTO contacto (nombre, correo, telefono, asunto, mensaje, captcha_valido)

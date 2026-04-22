@@ -8,7 +8,7 @@ interface ContactoProps {
 }
 
 const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
-  const { isLoggedIn, openLoginModal, token } = useAuth();
+  const { token } = useAuth();
   const [formData, setFormData] = useState({
     nombre: '',
     correo: '',
@@ -58,12 +58,6 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
-  if (!isLoggedIn()) {
-    openLoginModal();
-    alert('Debes iniciar sesión para enviar un mensaje.');
-    return;
-  }
-
   if (captchaInput !== captcha) {
     setCaptchaValid(false);
     return;
@@ -73,8 +67,7 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
     const response = await fetch(`${API_URL}/contacto`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         nombre: formData.nombre,
