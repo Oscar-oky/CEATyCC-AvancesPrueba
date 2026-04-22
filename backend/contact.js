@@ -47,8 +47,9 @@ router.post('/', async (req, res) => {
     await db.query(sql, [nombre, correo, telefono, asunto, mensaje, captcha_valido]);
 
     const mailOptions = {
-      from: `"${nombre}" <${correo}>`,
+      from: `"Sistema CEATyCC" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_RECIPIENT,
+      replyTo: correo,
       subject: `Nuevo mensaje de contacto: ${asunto}`,
       html: `
         <h1>Nuevo mensaje de contacto</h1>

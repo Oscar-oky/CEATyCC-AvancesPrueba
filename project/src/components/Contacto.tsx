@@ -25,7 +25,7 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
 
   // Generate random CAPTCHA
   const generateCaptcha = () => {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789!@#$%&*';
     let result = '';
     for (let i = 0; i < 6; i++) {
       result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -41,6 +41,12 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
+    
+    // Validar que el teléfono solo contenga números
+    if (name === 'telefono' && value !== '' && !/^\d+$/.test(value)) {
+      return;
+    }
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData(prev => ({ ...prev, [name]: checked }));
