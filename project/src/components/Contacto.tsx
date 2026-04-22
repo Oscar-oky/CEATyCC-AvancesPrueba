@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, FileText, Shield, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../hooks/AuthContext';
+import { API_URL } from '../utils/constants';
 
 interface ContactoProps {
   onBack: () => void;
@@ -69,7 +70,6 @@ const Contacto: React.FC<ContactoProps> = ({ onBack }) => {
   }
 
   try {
-    const API_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
     const response = await fetch(`${API_URL}/contacto`, {
       method: 'POST',
       headers: {
