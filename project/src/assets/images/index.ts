@@ -77,6 +77,12 @@ export const joseGuillermo = new URL('./Jose Guillermo.png', import.meta.url).hr
 export const sandraEugenia = new URL('./Sandra Eugenia.png', import.meta.url).href;
 export const jorgeRaúl = new URL('./Jorge Raúl.png', import.meta.url).href;
 export const davidIsaí = new URL('./David Isaí.png', import.meta.url).href;
+export const JoseAlejandro = new URL('./Jose Alejandro A.jpg', import.meta.url).href;
+export const wilsonCalderon = new URL('./Wilson Calderón.jpg', import.meta.url).href;
+export const juanAndresGarcia = new URL('./Juan Andrés Garcia.jpg', import.meta.url).href;
+export const deliaMariaHurtado = new URL('./Delia María Hurtado.jpg', import.meta.url).href;
+export const davidIsaíBasurto = new URL('./david Isaí Basurto.jpg', import.meta.url).href;
+
 
 //Ponentes 20 de Marzo
 export const maryCarmen = new URL('./Mary Carmen.png', import.meta.url).href;
@@ -84,6 +90,12 @@ export const angelIvan = new URL('./Angel Ivan.png', import.meta.url).href;
 export const veronicaCovarrubias = new URL('./Veronica Covarrubias.png', import.meta.url).href;
 export const gerardoHernandez = new URL('./Gerardo Hernandez.png', import.meta.url).href;
 export const jorgeIzaguirre = new URL('./Jorge Izaguirre.png', import.meta.url).href;
+export const hectorAcevedo = new URL('./Héctor Acevedo Juárez.jpeg', import.meta.url).href;
+export const ArmidaGonzález = new URL('./Armida González Lorence.png', import.meta.url).href;
+export const VictorAlberto = new URL('./Víctor Alberto Gómez.png', import.meta.url).href;
+export const ervinJosePrado = new URL('./Ervin José Prado.jpg', import.meta.url).href;
+export const omarRodriguez = new URL('./Omar Rodríguez Abreo.jpeg', import.meta.url).href;
+export const moyocoyaniMolina = new URL('./Moyocoyani Molina.jpg', import.meta.url).href;
 
 
 //Imagenes de Universidades_Simbologia
