@@ -349,6 +349,66 @@ const Estadias: React.FC = () => {
                               <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 214 3238</p>
                             </div>
                           </>
+                        ) : selectedUniversity === 'CNCI' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Nidia Cantú</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> contacto@cnci.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 214 5033</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'REAL' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Angel Ramírez</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> direccion.academica@urq.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 787 6738</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'NEW ELEMENT' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Mtro. José Antonio Ugalde Guerrero</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> direccion.academica@neuniversity.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 348 1818</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UAQ' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Dr. Rolando Javier Salinas García</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> secretaria.academica@uaq.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-green-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 192 1200</p>
+                            </div>
+                          </>
                         ) : (
                           <div className="p-4 bg-green-50 text-green-700 rounded-xl border border-green-100 flex items-start space-x-3">
                             <Info className="w-5 h-5 shrink-0 mt-0.5" />
