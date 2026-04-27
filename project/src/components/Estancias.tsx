@@ -41,44 +41,21 @@ const Estancias: React.FC = () => {
           <span>Información de Estancias - {name}</span>
         </h3>
         <p className="text-gray-600 leading-relaxed text-lg mb-8">
-          El proceso de estancias profesionales en {name} permite a los alumnos aplicar sus conocimientos en entornos laborales reales antes de su egreso.
+          Es el primer contacto real del estudiante con la industria, donde aplica conocimientos técnicos por un periodo de 4 meses.
         </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-            <h4 className="font-bold text-blue-800 mb-3 flex items-center space-x-2">
-              <Clock className="w-5 h-5" />
-              <span>Etapa de Prácticas</span>
-            </h4>
-            <p className="text-blue-700 text-sm leading-relaxed">
-              Periodo de inmersión inicial donde el alumno conoce la dinámica operativa de la empresa u organización receptora.
-            </p>
-          </div>
-          <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
-            <h4 className="font-bold text-indigo-800 mb-3 flex items-center space-x-2">
-              <GraduationCap className="w-5 h-5" />
-              <span>Proyecto Profesional</span>
-            </h4>
-            <p className="text-indigo-700 text-sm leading-relaxed">
-              Desarrollo de un proyecto específico que solucione una problemática real, supervisado por asesores internos y externos.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      <section className="space-y-6">
-        <h4 className="text-xl font-bold text-gray-800">Requisitos y Lineamientos</h4>
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { label: 'Seguro Facultativo', text: 'Vigencia de derechos del IMSS u otro seguro escolar obligatorio.', icon: ShieldCheck },
-            { label: 'Avance Académico', text: 'Haber cubierto el porcentaje de créditos estipulado por el plan de estudios.', icon: GraduationCap },
-            { label: 'Vinculación', text: 'Convenio vigente entre la institución y la empresa receptora.', icon: Building2 }
-          ].map((req, idx) => (
-            <div key={idx} className="flex items-start space-x-4 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-              <div className="bg-white p-2 rounded-lg shadow-sm"><req.icon className="w-5 h-5 text-blue-600" /></div>
+            { label: 'Obligatoriedad', text: 'Requisito académico indispensable para la titulación en TSU e Ingeniería.', icon: ShieldCheck },
+            { label: 'Seguro IMSS', text: 'Todo estudiante debe contar con su número de seguridad social activo.', icon: ShieldCheck },
+            { label: 'Entregables', text: 'Memoria de estadía o tesina aprobada por asesores académicos e industriales.', icon: GraduationCap },
+            { label: 'Duración', text: 'Un cuatrimestre completo de inmersión técnica en planta.', icon: Clock }
+          ].map((item, idx) => (
+            <div key={idx} className="p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-start space-x-4">
+              <div className="bg-white p-2 rounded-lg shadow-sm"><item.icon className="w-5 h-5 text-blue-600" /></div>
               <div>
-                <h5 className="font-bold text-gray-800">{req.label}</h5>
-                <p className="text-gray-600 text-sm">{req.text}</p>
+                <span className="text-blue-600 text-xs font-bold uppercase tracking-widest block mb-1">{item.label}</span>
+                <p className="text-gray-700 text-sm leading-snug">{item.text}</p>
               </div>
             </div>
           ))}
@@ -183,26 +160,225 @@ const Estancias: React.FC = () => {
                           <>
                             <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
                               <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
-                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Mtro. Diego Armando Mendoza</p>
+                              <p><span className="text-gray-900 block font-semibold">Secretaría académica</span> Mtra. María Eugenia Edith Zapata Campos</p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
                               <Mail className="w-5 h-5 text-blue-600 shrink-0" />
-                              <p><span className="text-white block font-semibold">Email</span> vinculacion@upsrj.edu.mx</p>
+                              <p><span className="text-black-900 block font-semibold">Email</span>ezapata@upsrj.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-black-900 block font-semibold">Telefono</span> (442) 196 13 00 ext. 104</p>
                             </div>
                           </>
                         ) : selectedUniversity === 'UNAQ' ? (
                           <>
                             <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
                               <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
-                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Nancy Paulina Casares</p>
+                              <p><span className="text-gray-900 block font-semibold">Secretaría Académica</span> Dra. Luz Elena Narváez Hernández</p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
                               <Mail className="w-5 h-5 text-blue-600 shrink-0" />
-                              <p><span className="text-gray-900 block font-semibold">Email</span> nancy.casares@unaq.mx</p>
+                              <p><span className="text-gray-900 block font-semibold">Email</span> informacion@unaq.mx</p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
                               <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
-                              <p><span className="text-gray-900 block font-semibold">WhatsApp</span> (442) 110 8456</p>
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 101 6600</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UPQ' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Secretaría de Vinculación</span>Dr. Miguel Ángel Viramontes.</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span>miguel.viramontes@upq.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 101 90 00</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UTC' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Secretaría Académica</span> Mtra. Enriqueta Ortiz Moctezuma</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> enriqueta.ortiz@utcorregidora.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 483 0070</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UTEQ' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Secretaría Académica</span> M. en I. Raúl Noriega Ponce</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> raul.noriega@uteq.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 209 61 00</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UTSJR' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Secretaría Académica</span> Dra. María Angélica Luján Vega</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> alujanv@utsjr.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (427) 129 2000</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'CUAUHTEMOC' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Director Académico</span> Dr. Carlos Roberto Romero García</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> rromero@ucq.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 161 6263</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UNIQ' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Rector</span> Ing. Luis Kenji Rosales Senday</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> informes@uniq.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 962 0202</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UVM' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Rectora de Campus</span> Mtra. Miriam Pérez Gutiérrez</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> cae.queretaro@uvmnet.edu</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 211 1900</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UNICEQ' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Director Académico</span> Mtro. Ricardo F. Guzmán Fernández</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span>contacto@uniceq.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 210 27 10</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'CESBA' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Directora Académica</span> Mtra. Lucía Calcáneo Vizcarra</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> informes@cesba-queretaro.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 537 9682</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'Londres' || selectedUniversity === 'LONDRES' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Rectora</span> Dra. Ivonne Wiener Bercovich</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> vinculacion@udlondresqueretaro.com.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 212 01 35</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'UNIPLEA' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Mtra. Mónica Monroy</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> hola@uniplea.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 722 6965</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'DICORMO' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Lic. Paulina De los Cobos</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> info.sede.queretaro@dicormo.com</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 223 4685</p>
+                            </div>
+                          </>
+                        ) : selectedUniversity === 'ATENAS' ? (
+                          <>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <GraduationCap className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Responsable</span> Dra. Viridiana Cerecedo</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <Mail className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Email</span> info@atenas.edu.mx</p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl">
+                              <MessageSquare className="w-5 h-5 text-blue-600 shrink-0" />
+                              <p><span className="text-gray-900 block font-semibold">Telefono</span> (442) 214 3238</p>
                             </div>
                           </>
                         ) : (
@@ -220,84 +396,49 @@ const Estancias: React.FC = () => {
                 <div className="lg:col-span-2 space-y-8">
                   <div className="bg-white rounded-3xl p-8 sm:p-10 border border-gray-200 shadow-sm">
                     <div className="prose prose-blue max-w-none">
-                      {selectedUniversity === 'UPSRJ' ? (
-                        <div className="space-y-10">
-                          <section>
-                            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-3 border-b border-gray-100 pb-4">
-                              <Info className="w-6 h-6 text-blue-600" />
-                              <span>Estancias Profesionales UPSRJ</span>
-                            </h3>
-                            <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                              Para la Universidad Politécnica de Santa Rosa Jáuregui (UPSRJ), el proceso de Estancias Profesionales es fundamental debido a su modelo basado en competencias y su enfoque bilingüe.
-                            </p>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                                <h4 className="font-bold text-blue-800 mb-3 flex items-center space-x-2">
-                                  <Briefcase className="w-5 h-5" />
-                                  <span>Estancias I y II</span>
-                                </h4>
-                                <p className="text-blue-700 text-sm leading-relaxed">Prácticas cortas de 120 horas que se realizan a mitad de la carrera para que el alumno conozca el entorno laboral.</p>
-                              </div>
-                              <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
-                                <h4 className="font-bold text-indigo-800 mb-3 flex items-center space-x-2">
-                                  <GraduationCap className="w-5 h-5" />
-                                  <span>Estadía Profesional</span>
-                                </h4>
-                                <p className="text-indigo-700 text-sm leading-relaxed">Se realiza en el último cuatrimestre. Es un periodo de 600 horas (aprox. 4 meses) de tiempo completo en la empresa.</p>
-                              </div>
-                            </div>
-                          </section>
-
-                          <section className="space-y-6">
-                            <h4 className="text-xl font-bold text-gray-800">Ejes Diferenciadores</h4>
-                            <div className="space-y-4">
-                              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                                <div className="bg-white p-2 rounded-lg shadow-sm"><ShieldCheck className="w-5 h-5 text-green-600" /></div>
-                                <div>
-                                  <h5 className="font-bold text-gray-800">Modelo Bilingüe (BIS)</h5>
-                                  <p className="text-gray-600 text-sm">Muchos estudiantes realizan sus estancias en inglés, aprovechando el carácter internacional de la universidad.</p>
-                                </div>
-                              </div>
-                              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                                <div className="bg-white p-2 rounded-lg shadow-sm"><MapPin className="w-5 h-5 text-red-600" /></div>
-                                <div>
-                                  <h5 className="font-bold text-gray-800">Inclusión Adaptativa</h5>
-                                  <p className="text-gray-600 text-sm">Programas adaptados para estudiantes con discapacidad motriz, visual o auditiva.</p>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </div>
-                      ) : selectedUniversity === 'UNAQ' ? (
-                        <div className="space-y-10">
-                          <section>
-                            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-3 border-b border-gray-100 pb-4">
-                              <Info className="w-6 h-6 text-blue-600" />
-                              <span>Modelo Aeronáutico UNAQ</span>
-                            </h3>
-                            <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                              Es el primer contacto real del estudiante con la industria aeronáutica, donde aplica conocimientos técnicos por un periodo de 4 meses.
-                            </p>
+                      <div className="space-y-10">
+                        <section>
+                          <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-3 border-b border-gray-100 pb-4">
+                            <Info className="w-6 h-6 text-blue-600" />
+                            <span>Modelo de Estancias - {selectedData?.shortName}</span>
+                          </h3>
+                          <p className="text-gray-600 leading-relaxed text-lg mb-8">
+                            Es el primer contacto real del estudiante con la industria, donde aplica conocimientos técnicos por un periodo de 4 meses.
+                          </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               {[
-                                { label: 'Obligatoriedad', text: 'Requisito académico indispensable para la titulación en TSU e Ingeniería.' },
-                                { label: 'Seguro IMSS', text: 'Todo estudiante debe contar con su número de seguridad social activo.' },
-                                { label: 'Entregables', text: 'Memoria de estadía o tesina aprobada por asesores académicos e industriales.' },
-                                { label: 'Duración', text: 'Un cuatrimestre completo de inmersión técnica en planta.' }
+                                { label: 'Obligatoriedad', text: 'Requisito académico indispensable para la titulación en TSU e Ingeniería.', icon: ShieldCheck },
+                                { label: 'Seguro IMSS', text: 'Todo estudiante debe contar con su número de seguridad social activo.', icon: ShieldCheck },
+                                { label: 'Entregables', text: 'Memoria de estadía o tesina aprobada por asesores académicos e industriales.', icon: GraduationCap },
+                                { label: 'Duración', text: 'Un cuatrimestre completo de inmersión técnica en planta.', icon: Clock }
                               ].map((item, idx) => (
-                                <div key={idx} className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                                  <span className="text-blue-600 text-xs font-bold uppercase tracking-widest block mb-1">{item.label}</span>
-                                  <p className="text-gray-700 text-sm leading-snug">{item.text}</p>
+                                <div key={idx} className="p-4 bg-gray-50/50 rounded-xl border border-gray-100 flex items-start space-x-4">
+                                  <div className="bg-white p-2.5 rounded-xl shadow-sm border border-gray-100">
+                                    <item.icon className="w-5 h-5 text-blue-600" />
+                                  </div>
+                                  <div>
+                                    <span className="text-blue-600 text-[10px] font-bold uppercase tracking-widest block mb-1">{item.label}</span>
+                                    <p className="text-gray-700 text-xs leading-snug font-medium">{item.text}</p>
+                                  </div>
                                 </div>
                               ))}
                             </div>
-                          </section>
-                        </div>
-                      ) : (
-                        renderPlaceholderContent(selectedData?.shortName || '')
-                      )}
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Solo el recuadro de Estancias en el componente Estancias */}
+                  <div className="mt-6">
+                    <div className="bg-blue-50 p-6 rounded-3xl border border-blue-100 shadow-sm">
+                      <h4 className="font-bold text-blue-800 mb-3 flex items-center space-x-2">
+                        <Briefcase className="w-5 h-5" />
+                        <span>Estancias I y II</span>
+                      </h4>
+                      <p className="text-blue-700 text-sm leading-relaxed">
+                        Prácticas cortas de 120 horas que se realizan a mitad de la carrera para que el alumno conozca el entorno laboral.
+                      </p>
                     </div>
                   </div>
                 </div>
