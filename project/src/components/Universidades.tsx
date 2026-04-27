@@ -646,10 +646,11 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
     // 🔑 NUEVO: Combinamos ambos arrays para buscar por name Y shortName
     const allUnis = [...universities, ...exampleUniversities];
 
-    // Universidades que coinciden por nombre completo o por shortName
+    // Universidades que coinciden por nombre completo, shortName o por alguna de sus carreras
     const matchingUnis = allUnis.filter(uni =>
       uni.name.toLowerCase().includes(lowercasedSearch) ||
-      (uni.shortName && uni.shortName.toLowerCase().includes(lowercasedSearch))
+      (uni.shortName && uni.shortName.toLowerCase().includes(lowercasedSearch)) ||
+      (uni.careers && uni.careers.some(career => career.toLowerCase().includes(lowercasedSearch)))
     );
 
     // Nombres exactos de las universidades que coinciden
@@ -1078,7 +1079,7 @@ const Universidades: React.FC<UniversidadesProps> = ({ onNavigate }) => {
               <div className="flex items-center space-x-2 mb-2 w-11/12">
                 <input
                   type="text"
-                  placeholder="Buscar por universidad, categoría o carrera..."
+                  placeholder="Buscar universidad, categoría o carrera..."
                   className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
