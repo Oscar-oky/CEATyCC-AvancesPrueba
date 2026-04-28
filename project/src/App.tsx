@@ -31,7 +31,8 @@ import EjesYLineasEstrategicas from './components/EjesYLineasEstrategicas';
 import Resumen from './components/Resumen';
 import Microcredenciales from './components/AreasEstrategicas/Microcredenciales';
 import OpenAcademySantander from './components/AreasEstrategicas/OpenAcademySantander';
-import Reconocimientos from './components/Actividades/Reconocimientos';
+import Reconocimientos2025 from './components/Actividades/Reconocimientos2025';
+import Reconocimientos2026 from './components/Actividades/Reconocimientos';
 import TorneoProgramacionBasica from './components/TorneoProgramacionBasica';
 import TorneoProgramacionAvanzado from './components/TorneoProgramacionAvanzado';
 import TorneoProgramacionBasica2026 from './components/TorneoProgramacionBasica2026';
@@ -104,6 +105,8 @@ const AppContent: React.FC = () => {
       'microcredenciales': '/microcredenciales',
       'open-academy-santander': '/open-academy-santander',
       'reconocimientos': '/reconocimientos',
+      'reconocimientos-2025': '/reconocimientos/2025',
+      'reconocimientos-2026': '/reconocimientos/2026',
       'municipal': '/municipal',
       'sector-publico-estatal': '/sector-publico-estatal',
       'asociaciones': '/asociaciones',
@@ -200,7 +203,9 @@ const AppContent: React.FC = () => {
               <Route path="/capacitacion" element={<Capacitacion />} />
               <Route path="/microcredenciales" element={<Microcredenciales />} />
               <Route path="/open-academy-santander" element={<OpenAcademySantander />} />
-              <Route path="/reconocimientos" element={<Reconocimientos />} />
+              <Route path="/reconocimientos" element={<Reconocimientos2026 />} />
+              <Route path="/reconocimientos/2025" element={<Reconocimientos2025 />} />
+              <Route path="/reconocimientos/2026" element={<Reconocimientos2026 />} />
               {/* Convenios */}
               <Route path="/municipal" element={<Municipal />} />
               <Route path="/sector-publico-estatal" element={<Estatal />} />

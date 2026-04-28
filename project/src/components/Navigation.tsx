@@ -174,7 +174,13 @@ const Navigation: React.FC<NavigationProps> = ({ onCommitteeClick, onNavigate })
     {
       label: 'Actividades',
       dropdown: [
-        { label: 'Reconocimientos', onClick: () => onNavigate('reconocimientos') },
+        {
+          label: 'Reconocimientos',
+          dropdown: [
+            { label: '2025', onClick: () => onNavigate('reconocimientos-2025') },
+            { label: '2026', onClick: () => onNavigate('reconocimientos-2026') }
+          ]
+        },
         {
           label: 'Encuestas',
           href: 'https://forms.gle/YmfgeSf2VjWzDALVA',
