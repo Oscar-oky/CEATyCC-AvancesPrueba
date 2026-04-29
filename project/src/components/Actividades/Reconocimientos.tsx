@@ -22,7 +22,7 @@ type GanadorFromApi = {
   created_at?: string;
 };
 
-const Reconocimientos2026: React.FC = () => {
+const Reconocimientos: React.FC = () => {
   // Usar el contexto de autenticación
   const { user, token, isLoggedIn, openLoginModal, isAdmin } = useAuth();
   
@@ -51,15 +51,15 @@ const Reconocimientos2026: React.FC = () => {
   const fetchGanadores = async () => {
     setIsLoading(true);
     try {
-      // Intentar obtener los ganadores desde la API filtrando por año 2026
-      const response = await fetch(`${API_BASE_URL}/reconocimientos?year=2026`);
+      // Intentar obtener los ganadores desde la API
+      const response = await fetch(`${API_BASE_URL}/reconocimientos`);
       
       // Verificar que la respuesta sea exitosa y sea JSON
       if (response.ok) {
         const contentType = response.headers.get('content-type');
         if (contentType && contentType.includes('application/json')) {
           const data = await response.json();
-          console.log('Datos recibidos desde la API (2026):', data);
+          console.log('Datos recibidos desde la API:', data);
           setGanadoresFromApi(data);
         }
       }
@@ -67,7 +67,7 @@ const Reconocimientos2026: React.FC = () => {
       // y seguimos usando los estáticos
     } catch (err) {
       // En caso de error, solo logueamos y no mostramos mensaje al usuario
-      console.error('Error fetching ganadores (2026):', err);
+      console.error('Error fetching ganadores:', err);
     } finally {
       setIsLoading(false);
     }
@@ -290,8 +290,8 @@ const Reconocimientos2026: React.FC = () => {
   });
 
   // Debug: Verificar los premios que se están renderizando
-  console.log('Premios a renderizar (2026):', premios);
-  console.log('Ganadores desde API (2026):', ganadoresFromApi);
+  console.log('Premios a renderizar:', premios);
+  console.log('Ganadores desde API:', ganadoresFromApi);
 
   const categorias: Categoria[] = categoriasData;
 
@@ -335,7 +335,7 @@ const Reconocimientos2026: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-600 mb-4 sm:mb-6">
-            Reconocimientos CEATyCC 2026
+            Reconocimientos CEATyCC
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Celebramos la excelencia, innovación y liderazgo en el sector de tecnologías 
@@ -357,7 +357,7 @@ const Reconocimientos2026: React.FC = () => {
         {/* Ganadores Recientes */}
         <div className="mb-10 sm:mb-14 md:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center">
-            Ganadores Recientes 2026
+            Ganadores Recientes
           </h2>
           {/* Botón de Panel de Admin solo para admins */}
           {useAuth().isAdmin() && (
@@ -584,4 +584,4 @@ const Reconocimientos2026: React.FC = () => {
   );
 };
 
-export default Reconocimientos2026;
+export default Reconocimientos;
