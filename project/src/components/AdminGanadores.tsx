@@ -6,7 +6,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/AuthContext';
-import { Send, Plus, Trash2, Edit, X, Loader2, Upload, Eye } from 'lucide-react';
+import { Send, Plus, Trash2, Edit, X, Loader2, Upload, Eye, ArrowLeft } from 'lucide-react';
 import { useFileUpload } from '../hooks/useFileUpload';
 
 interface Ganador {
@@ -47,6 +47,12 @@ interface Categoria {
 
 const AdminGanadores: React.FC = () => {
   const { user, isAdmin, allUsers, token } = useAuth();
+  const [activeTab, setActiveTab] = useState('list'); // Notar si necesitas esto, pero mantendremos consistencia
+
+  // Función para regresar a la página de reconocimientos
+  const handleBackToReconocimientos = () => {
+    window.location.href = '/reconocimientos';
+  };
 
   // Estado para categorías
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -90,8 +96,8 @@ const AdminGanadores: React.FC = () => {
   // Inicializar el hook useFileUpload
   const { uploadFiles, isUploading: isHookUploading } = useFileUpload();
 
-  // URL base de la API (ajusta según tu configuración)
-  const API_BASE_URL = import.meta.env.VITE_APP_BASE_URL ? `${import.meta.env.VITE_APP_BASE_URL}/api` : '/api';
+  // URL base de la API
+  const API_BASE_URL = '/api';
   // URL base para archivos estáticos
   const BASE_URL = import.meta.env.VITE_APP_BASE_URL || '';
 
@@ -547,7 +553,16 @@ const AdminGanadores: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-wrap justify-between items-center mb-8 gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Gestión de Ganadores</h1>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleBackToReconocimientos}
+            className="flex items-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Regresar a Reconocimientos
+          </button>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Gestión de Ganadores</h1>
+        </div>
       </div>
 
       {/* Mensaje de feedback */}
