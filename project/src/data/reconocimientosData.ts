@@ -284,9 +284,127 @@ export const categoriasData: Categoria[] = [
   }
 ];
 
+export const categoriasData2025: Categoria[] = [
+  {
+    nombre: "2do Foro de Educación en Alta",
+    descripcion: "Reconocimiento a los participantes del foro enfocado en la excelencia académica.",
+    criterios: [""],
+    premio: "",
+    pdfs: [
+      
+    ]
+  },
+  {
+    nombre: "33-Ponentes y Moderadores",
+    descripcion: "Reconocimiento a ponentes y moderadores por su contribución en eventos académicos.",
+    criterios: [""],
+    premio: "",
+    pdfs: []
+  },
+  {
+    nombre: "Constancias Jueces",
+    descripcion: "Reconocimiento a la labor de los jueces en diversas competencias y eventos.",
+    criterios: [""],
+    premio: "",
+    pdfs: []
+  },
+  {
+    nombre: "Egresados",
+    descripcion: "Reconocimiento a la trayectoria y logros de nuestros egresados.",
+    criterios: [""],
+    premio: "",
+    pdfs: []
+  },
+  {
+    nombre: "Empresas",
+    descripcion: "Reconocimiento a empresas colaboradoras por su apoyo al desarrollo académico.",
+    criterios: [""],
+    premio: "",
+    pdfs: [
+      //{ nombre: "", email: "", pdfUrl: "" }
+    ]
+  },
+  {
+    nombre: "Mujeres STEM",
+    descripcion: "Reconocimiento al talento y liderazgo femenino en ciencia y tecnología.",
+    criterios: [""],
+    premio: "",
+    pdfs: []
+  },
+  {
+    nombre: "Participantes en Concursos de Programación categoría Avanzado",
+    descripcion: "Reconoce la destacada participación de estudiantes en competencias avanzadas de programación.",
+    criterios: [""],
+    premio: "",
+    pdfs: []
+  },
+  {
+    nombre: "Participantes en Concursos de Programación categoría Básico",
+    descripcion: "Reconoce la destacada participación de estudiantes en competencias básicas de programación.",
+    criterios: [""],
+    premio: "",
+    pdfs: []
+  }
+];
+
 export const estadisticasData = [
   { numero: "36", label: "Reconocimiento Ponentes y Conferencistas", icon: Award },
-  { numero: "1116", label: "Asistencias", icon: Users },
+  { numero: "1,116", label: "Asistencias", icon: Users },
   { numero: "8", label: "Reconocimiento de Programacion Basico", icon: Trophy },
   { numero: "8", label: "Reconocimiento de Programacion Avanzado", icon: Trophy }
+];
+
+export const estadisticasData2025 = [
+  { numero: "36", label: "Reconocimiento Ponentes 2025", icon: Award },
+  { numero: "1,116", label: "Asistencias 2025", icon: Users },
+  { numero: "8", label: "Prog. Básico 2025", icon: Trophy },
+  { numero: "8", label: "Prog. Avanzado 2025", icon: Trophy }
+];
+
+export const premiosStaticos2025: Premio[] = [
+   {
+    titulo: "Torneo de Prog. Categoria Avanzada",
+    año: "1.er lugar",
+    ganadores: [
+            //{ nombre: "", email: "", pdfUrl: ""},
+    ],
+    color: "bg-red-600",
+    icon: Award,
+    categoria: "Torneo de Programación Avanzada"
+  },
+
+  {
+    titulo: "Torneo de Prog. Categoria Avanzada",
+    año: "1.er lugar",
+    ganadores: [
+      
+    ],
+    color: "bg-red-600",
+    icon: Award,
+    categoria: "Torneo de Programación Avanzada"
+  },
+  
+  {
+    titulo: "Torneo de Prog. Categoria Básica",
+    año: "1.er lugar",
+    ganadores: [
+      
+    ],
+    color: "bg-blue-600",
+    icon: Award,
+    categoria: "Torneo de Programación Básica"
+  },
+
+  {
+    titulo: "Torneo de Prog. Categoria Básica",
+    año: "1.er lugar",
+    ganadores: [
+      
+      //{ nombre: "", email: "", pdfUrl: ""},
+      
+    ],
+    color: "bg-blue-600",
+    icon: Award,
+    categoria: "Torneo de Programación Básica"
+  },
 ];

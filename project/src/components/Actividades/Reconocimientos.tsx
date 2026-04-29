@@ -3,8 +3,11 @@ import { useAuth } from '../../hooks/AuthContext';
 import { Award, Trophy, Users, Shield, Loader2, Download } from 'lucide-react';
 import { 
   premiosStaticos, 
+  premiosStaticos2025,
   categoriasData, 
+  categoriasData2025,
   estadisticasData,
+  estadisticasData2025,
   Winner,
   Premio,
   Categoria
@@ -39,6 +42,7 @@ const Reconocimientos: React.FC = () => {
   // Estado para los ganadores obtenidos desde la API
   const [ganadoresFromApi, setGanadoresFromApi] = useState<GanadorFromApi[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedYear, setSelectedYear] = useState<'2025' | '2026'>('2026');
   // Eliminamos el estado de error para no mostrar mensajes al usuario
   // const [error, setError] = useState<string | null>(null);
   
@@ -48,11 +52,11 @@ const Reconocimientos: React.FC = () => {
   const BASE_URL = import.meta.env.VITE_APP_BASE_URL || '';
   
   // Función para fetch los ganadores desde la API
-  const fetchGanadores = async () => {
+  const fetchGanadores = async (year: string) => {
     setIsLoading(true);
     try {
-      // Intentar obtener los ganadores desde la API
-      const response = await fetch(`${API_BASE_URL}/reconocimientos`);
+      // Intentar obtener los ganadores desde la API filtrando por año
+      const response = await fetch(`${API_BASE_URL}/reconocimientos?year=${year}`);
       
       // Verificar que la respuesta sea exitosa y sea JSON
       if (response.ok) {
@@ -73,10 +77,10 @@ const Reconocimientos: React.FC = () => {
     }
   };
   
-  // Cargar los ganadores al montar el componente
+  // Cargar los ganadores al montar el componente o cambiar el año
   useEffect(() => {
-    fetchGanadores();
-  }, []);
+    fetchGanadores(selectedYear);
+  }, [selectedYear]);
 
   // Función para descargar y abrir PDF usando blob
   const downloadAndOpenPdf = async (pdfUrl: string, fileName: string) => {
@@ -207,72 +211,14 @@ const Reconocimientos: React.FC = () => {
     return Object.values(grouped);
   };
   
-  // Datos estáticos de premios (mantener como respaldo o complemento)
-  const premiosStaticos: Premio[] = [
-    {
-      titulo: "Torneo de Prog. Categoria Básica",
-       año: "1.er lugar",
-      ganador: "Universidad Autónoma de Querétaro",
-      ganadores: [
-        { nombre: "Alejandro Barrios Martinez", email: "alejandro.barrios@uaq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Alejandro Barrios Martinez.pdf" },
-        { nombre: "Diego Martell Rodriguez", email: "diego.martell@uaq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Diego Martell Rodriguez.pdf" },
-        { nombre: "Jesus Enrique Lopez Zavala", email: "jesus.lopez@uaq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Jesus Enrique Lopez Zavala.pdf" },
-        { nombre: "Maria Jose Resendiz Medellin", email: "maria.resendiz@uaq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Maria Jose Resendiz Medellin.pdf" }
-      ],
-      color: "bg-blue-600",
-      icon: Award,
-      categoria: "Torneo de Programación Básica"
-    },
-    {
-      titulo: "Torneo de Prog. Categoria Avanzada",
-       año: "1.er lugar",
-      ganador: "Universidad Tecnológica de Querétaro",
-      ganadores: [
-        { nombre: "Ariadna Vanessa López Gómez", email: "ariadna.lopez@utq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Ariadna Vanessa López Gómez.pdf" },
-        { nombre: "Hugo Alberto Miralrio Espinoza", email: "hugo.miralrio@utq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Hugo Alberto Miralrio Espinoza.pdf" },
-        { nombre: "Jesús Enrique Rojas Guerrero", email: "jesus.rojas@utq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Jesús Enrique Rojas Guerrero.pdf" },
-        { nombre: "José Gabriel Reyes Vargas", email: "jose.reyes@utq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/José Gabriel Reyes Vargas.pdf" }
-      ],
-      color: "bg-red-600",
-      icon: Award,
-      categoria: "Torneo de Programación Avanzada"
-    },
-    {
-      titulo: "Torneo de Prog. Categoria Básica",
-       año: "2.do lugar",
-      ganador: "Instituto Tecnológico de Querétaro",
-      ganadores: [
-        { nombre: "Ailín Briseño Álvarez", email: "ailin.briseno@itq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Ailín Briseño Álvarez.pdf" },
-        { nombre: "Diego Castro Mendoza", email: "diego.castro@itq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Diego Castro Mendoza.pdf" },
-        { nombre: "Jafet Giovanni León Licea", email: "jafet.leon@itq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Jafet Giovanni León Licea.pdf" },
-        { nombre: "Yamil Alamillo Piña", email: "yamil.alamillo@itq.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Yamil Alamillo Piña.pdf" }
-      ],
-      color: "bg-blue-600",
-      icon: Award,
-      categoria: "Torneo de Programación Básica"
-    },
-    {
-      titulo: "Torneo de Prog. Categoria Avanzado",
-       año: "2.do lugar",
-      ganador: "Instituto Tecnológico de Querétaro",
-      ganadores: [
-        { nombre: "Brian Emmanuel Hernández Zúñiga", email: "brian.hernandez@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Brian Emmanuel Hernández Zúñiga.pdf" },
-        { nombre: "Edgar Leonardo Aguirre Bautista", email: "edgar.aguirre@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/Edgar Leonardo Aguirre Bautista.pdf" },
-        { nombre: "Roberto Rojas Campos", email: "roberto.rojas@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/2do Lugar/Roberto Rojas Campos.pdf" },
-        { nombre: "Sofia González Vargas", email: "sofia.gonzalez@ceatcc.edu.mx", pdfUrl: "/docs/33-Ponentes y Moderadores/2do Lugar/Sofia González Vargas.pdf" }
-      ],
-      color: "bg-red-600",
-      icon: Award,
-      categoria: "Torneo de Programación Avanzada"
-    },
-  ];
+  // Obtener premios estáticos por año
+  const filteredPremiosStaticos = selectedYear === '2026' ? premiosStaticos : premiosStaticos2025;
   
   // Obtener premios desde la API
   const premiosFromApi = getPremiosFromApi();
   
-  // Combinar premios estáticos y dinámicos (priorizar dinámicos)
-  // Si no hay premios desde la API, usar solo estáticos
-  const allPremios = premiosFromApi.length > 0 ? [...premiosFromApi, ...premiosStaticos] : [...premiosStaticos];
+  // Combinar premios estáticos y dinámicos
+  const allPremios = premiosFromApi.length > 0 ? [...premiosFromApi, ...filteredPremiosStaticos] : [...filteredPremiosStaticos];
   
   // Ordenar premios por categoría y año
   const premios = allPremios.sort((a, b) => {
@@ -295,7 +241,17 @@ const Reconocimientos: React.FC = () => {
 
   const categorias: Categoria[] = categoriasData;
 
-  const estadisticas = estadisticasData;
+  const estadisticas = selectedYear === '2026' ? estadisticasData : estadisticasData2025;
+
+  // Manejar categorías de forma independiente por año
+  const getCategoriasPorAño = () => {
+    if (selectedYear === '2026') {
+      return categoriasData;
+    }
+    return categoriasData2025;
+  };
+
+  const categoriasActuales = getCategoriasPorAño();
 
   const handleDetailsClick = (premio: Premio) => {
     setSelectedPremio(premio);
@@ -359,6 +315,31 @@ const Reconocimientos: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center">
             Ganadores Recientes
           </h2>
+
+          {/* Botones de selección de año */}
+          <div className="flex justify-center gap-4 mb-8">
+            <button
+              onClick={() => setSelectedYear('2025')}
+              className={`px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-md ${
+                selectedYear === '2025'
+                  ? 'bg-yellow-600 text-white scale-105'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              2025
+            </button>
+            <button
+              onClick={() => setSelectedYear('2026')}
+              className={`px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-md ${
+                selectedYear === '2026'
+                  ? 'bg-yellow-600 text-white scale-105'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              2026
+            </button>
+          </div>
+
           {/* Botón de Panel de Admin solo para admins */}
           {useAuth().isAdmin() && (
             <div className="flex justify-center mb-4 sm:mb-6 md:mb-8">
@@ -456,7 +437,7 @@ const Reconocimientos: React.FC = () => {
             Categorías de Reconocimientos
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {categorias.map((categoria, index) => (
+            {categoriasActuales.map((categoria, index) => (
               <div
                 key={index}
                 className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6 border border-gray-200 flex flex-col justify-between h-full"
@@ -470,8 +451,18 @@ const Reconocimientos: React.FC = () => {
                 
                 <div className="mt-6 relative">
                   <button
-                    onClick={() => setExpandedCategoria(expandedCategoria === categoria.nombre ? null : categoria.nombre)}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    onClick={() => {
+                      if (selectedYear === '2025' && categoria.pdfs.length === 0) {
+                        alert('Aún no hay reconocimientos disponibles para el año 2025 en esta categoría.');
+                        return;
+                      }
+                      setExpandedCategoria(expandedCategoria === categoria.nombre ? null : categoria.nombre);
+                    }}
+                    className={`w-full flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors ${
+                      selectedYear === '2025' && categoria.pdfs.length === 0
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-blue-600 hover:bg-blue-700'
+                    }`}
                   >
                     Ver reconocimientos <Download className="w-4 h-4" />
                   </button>
