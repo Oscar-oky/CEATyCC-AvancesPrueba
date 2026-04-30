@@ -77,14 +77,14 @@ router.get('/', async (req, res) => {
     
     const [images] = await db.query(query, params);
 
-    // Construir URLs absolutas
+    // Construir URLs absolutas usando el endpoint de API
     const protocol = req.protocol;
     const host = req.get('host');
     const baseUrl = `${protocol}://${host}`;
 
     const imagesWithAbsoluteUrls = images.map(img => ({
       ...img,
-      url: img.url.startsWith('http') ? img.url : `${baseUrl}${img.url}`
+      url: `${baseUrl}/api/concurso-carteles-images/file/${img.filename}`
     }));
 
     res.json(imagesWithAbsoluteUrls);
@@ -107,7 +107,7 @@ router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
 
     const uploadedImages = [];
     
-    // Construir URL base absoluta
+    // Construir URL base absoluta usando el endpoint de API
     const protocol = req.protocol;
     const host = req.get('host');
     const baseUrl = `${protocol}://${host}`;
@@ -115,7 +115,7 @@ router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
     for (const file of req.files) {
       try {
         const imageUrl = `/public/concurso-carteles/${file.filename}`;
-        const absoluteUrl = `${baseUrl}${imageUrl}`;
+        const absoluteUrl = `${baseUrl}/api/concurso-carteles-images/file/${file.filename}`;
         const [result] = await db.query(`
           INSERT INTO concurso_carteles_fotos (filename, url, uploaded_by, event_type)
           VALUES (?, ?, ?, ?)
@@ -158,6 +158,37 @@ router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
 
     console.error('Error uploading images:', error);
     res.status(500).json({ message: 'Error al subir las imágenes' });
+  }
+});
+
+// GET: Servir una imagen específica por filename
+router.get('/file/:filename', async (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const filePath = path.join(__dirname, 'public/concurso-carteles', filename);
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ message: 'Imagen no encontrada' });
+    }
+
+    // Determinar el tipo MIME basado en la extensión
+    const ext = path.extname(filename).toLowerCase();
+    const mimeTypes = {
+      '.png': 'image/png',
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.gif': 'image/gif',
+      '.webp': 'image/webp',
+      '.svg': 'image/svg+xml'
+    };
+    const contentType = mimeTypes[ext] || 'application/octet-stream';
+
+    res.setHeader('Content-Type', contentType);
+    const fileStream = fs.createReadStream(filePath);
+    fileStream.pipe(res);
+  } catch (error) {
+    console.error('Error serving image:', error);
+    res.status(500).json({ message: 'Error al servir la imagen' });
   }
 });
 
