@@ -369,6 +369,14 @@ const ConcursoCartelesCientificos: React.FC = () => {
             </button>
           )}
 
+          {/* Mensaje cuando no hay fotos */}
+          {photos.length === 0 && (
+            <div className="text-center py-12">
+              <ImageIcon className="h-24 w-24 mx-auto mb-6 opacity-30 text-gray-400" />
+              <p className="text-2xl font-bold text-gray-400">Aún no hay carteles en la galería</p>
+            </div>
+          )}
+
           {/* Últimas fotos subidas */}
           {photos.length > 0 && (
             <div>
