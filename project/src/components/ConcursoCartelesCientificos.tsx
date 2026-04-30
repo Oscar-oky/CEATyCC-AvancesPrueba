@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Users, ListChecks, Calendar, Camera, Trophy, Image as ImageIcon } from 'lucide-react';
+import { useAuth } from '../hooks/AuthContext';
 
 const ConcursoCartelesCientificos: React.FC = () => {
+  const { isAdmin, token } = useAuth();
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [photos, setPhotos] = useState<{id: number, url: string}[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [isGalleryOpen, setIsGalleryOpen] = useState<boolean>(false); 
-  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number>(0); 
-  const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false); 
+  const [isGalleryOpen, setIsGalleryOpen] = useState<boolean>(false);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number>(0);
+  const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false);
   const [zoomLevel, setZoomLevel] = useState<number>(1); 
 
   const API_BASE_URL = window.location.hostname === 'localhost' 
@@ -62,6 +64,11 @@ const ConcursoCartelesCientificos: React.FC = () => {
       return;
     }
 
+    if (!isAdmin()) {
+      alert('Solo los administradores pueden subir imágenes.');
+      return;
+    }
+
     const formData = new FormData();
     selectedFiles.forEach(file => {
       formData.append('images', file);
@@ -70,23 +77,30 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
     try {
       setLoading(true);
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images`, {
         method: 'POST',
+        headers,
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
 
       const result = await response.json();
       alert(`${selectedFiles.length} ${selectedFiles.length === 1 ? 'imagen subida' : 'imágenes subidas'} con éxito!`);
       setSelectedFiles([]);
-      setPreviewUrls([]); 
+      setPreviewUrls([]);
       fetchPhotos();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error al subir las imágenes:', error);
-      alert('Error al subir las imágenes.');
+      alert(error.message || 'Error al subir las imágenes.');
     } finally {
       setLoading(false);
     }
@@ -130,24 +144,36 @@ const ConcursoCartelesCientificos: React.FC = () => {
 
   // Eliminar imagen
   const handleDelete = async (id: number) => {
+    if (!isAdmin()) {
+      alert('Solo los administradores pueden eliminar imágenes.');
+      return;
+    }
+
     if (!confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
       return;
     }
 
     try {
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/concurso-carteles-images/${id}`, {
         method: 'DELETE',
+        headers,
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
 
       alert('Imagen eliminada con éxito!');
       fetchPhotos();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error al eliminar la imagen:', error);
-      alert('Error al eliminar la imagen.');
+      alert(error.message || 'Error al eliminar la imagen.');
     }
   };
 
@@ -225,8 +251,9 @@ const ConcursoCartelesCientificos: React.FC = () => {
       icon: Camera,
       content: (
         <div className="space-y-6">
-          {/* Dropzone mejorado */}
-          <div className="flex flex-col items-center p-8 border-4 border-dashed border-blue-300 hover:border-blue-500 rounded-3xl bg-gradient-to-br from-blue-50 to-white transition-all duration-300 group">
+          {/* Dropzone mejorado - Solo visible para admin */}
+          {isAdmin() && (
+            <div className="flex flex-col items-center p-8 border-4 border-dashed border-blue-300 hover:border-blue-500 rounded-3xl bg-gradient-to-br from-blue-50 to-white transition-all duration-300 group">
             <input
               type="file"
               accept="image/*"
@@ -293,10 +320,12 @@ const ConcursoCartelesCientificos: React.FC = () => {
                 </div>
               </div>
             )}
-          </div>
+            </div>
+          )}
 
-          {/* Botones de acción */}
-          <div className="flex gap-3">
+          {/* Botones de acción - Solo visible para admin */}
+          {isAdmin() && (
+            <div className="flex gap-3">
             <button
               onClick={handleUpload}
               disabled={selectedFiles.length === 0 || loading}
@@ -321,20 +350,24 @@ const ConcursoCartelesCientificos: React.FC = () => {
                 </>
               )}
             </button>
+            </div>
+          )}
 
+          {/* Botón Ver Galería - Visible para todos */}
+          {photos.length > 0 && (
             <button
               onClick={() => {
-                if (photos.length > 0) setSelectedPhotoIndex(0);
+                setSelectedPhotoIndex(0);
                 setIsGalleryOpen(true);
                 setIsImageExpanded(false);
                 setZoomLevel(1);
               }}
-              className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-3xl shadow-lg text-lg transition-all duration-300 flex items-center justify-center gap-3 hover:shadow-xl hover:-translate-y-1"
+              className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-3xl shadow-lg text-lg transition-all duration-300 flex items-center justify-center gap-3 hover:shadow-xl hover:-translate-y-1"
             >
               <Camera className="h-6 w-6" />
               Ver Galería Full
             </button>
-          </div>
+          )}
 
           {/* Últimas fotos subidas */}
           {photos.length > 0 && (
@@ -371,18 +404,20 @@ const ConcursoCartelesCientificos: React.FC = () => {
                           </span>
                         </div>
                       </div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDelete(photo.id);
-                        }}
-                        className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-lg p-1 shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100"
-                        title="Eliminar imagen"
-                      >
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </button>
+                      {isAdmin() && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(photo.id);
+                          }}
+                          className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-lg p-1 shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100"
+                          title="Eliminar imagen"
+                        >
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      )}
                     </div>
                   );
                 })}
@@ -527,17 +562,19 @@ const ConcursoCartelesCientificos: React.FC = () => {
                       )}
                     </button>
 
-                    {/* Botón eliminar (aparece al pasar el mouse) */}
-                    <button 
-                      onClick={() => handleDelete(photos[selectedPhotoIndex].id)}
-                      className="absolute top-6 left-6 z-40 bg-red-500 hover:bg-red-600 shadow-2xl text-white rounded-2xl p-3 transition-all hover:scale-110 flex items-center gap-2 text-sm font-semibold opacity-0 group-hover:opacity-100"
-                      title="Eliminar imagen"
-                    >
+                    {/* Botón eliminar (aparece al pasar el mouse) - Solo para admin */}
+                    {isAdmin() && (
+                      <button
+                        onClick={() => handleDelete(photos[selectedPhotoIndex].id)}
+                        className="absolute top-6 left-6 z-40 bg-red-500 hover:bg-red-600 shadow-2xl text-white rounded-2xl p-3 transition-all hover:scale-110 flex items-center gap-2 text-sm font-semibold opacity-0 group-hover:opacity-100"
+                        title="Eliminar imagen"
+                      >
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                       </svg>
                       Eliminar
                     </button>
+                    )}
 
                     {/* Flecha derecha */}
                     <button 
@@ -571,18 +608,20 @@ const ConcursoCartelesCientificos: React.FC = () => {
                                 className="w-full h-full object-cover"
                               />
                             </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleDelete(photo.id);
-                              }}
-                              className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-lg p-1 shadow-lg transition-all hover:scale-110"
-                              title="Eliminar imagen"
-                            >
-                              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                              </svg>
-                            </button>
+                            {isAdmin() && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleDelete(photo.id);
+                                }}
+                                className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-lg p-1 shadow-lg transition-all hover:scale-110"
+                                title="Eliminar imagen"
+                              >
+                                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            )}
                           </div>
                         ))}
                       </div>

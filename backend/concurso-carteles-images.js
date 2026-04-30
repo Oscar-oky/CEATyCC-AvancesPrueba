@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const db = require('./db');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const db = require('./db');
-const auth = require('./middleware/auth');
+const adminAuth = require('./middleware/adminAuth');
 
 // Configuración específica para imágenes del concurso
 const storage = multer.diskStorage({
@@ -95,7 +95,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
+router.post('/', adminAuth, upload.array('images', 100), async (req, res) => {
   try {
     // Para pruebas locales sin autenticación, asignamos un usuario por defecto
     const uploadedBy = req.user && req.user.email ? req.user.email : 'test_user@example.com';
@@ -193,12 +193,8 @@ router.get('/file/:filename', async (req, res) => {
 });
 
 // DELETE: Eliminar una imagen
-router.delete('/:id', /* auth, */ async (req, res) => {
+router.delete('/:id', adminAuth, async (req, res) => {
   try {
-    // Verificar si es admin (si hay autenticación)
-    if (req.user && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Solo los administradores pueden eliminar imágenes' });
-    }
 
     const [images] = await db.query('SELECT filename FROM concurso_carteles_fotos WHERE id = ?', [req.params.id]);
 
