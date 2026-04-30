@@ -99,9 +99,10 @@ const ConcursoCartelesCientificos: React.FC = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
+      // El backend ahora devuelve URLs absolutas, solo mapeamos los datos
       const formattedPhotos = data.map((img: any) => ({
         id: img.id,
-        url: img.url.startsWith('http') ? img.url : `${API_BASE_URL}${img.url}`
+        url: img.url
       }));
       setPhotos(formattedPhotos);
     } catch (error) {

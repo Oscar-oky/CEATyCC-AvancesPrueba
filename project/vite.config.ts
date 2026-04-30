@@ -18,17 +18,17 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: 'http://localhost:5003',
         changeOrigin: true,
         secure: false,
       },
       '/public': {
-        target: 'http://localhost:5001',
+        target: 'http://localhost:5003',
         changeOrigin: true,
         secure: false,
       },
       '/uploads': {
-        target: 'http://localhost:5001',
+        target: 'http://localhost:5003',
         changeOrigin: true,
         secure: false,
       },

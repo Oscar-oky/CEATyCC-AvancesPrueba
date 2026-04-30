@@ -77,7 +77,17 @@ router.get('/', async (req, res) => {
     
     const [images] = await db.query(query, params);
 
-    res.json(images);
+    // Construir URLs absolutas
+    const protocol = req.protocol;
+    const host = req.get('host');
+    const baseUrl = `${protocol}://${host}`;
+
+    const imagesWithAbsoluteUrls = images.map(img => ({
+      ...img,
+      url: img.url.startsWith('http') ? img.url : `${baseUrl}${img.url}`
+    }));
+
+    res.json(imagesWithAbsoluteUrls);
   } catch (error) {
     console.error('Error fetching concurso images:', error);
     res.status(500).json({ message: 'Error al obtener las imágenes' });
@@ -97,9 +107,15 @@ router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
 
     const uploadedImages = [];
     
+    // Construir URL base absoluta
+    const protocol = req.protocol;
+    const host = req.get('host');
+    const baseUrl = `${protocol}://${host}`;
+
     for (const file of req.files) {
       try {
         const imageUrl = `/public/concurso-carteles/${file.filename}`;
+        const absoluteUrl = `${baseUrl}${imageUrl}`;
         const [result] = await db.query(`
           INSERT INTO concurso_carteles_fotos (filename, url, uploaded_by, event_type)
           VALUES (?, ?, ?, ?)
@@ -108,7 +124,7 @@ router.post('/', /* auth, */ upload.array('images', 100), async (req, res) => {
         uploadedImages.push({
           id: result.insertId,
           filename: file.filename,
-          url: imageUrl,
+          url: absoluteUrl,
           uploaded_by: uploadedBy,
           event_type: eventType
         });
